@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useRef } from "react";
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   Platform,
   Alert,
+  ScrollView,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { ExchangeRateProvider, useExchangeRate } from "./contexts/ExchangeRateContext";
@@ -29,6 +30,8 @@ function AppContent() {
   const { rate, loading } = useExchangeRate();
   const [searchQuery, setSearchQuery] = useState("");
   const [quantities, setQuantities] = useState({});
+  const [sortBy, setSortBy] = useState("default"); // default, cheap, expensive, good, bad
+  const flatListRef = useRef(null);
 
   // AI Camera state
   const [aiModalVisible, setAiModalVisible] = useState(false);
@@ -44,16 +47,40 @@ function AppContent() {
   }, []);
 
   const filteredMaterials = useMemo(() => {
-    if (!searchQuery.trim()) return materialsData;
-    const q = searchQuery.toLowerCase().trim();
-    return materialsData.filter(
-      (m) =>
-        m.nameEN.toLowerCase().includes(q) ||
-        m.nameKU.includes(q) ||
-        m.categoryEN.toLowerCase().includes(q) ||
-        m.categoryKU.includes(q)
-    );
-  }, [searchQuery]);
+    let result = [...materialsData];
+
+    // Search
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      result = result.filter(
+        (m) =>
+          m.nameEN.toLowerCase().includes(q) ||
+          m.nameKU.includes(q) ||
+          m.categoryEN.toLowerCase().includes(q) ||
+          m.categoryKU.includes(q)
+      );
+    }
+
+    // Sort
+    if (sortBy === "cheap") {
+      result.sort((a, b) => a.basePrice - b.basePrice);
+    } else if (sortBy === "expensive") {
+      result.sort((a, b) => b.basePrice - a.basePrice);
+    } else if (sortBy === "good") {
+      result.sort((a, b) => a.thermalConductivity - b.thermalConductivity);
+    } else if (sortBy === "bad") {
+      result.sort((a, b) => b.thermalConductivity - a.thermalConductivity);
+    }
+
+    return result;
+  }, [searchQuery, sortBy]);
+
+  const handleSelectItem = useCallback((id) => {
+    const index = filteredMaterials.findIndex(m => m.id === id);
+    if (index !== -1) {
+      flatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0 });
+    }
+  }, [filteredMaterials]);
 
   const totalItemsSelected = useMemo(() => {
     return Object.values(quantities).filter((v) => v > 0).length;
@@ -158,17 +185,6 @@ function AppContent() {
     setAiLoading(false);
   }, []);
 
-  const renderItem = useCallback(
-    ({ item }) => (
-      <MaterialCard
-        material={item}
-        quantity={quantities[item.id] || 0}
-        onQuantityChange={handleQuantityChange}
-        allMaterials={materialsData}
-      />
-    ),
-    [quantities, handleQuantityChange]
-  );
 
   const keyExtractor = useCallback((item) => String(item.id), []);
 
@@ -207,6 +223,37 @@ function AppContent() {
       {/* Search */}
       <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
 
+      {/* Sorting */}
+      <View style={styles.sortContainer}>
+        <Text style={[styles.sortTitle, isRTL && styles.textRTL]}>{t("sortBy")}:</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={[styles.sortScroll, isRTL && styles.sortScrollRTL]}
+        >
+          {[
+            { id: "default", label: t("materials") },
+            { id: "cheap", label: t("sortCheapest") },
+            { id: "expensive", label: t("sortExpensive") },
+            { id: "good", label: t("sortGood") },
+            { id: "bad", label: t("sortBad") },
+          ].map((item) => (
+            <TouchableOpacity
+              key={item.id}
+              style={[
+                styles.sortChip,
+                sortBy === item.id && styles.sortChipActive,
+              ]}
+              onPress={() => setSortBy(item.id)}
+            >
+              <Text style={[styles.sortChipText, sortBy === item.id && styles.sortChipTextActive]}>
+                {item.label}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+
       {/* Material count & clear */}
       <View style={[styles.listHeader, isRTL && styles.listHeaderRTL]}>
         <Text style={[styles.listTitle, isRTL && styles.textRTL]}>
@@ -226,12 +273,24 @@ function AppContent() {
         </View>
       ) : (
         <FlatList
+          ref={flatListRef}
           data={filteredMaterials}
-          renderItem={renderItem}
+          renderItem={({ item }) => (
+            <MaterialCard
+              material={item}
+              quantity={quantities[item.id] || 0}
+              onQuantityChange={handleQuantityChange}
+              allMaterials={materialsData}
+              onSelectItem={handleSelectItem}
+            />
+          )}
           keyExtractor={keyExtractor}
           contentContainerStyle={styles.list}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
+          getItemLayout={(data, index) => (
+            { length: 220, offset: 220 * index, index }
+          )}
         />
       )}
 
@@ -360,5 +419,46 @@ const styles = StyleSheet.create({
   emptyText: {
     ...typography.body,
     color: colors.mediumGray,
+  },
+
+  // Sort
+  sortContainer: {
+    paddingHorizontal: spacing.xl,
+    marginTop: spacing.md,
+    marginBottom: spacing.xs,
+  },
+  sortTitle: {
+    ...typography.tiny,
+    color: colors.mediumGray,
+    marginBottom: spacing.xs,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+  },
+  sortScroll: {
+    paddingVertical: 4,
+  },
+  sortScrollRTL: {
+    flexDirection: "row-reverse",
+  },
+  sortChip: {
+    backgroundColor: colors.white,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
+    borderRadius: radius.full,
+    borderWidth: 1,
+    borderColor: colors.cardBorder,
+    marginRight: spacing.sm,
+  },
+  sortChipActive: {
+    backgroundColor: colors.accent,
+    borderColor: colors.accent,
+  },
+  sortChipText: {
+    ...typography.caption,
+    color: colors.darkGray,
+    fontWeight: "600",
+  },
+  sortChipTextActive: {
+    color: colors.white,
   },
 });

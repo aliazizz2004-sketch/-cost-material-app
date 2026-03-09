@@ -30,6 +30,11 @@ const strings = {
         language: "Language",
         english: "English",
         kurdish: "کوردی",
+        sortBy: "Sort by",
+        sortCheapest: "Cheapest",
+        sortExpensive: "Expensive",
+        sortGood: "Best Specs (Good)",
+        sortBad: "Basic Specs (Bad)",
     },
     ku: {
         appTitle: "مادە و تێچوو",
@@ -62,6 +67,11 @@ const strings = {
         language: "زمان",
         english: "English",
         kurdish: "کوردی",
+        sortBy: "ڕیزکردن بەپێی",
+        sortCheapest: "هەرزانترین (هەرزان)",
+        sortExpensive: "گرانترین (گران)",
+        sortGood: "باشترین (باش)",
+        sortBad: "خراپترین (خراپ)",
     },
 };
 

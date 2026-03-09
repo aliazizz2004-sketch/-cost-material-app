@@ -5,7 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import BrandChip from "./BrandChip";
 
-function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [] }) {
+function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [], onSelectItem = () => { } }) {
     const { lang, t, isRTL } = useLanguage();
     const { rate } = useExchangeRate();
     const [isImageModalVisible, setIsImageModalVisible] = useState(false);
@@ -122,7 +122,14 @@ function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [] 
                                         const isBetterThermal = rec.thermalConductivity < material.thermalConductivity;
 
                                         return (
-                                            <View key={rec.id} style={[styles.recItem, isRTL && styles.rowRTL]}>
+                                            <TouchableOpacity
+                                                key={rec.id}
+                                                style={[styles.recItem, isRTL && styles.rowRTL]}
+                                                onPress={() => {
+                                                    setIsImageModalVisible(false);
+                                                    onSelectItem(rec.id);
+                                                }}
+                                            >
                                                 <View style={styles.recTextContainer}>
                                                     <Text style={[styles.recName, isRTL && styles.textRTL]}>{recName}</Text>
                                                     <View style={[styles.tagRow, isRTL && styles.rowRTL]}>
@@ -139,7 +146,7 @@ function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [] 
                                                     </View>
                                                 </View>
                                                 <Text style={styles.recPrice}>{formatNumber(recPrice)} IQD</Text>
-                                            </View>
+                                            </TouchableOpacity>
                                         );
                                     })}
                                 </View>

@@ -147,9 +147,11 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                                 key={rec.id}
                                                 style={[styles.recItem, isRTL && styles.rowRTL]}
                                                 onPress={() => {
-                                                    // Switch the modal content to the selected recommendation
-                                                    setCurrentMaterial(rec);
-                                                    // Also notify parent to sync list/scroll
+                                                    // Close the modal
+                                                    setIsImageModalVisible(false);
+                                                    // Reset content to original item for next opening
+                                                    setCurrentMaterial(initialMaterial);
+                                                    // Notify parent to scroll to the item
                                                     onSelectItem(rec.id);
                                                 }}
                                             >

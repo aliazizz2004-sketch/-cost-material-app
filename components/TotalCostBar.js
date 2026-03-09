@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from "react-native";
 import { colors, spacing, radius, typography, shadows } from "../styles/theme";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
@@ -59,6 +59,9 @@ export default function TotalCostBar({ quantities, materials }) {
                     {formatNumber(totalCost)} {t("currency")}
                 </Text>
             </View>
+
+            {/* Safe Area Spacer for Bottom Mobile Navigation */}
+            {Platform.OS !== "web" && <View style={styles.safeSpacer} />}
         </View>
     );
 }
@@ -68,10 +71,14 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
         paddingHorizontal: spacing.xl,
         paddingTop: spacing.md,
-        paddingBottom: spacing.xxl,
+        paddingBottom: Platform.OS === "ios" ? spacing.xl : spacing.md, // Adjusted for safeSpacer
         borderTopLeftRadius: radius.xl,
         borderTopRightRadius: radius.xl,
         ...shadows.bottomBar,
+    },
+    safeSpacer: {
+        height: Platform.OS === "ios" ? 20 : 15,
+        width: "100%",
     },
     rateRow: {
         flexDirection: "row",

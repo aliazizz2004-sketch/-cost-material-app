@@ -5,7 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import BrandChip from "./BrandChip";
 
-function MaterialCard({ material, quantity, onQuantityChange }) {
+function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [] }) {
     const { lang, t, isRTL } = useLanguage();
     const { rate } = useExchangeRate();
     const [isImageModalVisible, setIsImageModalVisible] = useState(false);
@@ -15,6 +15,22 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
     const unitLabel = lang === "ku" ? material.unitKU : material.unitEN;
     const priceIQD = rate ? Math.round(material.basePrice * rate) : 0;
     const subtotal = priceIQD * (quantity || 0);
+
+    // Find Recommendations
+    const recommendations = allMaterials
+        .filter(m => m.id !== material.id && m.categoryEN === material.categoryEN)
+        .sort((a, b) => {
+            // Price Comparison (Primary)
+            const priceCompare = a.basePrice - b.basePrice;
+            if (priceCompare !== 0) return priceCompare;
+
+            // Thermal Efficiency (Secondary - for Insulation/Masonry/Binding)
+            if (material.categoryEN === "Insulation" || material.categoryEN === "Masonry") {
+                return a.thermalConductivity - b.thermalConductivity;
+            }
+            return 0;
+        })
+        .slice(0, 3); // Top 3 recommendations
 
     const formatNumber = (num) => {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -28,7 +44,11 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
     const hasQuantity = quantity > 0;
 
     return (
-        <View style={[styles.card, hasQuantity && styles.cardActive]}>
+        <TouchableOpacity
+            style={[styles.card, hasQuantity && styles.cardActive]}
+            activeOpacity={0.9}
+            onPress={() => setIsImageModalVisible(true)}
+        >
             {/* Image Preview Modal (Detail Mini-Page) */}
             <Modal
                 visible={isImageModalVisible}
@@ -86,6 +106,44 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
                             >
                                 <Text style={styles.previewAddBtnText}>{lang === "ku" ? "زیادکردن بۆ لیست ✓" : "Add to Cost List ✓"}</Text>
                             </TouchableOpacity>
+
+                            {/* Recommendations Section */}
+                            {recommendations.length > 0 && (
+                                <View style={styles.recSection}>
+                                    <View style={styles.recHeaderRow}>
+                                        <Text style={[styles.recLabel, isRTL && styles.textRTL]}>
+                                            {lang === "ku" ? "پێشنیارەکان (باشتر یان هەرزانتر)" : "Recommendations (Better or Cheaper)"}
+                                        </Text>
+                                    </View>
+                                    {recommendations.map((rec) => {
+                                        const recName = lang === "ku" ? rec.nameKU : rec.nameEN;
+                                        const recPrice = rate ? Math.round(rec.basePrice * rate) : 0;
+                                        const isCheaper = rec.basePrice < material.basePrice;
+                                        const isBetterThermal = rec.thermalConductivity < material.thermalConductivity;
+
+                                        return (
+                                            <View key={rec.id} style={[styles.recItem, isRTL && styles.rowRTL]}>
+                                                <View style={styles.recTextContainer}>
+                                                    <Text style={[styles.recName, isRTL && styles.textRTL]}>{recName}</Text>
+                                                    <View style={[styles.tagRow, isRTL && styles.rowRTL]}>
+                                                        {isCheaper && (
+                                                            <View style={styles.cheaperTag}>
+                                                                <Text style={styles.tagText}>{lang === "ku" ? "هەرزانتر" : "Cheaper"}</Text>
+                                                            </View>
+                                                        )}
+                                                        {isBetterThermal && (category === "Insulation" || category === "Masonry") && (
+                                                            <View style={styles.betterTag}>
+                                                                <Text style={styles.tagText}>{lang === "ku" ? "کاراتر" : "Better Specs"}</Text>
+                                                            </View>
+                                                        )}
+                                                    </View>
+                                                </View>
+                                                <Text style={styles.recPrice}>{formatNumber(recPrice)} IQD</Text>
+                                            </View>
+                                        );
+                                    })}
+                                </View>
+                            )}
                         </View>
                     </View>
                 </View>
@@ -105,13 +163,13 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
             {/* Material name and Photo */}
             <View style={[styles.titleRow, isRTL && styles.titleRowRTL]}>
                 {material.image && (
-                    <TouchableOpacity activeOpacity={0.8} onPress={() => setIsImageModalVisible(true)}>
+                    <View>
                         <Image
                             source={typeof material.image === 'string' ? { uri: material.image } : material.image}
                             style={styles.thumbnail}
                             resizeMode="cover"
                         />
-                    </TouchableOpacity>
+                    </View>
                 )}
                 <View style={[styles.titleTextContainer, isRTL && styles.titleTextContainerRTL]}>
                     <Text style={[styles.name, isRTL && styles.textRTL]}>{name}</Text>
@@ -151,47 +209,49 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
             )}
 
             {/* Quantity controls */}
-            <View style={[styles.quantityRow, isRTL && styles.quantityRowRTL]}>
-                <View style={[styles.quantityControls, isRTL && styles.quantityControlsRTL]}>
-                    <TouchableOpacity
-                        style={[styles.qtyBtn, styles.qtyBtnMinus]}
-                        onPress={decrement}
-                        activeOpacity={0.7}
-                    >
-                        <Text style={styles.qtyBtnText}>−</Text>
-                    </TouchableOpacity>
+            <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
+                <View style={[styles.quantityRow, isRTL && styles.quantityRowRTL]}>
+                    <View style={[styles.quantityControls, isRTL && styles.quantityControlsRTL]}>
+                        <TouchableOpacity
+                            style={[styles.qtyBtn, styles.qtyBtnMinus]}
+                            onPress={decrement}
+                            activeOpacity={0.7}
+                        >
+                            <Text style={styles.qtyBtnText}>−</Text>
+                        </TouchableOpacity>
 
-                    <TextInput
-                        style={styles.qtyInput}
-                        value={quantity ? String(quantity) : ""}
-                        onChangeText={(text) => {
-                            const num = parseInt(text) || 0;
-                            onQuantityChange(material.id, num);
-                        }}
-                        keyboardType="number-pad"
-                        placeholder="0"
-                        placeholderTextColor={colors.mediumGray}
-                    />
+                        <TextInput
+                            style={styles.qtyInput}
+                            value={quantity ? String(quantity) : ""}
+                            onChangeText={(text) => {
+                                const num = parseInt(text) || 0;
+                                onQuantityChange(material.id, num);
+                            }}
+                            keyboardType="number-pad"
+                            placeholder="0"
+                            placeholderTextColor={colors.mediumGray}
+                        />
 
-                    <TouchableOpacity
-                        style={[styles.qtyBtn, styles.qtyBtnPlus]}
-                        onPress={increment}
-                        activeOpacity={0.7}
-                    >
-                        <Text style={[styles.qtyBtnText, styles.qtyBtnPlusText]}>+</Text>
-                    </TouchableOpacity>
-                </View>
-
-                {hasQuantity && (
-                    <View style={[styles.subtotalWrap, isRTL && styles.subtotalWrapRTL]}>
-                        <Text style={styles.subtotalLabel}>{t("subtotal")}</Text>
-                        <Text style={styles.subtotalValue}>
-                            {formatNumber(subtotal)} {t("currency")}
-                        </Text>
+                        <TouchableOpacity
+                            style={[styles.qtyBtn, styles.qtyBtnPlus]}
+                            onPress={increment}
+                            activeOpacity={0.7}
+                        >
+                            <Text style={[styles.qtyBtnText, styles.qtyBtnPlusText]}>+</Text>
+                        </TouchableOpacity>
                     </View>
-                )}
-            </View>
-        </View>
+
+                    {hasQuantity && (
+                        <View style={[styles.subtotalWrap, isRTL && styles.subtotalWrapRTL]}>
+                            <Text style={styles.subtotalLabel}>{t("subtotal")}</Text>
+                            <Text style={styles.subtotalValue}>
+                                {formatNumber(subtotal)} {t("currency")}
+                            </Text>
+                        </View>
+                    )}
+                </View>
+            </TouchableOpacity>
+        </TouchableOpacity>
     );
 }
 
@@ -506,5 +566,65 @@ const styles = StyleSheet.create({
         ...typography.subtitle,
         color: colors.white,
         fontWeight: "700",
+    },
+    recSection: {
+        marginTop: spacing.lg,
+        paddingTop: spacing.md,
+        borderTopWidth: 1,
+        borderTopColor: colors.cardBorder,
+    },
+    recLabel: {
+        ...typography.tiny,
+        color: colors.mediumGray,
+        letterSpacing: 0.5,
+        textTransform: "uppercase",
+        marginBottom: spacing.sm,
+    },
+    recItem: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: colors.offWhite,
+        padding: spacing.sm,
+        borderRadius: radius.md,
+        marginBottom: spacing.xs,
+    },
+    recTextContainer: {
+        flex: 1,
+    },
+    recName: {
+        ...typography.caption,
+        color: colors.charcoal,
+        fontWeight: "600",
+    },
+    recPrice: {
+        ...typography.caption,
+        color: colors.accent,
+        fontWeight: "700",
+    },
+    tagRow: {
+        flexDirection: "row",
+        marginTop: 4,
+        gap: 6,
+    },
+    cheaperTag: {
+        backgroundColor: "#E8F5E9",
+        paddingHorizontal: 6,
+        paddingVertical: 2,
+        borderRadius: 4,
+    },
+    betterTag: {
+        backgroundColor: "#E3F2FD",
+        paddingHorizontal: 6,
+        paddingVertical: 2,
+        borderRadius: 4,
+    },
+    tagText: {
+        fontSize: 10,
+        fontWeight: "700",
+        color: colors.mediumGray,
+    },
+    rowRTL: {
+        flexDirection: "row-reverse",
     },
 });

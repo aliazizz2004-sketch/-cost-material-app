@@ -164,6 +164,7 @@ function AppContent() {
         material={item}
         quantity={quantities[item.id] || 0}
         onQuantityChange={handleQuantityChange}
+        allMaterials={materialsData}
       />
     ),
     [quantities, handleQuantityChange]

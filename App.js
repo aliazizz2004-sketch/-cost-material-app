@@ -219,6 +219,8 @@ function AppContent() {
 
   const keyExtractor = useCallback((item) => String(item.id), []);
 
+  const [currentView, setCurrentView] = useState("home"); // 'home' or 'store'
+
   if (loading && !rate) {
     return (
       <View style={styles.loadingContainer}>
@@ -232,6 +234,51 @@ function AppContent() {
     );
   }
 
+  // --- Home / Selection View ---
+  if (currentView === "home") {
+    return (
+      <View style={styles.homeContainer}>
+        <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+        <View style={styles.homeHeader}>
+          <SafeAreaView>
+            <View style={[styles.headerContent, isRTL && styles.headerContentRTL]}>
+              <View style={isRTL ? styles.headerTextRTL : undefined}>
+                <Text style={[styles.headerTitle, isRTL && styles.textRTL]}>{t("appTitle")}</Text>
+                <Text style={[styles.headerSubtitle, isRTL && styles.textRTL]}>{t("appSubtitle")}</Text>
+              </View>
+              <LanguageToggle />
+            </View>
+          </SafeAreaView>
+        </View>
+
+        <View style={styles.homeIconsContainer}>
+          <TouchableOpacity
+            style={styles.homeCard}
+            activeOpacity={0.8}
+            onPress={handleCameraPress}
+          >
+            <View style={[styles.homeCardIcon, { backgroundColor: '#E3F2FD' }]}>
+              <Text style={{ fontSize: 50 }}>🤖</Text>
+            </View>
+            <Text style={styles.homeCardTitle}>{t("aiTitle")}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.homeCard}
+            activeOpacity={0.8}
+            onPress={() => setCurrentView("store")}
+          >
+            <View style={[styles.homeCardIcon, { backgroundColor: '#F3E5F5' }]}>
+              <Text style={{ fontSize: 50 }}>🏢</Text>
+            </View>
+            <Text style={styles.homeCardTitle}>{t("storeTitle")}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+  // --- Store View ---
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
@@ -239,9 +286,11 @@ function AppContent() {
       <View style={styles.header}>
         <SafeAreaView>
           <View style={[styles.headerContent, isRTL && styles.headerContentRTL]}>
-            <View style={isRTL ? styles.headerTextRTL : undefined}>
-              <Text style={[styles.headerTitle, isRTL && styles.textRTL]}>{t("appTitle")}</Text>
-              <Text style={[styles.headerSubtitle, isRTL && styles.textRTL]}>{t("appSubtitle")}</Text>
+            <TouchableOpacity onPress={() => setCurrentView("home")} style={styles.backButton}>
+              <Text style={styles.backButtonText}>{isRTL ? "➡️" : "⬅️"}</Text>
+            </TouchableOpacity>
+            <View style={isRTL ? styles.headerTextRTL : { flex: 1, marginHorizontal: spacing.md }}>
+              <Text style={[styles.headerTitle, { fontSize: 20 }, isRTL && styles.textRTL]}>{t("storeTitle")}</Text>
             </View>
             <LanguageToggle />
           </View>
@@ -619,5 +668,60 @@ const styles = StyleSheet.create({
     ...typography.subtitle,
     color: colors.white,
     fontWeight: "700",
+  },
+  // Home View Styles
+  homeContainer: {
+    flex: 1,
+    backgroundColor: colors.offWhite,
+  },
+  homeHeader: {
+    backgroundColor: colors.primary,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 40 : 0,
+    paddingBottom: spacing.xxxl,
+    paddingHorizontal: spacing.xl,
+    borderBottomLeftRadius: radius.xl * 2,
+    borderBottomRightRadius: radius.xl * 2,
+  },
+  homeIconsContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: spacing.xl,
+    gap: spacing.xl,
+    marginTop: -spacing.xxxl,
+  },
+  homeCard: {
+    flex: 1,
+    backgroundColor: colors.white,
+    borderRadius: radius.xl,
+    padding: spacing.xl,
+    alignItems: "center",
+    justifyContent: "center",
+    ...shadows.card,
+    height: 180,
+    maxWidth: 180,
+  },
+  homeCardIcon: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: spacing.md,
+  },
+  homeCardTitle: {
+    ...typography.subtitle,
+    color: colors.charcoal,
+    fontWeight: "700",
+    textAlign: "center",
+  },
+  backButton: {
+    padding: spacing.sm,
+    marginRight: spacing.sm,
+  },
+  backButtonText: {
+    fontSize: 24,
+    color: colors.white,
   },
 });

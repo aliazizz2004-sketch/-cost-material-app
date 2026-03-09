@@ -61,7 +61,7 @@ function AppContent() {
       );
     }
 
-    // Sort
+    // Sort or Category Filter
     if (sortBy === "cheap") {
       result.sort((a, b) => a.basePrice - b.basePrice);
     } else if (sortBy === "expensive") {
@@ -70,6 +70,13 @@ function AppContent() {
       result.sort((a, b) => a.thermalConductivity - b.thermalConductivity);
     } else if (sortBy === "bad") {
       result.sort((a, b) => b.thermalConductivity - a.thermalConductivity);
+    } else if (sortBy !== "default") {
+      // Category filtering (for Wood, Concrete, etc)
+      result = result.filter(m =>
+        m.categoryEN === sortBy ||
+        m.nameEN.toLowerCase().includes(sortBy.toLowerCase()) ||
+        m.materials?.some(mat => mat.toLowerCase().includes(sortBy.toLowerCase()))
+      );
     }
 
     return result;
@@ -232,11 +239,17 @@ function AppContent() {
           contentContainerStyle={[styles.sortScroll, isRTL && styles.sortScrollRTL]}
         >
           {[
-            { id: "default", label: t("materials") },
-            { id: "cheap", label: t("sortCheapest") },
-            { id: "expensive", label: t("sortExpensive") },
-            { id: "good", label: t("sortGood") },
-            { id: "bad", label: t("sortBad") },
+            { id: "default", label: "📋 " + t("materials") },
+            { id: "cheap", label: "💰 " + t("sortCheapest") },
+            { id: "expensive", label: "💎 " + t("sortExpensive") },
+            { id: "good", label: "✅ " + t("sortGood") },
+            { id: "bad", label: "❌ " + t("sortBad") },
+            { id: "Wood", label: "🪵 " + (lang === "ku" ? "تەختە" : "Wood") },
+            { id: "Concrete", label: "🏗️ " + (lang === "ku" ? "کۆنکرێت" : "Concrete") },
+            { id: "Binding", label: "📦 " + (lang === "ku" ? "چیمەنتۆ/Binding" : "Binding") },
+            { id: "Masonry", label: "🧱 " + (lang === "ku" ? "بلۆک/Masonry" : "Masonry") },
+            { id: "Plumbing", label: "🚰 " + (lang === "ku" ? "سەباچی" : "Plumbing") },
+            { id: "Electrical", label: "⚡ " + (lang === "ku" ? "کارەبا" : "Electrical") },
           ].map((item) => (
             <TouchableOpacity
               key={item.id}

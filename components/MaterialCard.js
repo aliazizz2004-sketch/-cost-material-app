@@ -5,10 +5,18 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import BrandChip from "./BrandChip";
 
-function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [], onSelectItem = () => { } }) {
+function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, allMaterials = [], onSelectItem = () => { } }) {
     const { lang, t, isRTL } = useLanguage();
     const { rate } = useExchangeRate();
     const [isImageModalVisible, setIsImageModalVisible] = useState(false);
+    const [currentMaterial, setCurrentMaterial] = useState(initialMaterial);
+
+    // Sync currentMaterial if the prop changes (important for list rendering)
+    if (currentMaterial.id !== initialMaterial.id) {
+        setCurrentMaterial(initialMaterial);
+    }
+
+    const material = currentMaterial;
 
     const name = lang === "ku" ? material.nameKU : material.nameEN;
     const category = lang === "ku" ? material.categoryKU : material.categoryEN;
@@ -54,16 +62,28 @@ function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [],
                 visible={isImageModalVisible}
                 transparent={true}
                 animationType="fade"
-                onRequestClose={() => setIsImageModalVisible(false)}
+                onRequestClose={() => {
+                    setIsImageModalVisible(false);
+                    setCurrentMaterial(initialMaterial);
+                }}
             >
                 <View style={styles.imageModalOverlay}>
                     <TouchableOpacity
                         style={styles.imageModalCloseArea}
                         activeOpacity={1}
-                        onPress={() => setIsImageModalVisible(false)}
+                        onPress={() => {
+                            setIsImageModalVisible(false);
+                            setCurrentMaterial(initialMaterial);
+                        }}
                     />
                     <View style={styles.imageModalContent}>
-                        <TouchableOpacity style={styles.imageModalCloseButton} onPress={() => setIsImageModalVisible(false)}>
+                        <TouchableOpacity
+                            style={styles.imageModalCloseButton}
+                            onPress={() => {
+                                setIsImageModalVisible(false);
+                                setCurrentMaterial(initialMaterial);
+                            }}
+                        >
                             <Text style={styles.imageModalCloseText}>✕</Text>
                         </TouchableOpacity>
 
@@ -102,6 +122,7 @@ function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [],
                                 onPress={() => {
                                     increment();
                                     setIsImageModalVisible(false);
+                                    setCurrentMaterial(initialMaterial);
                                 }}
                             >
                                 <Text style={styles.previewAddBtnText}>{lang === "ku" ? "زیادکردن بۆ لیست ✓" : "Add to Cost List ✓"}</Text>
@@ -126,7 +147,9 @@ function MaterialCard({ material, quantity, onQuantityChange, allMaterials = [],
                                                 key={rec.id}
                                                 style={[styles.recItem, isRTL && styles.rowRTL]}
                                                 onPress={() => {
-                                                    setIsImageModalVisible(false);
+                                                    // Switch the modal content to the selected recommendation
+                                                    setCurrentMaterial(rec);
+                                                    // Also notify parent to sync list/scroll
                                                     onSelectItem(rec.id);
                                                 }}
                                             >

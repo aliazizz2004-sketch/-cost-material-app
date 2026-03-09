@@ -382,7 +382,7 @@ PLASTER/STUCCO: Smooth wall plaster, Roughcast, Cavity-fill.
 ROOFING: Metal corrugated, Standing-seam, Slate shingles, Bitumen membrane.
 INSULATION: EPS foam (white beads), XPS (blue/pink dense), Rock wool (fibrous yellow-brown).`;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${GEMINI_API_KEY}`;
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 15000);
 

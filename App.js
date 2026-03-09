@@ -36,6 +36,12 @@ function AppContent() {
   const [isSortModalVisible, setIsSortModalVisible] = useState(false);
   const flatListRef = useRef(null);
 
+  // AI Camera state
+  const [aiModalVisible, setAiModalVisible] = useState(false);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiResult, setAiResult] = useState(null);
+  const [capturedImageUri, setCapturedImageUri] = useState(null);
+
   const materialCategories = [
     { id: "Wood", label: "🪵 " + t("wood") },
     { id: "Concrete", label: "🏗️ " + t("concrete") },
@@ -59,6 +65,13 @@ function AppContent() {
     );
   };
 
+  const handleQuantityChange = useCallback((id, newQty) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: Math.max(0, newQty),
+    }));
+  }, []);
+
   const filteredMaterials = useMemo(() => {
     let result = [...materialsData];
 
@@ -74,7 +87,7 @@ function AppContent() {
       );
     }
 
-    // 2. Category Filter (Multi-select)
+    // 2. Multi-Category Filter
     if (selectedCategories.length > 0) {
       result = result.filter(m =>
         selectedCategories.includes(m.categoryEN) ||
@@ -111,7 +124,6 @@ function AppContent() {
     setQuantities({});
   }, []);
 
-  // Camera AI - works immediately, no setup needed
   const handleCameraPress = useCallback(async () => {
     try {
       const isWeb = Platform.OS === "web";
@@ -162,7 +174,6 @@ function AppContent() {
         setAiLoading(true);
         setAiModalVisible(true);
 
-        // Send to AI for recognition
         try {
           const aiResponse = await recognizeMaterial(asset.base64);
           setAiResult(aiResponse);
@@ -206,7 +217,6 @@ function AppContent() {
     setAiLoading(false);
   }, []);
 
-
   const keyExtractor = useCallback((item) => String(item.id), []);
 
   if (loading && !rate) {
@@ -226,22 +236,18 @@ function AppContent() {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
 
-      {/* Header */}
       <View style={styles.header}>
         <SafeAreaView>
           <View style={[styles.headerContent, isRTL && styles.headerContentRTL]}>
             <View style={isRTL ? styles.headerTextRTL : undefined}>
               <Text style={[styles.headerTitle, isRTL && styles.textRTL]}>{t("appTitle")}</Text>
-              <Text style={[styles.headerSubtitle, isRTL && styles.textRTL]}>
-                {t("appSubtitle")}
-              </Text>
+              <Text style={[styles.headerSubtitle, isRTL && styles.textRTL]}>{t("appSubtitle")}</Text>
             </View>
             <LanguageToggle />
           </View>
         </SafeAreaView>
       </View>
 
-      {/* Search & Sort Row */}
       <View style={[styles.searchRow, isRTL && styles.rowRTL]}>
         <View style={{ flex: 1 }}>
           <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
@@ -256,7 +262,6 @@ function AppContent() {
         </TouchableOpacity>
       </View>
 
-      {/* Sorting Modal */}
       <Modal
         visible={isSortModalVisible}
         transparent={true}
@@ -277,7 +282,6 @@ function AppContent() {
             </View>
 
             <View style={[styles.modalColumns, isRTL && styles.rowRTL]}>
-              {/* Left Column: Categories (Multi-select) */}
               <View style={styles.modalColumn}>
                 <Text style={[styles.columnLabel, isRTL && styles.textRTL]}>
                   {lang === "ku" ? "مادەکان" : "Materials"}
@@ -291,10 +295,7 @@ function AppContent() {
                         style={[styles.sortModalItem, isActive && styles.sortModalItemActive]}
                         onPress={() => toggleCategory(item.id)}
                       >
-                        <Text
-                          style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]}
-                          numberOfLines={1}
-                        >
+                        <Text style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]} numberOfLines={1}>
                           {item.label}
                         </Text>
                         {isActive && <Text style={styles.checkIcon}>✓</Text>}
@@ -306,7 +307,6 @@ function AppContent() {
 
               <View style={styles.columnDivider} />
 
-              {/* Right Column: Sort (Single-select) */}
               <View style={styles.modalColumn}>
                 <Text style={[styles.columnLabel, isRTL && styles.textRTL]}>
                   {lang === "ku" ? "ڕیزکردن" : "Price/Order"}
@@ -320,10 +320,7 @@ function AppContent() {
                         style={[styles.sortModalItem, isActive && styles.sortModalItemActive]}
                         onPress={() => setActiveSort(item.id)}
                       >
-                        <Text
-                          style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]}
-                          numberOfLines={1}
-                        >
+                        <Text style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]} numberOfLines={1}>
                           {item.label}
                         </Text>
                         {isActive && <Text style={styles.checkIcon}>✓</Text>}
@@ -334,19 +331,13 @@ function AppContent() {
               </View>
             </View>
 
-            <TouchableOpacity
-              style={styles.applyBtn}
-              onPress={() => setIsSortModalVisible(false)}
-            >
-              <Text style={styles.applyBtnText}>
-                {lang === "ku" ? "جێبەجێکردن" : "Apply Filters"}
-              </Text>
+            <TouchableOpacity style={styles.applyBtn} onPress={() => setIsSortModalVisible(false)}>
+              <Text style={styles.applyBtnText}>{lang === "ku" ? "جێبەجێکردن" : "Apply Filters"}</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
       </Modal>
 
-      {/* Material count & clear */}
       <View style={[styles.listHeader, isRTL && styles.listHeaderRTL]}>
         <Text style={[styles.listTitle, isRTL && styles.textRTL]}>
           {t("materials")} ({filteredMaterials.length})
@@ -358,7 +349,6 @@ function AppContent() {
         )}
       </View>
 
-      {/* Material list */}
       {filteredMaterials.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>{t("noResults")}</Text>
@@ -380,16 +370,12 @@ function AppContent() {
           contentContainerStyle={styles.list}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
-          getItemLayout={(data, index) => (
-            { length: 220, offset: 220 * index, index }
-          )}
+          getItemLayout={(data, index) => ({ length: 220, offset: 220 * index, index })}
         />
       )}
 
-      {/* Camera AI FAB */}
       <CameraButton onPress={handleCameraPress} />
 
-      {/* AI Result Modal */}
       <MaterialResultModal
         visible={aiModalVisible}
         onClose={handleCloseModal}
@@ -399,7 +385,6 @@ function AppContent() {
         onAddToList={handleAddToList}
       />
 
-      {/* Bottom total bar */}
       <TotalCostBar quantities={quantities} materials={materialsData} />
     </View>
   );

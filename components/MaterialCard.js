@@ -29,7 +29,7 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
 
     return (
         <View style={[styles.card, hasQuantity && styles.cardActive]}>
-            {/* Image Preview Modal */}
+            {/* Image Preview Modal (Detail Mini-Page) */}
             <Modal
                 visible={isImageModalVisible}
                 transparent={true}
@@ -46,14 +46,47 @@ function MaterialCard({ material, quantity, onQuantityChange }) {
                         <TouchableOpacity style={styles.imageModalCloseButton} onPress={() => setIsImageModalVisible(false)}>
                             <Text style={styles.imageModalCloseText}>✕</Text>
                         </TouchableOpacity>
+
                         {material.image && (
                             <Image
                                 source={typeof material.image === 'string' ? { uri: material.image } : material.image}
                                 style={styles.largePreviewImage}
-                                resizeMode="contain"
+                                resizeMode="cover"
                             />
                         )}
-                        <Text style={[styles.previewImageName, isRTL && styles.textRTL]}>{name}</Text>
+
+                        <View style={styles.previewDetailContainer}>
+                            <View style={styles.previewHeader}>
+                                <View style={styles.previewCategoryBadge}>
+                                    <Text style={styles.previewCategoryText}>{category}</Text>
+                                </View>
+                                <Text style={styles.previewPriceText}>{formatNumber(priceIQD)} {t("currency")}</Text>
+                            </View>
+
+                            <Text style={[styles.previewImageName, isRTL && styles.textRTL]}>{name}</Text>
+                            <Text style={[styles.previewUnitText, isRTL && styles.textRTL]}>{unitLabel}</Text>
+
+                            <View style={[styles.previewSpecsGrid, isRTL && styles.previewSpecsGridRTL]}>
+                                <View style={styles.previewSpecBox}>
+                                    <Text style={styles.previewSpecLabel}>{t("thermalValue")}</Text>
+                                    <Text style={styles.previewSpecValue}>{material.thermalConductivity}</Text>
+                                </View>
+                                <View style={styles.previewSpecBox}>
+                                    <Text style={styles.previewSpecLabel}>{t("weight")}</Text>
+                                    <Text style={styles.previewSpecValue}>{formatNumber(material.weight)}</Text>
+                                </View>
+                            </View>
+
+                            <TouchableOpacity
+                                style={styles.previewAddBtn}
+                                onPress={() => {
+                                    increment();
+                                    setIsImageModalVisible(false);
+                                }}
+                            >
+                                <Text style={styles.previewAddBtnText}>{lang === "ku" ? "زیادکردن بۆ لیست ✓" : "Add to Cost List ✓"}</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </Modal>
@@ -359,10 +392,10 @@ const styles = StyleSheet.create({
         color: colors.accent,
         fontWeight: "700",
     },
-    // Image Preview Modal Styles
+    // Image Preview Modal (Mini-Page) Styles
     imageModalOverlay: {
         flex: 1,
-        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        backgroundColor: "rgba(10, 22, 40, 0.7)", // Semi-transparent navy to see background
         justifyContent: "center",
         alignItems: "center",
     },
@@ -374,40 +407,104 @@ const styles = StyleSheet.create({
         right: 0,
     },
     imageModalContent: {
-        width: "90%",
+        width: "85%",
         backgroundColor: colors.white,
-        borderRadius: radius.lg,
-        padding: spacing.md,
-        alignItems: "center",
-        ...shadows.card,
+        borderRadius: radius.xl,
+        overflow: "hidden", // Clip image to corners
+        ...shadows.cardLifted,
     },
     imageModalCloseButton: {
         position: "absolute",
-        top: -15,
-        right: -15,
-        backgroundColor: colors.white,
-        width: 36,
-        height: 36,
-        borderRadius: 18,
+        top: 10,
+        right: 10,
+        backgroundColor: "rgba(255, 255, 255, 0.9)",
+        width: 30,
+        height: 30,
+        borderRadius: 15,
         justifyContent: "center",
         alignItems: "center",
         zIndex: 10,
-        ...shadows.card,
     },
     imageModalCloseText: {
-        fontSize: 18,
+        fontSize: 14,
         color: colors.darkGray,
         fontWeight: "bold",
     },
     largePreviewImage: {
         width: "100%",
-        height: 300,
-        borderRadius: radius.md,
-        marginBottom: spacing.md,
+        height: 200,
+    },
+    previewDetailContainer: {
+        padding: spacing.lg,
+    },
+    previewHeader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: spacing.sm,
+    },
+    previewCategoryBadge: {
+        backgroundColor: colors.searchBg,
+        paddingHorizontal: spacing.sm,
+        paddingVertical: 4,
+        borderRadius: radius.sm,
+    },
+    previewCategoryText: {
+        ...typography.tiny,
+        color: colors.mediumGray,
+        textTransform: "uppercase",
+    },
+    previewPriceText: {
+        ...typography.subtitle,
+        color: colors.primary,
+        fontWeight: "800",
     },
     previewImageName: {
-        ...typography.subtitle,
+        ...typography.title,
         color: colors.charcoal,
-        textAlign: "center",
+        marginBottom: 2,
+    },
+    previewUnitText: {
+        ...typography.caption,
+        color: colors.mediumGray,
+        marginBottom: spacing.md,
+    },
+    previewSpecsGrid: {
+        flexDirection: "row",
+        gap: spacing.sm,
+        marginBottom: spacing.lg,
+    },
+    previewSpecsGridRTL: {
+        flexDirection: "row-reverse",
+    },
+    previewSpecBox: {
+        flex: 1,
+        backgroundColor: colors.offWhite,
+        padding: spacing.sm,
+        borderRadius: radius.md,
+        alignItems: "center",
+    },
+    previewSpecLabel: {
+        ...typography.tiny,
+        color: colors.mediumGray,
+        marginBottom: 2,
+        textTransform: "uppercase",
+    },
+    previewSpecValue: {
+        ...typography.caption,
+        color: colors.charcoal,
+        fontWeight: "700",
+    },
+    previewAddBtn: {
+        backgroundColor: colors.accent,
+        paddingVertical: spacing.md,
+        borderRadius: radius.md,
+        alignItems: "center",
+        ...shadows.card,
+    },
+    previewAddBtnText: {
+        ...typography.subtitle,
+        color: colors.white,
+        fontWeight: "700",
     },
 });

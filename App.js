@@ -31,16 +31,12 @@ function AppContent() {
   const { rate, loading } = useExchangeRate();
   const [searchQuery, setSearchQuery] = useState("");
   const [quantities, setQuantities] = useState({});
-  const [sortBy, setSortBy] = useState("default"); // default, cheap, expensive, good, bad
+  const [activeSort, setActiveSort] = useState("default");
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [isSortModalVisible, setIsSortModalVisible] = useState(false);
   const flatListRef = useRef(null);
 
-  const sortOptions = [
-    { id: "default", label: "📋 " + t("materials") },
-    { id: "cheap", label: "💰 " + t("sortCheapest") },
-    { id: "expensive", label: "💎 " + t("sortExpensive") },
-    { id: "good", label: "✅ " + t("sortGood") },
-    { id: "bad", label: "❌ " + t("sortBad") },
+  const materialCategories = [
     { id: "Wood", label: "🪵 " + t("wood") },
     { id: "Concrete", label: "🏗️ " + t("concrete") },
     { id: "Binding", label: "📦 " + t("binding") },
@@ -49,23 +45,24 @@ function AppContent() {
     { id: "Electrical", label: "⚡ " + t("electrical") },
   ];
 
-  // AI Camera state
-  const [aiModalVisible, setAiModalVisible] = useState(false);
-  const [aiLoading, setAiLoading] = useState(false);
-  const [aiResult, setAiResult] = useState(null);
-  const [capturedImageUri, setCapturedImageUri] = useState(null);
+  const sortDirections = [
+    { id: "default", label: "📋 " + t("sortDefault") },
+    { id: "cheap", label: "💰 " + t("sortCheapest") },
+    { id: "expensive", label: "💎 " + t("sortExpensive") },
+    { id: "good", label: "✅ " + t("sortGood") },
+    { id: "bad", label: "❌ " + t("sortBad") },
+  ];
 
-  const handleQuantityChange = useCallback((id, newQty) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.max(0, newQty),
-    }));
-  }, []);
+  const toggleCategory = (catId) => {
+    setSelectedCategories(prev =>
+      prev.includes(catId) ? prev.filter(c => c !== catId) : [...prev, catId]
+    );
+  };
 
   const filteredMaterials = useMemo(() => {
     let result = [...materialsData];
 
-    // Search
+    // 1. Search Filter
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
       result = result.filter(
@@ -77,26 +74,27 @@ function AppContent() {
       );
     }
 
-    // Sort or Category Filter
-    if (sortBy === "cheap") {
-      result.sort((a, b) => a.basePrice - b.basePrice);
-    } else if (sortBy === "expensive") {
-      result.sort((a, b) => b.basePrice - a.basePrice);
-    } else if (sortBy === "good") {
-      result.sort((a, b) => a.thermalConductivity - b.thermalConductivity);
-    } else if (sortBy === "bad") {
-      result.sort((a, b) => b.thermalConductivity - a.thermalConductivity);
-    } else if (sortBy !== "default") {
-      // Category filtering (for Wood, Concrete, etc)
+    // 2. Category Filter (Multi-select)
+    if (selectedCategories.length > 0) {
       result = result.filter(m =>
-        m.categoryEN === sortBy ||
-        m.nameEN.toLowerCase().includes(sortBy.toLowerCase()) ||
-        m.materials?.some(mat => mat.toLowerCase().includes(sortBy.toLowerCase()))
+        selectedCategories.includes(m.categoryEN) ||
+        selectedCategories.some(cat => m.materials?.some(mat => mat.toLowerCase().includes(cat.toLowerCase())))
       );
     }
 
+    // 3. Sorting
+    if (activeSort === "cheap") {
+      result.sort((a, b) => a.basePrice - b.basePrice);
+    } else if (activeSort === "expensive") {
+      result.sort((a, b) => b.basePrice - a.basePrice);
+    } else if (activeSort === "good") {
+      result.sort((a, b) => a.thermalConductivity - b.thermalConductivity);
+    } else if (activeSort === "bad") {
+      result.sort((a, b) => b.thermalConductivity - a.thermalConductivity);
+    }
+
     return result;
-  }, [searchQuery, sortBy]);
+  }, [searchQuery, activeSort, selectedCategories]);
 
   const handleSelectItem = useCallback((id) => {
     const index = filteredMaterials.findIndex(m => m.id === id);
@@ -277,29 +275,73 @@ function AppContent() {
                 <Text style={styles.sortModalClose}>✕</Text>
               </TouchableOpacity>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {sortOptions.map((item) => (
-                <TouchableOpacity
-                  key={item.id}
-                  style={[
-                    styles.sortModalItem,
-                    sortBy === item.id && styles.sortModalItemActive,
-                  ]}
-                  onPress={() => {
-                    setSortBy(item.id);
-                    setIsSortModalVisible(false);
-                  }}
-                >
-                  <Text style={[
-                    styles.sortModalItemText,
-                    sortBy === item.id && styles.sortModalItemTextActive
-                  ]}>
-                    {item.label}
-                  </Text>
-                  {sortBy === item.id && <Text style={styles.checkIcon}>✓</Text>}
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
+
+            <View style={[styles.modalColumns, isRTL && styles.rowRTL]}>
+              {/* Left Column: Categories (Multi-select) */}
+              <View style={styles.modalColumn}>
+                <Text style={[styles.columnLabel, isRTL && styles.textRTL]}>
+                  {lang === "ku" ? "مادەکان" : "Materials"}
+                </Text>
+                <ScrollView showsVerticalScrollIndicator={false} style={{ maxHeight: 300 }}>
+                  {materialCategories.map((item) => {
+                    const isActive = selectedCategories.includes(item.id);
+                    return (
+                      <TouchableOpacity
+                        key={item.id}
+                        style={[styles.sortModalItem, isActive && styles.sortModalItemActive]}
+                        onPress={() => toggleCategory(item.id)}
+                      >
+                        <Text
+                          style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]}
+                          numberOfLines={1}
+                        >
+                          {item.label}
+                        </Text>
+                        {isActive && <Text style={styles.checkIcon}>✓</Text>}
+                      </TouchableOpacity>
+                    );
+                  })}
+                </ScrollView>
+              </View>
+
+              <View style={styles.columnDivider} />
+
+              {/* Right Column: Sort (Single-select) */}
+              <View style={styles.modalColumn}>
+                <Text style={[styles.columnLabel, isRTL && styles.textRTL]}>
+                  {lang === "ku" ? "ڕیزکردن" : "Price/Order"}
+                </Text>
+                <ScrollView showsVerticalScrollIndicator={false} style={{ maxHeight: 300 }}>
+                  {sortDirections.map((item) => {
+                    const isActive = activeSort === item.id;
+                    return (
+                      <TouchableOpacity
+                        key={item.id}
+                        style={[styles.sortModalItem, isActive && styles.sortModalItemActive]}
+                        onPress={() => setActiveSort(item.id)}
+                      >
+                        <Text
+                          style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]}
+                          numberOfLines={1}
+                        >
+                          {item.label}
+                        </Text>
+                        {isActive && <Text style={styles.checkIcon}>✓</Text>}
+                      </TouchableOpacity>
+                    );
+                  })}
+                </ScrollView>
+              </View>
+            </View>
+
+            <TouchableOpacity
+              style={styles.applyBtn}
+              onPress={() => setIsSortModalVisible(false)}
+            >
+              <Text style={styles.applyBtnText}>
+                {lang === "ku" ? "جێبەجێکردن" : "Apply Filters"}
+              </Text>
+            </TouchableOpacity>
           </View>
         </TouchableOpacity>
       </Modal>
@@ -514,13 +556,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: radius.xl,
     borderTopRightRadius: radius.xl,
     padding: spacing.xl,
-    maxHeight: "70%",
+    maxHeight: "85%",
   },
   sortModalHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
     paddingBottom: spacing.sm,
     borderBottomWidth: 1,
     borderBottomColor: colors.lightGray,
@@ -535,12 +577,33 @@ const styles = StyleSheet.create({
     color: colors.mediumGray,
     padding: 4,
   },
+  modalColumns: {
+    flexDirection: "row",
+    gap: spacing.md,
+    marginBottom: spacing.xl,
+  },
+  modalColumn: {
+    flex: 1,
+  },
+  columnLabel: {
+    ...typography.tiny,
+    color: colors.mediumGray,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+    marginBottom: spacing.sm,
+    fontWeight: "700",
+  },
+  columnDivider: {
+    width: 1,
+    backgroundColor: colors.lightGray,
+    marginVertical: spacing.md,
+  },
   sortModalItem: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.xs,
     borderRadius: radius.md,
     marginBottom: 4,
   },
@@ -548,7 +611,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.offWhite,
   },
   sortModalItemText: {
-    ...typography.body,
+    ...typography.caption,
     color: colors.charcoal,
   },
   sortModalItemTextActive: {
@@ -557,7 +620,19 @@ const styles = StyleSheet.create({
   },
   checkIcon: {
     color: colors.accent,
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "bold",
+  },
+  applyBtn: {
+    backgroundColor: colors.accent,
+    paddingVertical: spacing.md,
+    borderRadius: radius.md,
+    alignItems: "center",
+    ...shadows.card,
+  },
+  applyBtnText: {
+    ...typography.subtitle,
+    color: colors.white,
+    fontWeight: "700",
   },
 });

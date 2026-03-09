@@ -31,7 +31,22 @@ function AppContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [quantities, setQuantities] = useState({});
   const [sortBy, setSortBy] = useState("default"); // default, cheap, expensive, good, bad
+  const [isSortModalVisible, setIsSortModalVisible] = useState(false);
   const flatListRef = useRef(null);
+
+  const sortOptions = [
+    { id: "default", label: "📋 " + t("materials") },
+    { id: "cheap", label: "💰 " + t("sortCheapest") },
+    { id: "expensive", label: "💎 " + t("sortExpensive") },
+    { id: "good", label: "✅ " + t("sortGood") },
+    { id: "bad", label: "❌ " + t("sortBad") },
+    { id: "Wood", label: "🪵 " + t("wood") },
+    { id: "Concrete", label: "🏗️ " + t("concrete") },
+    { id: "Binding", label: "📦 " + t("binding") },
+    { id: "Masonry", label: "🧱 " + t("masonry") },
+    { id: "Plumbing", label: "🚰 " + t("plumbing") },
+    { id: "Electrical", label: "⚡ " + t("electrical") },
+  ];
 
   // AI Camera state
   const [aiModalVisible, setAiModalVisible] = useState(false);
@@ -227,45 +242,66 @@ function AppContent() {
         </SafeAreaView>
       </View>
 
-      {/* Search */}
-      <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
-
-      {/* Sorting */}
-      <View style={styles.sortContainer}>
-        <Text style={[styles.sortTitle, isRTL && styles.textRTL]}>{t("sortBy")}:</Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={[styles.sortScroll, isRTL && styles.sortScrollRTL]}
+      {/* Search & Sort Row */}
+      <View style={[styles.searchRow, isRTL && styles.rowRTL]}>
+        <View style={{ flex: 1 }}>
+          <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
+        </View>
+        <TouchableOpacity
+          style={styles.sortIconButton}
+          onPress={() => setIsSortModalVisible(true)}
+          activeOpacity={0.7}
         >
-          {[
-            { id: "default", label: "📋 " + t("materials") },
-            { id: "cheap", label: "💰 " + t("sortCheapest") },
-            { id: "expensive", label: "💎 " + t("sortExpensive") },
-            { id: "good", label: "✅ " + t("sortGood") },
-            { id: "bad", label: "❌ " + t("sortBad") },
-            { id: "Wood", label: "🪵 " + (lang === "ku" ? "تەختە" : "Wood") },
-            { id: "Concrete", label: "🏗️ " + (lang === "ku" ? "کۆنکرێت" : "Concrete") },
-            { id: "Binding", label: "📦 " + (lang === "ku" ? "چیمەنتۆ/Binding" : "Binding") },
-            { id: "Masonry", label: "🧱 " + (lang === "ku" ? "بلۆک/Masonry" : "Masonry") },
-            { id: "Plumbing", label: "🚰 " + (lang === "ku" ? "سەباچی" : "Plumbing") },
-            { id: "Electrical", label: "⚡ " + (lang === "ku" ? "کارەبا" : "Electrical") },
-          ].map((item) => (
-            <TouchableOpacity
-              key={item.id}
-              style={[
-                styles.sortChip,
-                sortBy === item.id && styles.sortChipActive,
-              ]}
-              onPress={() => setSortBy(item.id)}
-            >
-              <Text style={[styles.sortChipText, sortBy === item.id && styles.sortChipTextActive]}>
-                {item.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+          <Text style={styles.sortIconEmoji}>⚖️</Text>
+          <Text style={styles.sortIconText}>{t("sortBy")}</Text>
+        </TouchableOpacity>
       </View>
+
+      {/* Sorting Modal */}
+      <Modal
+        visible={isSortModalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setIsSortModalVisible(false)}
+      >
+        <TouchableOpacity
+          style={styles.modalOverlay}
+          activeOpacity={1}
+          onPress={() => setIsSortModalVisible(false)}
+        >
+          <View style={styles.sortModalContent}>
+            <View style={styles.sortModalHeader}>
+              <Text style={styles.sortModalTitle}>{t("sortBy")}</Text>
+              <TouchableOpacity onPress={() => setIsSortModalVisible(false)}>
+                <Text style={styles.sortModalClose}>✕</Text>
+              </TouchableOpacity>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {sortOptions.map((item) => (
+                <TouchableOpacity
+                  key={item.id}
+                  style={[
+                    styles.sortModalItem,
+                    sortBy === item.id && styles.sortModalItemActive,
+                  ]}
+                  onPress={() => {
+                    setSortBy(item.id);
+                    setIsSortModalVisible(false);
+                  }}
+                >
+                  <Text style={[
+                    styles.sortModalItemText,
+                    sortBy === item.id && styles.sortModalItemTextActive
+                  ]}>
+                    {item.label}
+                  </Text>
+                  {sortBy === item.id && <Text style={styles.checkIcon}>✓</Text>}
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        </TouchableOpacity>
+      </Modal>
 
       {/* Material count & clear */}
       <View style={[styles.listHeader, isRTL && styles.listHeaderRTL]}>
@@ -434,44 +470,93 @@ const styles = StyleSheet.create({
     color: colors.mediumGray,
   },
 
-  // Sort
-  sortContainer: {
+  // Sort & Search Row
+  searchRow: {
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: spacing.xl,
-    marginTop: spacing.md,
-    marginBottom: spacing.xs,
+    marginTop: spacing.sm,
+    gap: spacing.sm,
   },
-  sortTitle: {
-    ...typography.tiny,
-    color: colors.mediumGray,
-    marginBottom: spacing.xs,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-  },
-  sortScroll: {
-    paddingVertical: 4,
-  },
-  sortScrollRTL: {
+  rowRTL: {
     flexDirection: "row-reverse",
   },
-  sortChip: {
+  sortIconButton: {
     backgroundColor: colors.white,
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: radius.full,
+    height: 44,
+    borderRadius: radius.md,
+    flexDirection: "row",
+    alignItems: "center",
     borderWidth: 1,
     borderColor: colors.cardBorder,
-    marginRight: spacing.sm,
+    ...shadows.card,
   },
-  sortChipActive: {
-    backgroundColor: colors.accent,
-    borderColor: colors.accent,
+  sortIconEmoji: {
+    fontSize: 16,
+    marginRight: 6,
   },
-  sortChipText: {
+  sortIconText: {
     ...typography.caption,
     color: colors.darkGray,
     fontWeight: "600",
   },
-  sortChipTextActive: {
-    color: colors.white,
+
+  // Sort Modal
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "flex-end",
+  },
+  sortModalContent: {
+    backgroundColor: colors.white,
+    borderTopLeftRadius: radius.xl,
+    borderTopRightRadius: radius.xl,
+    padding: spacing.xl,
+    maxHeight: "70%",
+  },
+  sortModalHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: spacing.lg,
+    paddingBottom: spacing.sm,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.lightGray,
+  },
+  sortModalTitle: {
+    ...typography.subtitle,
+    color: colors.charcoal,
+    fontWeight: "700",
+  },
+  sortModalClose: {
+    fontSize: 20,
+    color: colors.mediumGray,
+    padding: 4,
+  },
+  sortModalItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.sm,
+    borderRadius: radius.md,
+    marginBottom: 4,
+  },
+  sortModalItemActive: {
+    backgroundColor: colors.offWhite,
+  },
+  sortModalItemText: {
+    ...typography.body,
+    color: colors.charcoal,
+  },
+  sortModalItemTextActive: {
+    color: colors.accent,
+    fontWeight: "700",
+  },
+  checkIcon: {
+    color: colors.accent,
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });

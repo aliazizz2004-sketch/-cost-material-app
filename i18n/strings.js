@@ -35,6 +35,12 @@ const strings = {
         sortExpensive: "Expensive",
         sortGood: "Best Specs (Good)",
         sortBad: "Basic Specs (Bad)",
+        wood: "Wood",
+        concrete: "Concrete",
+        binding: "Cement & Binding",
+        masonry: "Blocks & Masonry",
+        plumbing: "Plumbing",
+        electrical: "Electrical",
     },
     ku: {
         appTitle: "مادە و تێچوو",
@@ -72,6 +78,12 @@ const strings = {
         sortExpensive: "گرانترین (گران)",
         sortGood: "باشترین (باش)",
         sortBad: "خراپترین (خراپ)",
+        wood: "تەختە",
+        concrete: "کۆنکرێت",
+        binding: "چیمەنتۆ",
+        masonry: "بلۆک و بەرد",
+        plumbing: "سەباچی",
+        electrical: "کارەبا",
     },
 };
 

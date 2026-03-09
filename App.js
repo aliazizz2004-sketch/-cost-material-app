@@ -11,6 +11,7 @@ import {
   Platform,
   Alert,
   ScrollView,
+  Modal,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { ExchangeRateProvider, useExchangeRate } from "./contexts/ExchangeRateContext";
@@ -23,7 +24,7 @@ import CameraButton from "./components/CameraButton";
 import MaterialResultModal from "./components/MaterialResultModal";
 import { recognizeMaterial } from "./services/aiRecognition";
 import materialsData from "./data/materials";
-import { colors, spacing, typography, radius } from "./styles/theme";
+import { colors, spacing, typography, radius, shadows } from "./styles/theme";
 
 function AppContent() {
   const { t, lang, isRTL } = useLanguage();

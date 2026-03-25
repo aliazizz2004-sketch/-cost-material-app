@@ -33,6 +33,7 @@ export default function ProjectManager({
   materials,
   projects,
   setProjects,
+  onOpenAiCamera,
 }) {
   const { t, lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
@@ -658,6 +659,20 @@ export default function ProjectManager({
                   </Text>
                 </View>
               ) : null}
+              {onOpenAiCamera && (
+                <TouchableOpacity 
+                  style={{ backgroundColor: colors.accent + '15', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8, flexDirection: 'row', alignItems: 'center', gap: 4 }}
+                  onPress={() => {
+                    setViewProject(null);
+                    onOpenAiCamera();
+                  }}
+                >
+                  <AppIcon name="scan" size={14} color={colors.accent} />
+                  <Text style={{ fontSize: 12, fontWeight: '700', color: colors.accent }}>
+                    {lang === 'ku' ? 'سکانکردنی AI' : 'AI Scan'}
+                  </Text>
+                </TouchableOpacity>
+              )}
             </View>
 
             {/* Full item list */}

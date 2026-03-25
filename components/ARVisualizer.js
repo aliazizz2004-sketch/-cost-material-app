@@ -541,8 +541,8 @@ Return ONLY valid JSON:
       left: 0,
       right: 0,
       bottom: 0,
-      opacity: overlayOpacity,
-      ...(Platform.OS === 'web' && { mixBlendMode: 'multiply' })
+      opacity: 0.85,
+      ...(Platform.OS === 'web' && { mixBlendMode: 'hard-light' })
     };
 
     // For web: use CSS background patterns for realistic material look

@@ -22,73 +22,65 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "../sty
 import materialsData from "../data/materials";
 
 const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
-
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview"];
 
 async function callGeminiWithRetry(prompt) {
   let lastError = null;
 
-  for (const model of GEMINI_MODELS) {
-    for (let attempt = 0; attempt < 2; attempt++) {
-      try {
-        if (attempt > 0) await delay(2500);
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      if (attempt > 0) await new Promise(r => setTimeout(r, 1000));
 
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
-              generationConfig: {
-                temperature: 0.2,
-                maxOutputTokens: 4096,
-                responseMimeType: "application/json",
-              },
-            }),
-          }
-        );
-
-        if (response.status === 429) {
-          console.warn(`[AIArchitect] ${model} returned 429, retrying...`);
-          lastError = new Error(`Rate limited (${model})`);
-          await delay(3000);
-          continue;
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${GEMINI_API_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              temperature: 0.4,
+              maxOutputTokens: 2500,
+              responseMimeType: "application/json",
+            },
+          }),
         }
+      );
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status} from ${model}`);
-        }
-
-        const data = await response.json();
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-        if (!text) throw new Error("Empty response from AI");
-
-        const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
-        let parsed;
-        try {
-          parsed = JSON.parse(cleaned);
-        } catch {
-          const objectMatch = cleaned.match(/\{[\s\S]*\}/);
-          if (objectMatch) {
-            parsed = JSON.parse(objectMatch[0]);
-          } else {
-            throw new Error("Could not parse response");
-          }
-        }
-
-        return parsed;
-      } catch (err) {
-        console.warn(`[AIArchitect] ${model} attempt ${attempt + 1} failed:`, err.message);
-        lastError = err;
+      if (response.status === 429) {
+        lastError = new Error(`Rate limited`);
+        await new Promise(r => setTimeout(r, 1500));
+        continue;
       }
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+      if (!text) throw new Error("Empty response from AI");
+
+      const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
+      let parsed;
+      try {
+        parsed = JSON.parse(cleaned);
+      } catch {
+        const objectMatch = cleaned.match(/\{[\s\S]*\}/);
+        if (objectMatch) {
+          parsed = JSON.parse(objectMatch[0]);
+        } else {
+          throw new Error("Could not parse response");
+        }
+      }
+
+      return parsed;
+    } catch (err) {
+      lastError = err;
     }
   }
 
-  throw lastError || new Error("All AI models failed");
+  throw lastError || new Error("AI request failed");
 }
 
 const PRESET_PROJECTS = {

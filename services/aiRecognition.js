@@ -3,7 +3,7 @@ import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
 const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview"];
 let geminiBlockedUntil = 0;
 
 function clampConfidence(value) {

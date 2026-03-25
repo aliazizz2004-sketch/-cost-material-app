@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Platform } from "react-native";
 import { colors, spacing, radius, typography } from "../styles/theme";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -7,10 +7,10 @@ export default function SearchBar({ value, onChangeText }) {
     const { t, isRTL } = useLanguage();
 
     return (
-        <View style={styles.container}>
-            <View style={styles.iconWrap}>
+        <View style={[styles.container, isRTL && styles.containerRTL]}>
+            <View style={[styles.iconWrap, isRTL && styles.iconWrapRTL]}>
                 <View style={styles.searchIcon}>
-                    <View style={[styles.circle]} />
+                    <View style={styles.circle} />
                     <View style={styles.handle} />
                 </View>
             </View>
@@ -39,11 +39,18 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 1,
         borderColor: colors.cardBorder,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.05,
-        shadowRadius: 8,
-        elevation: 2,
+        ...(Platform.OS === "web"
+            ? { boxShadow: "0px 2px 8px rgba(0,0,0,0.05)" }
+            : {
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.05,
+                shadowRadius: 8,
+                elevation: 2,
+            }),
+    },
+    containerRTL: {
+        flexDirection: "row-reverse",
     },
     iconWrap: {
         marginRight: spacing.sm,
@@ -51,6 +58,10 @@ const styles = StyleSheet.create({
         height: 20,
         justifyContent: "center",
         alignItems: "center",
+    },
+    iconWrapRTL: {
+        marginRight: 0,
+        marginLeft: spacing.sm,
     },
     searchIcon: {
         width: 16,

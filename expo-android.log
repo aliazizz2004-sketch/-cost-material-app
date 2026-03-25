@@ -1,0 +1,82 @@
+Starting project at C:\Users\Lenovo\Desktop\cost material\cost-material-app
+Starting Metro Bundler
+
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 904ms index.js (370 modules)
+ LOG  [web] Logs will appear in the browser console
+Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 40ms index.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 36ms index.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 45ms index.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 34ms index.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+ ERROR  SyntaxError: C:\Users\Lenovo\Desktop\cost material\cost-material-app\services\localRecognition.js: Missing semicolon. (386:56)
+
+  384 |         }
+  385 |
+> 386 |         applySpecialCases(features, scores, mlPreds);`r`n`r`n        // Sort results`r`n        scores.forEach((s) => (s.score = Math.max(0, s.score)));
+      |                                                         ^
+  387 |         scores.sort((a, b) => b.score - a.score);
+  388 |
+  389 |         const best = scores[0];
+    at constructor (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:365:19)
+    at FlowParserMixin.raise (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:6599:19)
+    at FlowParserMixin.semicolon (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:6895:10)
+    at FlowParserMixin.parseExpressionStatement (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13285:10)
+    at FlowParserMixin.parseExpressionStatement (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2940:18)
+    at FlowParserMixin.parseStatementContent (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12899:19)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12767:17)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2918:24)
+    at FlowParserMixin.parseStatementListItem (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12747:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13316:61)
+    at FlowParserMixin.parseBlockBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13309:10)
+    at FlowParserMixin.parseBlock (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13297:10)
+    at FlowParserMixin.parseTryStatement (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13205:23)
+    at FlowParserMixin.parseStatementContent (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12804:21)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12767:17)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2918:24)
+    at FlowParserMixin.parseStatementListItem (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12747:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13316:61)
+    at FlowParserMixin.parseBlockBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13309:10)
+    at FlowParserMixin.parseBlock (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13297:10)
+    at FlowParserMixin.parseFunctionBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12100:24)
+    at FlowParserMixin.parseFunctionBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2895:11)
+    at FlowParserMixin.parseFunctionBodyAndFinish (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12086:10)
+    at FlowParserMixin.parseFunctionBodyAndFinish (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2903:18)
+    at C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13445:12
+    at FlowParserMixin.withSmartMixTopicForbiddingContext (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12403:14)
+    at FlowParserMixin.parseFunction (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13444:10)
+    at FlowParserMixin.parseFunctionStatement (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13125:17)
+    at FlowParserMixin.parseStatementContent (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12890:25)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12767:17)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2918:24)
+    at FlowParserMixin.parseStatementListItem (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12747:17)
+    at FlowParserMixin.parseExportDeclaration (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13934:17)
+    at FlowParserMixin.parseExportDeclaration (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:3120:20)
+    at FlowParserMixin.maybeParseExportDeclaration (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13893:31)
+    at FlowParserMixin.parseExport (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13812:29)
+    at FlowParserMixin.parseStatementContent (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12878:27)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12767:17)
+    at FlowParserMixin.parseStatementLike (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:2918:24)
+    at FlowParserMixin.parseModuleItem (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12744:17)
+    at FlowParserMixin.parseBlockOrModuleBlockBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13316:36)
+    at FlowParserMixin.parseBlockBody (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:13309:10)
+    at FlowParserMixin.parseProgram (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12622:10)
+    at FlowParserMixin.parseTopLevel (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:12612:25)
+    at FlowParserMixin.parseTopLevel (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:3685:28)
+    at FlowParserMixin.parse (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:14488:25)
+    at parse (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\parser\lib\index.js:14501:26)
+    at parser (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\core\lib\parser\index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (C:\Users\Lenovo\Desktop\cost material\cost-material-app\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+Web .\index.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 39ms index.js (1 module)
+ LOG  [web] Logs will appear in the browser console

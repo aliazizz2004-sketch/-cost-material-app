@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
+import { Platform } from "react-native";
 import strings from "../i18n/strings";
 
 const LanguageContext = createContext();
@@ -19,6 +20,16 @@ export function LanguageProvider({ children }) {
 
     const isRTL = lang === "ku";
 
+    // Sync document direction and language attribute on web
+    useEffect(() => {
+        if (Platform.OS === "web" && typeof document !== "undefined") {
+            document.documentElement.lang = lang === "ku" ? "ku" : "en";
+            // We NO LONGER set dir="rtl" on document/body because we handle 
+            // layout flips manually via flexDirection row-reverse and textRTL.
+            // Setting it here causes "double-flips" and shift issues on many browsers.
+        }
+    }, [lang, isRTL]);
+
     const value = { lang, setLang, t, toggleLanguage, isRTL };
 
     return (
@@ -27,6 +38,7 @@ export function LanguageProvider({ children }) {
         </LanguageContext.Provider>
     );
 }
+
 
 export function useLanguage() {
     const context = useContext(LanguageContext);

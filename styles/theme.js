@@ -31,7 +31,65 @@ export const colors = {
     gradientStart: "#0A1628",
     gradientMid: "#132240",
     gradientEnd: "#1A3058",
+
+    // Results / Info
+    resultBackground: "#F7FAFC",
+    resultBorder: "#E2E8F0",
+    infoBackground: "#EBF4FF",
+    infoBorder: "#BEE3F8",
+    infoText: "#2C5282",
 };
+
+export const darkColors = {
+    // Primary palette — dark theme variants
+    primary: "#0D1B2A",
+    primaryLight: "#1B2838",
+    primaryDark: "#050C16",
+    accent: "#E8C96A",
+    accentLight: "#F0D98A",
+    accentDark: "#D4A843",
+
+    // Semantic
+    success: "#2ECC71",
+    warning: "#F39C12",
+    error: "#E74C3C",
+    info: "#3498DB",
+
+    // Neutrals (inverted for dark)
+    white: "#0F1923",
+    offWhite: "#141E2B",
+    lightGray: "#1E2A3A",
+    mediumGray: "#7B8FA1",
+    darkGray: "#C0CCD8",
+    charcoal: "#E8ECF4",
+
+    // Surface
+    card: "#1A2535",
+    cardBorder: "#2A3A4E",
+    searchBg: "#1E2A3A",
+    overlay: "rgba(0, 0, 0, 0.85)",
+
+    // Gradient stops
+    gradientStart: "#0D1B2A",
+    gradientMid: "#1B2838",
+    gradientEnd: "#243348",
+
+    // Results / Info
+    resultBackground: "#1A2535",
+    resultBorder: "#2A3A4E",
+    infoBackground: "#1B2838",
+    infoBorder: "#2A3A4E",
+    infoText: "#93C5FD",
+};
+
+/**
+ * Get colors based on dark mode state
+ * @param {boolean} isDark
+ * @returns colors object
+ */
+export function getColors(isDark) {
+    return isDark ? darkColors : colors;
+}
 
 export const spacing = {
     xs: 4,

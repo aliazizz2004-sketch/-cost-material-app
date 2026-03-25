@@ -1,20 +1,36 @@
-import React, { memo, useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Modal } from "react-native";
-import { colors, spacing, radius, typography, shadows } from "../styles/theme";
+import React, { memo, useState, useEffect, useRef } from "react";
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Modal, ScrollView, Dimensions, SafeAreaView } from "react-native";
+import { colors, darkColors, spacing, radius, typography, shadows } from "../styles/theme";
+import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import BrandChip from "./BrandChip";
 
-function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, allMaterials = [], onSelectItem = () => { } }) {
+function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, allMaterials = [], onSelectItem = () => { }, onOpenEstimation = undefined, autoOpenMaterialId = null, clearAutoOpen = undefined }) {
     const { lang, t, isRTL } = useLanguage();
+    const { isDark } = useTheme();
+    const tc = isDark ? darkColors : colors;
     const { rate } = useExchangeRate();
     const [isImageModalVisible, setIsImageModalVisible] = useState(false);
     const [currentMaterial, setCurrentMaterial] = useState(initialMaterial);
+    const scrollRef = useRef(null);
 
     // Sync currentMaterial if the prop changes (important for list rendering)
     if (currentMaterial.id !== initialMaterial.id) {
         setCurrentMaterial(initialMaterial);
     }
+
+    // Auto-open modal when parent requests it (e.g. recommendation navigation)
+    useEffect(() => {
+        if (autoOpenMaterialId === initialMaterial.id) {
+            setIsImageModalVisible(true);
+            // Reset scroll to top when modal auto-opens
+            setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), 50);
+            if (clearAutoOpen) {
+                clearAutoOpen();
+            }
+        }
+    }, [autoOpenMaterialId, initialMaterial.id, clearAutoOpen]);
 
     const material = currentMaterial;
 
@@ -49,19 +65,45 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
         if ((quantity || 0) > 0) onQuantityChange(material.id, quantity - 1);
     };
 
+    const getEstimationCategory = (mat) => {
+        const cat = mat.categoryEN || "";
+        const matName = (mat.nameEN || "").toLowerCase();
+        
+        if (cat === "Concrete") return "concrete";
+        if (cat === "Paint & Coatings") return "paint";
+        if (cat === "Steel & Rebar") return "rebar";
+        if (cat === "Flooring & Finishes" && (matName.includes("tile") || matName.includes("ceramic") || matName.includes("porcelain"))) return "tile";
+        if (cat === "Plaster & Bonding") return "plaster";
+        if (cat === "Masonry") {
+            if (matName.includes("brick")) return "brick";
+            return "block";
+        }
+        return null;
+    };
+
+    const estCat = getEstimationCategory(material);
+
     const hasQuantity = quantity > 0;
 
     return (
         <TouchableOpacity
             style={[styles.card, hasQuantity && styles.cardActive]}
             activeOpacity={0.9}
-            onPress={() => setIsImageModalVisible(true)}
+            onPress={(e) => {
+                // Main card press - open modal and reset scroll to top
+                setIsImageModalVisible(true);
+                setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), 50);
+            }}
         >
             {/* Image Preview Modal (Detail Mini-Page) */}
             <Modal
                 visible={isImageModalVisible}
                 transparent={true}
                 animationType="fade"
+                onShow={() => {
+                    // Force scroll to top AFTER modal animation completes
+                    setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), 100);
+                }}
                 onRequestClose={() => {
                     setIsImageModalVisible(false);
                     setCurrentMaterial(initialMaterial);
@@ -76,9 +118,20 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                             setCurrentMaterial(initialMaterial);
                         }}
                     />
-                    <View style={styles.imageModalContent}>
+                    {/* Modal card: pixel-based max height, scroll starts at top */}
+                    <SafeAreaView style={styles.imageModalContent}>
+                        <ScrollView
+                            ref={scrollRef}
+                            showsVerticalScrollIndicator={false}
+                            bounces={false}
+                            keyboardShouldPersistTaps="handled"
+                        >
+                        {/* Close button - left side RTL, right side LTR */}
                         <TouchableOpacity
-                            style={styles.imageModalCloseButton}
+                            style={[
+                                styles.imageModalCloseButton,
+                                isRTL ? { left: 10, right: undefined } : { right: 10, left: undefined }
+                            ]}
                             onPress={() => {
                                 setIsImageModalVisible(false);
                                 setCurrentMaterial(initialMaterial);
@@ -95,13 +148,14 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                             />
                         )}
 
-                        <View style={styles.previewDetailContainer}>
-                            <View style={styles.previewHeader}>
-                                <View style={styles.previewCategoryBadge}>
-                                    <Text style={styles.previewCategoryText}>{category}</Text>
+                            <View style={styles.previewDetailContainer}>
+                                {/* Header row - reversed in RTL */}
+                                <View style={[styles.previewHeader, isRTL && styles.rowRTL]}>
+                                    <View style={styles.previewCategoryBadge}>
+                                        <Text style={styles.previewCategoryText}>{category}</Text>
+                                    </View>
+                                    <Text style={styles.previewPriceText}>{formatNumber(priceIQD)} {t("currency")}</Text>
                                 </View>
-                                <Text style={styles.previewPriceText}>{formatNumber(priceIQD)} {t("currency")}</Text>
-                            </View>
 
                             <Text style={[styles.previewImageName, isRTL && styles.textRTL]}>{name}</Text>
                             <Text style={[styles.previewUnitText, isRTL && styles.textRTL]}>{unitLabel}</Text>
@@ -117,6 +171,24 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                 </View>
                             </View>
 
+                            {/* Availability Section */}
+                            {material.localBrands && material.localBrands.length > 0 && (
+                                <TouchableOpacity
+                                    activeOpacity={1}
+                                    onPress={(e) => e.stopPropagation()}
+                                    style={styles.previewBrandsBox}
+                                >
+                                    <Text style={[styles.previewBrandsTitle, isRTL && styles.textRTL]}>
+                                        {lang === "ku" ? "بەردەستبوون و براندەکان:" : "Availability & Brands:"}
+                                    </Text>
+                                    <View style={[styles.previewBrandsWrap, isRTL && styles.rowRTL]}>
+                                        {material.localBrands.map((brand, i) => (
+                                            <BrandChip key={i} brand={brand} />
+                                        ))}
+                                    </View>
+                                </TouchableOpacity>
+                            )}
+
                             <TouchableOpacity
                                 style={styles.previewAddBtn}
                                 onPress={() => {
@@ -127,6 +199,22 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                             >
                                 <Text style={styles.previewAddBtnText}>{lang === "ku" ? "زیادکردن بۆ لیست ✓" : "Add to Cost List ✓"}</Text>
                             </TouchableOpacity>
+
+                            {estCat && onOpenEstimation && (
+                                <TouchableOpacity
+                                    style={styles.previewEstBtn}
+                                    onPress={() => {
+                                        setIsImageModalVisible(false);
+                                        setCurrentMaterial(initialMaterial);
+                                        onOpenEstimation(estCat);
+                                    }}
+                                >
+                                    <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                                        <Text style={styles.previewEstBtnText}>{lang === "ku" ? "ژمێرەری خەمڵاندن - زەڕعە" : "Open Estimator"}</Text>
+                                        <Text style={[styles.previewEstBtnIcon, isRTL && { marginRight: 8, marginLeft: 0 }]}>📐</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            )}
 
                             {/* Recommendations Section */}
                             {recommendations.length > 0 && (
@@ -177,7 +265,8 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                 </View>
                             )}
                         </View>
-                    </View>
+                        </ScrollView>
+                    </SafeAreaView>
                 </View>
             </Modal>
             {/* Header row */}
@@ -195,13 +284,14 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
             {/* Material name and Photo */}
             <View style={[styles.titleRow, isRTL && styles.titleRowRTL]}>
                 {material.image && (
-                    <View>
-                        <Image
-                            source={typeof material.image === 'string' ? { uri: material.image } : material.image}
-                            style={styles.thumbnail}
-                            resizeMode="cover"
-                        />
-                    </View>
+                    <Image
+                        source={typeof material.image === 'string' ? { uri: material.image } : material.image}
+                        style={[
+                            styles.thumbnail,
+                            isRTL ? styles.thumbnailRTL : styles.thumbnailLTR
+                        ]}
+                        resizeMode="cover"
+                    />
                 )}
                 <View style={[styles.titleTextContainer, isRTL && styles.titleTextContainerRTL]}>
                     <Text style={[styles.name, isRTL && styles.textRTL]}>{name}</Text>
@@ -228,7 +318,11 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
 
             {/* Brands row */}
             {material.localBrands && material.localBrands.length > 0 && (
-                <View style={styles.brandsSection}>
+                <TouchableOpacity
+                    activeOpacity={1}
+                    onPress={(e) => e.stopPropagation()}
+                    style={styles.brandsSection}
+                >
                     <Text style={styles.brandsLabel}>
                         {lang === "ku" ? "براند:" : "Brands:"}
                     </Text>
@@ -237,7 +331,7 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                             <BrandChip key={i} brand={brand} />
                         ))}
                     </View>
-                </View>
+                </TouchableOpacity>
             )}
 
             {/* Quantity controls */}
@@ -348,8 +442,13 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: radius.md,
-        marginRight: spacing.md,
         backgroundColor: colors.searchBg,
+    },
+    thumbnailLTR: {
+        marginRight: spacing.md,
+    },
+    thumbnailRTL: {
+        marginLeft: spacing.md,
     },
     titleTextContainer: {
         flex: 1,
@@ -357,8 +456,6 @@ const styles = StyleSheet.create({
     },
     titleTextContainerRTL: {
         alignItems: "flex-end",
-        marginRight: 0,
-        marginLeft: spacing.md,
     },
     name: {
         ...typography.subtitle,
@@ -487,9 +584,11 @@ const styles = StyleSheet.create({
     // Image Preview Modal (Mini-Page) Styles
     imageModalOverlay: {
         flex: 1,
-        backgroundColor: "rgba(10, 22, 40, 0.7)", // Semi-transparent navy to see background
+        backgroundColor: "rgba(10, 22, 40, 0.7)",
         justifyContent: "center",
         alignItems: "center",
+        paddingHorizontal: 16,
+        paddingVertical: 24,
     },
     imageModalCloseArea: {
         position: "absolute",
@@ -499,26 +598,36 @@ const styles = StyleSheet.create({
         right: 0,
     },
     imageModalContent: {
-        width: "85%",
+        width: "100%",
+        maxWidth: 480,
+        maxHeight: Math.round(Dimensions.get("window").height * 0.85),
         backgroundColor: colors.white,
         borderRadius: radius.xl,
-        overflow: "hidden", // Clip image to corners
+        overflow: "hidden",
         ...shadows.cardLifted,
+    },
+    imageModalScrollView: {
+        // ScrollView fills the modal card and enables scrolling
+    },
+    imageModalScrollContent: {
+        // Inner content padding
     },
     imageModalCloseButton: {
         position: "absolute",
         top: 10,
-        right: 10,
         backgroundColor: "rgba(255, 255, 255, 0.9)",
-        width: 30,
-        height: 30,
-        borderRadius: 15,
+        width: 34,
+        height: 34,
+        borderRadius: 17,
         justifyContent: "center",
         alignItems: "center",
         zIndex: 10,
     },
+    imageModalCloseButtonRTL: {
+        // kept for compatibility; positioning now done inline
+    },
     imageModalCloseText: {
-        fontSize: 14,
+        fontSize: 16,
         color: colors.darkGray,
         fontWeight: "bold",
     },
@@ -587,6 +696,26 @@ const styles = StyleSheet.create({
         color: colors.charcoal,
         fontWeight: "700",
     },
+    previewBrandsBox: {
+        marginBottom: spacing.lg,
+        padding: spacing.md,
+        backgroundColor: colors.offWhite,
+        borderRadius: radius.md,
+        borderWidth: 1,
+        borderColor: colors.cardBorder,
+    },
+    previewBrandsTitle: {
+        ...typography.tiny,
+        color: colors.mediumGray,
+        textTransform: "uppercase",
+        letterSpacing: 1.2,
+        marginBottom: spacing.sm,
+        fontWeight: "800",
+    },
+    previewBrandsWrap: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
     previewAddBtn: {
         backgroundColor: colors.accent,
         paddingVertical: spacing.md,
@@ -598,6 +727,24 @@ const styles = StyleSheet.create({
         ...typography.subtitle,
         color: colors.white,
         fontWeight: "700",
+    },
+    previewEstBtn: {
+        backgroundColor: "#162544",
+        paddingVertical: spacing.md,
+        borderRadius: radius.md,
+        alignItems: "center",
+        marginTop: spacing.sm,
+        ...shadows.card,
+    },
+    previewEstBtnText: {
+        ...typography.subtitle,
+        color: colors.white,
+        fontWeight: "700",
+    },
+    previewEstBtnIcon: {
+        fontSize: 18,
+        marginLeft: 8,
+        color: colors.white,
     },
     recSection: {
         marginTop: spacing.lg,

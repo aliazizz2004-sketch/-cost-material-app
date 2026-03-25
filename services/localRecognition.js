@@ -1,12 +1,12 @@
-/**
+﻿/**
  * ML-POWERED Material Recognition Engine v4.0
- * ════════════════════════════════════════════
+ * â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
  * Uses MobileNet neural network for REAL image understanding.
  * 100% FREE. No API key. Runs entirely in the browser.
  *
  * Architecture:
  * 1. Loads TensorFlow.js + MobileNet via CDN (no npm = no bundler issues)
- * 2. MobileNet classifies image → semantic labels ("stone wall", "desk", etc.)
+ * 2. MobileNet classifies image â†’ semantic labels ("stone wall", "desk", etc.)
  * 3. Maps labels to our construction materials
  * 4. Local color analysis provides base scores
  * 5. MobileNet boosts/penalizes for maximum accuracy
@@ -14,7 +14,7 @@
 
 import materials from "../data/materials";
 
-// ─── CDN-based Model Loading ─────────────────────────────────────────────────
+// â”€â”€â”€ CDN-based Model Loading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let tfLoaded = false;
 let modelLoaded = false;
@@ -36,23 +36,23 @@ async function loadTFFromCDN() {
         const tfScript = document.createElement("script");
         tfScript.src = "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js";
         tfScript.onload = () => {
-            console.log("✅ TensorFlow.js loaded from CDN");
+            console.log("âœ… TensorFlow.js loaded from CDN");
             // Then load MobileNet
             const mnScript = document.createElement("script");
             mnScript.src = "https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js";
             mnScript.onload = () => {
-                console.log("✅ MobileNet loaded from CDN");
+                console.log("âœ… MobileNet loaded from CDN");
                 tfLoaded = true;
                 resolve(true);
             };
             mnScript.onerror = () => {
-                console.warn("⚠ MobileNet CDN load failed");
+                console.warn("âš  MobileNet CDN load failed");
                 resolve(false);
             };
             document.head.appendChild(mnScript);
         };
         tfScript.onerror = () => {
-            console.warn("⚠ TF.js CDN load failed");
+            console.warn("âš  TF.js CDN load failed");
             resolve(false);
         };
         document.head.appendChild(tfScript);
@@ -70,10 +70,10 @@ async function getModel() {
         try {
             mlModel = await window.mobilenet.load({ version: 2, alpha: 1.0 });
             modelLoaded = true;
-            console.log("✅ MobileNet model ready");
+            console.log("âœ… MobileNet model ready");
             return mlModel;
         } catch (err) {
-            console.warn("⚠ MobileNet model load failed:", err.message);
+            console.warn("âš  MobileNet model load failed:", err.message);
             return null;
         }
     })();
@@ -81,10 +81,10 @@ async function getModel() {
     return loadingPromise;
 }
 
-// ─── ImageNet → Material Mapping ─────────────────────────────────────────────
+// â”€â”€â”€ ImageNet â†’ Material Mapping â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const LABEL_MAPS = [
-    // ═══ STONE / ROCK / MARBLE / GRANITE ═══
+    // â•â•â• STONE / ROCK / MARBLE / GRANITE â•â•â•
     {
         keywords: ["stone wall", "stone", "rock", "cliff", "promontory", "alp", "valley",
             "volcano", "geyser", "lakeside", "quarry", "castle", "monastery", "church",
@@ -94,7 +94,7 @@ const LABEL_MAPS = [
         penalize: { 44: -30, 45: -30, 51: -30, 32: -20 },
     },
 
-    // ═══ WOOD / WOODEN ═══
+    // â•â•â• WOOD / WOODEN â•â•â•
     {
         keywords: ["desk", "dining table", "table", "wardrobe", "closet",
             "bookcase", "bookshelf", "cabinet", "chest of drawers", "dresser",
@@ -111,14 +111,14 @@ const LABEL_MAPS = [
         penalize: { 15: -20, 16: -20 },
     },
 
-    // ═══ BRICK ═══
+    // â•â•â• BRICK â•â•â•
     {
         keywords: ["brick", "wall", "prison", "jail", "chimney", "fireplace"],
         boost: { 11: 55, 12: 40, 9: 15, 10: 15 },
         penalize: { 29: -25, 32: -20 },
     },
 
-    // ═══ METAL / STEEL ═══
+    // â•â•â• METAL / STEEL â•â•â•
     {
         keywords: ["steel arch bridge", "bridge", "chain-link fence", "chain link",
             "safety pin", "nail", "screw", "wrench", "hammer", "iron", "anvil",
@@ -133,7 +133,7 @@ const LABEL_MAPS = [
         penalize: { 1: -15 },
     },
 
-    // ═══ SAND / GRAVEL ═══
+    // â•â•â• SAND / GRAVEL â•â•â•
     {
         keywords: ["sandbar", "seashore", "coast", "beach", "sand", "dune",
             "desert", "oasis"],
@@ -141,14 +141,14 @@ const LABEL_MAPS = [
         penalize: { 29: -30, 30: -30 },
     },
 
-    // ═══ TILE ═══
+    // â•â•â• TILE â•â•â•
     {
         keywords: ["tile roof", "roof tile", "tile", "mosaic", "patio"],
         boost: { 19: 50, 20: 45 },
         penalize: { 45: -25, 16: -25 },
     },
 
-    // ═══ GLASS ═══
+    // â•â•â• GLASS â•â•â•
     {
         keywords: ["window", "greenhouse", "pane", "glass", "mirror",
             "sunglasses", "goblet", "wine glass"],
@@ -156,7 +156,7 @@ const LABEL_MAPS = [
         penalize: { 17: -40, 18: -40, 56: -40, 9: -30, 10: -30, 1: -30, 16: -30 },
     },
 
-    // ═══ CONCRETE / BLOCKS ═══
+    // â•â•â• CONCRETE / BLOCKS â•â•â•
     {
         keywords: ["parking meter", "pillar", "column", "pedestal",
             "parking garage", "sidewalk", "curb"],
@@ -164,14 +164,14 @@ const LABEL_MAPS = [
         penalize: { 51: -20 },
     },
 
-    // ═══ PIPE ═══
+    // â•â•â• PIPE â•â•â•
     {
         keywords: ["pipe", "tube", "cylinder", "hose", "syringe"],
         boost: { 32: 50, 33: 45 },
         penalize: { 9: -20, 11: -20 },
     },
 
-    // ═══ CABLE / WIRE ═══
+    // â•â•â• CABLE / WIRE â•â•â•
     {
         keywords: ["cable", "wire", "plug", "power cord", "electrical",
             "switch", "socket"],
@@ -179,7 +179,7 @@ const LABEL_MAPS = [
         penalize: { 19: -20, 21: -20 },
     },
 
-    // ═══ FOAM / INSULATION / RUBBER ═══
+    // â•â•â• FOAM / INSULATION / RUBBER â•â•â•
     {
         keywords: ["bubble", "foam", "sponge", "styrofoam", "pillow",
             "quilt", "mattress", "rubber", "plastic bag", "trash bag", "tarp", "poncho", "shower curtain"],
@@ -187,7 +187,7 @@ const LABEL_MAPS = [
         penalize: { 6: -20 },
     },
 
-    // ═══ POWDERS / CEMENT / PAINT ═══
+    // â•â•â• POWDERS / CEMENT / PAINT â•â•â•
     {
         keywords: ["plaster", "stucco", "whiteboard", "envelope", "paper", "flour", "paintbrush", "paint", "paint can", "bucket", "pail"],
         boost: { 1: 30, 2: 35, 4: 35, 5: 35, 25: 35, 26: 35 },
@@ -195,38 +195,64 @@ const LABEL_MAPS = [
     },
 ];
 
-function applyMLBoosts(predictions, scores) {
-    for (const pred of predictions) {
-        const label = pred.className.toLowerCase();
-        const prob = pred.probability;
-        if (prob < 0.03) continue;
 
-        for (const mapping of LABEL_MAPS) {
-            const matched = mapping.keywords.some((kw) => {
-                const lkw = kw.toLowerCase();
-                return label.includes(lkw) || lkw.includes(label.split(",")[0].trim());
-            });
 
-            if (matched) {
-                const weight = Math.min(prob * 2.5, 1.0);
-                if (mapping.boost) {
-                    for (const [id, val] of Object.entries(mapping.boost)) {
-                        const idx = scores.findIndex((s) => s.id === parseInt(id));
-                        if (idx >= 0) scores[idx].score += val * weight;
-                    }
-                }
-                if (mapping.penalize) {
-                    for (const [id, val] of Object.entries(mapping.penalize)) {
-                        const idx = scores.findIndex((s) => s.id === parseInt(id));
-                        if (idx >= 0) scores[idx].score += val * weight;
-                    }
-                }
-            }
-        }
+function adjustScore(scores, id, amount) {
+    const idx = scores.findIndex((s) => s.id === id);
+    if (idx >= 0) scores[idx].score += amount;
+}
+
+function applySpecialCases(features, scores, predictions) {
+    const topLabels = predictions.map((pred) => pred.className.toLowerCase()).join(" ");
+    const looksLikeGlass =
+        features.achrR > 0.72 &&
+        features.avgSat < 12 &&
+        features.avgLight > 38 &&
+        features.avgLight < 84 &&
+        features.satStd < 14;
+    const reflectiveNeutral =
+        features.achrR > 0.68 &&
+        features.avgSat < 10 &&
+        features.lightStd > 10 &&
+        features.avgLight > 42;
+
+    if (looksLikeGlass || reflectiveNeutral || /window|glass|mirror|screen|shower curtain|bath towel/.test(topLabels)) {
+        adjustScore(scores, 29, 70);
+        adjustScore(scores, 27, 22);
+        adjustScore(scores, 28, 18);
+        adjustScore(scores, 1, -30);
+        adjustScore(scores, 3, -25);
+        adjustScore(scores, 17, -20);
+        adjustScore(scores, 18, -20);
+        adjustScore(scores, 56, -35);
+    }
+
+    const looksLikeSmoothMetalFrame =
+        features.achrR > 0.55 &&
+        features.avgSat < 16 &&
+        features.smooth > 0.52 &&
+        features.avgLight > 45 &&
+        features.avgLight < 78 &&
+        /window screen|window shade|steel arch bridge|chain link|radiator|screen/.test(topLabels);
+
+    if (looksLikeSmoothMetalFrame) {
+        adjustScore(scores, 27, 45);
+        adjustScore(scores, 31, 18);
+        adjustScore(scores, 29, 10);
+    }
+
+    const looksLikePipe =
+        features.smooth > 0.55 &&
+        features.avgSat < 25 &&
+        /pipe|tube|hose|syringe/.test(topLabels);
+
+    if (looksLikePipe) {
+        adjustScore(scores, 32, 40);
+        adjustScore(scores, 33, 35);
     }
 }
 
-// ─── Local Color Analysis ────────────────────────────────────────────────────
+// â”€â”€â”€ Local Color Analysis â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function localAnalysis(px, S) {
     const hues = [], sats = [], lights = [];
@@ -281,7 +307,7 @@ function localAnalysis(px, S) {
     };
 }
 
-// ─── Local Score Profiles ────────────────────────────────────────────────────
+// â”€â”€â”€ Local Score Profiles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const PROFILES = [
     { id: 1, s: (f) => (f.achrR > .55 ? 20 : 0) + (f.avgSat < 18 ? 10 : 0) + (f.avgLight > 40 && f.avgLight < 68 ? 10 : 0) + (f.smooth > .5 ? 8 : 0) - (f.brownR > .25 ? 25 : 0) - (f.tRedR > .1 ? 25 : 0) },
@@ -307,7 +333,7 @@ const PROFILES = [
     { id: 21, s: (f) => (f.rough > .3 ? 8 : 0) + (f.avgLight > 25 && f.avgLight < 72 ? 5 : 0) - (f.smooth > .7 ? 12 : 0) },
 ];
 
-// ─── Main Recognition ────────────────────────────────────────────────────────
+// â”€â”€â”€ Main Recognition â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export async function recognizeMaterial(base64Image) {
     try {
@@ -324,13 +350,16 @@ export async function recognizeMaterial(base64Image) {
 
         // Local analysis
         const features = localAnalysis(px, S);
-        const scores = PROFILES.map((p) => ({
-            id: p.id,
-            name: materials.find((m) => m.id === p.id)?.nameEN || `Material ${p.id}`,
-            score: Math.max(0, p.s(features)),
-        }));
+        const scores = materials.map((material) => {
+            const profile = PROFILES.find((p) => p.id === material.id);
+            return {
+                id: material.id,
+                name: material.nameEN,
+                score: Math.max(0, profile ? profile.s(features) : 0),
+            };
+        });
 
-        // ═══ MobileNet Neural Network ═══
+        // â•â•â• MobileNet Neural Network â•â•â•
         let mlPreds = [];
         let usedML = false;
 
@@ -343,7 +372,7 @@ export async function recognizeMaterial(base64Image) {
                 mlC.getContext("2d").drawImage(imgEl, 0, 0, 224, 224);
 
                 mlPreds = await model.classify(mlC, 5);
-                console.log("🧠 MobileNet →", mlPreds.map((p) =>
+                console.log("ðŸ§  MobileNet â†’", mlPreds.map((p) =>
                     `${p.className} (${Math.round(p.probability * 100)}%)`
                 ));
 
@@ -353,6 +382,8 @@ export async function recognizeMaterial(base64Image) {
         } catch (err) {
             console.warn("MobileNet failed:", err.message);
         }
+
+        applySpecialCases(features, scores, mlPreds);
 
         // Sort results
         scores.forEach((s) => (s.score = Math.max(0, s.score)));
@@ -377,8 +408,13 @@ export async function recognizeMaterial(base64Image) {
                 `Neural AI detected: ${mlPreds[0].className} (${Math.round(mlPreds[0].probability * 100)}%)`
             );
         }
-        descParts.push(colorDesc(features));
-        descParts.push(texDesc(features));
+        if (material?.id === 29) {
+            descParts.push("neutral translucent surface");
+            descParts.push("glass-like reflective texture");
+        } else {
+            descParts.push(colorDesc(features));
+            descParts.push(texDesc(features));
+        }
 
         return {
             matched: true,
@@ -402,7 +438,7 @@ export async function recognizeMaterial(base64Image) {
     }
 }
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function colorDesc(f) {
     if (f.achrR > 0.5 && f.avgLight > 75) return "light/white surface";
@@ -453,3 +489,7 @@ function circMean(angles) {
     let res = Math.atan2(sn / angles.length, cs / angles.length) * 180 / Math.PI;
     return res < 0 ? res + 360 : res;
 }
+
+
+
+

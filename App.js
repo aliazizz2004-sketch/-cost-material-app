@@ -1,440 +1,192 @@
-import React, { useState, useCallback, useMemo, useRef } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  StatusBar,
-  ActivityIndicator,
-  TouchableOpacity,
-  SafeAreaView,
-  Platform,
-  Alert,
-  ScrollView,
-  Modal,
-} from "react-native";
-import * as ImagePicker from "expo-image-picker";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
+import { View, Text, StyleSheet, StatusBar, ActivityIndicator, TouchableOpacity, SafeAreaView, ScrollView, Platform, Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ExchangeRateProvider, useExchangeRate } from "./contexts/ExchangeRateContext";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
-import SearchBar from "./components/SearchBar";
-import MaterialCard from "./components/MaterialCard";
-import TotalCostBar from "./components/TotalCostBar";
+import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
+import * as ImagePicker from "expo-image-picker";
+
+// Components
 import LanguageToggle from "./components/LanguageToggle";
-import CameraButton from "./components/CameraButton";
-import MaterialResultModal from "./components/MaterialResultModal";
-import { recognizeMaterial } from "./services/aiRecognition";
+import BottomNavBar from "./components/BottomNavBar";
+import AppIcon from "./components/AppIcon";
+
+// Features (Views)
+import StorePurposeScreen from "./components/StorePurposeScreen";
+import EstimationCalculator from "./components/EstimationCalculator";
+import DeliveryCostEstimator from "./components/DeliveryCostEstimator";
+import SupplierDirectory from "./components/SupplierDirectory";
+import ProjectManager from "./components/ProjectManager";
+import CommunityForum from "./components/CommunityForum";
+import AIArchitect from "./components/AIArchitect";
+import ARVisualizer from "./components/ARVisualizer";
+
+import { colors, darkColors, spacing, typography, radius, shadows } from "./styles/theme";
 import materialsData from "./data/materials";
-import { colors, spacing, typography, radius, shadows } from "./styles/theme";
+import { recognizeMaterial } from "./services/aiRecognition";
+import MaterialResultModal from "./components/MaterialResultModal";
 
 function AppContent() {
   const { t, lang, isRTL } = useLanguage();
-  const { rate, loading } = useExchangeRate();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [quantities, setQuantities] = useState({});
-  const [activeSort, setActiveSort] = useState("default");
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [isSortModalVisible, setIsSortModalVisible] = useState(false);
-  const flatListRef = useRef(null);
+  const { rate, loading: rateLoading } = useExchangeRate();
+  const { isDark } = useTheme();
+  const tc = isDark ? darkColors : colors;
 
-  // AI Camera state
+  const [currentView, setCurrentView] = useState("home");
+  
+  // Projects State
+  const [projects, setProjects] = useState([]);
+  const [activeProjectId, setActiveProjectId] = useState(null);
+
+  // AI Modal
   const [aiModalVisible, setAiModalVisible] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResult, setAiResult] = useState(null);
   const [capturedImageUri, setCapturedImageUri] = useState(null);
 
-  const materialCategories = [
-    { id: "Wood", label: "🪵 " + t("wood") },
-    { id: "Concrete", label: "🏗️ " + t("concrete") },
-    { id: "Binding", label: "📦 " + t("binding") },
-    { id: "Masonry", label: "🧱 " + t("masonry") },
-    { id: "Plumbing", label: "🚰 " + t("plumbing") },
-    { id: "Electrical", label: "⚡ " + t("electrical") },
-  ];
+  useEffect(() => {
+    AsyncStorage.getItem("costMaterialProjects").then((v) => {
+      if (v) {
+        try { setProjects(JSON.parse(v)); } catch (e) {}
+      }
+    });
+  }, []);
 
-  const sortDirections = [
-    { id: "default", label: "📋 " + t("sortDefault") },
-    { id: "cheap", label: "💰 " + t("sortCheapest") },
-    { id: "expensive", label: "💎 " + t("sortExpensive") },
-    { id: "good", label: "✅ " + t("sortGood") },
-    { id: "bad", label: "❌ " + t("sortBad") },
-  ];
+  const handleNavNavigate = useCallback((viewId) => {
+    if (viewId === 'store') {
+      setActiveProjectId(null);
+      setCurrentView('storePurpose');
+    } else {
+      setCurrentView(viewId);
+    }
+  }, []);
 
-  const toggleCategory = (catId) => {
-    setSelectedCategories(prev =>
-      prev.includes(catId) ? prev.filter(c => c !== catId) : [...prev, catId]
-    );
+  const openAiCamera = async () => {
+    try {
+      const { status } = await ImagePicker.requestCameraPermissionsAsync();
+      if (status !== "granted") {
+        Alert.alert("Permission Required", "Camera access needed.");
+        return;
+      }
+      const result = await ImagePicker.launchCameraAsync({ allowsEditing: true, base64: true });
+      if (!result.canceled && result.assets?.[0]) {
+        processAiAsset(result.assets[0]);
+      }
+    } catch (e) {
+      Alert.alert("Error", "Failed to open camera.");
+    }
   };
 
-  const handleQuantityChange = useCallback((id, newQty) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [id]: Math.max(0, newQty),
-    }));
-  }, []);
-
-  const filteredMaterials = useMemo(() => {
-    let result = [...materialsData];
-
-    // 1. Search Filter
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase().trim();
-      result = result.filter(
-        (m) =>
-          m.nameEN.toLowerCase().includes(q) ||
-          m.nameKU.includes(q) ||
-          m.categoryEN.toLowerCase().includes(q) ||
-          m.categoryKU.includes(q)
-      );
-    }
-
-    // 2. Multi-Category Filter
-    if (selectedCategories.length > 0) {
-      result = result.filter(m =>
-        selectedCategories.includes(m.categoryEN) ||
-        selectedCategories.some(cat => m.materials?.some(mat => mat.toLowerCase().includes(cat.toLowerCase())))
-      );
-    }
-
-    // 3. Sorting
-    if (activeSort === "cheap") {
-      result.sort((a, b) => a.basePrice - b.basePrice);
-    } else if (activeSort === "expensive") {
-      result.sort((a, b) => b.basePrice - a.basePrice);
-    } else if (activeSort === "good") {
-      result.sort((a, b) => a.thermalConductivity - b.thermalConductivity);
-    } else if (activeSort === "bad") {
-      result.sort((a, b) => b.thermalConductivity - a.thermalConductivity);
-    }
-
-    return result;
-  }, [searchQuery, activeSort, selectedCategories]);
-
-  const handleSelectItem = useCallback((id) => {
-    const index = filteredMaterials.findIndex(m => m.id === id);
-    if (index !== -1) {
-      flatListRef.current?.scrollToIndex({ index, animated: true, viewPosition: 0 });
-    }
-  }, [filteredMaterials]);
-
-  const totalItemsSelected = useMemo(() => {
-    return Object.values(quantities).filter((v) => v > 0).length;
-  }, [quantities]);
-
-  const clearAll = useCallback(() => {
-    setQuantities({});
-  }, []);
-
-  const handleCameraPress = useCallback(async () => {
+  const processAiAsset = async (asset) => {
+    setCapturedImageUri(asset.uri);
+    setAiLoading(true);
+    setAiModalVisible(true);
     try {
-      const isWeb = Platform.OS === "web";
-      let result;
-
-      if (isWeb) {
-        result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ["images"],
-          allowsEditing: true,
-          aspect: [4, 3],
-          quality: 0.8,
-          base64: true,
-        });
-      } else {
-        const { status } = await ImagePicker.requestCameraPermissionsAsync();
-        if (status !== "granted") {
-          const libStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
-          if (libStatus.status !== "granted") {
-            Alert.alert(
-              lang === "ku" ? "ڕێگەپێدان پێویستە" : "Permission Required",
-              lang === "ku"
-                ? "تکایە ڕێگە بە کامێرا یان گالێری بدە"
-                : "Please allow camera or gallery access"
-            );
-            return;
-          }
-          result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ["images"],
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 0.8,
-            base64: true,
-          });
-        } else {
-          result = await ImagePicker.launchCameraAsync({
-            allowsEditing: true,
-            aspect: [4, 3],
-            quality: 0.8,
-            base64: true,
-          });
-        }
-      }
-
-      if (result && !result.canceled && result.assets?.[0]) {
-        const asset = result.assets[0];
-        setCapturedImageUri(asset.uri);
-        setAiResult(null);
-        setAiLoading(true);
-        setAiModalVisible(true);
-
-        try {
-          const aiResponse = await recognizeMaterial(asset.base64);
-          setAiResult(aiResponse);
-        } catch (aiError) {
-          console.error("AI recognition error:", aiError);
-          setAiResult({
-            matched: false,
-            material: null,
-            confidence: 0,
-            description: "AI analysis failed. Please check your internet connection and try again.",
-            engine: "error",
-          });
-        } finally {
-          setAiLoading(false);
-        }
-      }
-    } catch (error) {
-      console.error("Camera error:", error);
+      const res = await recognizeMaterial(asset.base64);
+      setAiResult(res);
+    } catch {
+      setAiResult({ matched: false, description: "AI failed to process image." });
+    } finally {
       setAiLoading(false);
-      setAiModalVisible(false);
-      Alert.alert(
-        lang === "ku" ? "هەڵە" : "Error",
-        lang === "ku"
-          ? "کێشە لە کردنەوەی کامێرا"
-          : "Failed to open camera: " + error.message
-      );
     }
-  }, [lang]);
+  };
 
-  const handleAddToList = useCallback((materialId) => {
-    setQuantities((prev) => ({
-      ...prev,
-      [materialId]: (prev[materialId] || 0) + 1,
-    }));
-    setAiModalVisible(false);
-  }, []);
+  // UI Datasets
+  const topActions = [
+    { id: "ai", icon: "scan", title: "AI Recognizer", desc: "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
+    { id: "store", icon: "store", title: "Material Store", desc: "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => setCurrentView("storePurpose") },
+    { id: "est", icon: "layers", title: "Estimation Calc", desc: "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => setCurrentView("estimation") },
+  ];
 
-  const handleCloseModal = useCallback(() => {
-    setAiModalVisible(false);
-    setAiResult(null);
-    setAiLoading(false);
-  }, []);
+  const extraActions = [
+    { id: "aiArch", icon: "bot", title: "AI Architect", desc: "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => setCurrentView("aiArchitect") },
+    { id: "arViz", icon: "glasses", title: "AR Visualizer", desc: "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => setCurrentView("arVisualizer") },
+    { id: "delivery", icon: "truck", title: "Delivery Calc", desc: "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => setCurrentView("delivery") },
+    { id: "suppliers", icon: "book", title: "Suppliers", desc: "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => setCurrentView("suppliers") },
+    { id: "projects", icon: "projects", title: "Projects", desc: "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => setCurrentView("projects") },
+    { id: "community", icon: "chat", title: "Community", desc: "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => setCurrentView("community") },
+  ];
 
-  const keyExtractor = useCallback((item) => String(item.id), []);
-
-  const [currentView, setCurrentView] = useState("home"); // 'home' or 'store'
-
-  if (loading && !rate) {
+  if (rateLoading && !rate) {
     return (
-      <View style={styles.loadingContainer}>
-        <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-        <View style={styles.loadingContent}>
-          <ActivityIndicator size="large" color={colors.accent} />
-          <Text style={styles.loadingText}>{t("loading")}</Text>
-          <Text style={styles.loadingSubtext}>{t("poweredBy")}</Text>
-        </View>
+      <View style={[styles.loadingContainer, { backgroundColor: tc.primary }]}>
+        <ActivityIndicator size="large" color={tc.accent} />
       </View>
     );
   }
 
-  // --- Home / Selection View ---
-  if (currentView === "home") {
-    return (
-      <View style={styles.homeContainer}>
-        <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-        <View style={styles.homeHeader}>
+  // Router Blocks
+  if (currentView === "storePurpose") return <StorePurposeScreen onNavigate={handleNavNavigate} onBack={() => setCurrentView("home")} />;
+  if (currentView === "estimation") return <EstimationCalculator onBack={() => setCurrentView("home")} />;
+  if (currentView === "delivery") return <DeliveryCostEstimator onBack={() => setCurrentView("home")} />;
+  if (currentView === "suppliers") return <SupplierDirectory onBack={() => setCurrentView("home")} />;
+  if (currentView === "projects") return <ProjectManager projects={projects} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onBack={() => setCurrentView("home")} />;
+  if (currentView === "community") return <CommunityForum onBack={() => setCurrentView("home")} />;
+  if (currentView === "aiArchitect") return <AIArchitect onBack={() => setCurrentView("home")} />;
+  if (currentView === "arVisualizer") return <ARVisualizer onBack={() => setCurrentView("home")} />;
+
+  // Home Screen
+  return (
+    <View style={[styles.container, { backgroundColor: tc.offWhite }]}>
+      <StatusBar barStyle="light-content" backgroundColor={tc.primary} />
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        {/* Hero Header */}
+        <View style={[styles.hero, { backgroundColor: tc.primary }]}>
           <SafeAreaView>
-            <View style={[styles.headerContent, isRTL && styles.headerContentRTL]}>
-              <View style={isRTL ? styles.headerTextRTL : undefined}>
-                <Text style={[styles.headerTitle, isRTL && styles.textRTL]}>{t("appTitle")}</Text>
-                <Text style={[styles.headerSubtitle, isRTL && styles.textRTL]}>{t("appSubtitle")}</Text>
+            <View style={styles.headerTop}>
+              <View>
+                <Text style={styles.heroTitle}>{lang === "ku" ? "زانیاری بیناسازی" : "Construction Intelligence"}</Text>
+                <Text style={styles.heroSub}>{lang === "ku" ? "بەڕێوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}</Text>
               </View>
               <LanguageToggle />
             </View>
           </SafeAreaView>
         </View>
 
-        <View style={styles.homeIconsContainer}>
-          <TouchableOpacity
-            style={styles.homeCard}
-            activeOpacity={0.8}
-            onPress={handleCameraPress}
-          >
-            <View style={[styles.homeCardIcon, { backgroundColor: '#E3F2FD' }]}>
-              <Text style={{ fontSize: 50 }}>🤖</Text>
-            </View>
-            <Text style={styles.homeCardTitle}>{t("aiTitle")}</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.homeCard}
-            activeOpacity={0.8}
-            onPress={() => setCurrentView("store")}
-          >
-            <View style={[styles.homeCardIcon, { backgroundColor: '#F3E5F5' }]}>
-              <Text style={{ fontSize: 50 }}>🏢</Text>
-            </View>
-            <Text style={styles.homeCardTitle}>{t("storeTitle")}</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
-
-  // --- Store View ---
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
-
-      <View style={styles.header}>
-        <SafeAreaView>
-          <View style={[styles.headerContent, isRTL && styles.headerContentRTL]}>
-            <TouchableOpacity onPress={() => setCurrentView("home")} style={styles.backButton}>
-              <Text style={styles.backButtonText}>{isRTL ? "➡️" : "⬅️"}</Text>
-            </TouchableOpacity>
-            <View style={isRTL ? styles.headerTextRTL : { flex: 1, marginHorizontal: spacing.md }}>
-              <Text style={[styles.headerTitle, { fontSize: 20 }, isRTL && styles.textRTL]}>{t("storeTitle")}</Text>
-            </View>
-            <LanguageToggle />
+        {/* Stats Row */}
+        <View style={styles.statsWrap}>
+          <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
+            <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
+            <Text style={styles.statL}>Materials</Text>
           </View>
-        </SafeAreaView>
-      </View>
-
-      <View style={[styles.searchRow, isRTL && styles.rowRTL]}>
-        <View style={{ flex: 1 }}>
-          <SearchBar value={searchQuery} onChangeText={setSearchQuery} />
+          <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
+            <Text style={[styles.statV, { color: tc.primary }]}>{rate ? Math.round(rate) : "--"}</Text>
+            <Text style={styles.statL}>IQD / USD</Text>
+          </View>
         </View>
-        <TouchableOpacity
-          style={styles.sortIconButton}
-          onPress={() => setIsSortModalVisible(true)}
-          activeOpacity={0.7}
-        >
-          <Text style={styles.sortIconEmoji}>⚖️</Text>
-          <Text style={styles.sortIconText}>{t("sortBy")}</Text>
-        </TouchableOpacity>
-      </View>
 
-      <Modal
-        visible={isSortModalVisible}
-        transparent={true}
-        animationType="slide"
-        onRequestClose={() => setIsSortModalVisible(false)}
-      >
-        <TouchableOpacity
-          style={styles.modalOverlay}
-          activeOpacity={1}
-          onPress={() => setIsSortModalVisible(false)}
-        >
-          <View style={styles.sortModalContent}>
-            <View style={styles.sortModalHeader}>
-              <Text style={styles.sortModalTitle}>{t("sortBy")}</Text>
-              <TouchableOpacity onPress={() => setIsSortModalVisible(false)}>
-                <Text style={styles.sortModalClose}>✕</Text>
+        <View style={styles.mainGrid}>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{lang === "ku" ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
+          {topActions.map(a => (
+            <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
+               <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
+               <View style={styles.textWrap}>
+                 <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
+                 <Text style={styles.cardDesc}>{a.desc}</Text>
+               </View>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View style={styles.extraGridSection}>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{lang === "ku" ? "زیاتر" : "Pro Features"}</Text>
+          <View style={styles.extraGrid}>
+            {extraActions.map(a => (
+              <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
+                <View style={[styles.iconWrapSmall, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={20} color={a.color} /></View>
+                <Text style={[styles.extraCardTitle, { color: tc.charcoal }]}>{a.title}</Text>
+                <Text style={styles.cardDesc} numberOfLines={2}>{a.desc}</Text>
               </TouchableOpacity>
-            </View>
-
-            <View style={[styles.modalColumns, isRTL && styles.rowRTL]}>
-              <View style={styles.modalColumn}>
-                <Text style={[styles.columnLabel, isRTL && styles.textRTL]}>
-                  {lang === "ku" ? "مادەکان" : "Materials"}
-                </Text>
-                <ScrollView showsVerticalScrollIndicator={false} style={{ maxHeight: 300 }}>
-                  {materialCategories.map((item) => {
-                    const isActive = selectedCategories.includes(item.id);
-                    return (
-                      <TouchableOpacity
-                        key={item.id}
-                        style={[styles.sortModalItem, isActive && styles.sortModalItemActive]}
-                        onPress={() => toggleCategory(item.id)}
-                      >
-                        <Text style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]} numberOfLines={1}>
-                          {item.label}
-                        </Text>
-                        {isActive && <Text style={styles.checkIcon}>✓</Text>}
-                      </TouchableOpacity>
-                    );
-                  })}
-                </ScrollView>
-              </View>
-
-              <View style={styles.columnDivider} />
-
-              <View style={styles.modalColumn}>
-                <Text style={[styles.columnLabel, isRTL && styles.textRTL]}>
-                  {lang === "ku" ? "ڕیزکردن" : "Price/Order"}
-                </Text>
-                <ScrollView showsVerticalScrollIndicator={false} style={{ maxHeight: 300 }}>
-                  {sortDirections.map((item) => {
-                    const isActive = activeSort === item.id;
-                    return (
-                      <TouchableOpacity
-                        key={item.id}
-                        style={[styles.sortModalItem, isActive && styles.sortModalItemActive]}
-                        onPress={() => setActiveSort(item.id)}
-                      >
-                        <Text style={[styles.sortModalItemText, isActive && styles.sortModalItemTextActive]} numberOfLines={1}>
-                          {item.label}
-                        </Text>
-                        {isActive && <Text style={styles.checkIcon}>✓</Text>}
-                      </TouchableOpacity>
-                    );
-                  })}
-                </ScrollView>
-              </View>
-            </View>
-
-            <TouchableOpacity style={styles.applyBtn} onPress={() => setIsSortModalVisible(false)}>
-              <Text style={styles.applyBtnText}>{lang === "ku" ? "جێبەجێکردن" : "Apply Filters"}</Text>
-            </TouchableOpacity>
+            ))}
           </View>
-        </TouchableOpacity>
-      </Modal>
-
-      <View style={[styles.listHeader, isRTL && styles.listHeaderRTL]}>
-        <Text style={[styles.listTitle, isRTL && styles.textRTL]}>
-          {t("materials")} ({filteredMaterials.length})
-        </Text>
-        {totalItemsSelected > 0 && (
-          <TouchableOpacity onPress={clearAll} activeOpacity={0.7}>
-            <Text style={styles.clearText}>{t("clearAll")}</Text>
-          </TouchableOpacity>
-        )}
-      </View>
-
-      {filteredMaterials.length === 0 ? (
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>{t("noResults")}</Text>
         </View>
-      ) : (
-        <FlatList
-          ref={flatListRef}
-          data={filteredMaterials}
-          renderItem={({ item }) => (
-            <MaterialCard
-              material={item}
-              quantity={quantities[item.id] || 0}
-              onQuantityChange={handleQuantityChange}
-              allMaterials={materialsData}
-              onSelectItem={handleSelectItem}
-            />
-          )}
-          keyExtractor={keyExtractor}
-          contentContainerStyle={styles.list}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-          getItemLayout={(data, index) => ({ length: 220, offset: 220 * index, index })}
-        />
-      )}
+        <View style={{ height: 100 }} />
+      </ScrollView>
 
-      <CameraButton onPress={handleCameraPress} />
+      {/* AI Result Modal */}
+      <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={() => {}} />
 
-      <MaterialResultModal
-        visible={aiModalVisible}
-        onClose={handleCloseModal}
-        result={aiResult}
-        loading={aiLoading}
-        imageUri={capturedImageUri}
-        onAddToList={handleAddToList}
-      />
-
-      <TotalCostBar quantities={quantities} materials={materialsData} />
+      <BottomNavBar activeTab={currentView} onTabPress={setCurrentView} />
     </View>
   );
 }
@@ -443,285 +195,42 @@ export default function App() {
   return (
     <ExchangeRateProvider>
       <LanguageProvider>
-        <AppContent />
+        <ThemeProvider>
+          <AppContent />
+        </ThemeProvider>
       </LanguageProvider>
     </ExchangeRateProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.offWhite,
+  container: { flex: 1 },
+  loadingContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
+  scrollContent: { paddingBottom: 40 },
+  hero: { 
+    paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight || 40) : 40,
+    paddingBottom: 60,
+    paddingHorizontal: 20,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
   },
-  loadingContainer: {
-    flex: 1,
-    backgroundColor: colors.primary,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  loadingContent: {
-    alignItems: "center",
-  },
-  loadingText: {
-    ...typography.subtitle,
-    color: colors.accent,
-    marginTop: spacing.lg,
-  },
-  loadingSubtext: {
-    ...typography.tiny,
-    color: colors.mediumGray,
-    marginTop: spacing.sm,
-  },
-
-  // Header
-  header: {
-    backgroundColor: colors.primary,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 40 : 0,
-    paddingBottom: spacing.lg,
-    paddingHorizontal: spacing.xl,
-    borderBottomLeftRadius: radius.xl,
-    borderBottomRightRadius: radius.xl,
-  },
-  headerContent: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingTop: spacing.md,
-  },
-  headerContentRTL: {
-    flexDirection: "row-reverse",
-  },
-  headerTextRTL: {
-    alignItems: "flex-end",
-  },
-  headerTitle: {
-    ...typography.hero,
-    color: colors.white,
-  },
-  headerSubtitle: {
-    ...typography.caption,
-    color: colors.mediumGray,
-    marginTop: 2,
-  },
-  textRTL: {
-    textAlign: "right",
-  },
-
-  // List header
-  listHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginHorizontal: spacing.xl,
-    marginTop: spacing.md,
-    marginBottom: spacing.sm,
-  },
-  listHeaderRTL: {
-    flexDirection: "row-reverse",
-  },
-  listTitle: {
-    ...typography.subtitle,
-    color: colors.charcoal,
-  },
-  clearText: {
-    ...typography.caption,
-    color: colors.error,
-  },
-
-  // List
-  list: {
-    paddingTop: spacing.sm,
-    paddingBottom: spacing.md,
-  },
-
-  // Empty
-  emptyContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: spacing.xxxl * 2,
-  },
-  emptyText: {
-    ...typography.body,
-    color: colors.mediumGray,
-  },
-
-  // Sort & Search Row
-  searchRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: spacing.xl,
-    marginTop: spacing.sm,
-    gap: spacing.sm,
-  },
-  rowRTL: {
-    flexDirection: "row-reverse",
-  },
-  sortIconButton: {
-    backgroundColor: colors.white,
-    paddingHorizontal: spacing.md,
-    height: 44,
-    borderRadius: radius.md,
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: colors.cardBorder,
-    ...shadows.card,
-  },
-  sortIconEmoji: {
-    fontSize: 16,
-    marginRight: 6,
-  },
-  sortIconText: {
-    ...typography.caption,
-    color: colors.darkGray,
-    fontWeight: "600",
-  },
-
-  // Sort Modal
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
-    justifyContent: "flex-end",
-  },
-  sortModalContent: {
-    backgroundColor: colors.white,
-    borderTopLeftRadius: radius.xl,
-    borderTopRightRadius: radius.xl,
-    padding: spacing.xl,
-    maxHeight: "85%",
-  },
-  sortModalHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: spacing.md,
-    paddingBottom: spacing.sm,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.lightGray,
-  },
-  sortModalTitle: {
-    ...typography.subtitle,
-    color: colors.charcoal,
-    fontWeight: "700",
-  },
-  sortModalClose: {
-    fontSize: 20,
-    color: colors.mediumGray,
-    padding: 4,
-  },
-  modalColumns: {
-    flexDirection: "row",
-    gap: spacing.md,
-    marginBottom: spacing.xl,
-  },
-  modalColumn: {
-    flex: 1,
-  },
-  columnLabel: {
-    ...typography.tiny,
-    color: colors.mediumGray,
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-    marginBottom: spacing.sm,
-    fontWeight: "700",
-  },
-  columnDivider: {
-    width: 1,
-    backgroundColor: colors.lightGray,
-    marginVertical: spacing.md,
-  },
-  sortModalItem: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.xs,
-    borderRadius: radius.md,
-    marginBottom: 4,
-  },
-  sortModalItemActive: {
-    backgroundColor: colors.offWhite,
-  },
-  sortModalItemText: {
-    ...typography.caption,
-    color: colors.charcoal,
-  },
-  sortModalItemTextActive: {
-    color: colors.accent,
-    fontWeight: "700",
-  },
-  checkIcon: {
-    color: colors.accent,
-    fontSize: 14,
-    fontWeight: "bold",
-  },
-  applyBtn: {
-    backgroundColor: colors.accent,
-    paddingVertical: spacing.md,
-    borderRadius: radius.md,
-    alignItems: "center",
-    ...shadows.card,
-  },
-  applyBtnText: {
-    ...typography.subtitle,
-    color: colors.white,
-    fontWeight: "700",
-  },
-  // Home View Styles
-  homeContainer: {
-    flex: 1,
-    backgroundColor: colors.offWhite,
-  },
-  homeHeader: {
-    backgroundColor: colors.primary,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 40 : 0,
-    paddingBottom: spacing.xxxl,
-    paddingHorizontal: spacing.xl,
-    borderBottomLeftRadius: radius.xl * 2,
-    borderBottomRightRadius: radius.xl * 2,
-  },
-  homeIconsContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: spacing.xl,
-    gap: spacing.xl,
-    marginTop: -spacing.xxxl,
-  },
-  homeCard: {
-    flex: 1,
-    backgroundColor: colors.white,
-    borderRadius: radius.xl,
-    padding: spacing.xl,
-    alignItems: "center",
-    justifyContent: "center",
-    ...shadows.card,
-    height: 180,
-    maxWidth: 180,
-  },
-  homeCardIcon: {
-    width: 90,
-    height: 90,
-    borderRadius: 45,
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: spacing.md,
-  },
-  homeCardTitle: {
-    ...typography.subtitle,
-    color: colors.charcoal,
-    fontWeight: "700",
-    textAlign: "center",
-  },
-  backButton: {
-    padding: spacing.sm,
-    marginRight: spacing.sm,
-  },
-  backButtonText: {
-    fontSize: 24,
-    color: colors.white,
-  },
+  headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  heroTitle: { fontSize: 24, fontWeight: '800', color: '#fff' },
+  heroSub: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
+  statsWrap: { flexDirection: 'row', paddingHorizontal: 20, marginTop: -30, gap: 12 },
+  statBox: { flex: 1, padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card, alignItems: 'center' },
+  statV: { fontSize: 22, fontWeight: '700' },
+  statL: { fontSize: 12, color: '#64748B', marginTop: 4, textTransform: 'uppercase', letterSpacing: 0.5 },
+  mainGrid: { paddingHorizontal: 20, marginTop: 24, gap: 12 },
+  sectionTitle: { fontSize: 18, fontWeight: '700', marginBottom: 8 },
+  mainCard: { flexDirection: 'row', alignItems: 'center', padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card },
+  iconWrap: { width: 50, height: 50, borderRadius: 12, alignItems: 'center', justifyContent: 'center', marginRight: 16 },
+  textWrap: { flex: 1 },
+  cardTitle: { fontSize: 16, fontWeight: '700', marginBottom: 4 },
+  cardDesc: { fontSize: 13, color: '#64748B' },
+  extraGridSection: { paddingHorizontal: 20, marginTop: 24 },
+  extraGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
+  extraCard: { width: '48%', padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card },
+  iconWrapSmall: { width: 40, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
+  extraCardTitle: { fontSize: 14, fontWeight: '700', marginBottom: 4 },
 });

@@ -1,0 +1,75 @@
+﻿node.exe : Found eas-cli in your 
+project dependencies.
+At C:\Program 
+Files\nodejs\npx.ps1:29 char:3
++   & $NODE_EXE $NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : Not 
+   Specified: (Found eas-cli i..  
+  .t dependencies.:String) [],    
+ RemoteException
+    + FullyQualifiedErrorId : Nat 
+   iveCommandError
+ 
+It's recommended to use the 
+"cli.version" field in eas.json 
+to enforce the eas-cli version 
+for your project.
+Learn more: https://github.com/exp
+o/eas-cli#enforcing-eas-cli-versio
+n-for-your-project
+
+[
+  {
+    "id": "af326fe4-ad23-4f4c-8596-e29f59e80f59",
+    "status": "FINISHED",
+    "platform": "ANDROID",
+    "artifacts": {
+      "buildUrl": "https://expo.dev/artifacts/eas/nCM2Cg3DQ4h2fuxRCqkixX.apk",
+      "applicationArchiveUrl": "https://expo.dev/artifacts/eas/nCM2Cg3DQ4h2fuxRCqkixX.apk"
+    },
+    "fingerprint": {
+      "id": "019ce9d9-f2d9-7e63-a215-7adea14f143f",
+      "hash": "c6c55988b46d5b8e7b61ff126a896a35c7fa4390"
+    },
+    "initiatingActor": {
+      "id": "a817d807-90f5-4119-b836-2b0f43458862",
+      "displayName": "ali01111"
+    },
+    "logFiles": [
+      "https://job-logs.eascdn.net/production/af326fe4-ad23-4f4c-8596-e29f59e80f59/1773449901139-898b0098-b9d4-4474-9327-7a968e5528b7.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260314%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260314T022748Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=c728fc5e886e58302188c1936e7e0dba256676c5cacff22dd778dec1f27c65238ec3dc8f24371558ace4818bdd0ee82fa0d5840031fa631463062ceb0273a2ef2289871223ec16f04c15d47649cb012edbef88370d563316791764105810b6ef394f469d425ac6ea14cd71f6bacf1e50370545e88abf0d40f38f9881a985209d0087c29f864d5c253029da236daa6762b91e05295be35e0ecf02d8ffb763da75f9b3a1ddbc85488b38f165deb5212f49d0fa1e36a664e342ba62fb13c7c8b99515d5fcc42419085831865f3a49307b3d00ef87397323af08788fadb3cee6dfe9f6748f82d20360c72bfa0adc5e0692c585eba294876415424a7199dc88c616bc",
+      "https://job-logs.eascdn.net/production/af326fe4-ad23-4f4c-8596-e29f59e80f59/1773449905553-a7c499e0-198a-4d1f-b435-807c619a76ae.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260314%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260314T022748Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=5978ac28ef44d12d2086e61e4c646c5c36d790a7804c69688f241c3785175503931b2da55819456d2feeab335040ec7ed7db8907a0fe6cbb26fe991e1746b77f93337ca596b5a704a3ea87e59458822f86d9ca4c33fe41e96a362e7c1a5f35d7101044bcfb01af9d17e50a79c62462169083bf821219561d3c8f60d257172077e1d394c5fb1063c2938ec2fbaaa5136f7619551c8cfa54ff0bcb1fc1bb8609038b8577f5b9a96a83eba5a999964376b3de4ab883b2553372dee0b09b4a704d811b5931c94365c2777cb7f53d5a186ac95170071b2d8fff7a7eed708f4c1269475eeff60670c244ba94d08c2d8463af450b825f864761c7bba6c6813c71f6dbaf",
+      "https://job-logs.eascdn.net/production/af326fe4-ad23-4f4c-8596-e29f59e80f59/1773449905800-12ac3c26-224d-48ae-addd-2667266f7dc8.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260314%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260314T022748Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=b151e581cec1b90c0f0e182bfb3cc9d84639040b6c1dcfb3cb52c80208eab8ee73bd618e74573e3661680221c9f20c6a31a8512d0ab5e0415974394370688eb678b2a8b6d81bcd1f5f1a5195fc67a2f6ecfbb2f63317f749526d0ae4e285b30664246e00e98837129a3c16a4a2144cfe4bed57d05f27b3520a395f8431c65794e74e9ac60912f60d77f2df3ef367533292417e673435aa07b106318dca5d466985eefaf9b4446fc5dd9efca47dfa930b7160c0e6faf0024a785d508c1f0dd608163b027a524015e6b5fa81ca166c3fa2412dfec74a98eaa557e0519d56ef46249d42cd65eb35d5966f18ae83bd08cbf3a853da9b5f1adc962418f609e129d30c",
+      "https://job-logs.eascdn.net/production/af326fe4-ad23-4f4c-8596-e29f59e80f59/1773449906008-4743a689-5fd2-4e8f-a820-98319be78828.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20260314%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260314T022748Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=281f8d2ecae8ef839b929c42e4d4f95414e414bbf9be167b0b127245f924ad23d4db83ef0d8a6ee6f129af12e9f6c45d377679f8e150496ecc680e3e100d5978b3e90d0988bf5522c28ca98c454d50894f33c9ab748e2db8bff8a64ca45a548913afa84811016dd14d059dd6fd05fcf9761d63fdc59424c261320312fb52eb852c752a211fc98942c4abe88253f88a243eb61c8632cce3fd39fd6c059a7ea2112626eba41eb111e137d62eca9d7d9630594cdc8346c1181475064c7f59ff71ca3a7813b9b0fe5becad9101787e803344f2cb7f499f88220a18bbd15e6b3e8100072206b3366b7d37e8a1c2054e5de04971624075af95099d9c1873eddc39c89c"
+    ],
+    "project": {
+      "id": "6f091727-29df-497a-b6ae-c12d0ed9baf3",
+      "name": "cost material",
+      "slug": "cost-material",
+      "ownerAccount": {
+        "id": "9c5518b3-1f98-4bbc-9488-1c874c8a23ac",
+        "name": "ali01111s-organization"
+      }
+    },
+    "channel": "preview",
+    "distribution": "STORE",
+    "buildProfile": "preview",
+    "sdkVersion": "55.0.0",
+    "appVersion": "1.0.0",
+    "appBuildVersion": "1",
+    "runtimeVersion": "1.0.0",
+    "gitCommitHash": "8b95d6e3affc9737083b08a040487d3cd9a41934",
+    "gitCommitMessage": "Implement landing screen: AI Recognizer and Material Store selection",
+    "priority": "NORMAL",
+    "createdAt": "2026-03-14T00:58:20.678Z",
+    "updatedAt": "2026-03-14T01:17:28.874Z",
+    "completedAt": "2026-03-14T01:17:28.468Z",
+    "expirationDate": "2026-04-13T00:58:20.756Z",
+    "isForIosSimulator": false,
+    "metrics": {
+      "buildWaitTime": 373,
+      "buildQueueTime": 46747,
+      "buildDuration": 1100050
+    }
+  }
+]

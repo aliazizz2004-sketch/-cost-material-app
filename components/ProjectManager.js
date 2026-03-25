@@ -13,11 +13,13 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Print from "expo-print";
 import * as Sharing from "expo-sharing";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import Animated, { FadeIn, FadeOut, FadeInDown, FadeInUp, SlideInRight, ZoomIn } from "react-native-reanimated";
+import { ModalEnter, CardEnter, HeroEnter, SmoothLayout } from "./animations";
 import { colors, darkColors, spacing, radius, typography, shadows } from "../styles/theme";
 import { useTheme } from "../contexts/ThemeContext";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
+import AppIcon from "./AppIcon";
 
 const STORAGE_KEY = "costMaterialProjects";
 
@@ -40,7 +42,8 @@ export default function ProjectManager({
   const [projectName, setProjectName] = useState("");
   const [projectNote, setProjectNote] = useState("");
   const [expandedId, setExpandedId] = useState(null);
-  const [editingId, setEditingId] = useState(null); // For update/resave
+  const [editingId, setEditingId] = useState(null);
+  const [viewProject, setViewProject] = useState(null); // for the open/detail modal
 
   const copy = useMemo(
     () =>
@@ -187,7 +190,7 @@ export default function ProjectManager({
           ? {
               ...p,
               items: selectedItems,
-              totalCostUSD: totalCost,
+              totalCostUSD: totalCost + (p.deliveryCostUSD || 0),
               date: new Date().toISOString(),
             }
           : p
@@ -240,30 +243,36 @@ export default function ProjectManager({
           <style>
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #333; direction: ${isRTL ? 'rtl' : 'ltr'}; }
             .header { border-bottom: 2px solid #0a3d62; padding-bottom: 20px; margin-bottom: 30px; }
-            h1 { color: #0a3d62; margin: 0 0 10px 0; }
-            .meta { color: #666; font-size: 14px; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th { text-align: ${isRTL ? 'right' : 'left'}; padding: 12px; border-bottom: 2px solid #ddd; color: #0a3d62; }
-            td { padding: 12px; border-bottom: 1px solid #eee; text-align: ${isRTL ? 'right' : 'left'}; }
-            .total { font-weight: bold; font-size: 18px; color: #0a3d62; padding-top: 20px; text-align: ${isRTL ? 'left' : 'right'}; }
+            h1 { color: #0a3d62; margin: 0 0 10px 0; font-size: 24px; }
+            .meta { color: #666; font-size: 14px; line-height: 1.5; }
+            .section-title { color: #0a3d62; font-size: 18px; margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+            th { text-align: ${isRTL ? 'right' : 'left'}; padding: 12px; background-color: #f8fafc; border-bottom: 2px solid #cbd5e1; color: #0f172a; font-weight: bold; }
+            td { padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: ${isRTL ? 'right' : 'left'}; color: #334155; }
+            .total-row { font-weight: bold; background-color: #f1f5f9; }
+            .total-row td { color: #0f172a; font-size: 16px; border-top: 2px solid #cbd5e1; }
+            .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; background: #e2e8f0; font-size: 12px; color: #475569; margin-bottom: 4px; }
+            ul { margin-top: 10px; padding-left: 20px; }
+            li { color: #475569; margin-bottom: 5px; line-height: 1.4; }
           </style>
         </head>
         <body>
           <div class="header">
-            <h1>Cost Material - Project Estimate</h1>
+            <h1>${lang === 'ku' ? 'خەمڵاندنی پڕۆژە' : 'Project Estimate'}</h1>
             <div class="meta">
-              <strong>Project:</strong> ${project.name}<br>
-              <strong>Date:</strong> ${dateStr}<br>
-              ${project.note ? `<strong>Note:</strong> ${project.note}<br>` : ''}
+              <strong>${lang === 'ku' ? 'ناوی پڕۆژە:' : 'Project:'}</strong> ${project.name}<br>
+              <strong>${lang === 'ku' ? 'بەروار:' : 'Date:'}</strong> ${dateStr}<br>
+              ${project.note ? `<strong>${lang === 'ku' ? 'تێبینی:' : 'Note:'}</strong> ${project.note}<br>` : ''}
             </div>
           </div>
-          
+
+          <div class="section-title">${lang === 'ku' ? 'لیستی کەرەستەکان' : 'Bill of Materials (BOQ)'}</div>
           <table>
             <thead>
               <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Cost (est)</th>
+                <th>${lang === 'ku' ? 'بڕگە' : 'Item'}</th>
+                <th>${lang === 'ku' ? 'بڕ' : 'Quantity'}</th>
+                <th>${lang === 'ku' ? 'تێچوو (خەمڵێندراو)' : 'Cost (est)'}</th>
               </tr>
             </thead>
             <tbody>
@@ -279,15 +288,36 @@ export default function ProjectManager({
                   </tr>
                 `;
               }).join('')}
+              ${project.deliveryCostUSD ? `
+                  <tr>
+                    <td><em>${lang === 'ku' ? 'تێچووی گەیاندن' : 'Delivery Cost'}</em></td>
+                    <td>-</td>
+                    <td>${formatNumber(Math.round(project.deliveryCostUSD * (rate || 1)))} IQD</td>
+                  </tr>
+              ` : ''}
+              <tr class="total-row">
+                <td colspan="2" style="text-align: ${isRTL ? 'left' : 'right'}">${lang === 'ku' ? 'کۆی گشتی تێچوو:' : 'Total Estimated Cost:'}</td>
+                <td>${totalIQD} IQD</td>
+              </tr>
             </tbody>
           </table>
           
-          <div class="total">
-            Total Estimated Cost: ${totalIQD} IQD
-          </div>
+          ${project.deliveryStr ? `
+            <div class="section-title">${lang === 'ku' ? 'زانیاری گەیاندن' : 'Delivery Information'}</div>
+            <p style="color: #475569; font-size: 14px; margin-top: 10px;">
+              <span class="badge">${project.deliveryStr}</span>
+            </p>
+          ` : ''}
+
+          ${project.estimations && Object.keys(project.estimations).length > 0 ? `
+            <div class="section-title">${lang === 'ku' ? 'خەمڵاندنە ئەندازیارییەکان' : 'Engineering Estimations'}</div>
+            <ul>
+              ${Object.values(project.estimations).map(est => `<li>${est}</li>`).join('')}
+            </ul>
+          ` : ''}
           
-          <div style="margin-top: 50px; font-size: 12px; color: #999; text-align: center;">
-            Generated by Cost Material App
+          <div style="margin-top: 50px; font-size: 12px; color: #999; text-align: center; border-top: 1px solid #eee; padding-top: 20px;">
+            Generated by Cost Material App • ${dateStr}
           </div>
         </body>
         </html>
@@ -324,9 +354,12 @@ export default function ProjectManager({
             <Text style={s.backBtnText}>{isRTL ? ">" : "<"}</Text>
           </TouchableOpacity>
           <View style={{ flex: 1 }}>
-            <Text style={[s.headerTitle, isRTL && s.textRTL]}>
-              📁 {copy.title}
-            </Text>
+            <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 8}}>
+              <AppIcon name="folder" size={24} color={colors.white} />
+              <Text style={[s.headerTitle, isRTL && s.textRTL]}>
+                {copy.title}
+              </Text>
+            </View>
             <Text style={[s.headerSubtitle, isRTL && s.textRTL]}>
               {copy.subtitle}
             </Text>
@@ -344,7 +377,7 @@ export default function ProjectManager({
         activeOpacity={0.85}
       >
         <View style={[s.createBtnInner, isRTL && s.rowRTL]}>
-          <Text style={s.createBtnIcon}>💾</Text>
+          <AppIcon name="plus-circle" size={20} color={colors.white} />
           <Text style={s.createBtnText}>{copy.create}</Text>
         </View>
         {currentItemCount > 0 && (
@@ -374,7 +407,10 @@ export default function ProjectManager({
                 onPress={() => onGoToStore && onGoToStore()}
                 activeOpacity={0.8}
               >
-                <Text style={s.goStoreBtnText}>🏪 {copy.goToStore}</Text>
+                <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                  <AppIcon name="store" size={16} color={colors.white} />
+                  <Text style={s.goStoreBtnText}>{copy.goToStore}</Text>
+                </View>
               </TouchableOpacity>
             )}
           </View>
@@ -403,7 +439,7 @@ export default function ProjectManager({
                 >
                   <View style={[s.projectHeader, isRTL && s.rowRTL]}>
                     <View style={s.projectIconWrap}>
-                      <Text style={s.projectIcon}>🏗️</Text>
+                      <AppIcon name="building" size={22} color={tc.primary} />
                     </View>
                     <View
                       style={[
@@ -425,14 +461,15 @@ export default function ProjectManager({
                           {totalIQD} IQD
                         </Text>
                       ) : null}
-                      {project.note ? (
-                        <Text
-                          style={[s.projectNote, isRTL && s.textRTL]}
-                          numberOfLines={1}
-                        >
-                          📝 {project.note}
-                        </Text>
-                      ) : null}
+                        <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 4, marginTop: 2}}>
+                          <AppIcon name="file-text" size={12} color={colors.darkGray} />
+                          <Text
+                            style={[s.projectNote, isRTL && s.textRTL, { marginTop: 0 }]}
+                            numberOfLines={1}
+                          >
+                            {project.note}
+                          </Text>
+                        </View>
                     </View>
                     <Text style={s.expandIcon}>
                       {isExpanded ? "▲" : "▼"}
@@ -453,7 +490,7 @@ export default function ProjectManager({
                             activeOpacity={0.8}
                           >
                             <View style={[s.quickLinkIcon, { backgroundColor: "#EBF5FF" }]}>
-                              <Text style={s.quickLinkEmoji}>🏪</Text>
+                              <AppIcon name="store" size={22} color="#2563EB" />
                             </View>
                             <Text style={s.quickLinkText}>{copy.goStore}</Text>
                           </TouchableOpacity>
@@ -463,7 +500,7 @@ export default function ProjectManager({
                             activeOpacity={0.8}
                           >
                             <View style={[s.quickLinkIcon, { backgroundColor: "#ECFDF5" }]}>
-                              <Text style={s.quickLinkEmoji}>🚛</Text>
+                              <AppIcon name="truck" size={22} color="#059669" />
                             </View>
                             <Text style={s.quickLinkText}>{copy.goDelivery}</Text>
                           </TouchableOpacity>
@@ -473,7 +510,7 @@ export default function ProjectManager({
                             activeOpacity={0.8}
                           >
                             <View style={[s.quickLinkIcon, { backgroundColor: "#FFF7ED" }]}>
-                              <Text style={s.quickLinkEmoji}>📐</Text>
+                              <AppIcon name="layers" size={22} color="#EA580C" />
                             </View>
                             <Text style={s.quickLinkText}>{copy.goEstimation}</Text>
                           </TouchableOpacity>
@@ -533,39 +570,40 @@ export default function ProjectManager({
                       <View style={[s.actionRow, isRTL && s.rowRTL]}>
                         <TouchableOpacity
                           style={s.loadBtn}
-                          onPress={() => loadProject(project)}
+                          onPress={() => setViewProject(project)}
                           activeOpacity={0.7}
                         >
-                          <Text style={s.loadBtnText}>
-                            📂 {copy.load}
-                          </Text>
+                          <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                            <AppIcon name="folder-open" size={16} color={colors.white} />
+                            <Text style={s.loadBtnText}>{copy.load}</Text>
+                          </View>
                         </TouchableOpacity>
                         <TouchableOpacity
                           style={s.updateBtn}
                           onPress={() => updateProject(project.id)}
                           activeOpacity={0.7}
                         >
-                          <Text style={s.updateBtnText}>
-                            💾 {copy.saveUpdate}
-                          </Text>
+                          <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                            <AppIcon name="save" size={16} color="#059669" />
+                            <Text style={s.updateBtnText}>{copy.saveUpdate}</Text>
+                          </View>
                         </TouchableOpacity>
                         <TouchableOpacity
                           style={s.exportBtn}
                           onPress={() => exportPDF(project)}
                           activeOpacity={0.7}
                         >
-                          <Text style={s.exportBtnText}>
-                            📄 {copy.exportPdf}
-                          </Text>
+                          <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                            <AppIcon name="file-text" size={16} color="#4B5563" />
+                            <Text style={s.exportBtnText}>{copy.exportPdf}</Text>
+                          </View>
                         </TouchableOpacity>
                         <TouchableOpacity
                           style={s.deleteBtn}
                           onPress={() => deleteProject(project.id)}
                           activeOpacity={0.7}
                         >
-                          <Text style={s.deleteBtnText}>
-                            🗑
-                          </Text>
+                          <AppIcon name="trash" size={18} color="#DC2626" />
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -578,22 +616,124 @@ export default function ProjectManager({
         <View style={{ height: 40 }} />
       </ScrollView>
 
+      {/* ═══ Project Detail Modal (Open) ═══ */}
+      <Modal
+        visible={!!viewProject}
+        transparent
+        animationType="none"
+        onRequestClose={() => setViewProject(null)}
+      >
+        <Animated.View entering={FadeIn.duration(200)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.55)', justifyContent: 'flex-end' }}>
+          <Animated.View entering={FadeInDown.duration(380).springify().damping(22).stiffness(180)} style={[s.modalContent, { backgroundColor: tc.offWhite, maxHeight: '85%' }]}>
+            <View style={[s.modalHeader, isRTL && s.rowRTL, { marginBottom: 4 }]}>
+              <View style={{ flex: 1 }}>
+                <Text style={[s.modalTitle, isRTL && s.textRTL, { color: tc.charcoal }]} numberOfLines={1}>
+                  {viewProject?.name}
+                </Text>
+                {viewProject?.note ? <Text style={[{ fontSize: 12, color: tc.mediumGray, marginTop: 2 }, isRTL && s.textRTL]}>{viewProject.note}</Text> : null}
+              </View>
+              <TouchableOpacity onPress={() => setViewProject(null)} style={{ padding: 8 }}>
+                <Text style={{ fontSize: 22, color: tc.mediumGray }}>✕</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Stats row */}
+            <View style={[{ flexDirection: isRTL ? 'row-reverse' : 'row', gap: 12, marginBottom: 16, flexWrap: 'wrap' }]}>
+              <View style={{ backgroundColor: colors.primary + '15', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}>
+                <Text style={{ fontSize: 13, fontWeight: '700', color: colors.primary }}>
+                  {viewProject?.items?.length || 0} {lang === 'ku' ? 'بڕگە' : 'items'}
+                </Text>
+              </View>
+              {viewProject?.totalCostUSD ? (
+                <View style={{ backgroundColor: colors.accent + '15', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}>
+                  <Text style={{ fontSize: 13, fontWeight: '700', color: colors.accent }}>
+                    ${viewProject.totalCostUSD.toFixed(0)}
+                  </Text>
+                </View>
+              ) : null}
+              {viewProject?.deliveryStr ? (
+                <View style={{ backgroundColor: '#0891B215', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}>
+                  <Text style={{ fontSize: 12, fontWeight: '600', color: '#0891B2' }}>
+                    🚛 {lang === 'ku' ? 'گەیاندن' : 'Delivery'}
+                  </Text>
+                </View>
+              ) : null}
+            </View>
+
+            {/* Full item list */}
+            <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+              {(viewProject?.items || []).map((item) => {
+                const mat = materials.find(m => m.id === item.id);
+                if (!mat) return null;
+                const itemCost = mat.basePrice * item.qty;
+                return (
+                  <View key={item.id} style={[{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: tc.cardBorder }]}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={[{ fontSize: 14, fontWeight: '600', color: tc.charcoal }, isRTL && s.textRTL]}>
+                        {lang === 'ku' ? mat.nameKU : mat.nameEN}
+                      </Text>
+                      <Text style={[{ fontSize: 12, color: tc.mediumGray }, isRTL && s.textRTL]}>
+                        {mat.unit} • ${mat.basePrice}/{mat.unit}
+                      </Text>
+                    </View>
+                    <View style={{ alignItems: isRTL ? 'flex-start' : 'flex-end', marginLeft: isRTL ? 0 : 12, marginRight: isRTL ? 12 : 0 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '700', color: tc.primary }}>×{item.qty}</Text>
+                      <Text style={{ fontSize: 12, color: colors.accent, fontWeight: '600' }}>${itemCost.toFixed(0)}</Text>
+                    </View>
+                  </View>
+                );
+              })}
+              {viewProject?.deliveryStr && (
+                <View style={{ marginTop: 12, padding: 12, backgroundColor: '#EFF6FF', borderRadius: 10 }}>
+                  <Text style={[{ fontSize: 13, fontWeight: '700', color: '#1E3A8A', marginBottom: 4 }, isRTL && s.textRTL]}>
+                    🚛 {lang === 'ku' ? 'تێچووی گەیاندن' : 'Delivery Cost'}
+                  </Text>
+                  <Text style={[{ fontSize: 12, color: '#3B82F6' }, isRTL && s.textRTL]}>{viewProject.deliveryStr}</Text>
+                </View>
+              )}
+              {viewProject?.estimations && Object.keys(viewProject.estimations).length > 0 && (
+                <View style={{ marginTop: 12, padding: 12, backgroundColor: colors.primary + '0D', borderRadius: 10 }}>
+                  <Text style={[{ fontSize: 13, fontWeight: '700', color: colors.primary, marginBottom: 6 }, isRTL && s.textRTL]}>
+                    📐 {lang === 'ku' ? 'خەمڵاندنە ئەندازیارییەکان' : 'Engineering Estimations'}
+                  </Text>
+                  {Object.values(viewProject.estimations).map((est, i) => (
+                    <Text key={i} style={[{ fontSize: 12, color: tc.charcoal, marginBottom: 3 }, isRTL && s.textRTL]}>• {est}</Text>
+                  ))}
+                </View>
+              )}
+              <View style={{ height: 20 }} />
+            </ScrollView>
+
+            {/* PDF button at bottom */}
+            <TouchableOpacity
+              style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 8, backgroundColor: colors.primary, paddingVertical: 14, borderRadius: 12, marginTop: 12 }}
+              onPress={() => { setViewProject(null); exportPDF(viewProject); }}
+              activeOpacity={0.85}
+            >
+              <AppIcon name="file-text" size={18} color="#fff" />
+              <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>{copy.exportPdf}</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </Animated.View>
+      </Modal>
+
       {/* ═══ Create Modal ═══ */}
       <Modal
         visible={showCreateModal}
         transparent
-        animationType="fade"
+        animationType="none"
         onRequestClose={() => setShowCreateModal(false)}
       >
-        <TouchableOpacity
-          style={s.modalOverlay}
-          activeOpacity={1}
-          onPress={() => setShowCreateModal(false)}
-        >
-          <TouchableOpacity style={s.modalCard} activeOpacity={1}>
-            <Text style={[s.modalTitle, isRTL && s.textRTL]}>
-              💾 {copy.create}
-            </Text>
+        <Animated.View entering={FadeIn.duration(180)} style={s.modalOverlay}>
+          <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={() => setShowCreateModal(false)} />
+          <Animated.View entering={FadeInUp.duration(350).springify().damping(22).stiffness(180)} style={s.modalCard} pointerEvents="box-none">
+            <TouchableOpacity activeOpacity={1}>
+            <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', marginBottom: spacing.lg, gap: 8}}>
+              <AppIcon name="save" size={24} color={tc.charcoal} />
+              <Text style={[s.modalTitle, isRTL && s.textRTL, { marginBottom: 0 }]}>
+                {copy.create}
+              </Text>
+            </View>
 
             <Text style={[s.inputLabel, isRTL && s.textRTL]}>
               {copy.name}
@@ -634,7 +774,10 @@ export default function ProjectManager({
                   }}
                   activeOpacity={0.8}
                 >
-                  <Text style={s.goStoreSmallBtnText}>🏪 {copy.goToStore}</Text>
+                  <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                    <AppIcon name="store" size={16} color={colors.white} />
+                    <Text style={s.goStoreSmallBtnText}>{copy.goToStore}</Text>
+                  </View>
                 </TouchableOpacity>
               )}
             </View>
@@ -656,11 +799,15 @@ export default function ProjectManager({
                 disabled={!projectName.trim() || currentItemCount === 0}
                 activeOpacity={0.85}
               >
-                <Text style={s.saveBtnText}>💾 {copy.save}</Text>
+                <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                  <AppIcon name="save" size={18} color={colors.white} />
+                  <Text style={s.saveBtnText}>{copy.save}</Text>
+                </View>
               </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        </TouchableOpacity>
+            </TouchableOpacity>
+          </Animated.View>
+        </Animated.View>
       </Modal>
     </Animated.View>
   );

@@ -19,7 +19,7 @@ import materialsData from '../data/materials';
 
 const SAVED_LISTS_KEY = 'costMaterialSavedLists';
 
-export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEstimation, onNavigate }) {
+export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEstimation, onNavigate, globalQuantities, setGlobalQuantities }) {
   const { lang, isRTL, t } = useLanguage();
   const { isDark } = useTheme();
   const { rate } = useExchangeRate();
@@ -27,7 +27,8 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
   const ku = lang === 'ku';
 
   const [search, setSearch] = useState('');
-  const [quantities, setQuantities] = useState({});
+  const quantities = globalQuantities || {};
+  const setQuantities = setGlobalQuantities || (() => {});
   const [sortBy, setSortBy] = useState('default');
   const [filterCategory, setFilterCategory] = useState('All');
   const [showSortModal, setShowSortModal] = useState(false);
@@ -237,7 +238,19 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
                  </View>
                  
                  <FlatList
-                     data={[ { type: 'header', title: ku ? "ڕیزبەندی" : "Sort By" }, ...sortOptions, { type: 'header', title: ku ? "جۆری مادە" : "Material Type" }, ...activeCategories.map(c => ({ id: c, isCategory: true, label: (ku && c.id !== 'All') ? `${c.labelKU} (${c.labelEN})` : (ku && c.id === 'All' ? c.labelKU : c.labelEN), icon: 'layers' })) ]}
+                     data={[ { type: 'header', title: ku ? "ڕیزبەندی" : "Sort By" }, ...sortOptions, { type: 'header', title: ku ? "جۆری مادە" : "Material Type" }, ...activeCategories.map(c => {
+                       let icon = 'layers';
+                       if(c.id === 'Concrete') icon = 'database';
+                       else if(c.id === 'Cement & Binding') icon = 'box';
+                       else if(c.id === 'Masonry') icon = 'grid';
+                       else if(c.id === 'Aggregate') icon = 'triangle';
+                       else if(c.id === 'Steel & Rebar') icon = 'link';
+                       else if(c.id === 'Wood') icon = 'tree-pine';
+                       else if(c.id === 'Plumbing') icon = 'droplet';
+                       else if(c.id === 'Electrical') icon = 'zap';
+                       else if(c.id === 'Structural') icon = 'home';
+                       return { id: c.id, isCategory: true, label: (ku && c.id !== 'All') ? `${c.labelKU} (${c.labelEN})` : (ku && c.id === 'All' ? c.labelKU : c.labelEN), icon };
+                     }) ]}
                      keyExtractor={(item, idx) => item.id || 'header-'+idx}
                      showsVerticalScrollIndicator={false}
                      renderItem={({ item }) => {
@@ -249,7 +262,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
                          return (
                            <TouchableOpacity
                              style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', padding: 12, borderRadius: 12, backgroundColor: isActive ? colors.primary + '15' : tc.offWhite, borderWidth: 1, borderColor: isActive ? colors.primary : 'transparent', marginBottom: 8 }}
-                             onPress={() => { setFilterCategory(item.id); }}
+                             onPress={() => { setFilterCategory(item.id); setShowSortModal(false); }}
                              activeOpacity={0.7}
                            >
                              <View style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: isActive ? colors.primary : colors.white, alignItems: 'center', justifyContent: 'center', marginRight: isRTL ? 0 : 12, marginLeft: isRTL ? 12 : 0 }}>

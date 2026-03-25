@@ -138,7 +138,7 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
       const str = `${fromStr} ➜ ${toStr} | ${formatNumber(result.costIQD)} IQD`;
       if (savedDeliveryRef.current !== str) {
         savedDeliveryRef.current = str;
-        onAutoSave(str);
+        onAutoSave(str, result.costUSD);
       }
     }
   }, [result, onAutoSave, fromCity, toCity, getCityName]);

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { Platform } from "react-native";
+import { useFonts } from "expo-font";
 import strings from "../i18n/strings";
 
 const LanguageContext = createContext();
@@ -20,6 +21,14 @@ export function LanguageProvider({ children }) {
 
     const isRTL = lang === "ku";
 
+    const [fontsLoaded] = useFonts({
+      PeshangDes5Bold: require("../assets/kufont/Peshang_Des_5_Bold.ttf"),
+    });
+
+    // Helper: apply Kurdish font only when language is Kurdish
+    const kuFont = (isKu = (lang === "ku")) =>
+      isKu && fontsLoaded ? { fontFamily: "PeshangDes5Bold" } : {};
+
     // Sync document direction and language attribute on web
     useEffect(() => {
         if (Platform.OS === "web" && typeof document !== "undefined") {
@@ -30,7 +39,7 @@ export function LanguageProvider({ children }) {
         }
     }, [lang, isRTL]);
 
-    const value = { lang, setLang, t, toggleLanguage, isRTL };
+    const value = { lang, setLang, t, toggleLanguage, isRTL, kuFont };
 
     return (
         <LanguageContext.Provider value={value}>

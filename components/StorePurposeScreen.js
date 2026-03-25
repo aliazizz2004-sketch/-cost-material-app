@@ -7,7 +7,7 @@ import { colors, darkColors, spacing, typography, radius, shadows } from '../sty
 import AppIcon from './AppIcon';
 import MaterialCatalog from './MaterialCatalog';
 
-export default function StorePurposeScreen({ onBack, onNavigate }) {
+export default function StorePurposeScreen({ onBack, onNavigate, globalQuantities, setGlobalQuantities }) {
   const { lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
@@ -37,6 +37,8 @@ export default function StorePurposeScreen({ onBack, onNavigate }) {
         filterPurposes={filterPurposes}
         onBack={() => setShowCatalog(false)}
         onNavigate={onNavigate}
+        globalQuantities={globalQuantities}
+        setGlobalQuantities={setGlobalQuantities}
       />
     );
   }

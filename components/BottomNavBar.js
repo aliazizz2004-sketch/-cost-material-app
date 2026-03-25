@@ -57,6 +57,7 @@ const NAV_ITEMS = [
 const VIEW_TO_TAB = {
   home:        'home',
   store:       'store',
+  storePurpose:'store',
   aiHub:       'aiHub',
   aiArchitect: 'aiHub',
   arVisualizer:'aiHub',
@@ -70,7 +71,7 @@ const VIEW_TO_TAB = {
 
 // ─── Main component ──────────────────────────────────────────────────────────
 export default function BottomNavBar({ currentView, onNavigate }) {
-  const { lang, isRTL } = useLanguage();
+  const { lang, isRTL, kuFont } = useLanguage();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
 
@@ -103,6 +104,7 @@ export default function BottomNavBar({ currentView, onNavigate }) {
               isActive={isActive}
               isDark={isDark}
               lang={lang}
+              kuFont={kuFont}
               accentColor={accentColor}
               inactiveColor={inactiveColor}
               bgActive={bgActive}
@@ -116,7 +118,7 @@ export default function BottomNavBar({ currentView, onNavigate }) {
 }
 
 // ─── Single tab ──────────────────────────────────────────────────────────────
-function NavTab({ item, isActive, isDark, lang, accentColor, inactiveColor, bgActive, onPress }) {
+function NavTab({ item, isActive, isDark, lang, kuFont, accentColor, inactiveColor, bgActive, onPress }) {
   const bgAnim   = useRef(new Animated.Value(isActive ? 1 : 0)).current;
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const dotAnim  = useRef(new Animated.Value(isActive ? 1 : 0)).current;
@@ -189,7 +191,7 @@ function NavTab({ item, isActive, isDark, lang, accentColor, inactiveColor, bgAc
 
         {/* Label */}
         <Text
-          style={[styles.tabLabel, { color: labelColor, fontWeight }]}
+          style={[styles.tabLabel, { color: labelColor, fontWeight }, lang === 'ku' ? kuFont() : {}]}
           numberOfLines={1}
         >
           {lang === 'ku' ? item.labelKU : item.labelEN}

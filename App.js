@@ -1,5 +1,6 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { View, Text, StyleSheet, StatusBar, ActivityIndicator, TouchableOpacity, SafeAreaView, ScrollView, Platform, Alert } from "react-native";
+import Animated from 'react-native-reanimated';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ExchangeRateProvider, useExchangeRate } from "./contexts/ExchangeRateContext";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
@@ -26,9 +27,19 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "./styl
 import materialsData from "./data/materials";
 import { recognizeMaterial } from "./services/aiRecognition";
 import MaterialResultModal from "./components/MaterialResultModal";
+import { PageEnter, PageFadeIn } from "./components/animations";
+
+// Wraps any view in a reanimated entering animation
+function AnimatedPage({ children, style }) {
+  return (
+    <Animated.View style={[{ flex: 1 }, style]} entering={PageEnter}>
+      {children}
+    </Animated.View>
+  );
+}
 
 function AppContent() {
-  const { t, lang, isRTL } = useLanguage();
+  const { t, lang, isRTL, kuFont } = useLanguage();
   const { rate, loading: rateLoading } = useExchangeRate();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
@@ -46,6 +57,7 @@ function AppContent() {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResult, setAiResult] = useState(null);
   const [capturedImageUri, setCapturedImageUri] = useState(null);
+  const [globalQuantities, setGlobalQuantities] = useState({});
 
   useEffect(() => {
     AsyncStorage.getItem("costMaterialProjects").then((v) => {
@@ -56,11 +68,17 @@ function AppContent() {
   }, []);
 
   // Central navigation handler used by BottomNavBar AND sub-screens
-  const handleNavNavigate = useCallback((viewId) => {
+  const handleNavNavigate = useCallback((viewId, projectId = null) => {
+    if (projectId) {
+      setActiveProjectId(projectId);
+    }
     if (viewId === 'store') {
-      setActiveProjectId(null);
+      if (!projectId) setActiveProjectId(null);
       setNavStack(prev => [...prev, 'storePurpose']);
     } else {
+      if (!projectId && (viewId === 'home' || viewId === 'aiHub' || viewId === 'projects' || viewId === 'profile')) {
+          setActiveProjectId(null);
+      }
       setNavStack(prev => [...prev, viewId]);
     }
   }, []);
@@ -103,7 +121,7 @@ function AppContent() {
   const topActions = [
     { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
     { id: "store", icon: "store", title: ku ? "کۆگای مادەکان" : "Material Store", desc: ku ? "کاتەلۆگ و لیستی مادەکان" : "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => handleNavNavigate("storePurpose") },
-    { id: "est", icon: "layers", title: ku ? "ژمێرەری خەمڵاندن" : "Estimation Calc", desc: ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => handleNavNavigate("estimation") },
+    { id: "est", icon: "layers", title: ku ? "ژمێرەری خەملاندن (زەڕعە)" : "Estimation Calc (زەڕعە)", desc: ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => handleNavNavigate("estimation") },
   ];
 
   const extraActions = [
@@ -114,6 +132,38 @@ function AppContent() {
     { id: "projects", icon: "projects", title: ku ? "پڕۆژەکان" : "Projects", desc: ku ? "بەڕێوەبردنی شوێنەکانت" : "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => handleNavNavigate("projects") },
     { id: "community", icon: "chat", title: ku ? "کۆمەڵگا" : "Community", desc: ku ? "پرسیار بکە لە پسپۆڕەکان" : "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => handleNavNavigate("community") },
   ];
+
+  const activeProject = projects.find(p => p.id === activeProjectId);
+
+  const handleSaveDeliveryToProject = useCallback((str, costUSD) => {
+    if (!activeProjectId) return;
+    const updated = projects.map(p => {
+      if (p.id === activeProjectId) {
+         return {
+           ...p,
+           deliveryStr: str,
+           deliveryCostUSD: costUSD || 0,
+           totalCostUSD: (p.totalCostUSD || 0) + (costUSD || 0) - (p.deliveryCostUSD || 0)
+         };
+      }
+      return p;
+    });
+    setProjects(updated);
+    AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated));
+  }, [activeProjectId, projects]);
+
+  const handleSaveEstimationToProject = useCallback((matId, estStr) => {
+    if (!activeProjectId) return;
+    const updated = projects.map(p => {
+      if (p.id === activeProjectId) {
+         const newEsts = { ...p.estimations, [matId]: estStr };
+         return { ...p, estimations: newEsts };
+      }
+      return p;
+    });
+    setProjects(updated);
+    AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated));
+  }, [activeProjectId, projects]);
 
   if (rateLoading && !rate) {
     return (
@@ -130,22 +180,23 @@ function AppContent() {
 
   if (currentView === "storePurpose") {
     return (
-      <View style={{ flex: 1 }}>
+      <AnimatedPage>
         <StorePurposeScreen onSelect={(purposes) => {
-          // After selecting purposes, navigate to store or stay (the component handles its own catalog)
-          // For now we just stay — StorePurposeScreen internally shows the catalog
-        }} onBack={handleBack} onNavigate={handleNavNavigate} />
-      </View>
+        }} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} />
+        {renderBottomNav()}
+      </AnimatedPage>
     );
   }
-  if (currentView === "estimation") return <View style={{ flex: 1 }}><EstimationCalculator onBack={handleBack} />{renderBottomNav()}</View>;
-  if (currentView === "delivery") return <View style={{ flex: 1 }}><DeliveryCostEstimator onBack={handleBack} />{renderBottomNav()}</View>;
-  if (currentView === "suppliers") return <View style={{ flex: 1 }}><SupplierDirectory onBack={handleBack} />{renderBottomNav()}</View>;
-  if (currentView === "projects") return <View style={{ flex: 1 }}><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={{}} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onGoToStore={() => handleNavNavigate("storePurpose")} onGoToDelivery={() => handleNavNavigate("delivery")} onGoToEstimation={() => handleNavNavigate("estimation")} onBack={handleBack} />{renderBottomNav()}</View>;
-  if (currentView === "community") return <View style={{ flex: 1 }}><CommunityForum onBack={handleBack} />{renderBottomNav()}</View>;
-  if (currentView === "aiArchitect") return <View style={{ flex: 1 }}><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storePurpose")} />{renderBottomNav()}</View>;
-  if (currentView === "arVisualizer") return <View style={{ flex: 1 }}><ARVisualizer onBack={handleBack} />{renderBottomNav()}</View>;
-  if (currentView === "profile") return <View style={{ flex: 1 }}><UserProfile onBack={handleBack} projects={projects} />{renderBottomNav()}</View>;
+
+
+  if (currentView === "estimation") return <AnimatedPage><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "delivery") return <AnimatedPage><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({...acc, [it.id]: it.qty}), {})} storeMaterials={materialsData} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "suppliers") return <AnimatedPage><SupplierDirectory onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "projects") return <AnimatedPage><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storePurpose", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storePurpose"); })} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "community") return <AnimatedPage><CommunityForum onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "aiArchitect") return <AnimatedPage><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storePurpose")} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "arVisualizer") return <AnimatedPage><ARVisualizer onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "profile") return <AnimatedPage><UserProfile onBack={handleBack} projects={projects} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "aiHub") {
     // AI Hub — show AI tools
     return (
@@ -196,8 +247,8 @@ function AppContent() {
           <SafeAreaView>
             <View style={styles.headerTop}>
               <View>
-                <Text style={styles.heroTitle}>{ku ? "زانیاری بیناسازی" : "Construction Intelligence"}</Text>
-                <Text style={styles.heroSub}>{ku ? "بەڕێوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}</Text>
+                <Text style={[styles.heroTitle, kuFont()]}>{ku ? "زانیاری بیناسازی" : "Construction Intelligence"}</Text>
+                <Text style={[styles.heroSub, kuFont()]}>{ku ? "بەڕێوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}</Text>
               </View>
               <LanguageToggle />
             </View>
@@ -208,35 +259,35 @@ function AppContent() {
         <View style={styles.statsWrap}>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
             <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }]}>{ku ? "مادەکان" : "Materials"}</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "مادەکان" : "Materials"}</Text>
           </View>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
             <Text style={[styles.statV, { color: tc.primary }]}>{rate ? Math.round(rate) : "--"}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }]}>{ku ? "دینار / دۆلار" : "IQD / USD"}</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "دینار / دۆلار" : "IQD / USD"}</Text>
           </View>
         </View>
 
         <View style={styles.mainGrid}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
           {topActions.map(a => (
             <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
                <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
                <View style={styles.textWrap}>
-                 <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
-                 <Text style={styles.cardDesc}>{a.desc}</Text>
+                 <Text style={[styles.cardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
+                 <Text style={[styles.cardDesc, kuFont()]}>{a.desc}</Text>
                </View>
             </TouchableOpacity>
           ))}
         </View>
 
         <View style={styles.extraGridSection}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
           <View style={styles.extraGrid}>
             {extraActions.map(a => (
               <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
                 <View style={[styles.iconWrapSmall, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={20} color={a.color} /></View>
-                <Text style={[styles.extraCardTitle, { color: tc.charcoal }]}>{a.title}</Text>
-                <Text style={styles.cardDesc} numberOfLines={2}>{a.desc}</Text>
+                <Text style={[styles.extraCardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
+                <Text style={[styles.cardDesc, kuFont()]} numberOfLines={2}>{a.desc}</Text>
               </TouchableOpacity>
             ))}
           </View>

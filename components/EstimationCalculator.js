@@ -13,7 +13,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { colors, darkColors, spacing, typography, radius, shadows } from '../styles/theme';
 
-export default function EstimationCalculator({ onBack, initialCategory = 'menu', activeProjectName, onAutoSave }) {
+export default function EstimationCalculator({ onBack, initialCategory = 'menu', activeProjectName, onAutoSave, activeProject, materials }) {
   const { lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
@@ -442,6 +442,37 @@ export default function EstimationCalculator({ onBack, initialCategory = 'menu',
     }
   }, [result, onAutoSave, activeCategory, copy]);
 
+  const availableKeys = useMemo(() => {
+    const allKeys = ['block', 'brick', 'concrete', 'tile', 'plaster', 'paint', 'rebar', 'isogam', 'gypsum'];
+    if (!activeProject || !activeProject.items || !materials) return allKeys;
+    
+    const keys = new Set();
+    activeProject.items.forEach(it => {
+      const mat = materials.find(m => m.id === it.id);
+      if (!mat) return;
+      
+      const n = (mat.nameEN || '').toLowerCase();
+      const c = (mat.categoryEN || '').toLowerCase();
+      
+      if (c.includes('masonry')) {
+        if (n.includes('brick')) keys.add('brick');
+        else keys.add('block');
+      }
+      if (c.includes('concrete') || c.includes('aggregate')) keys.add('concrete');
+      if (c.includes('structural') || n.includes('rebar')) keys.add('rebar');
+      if (n.includes('paint') || n.includes('coating')) keys.add('paint');
+      if (c.includes('finishing')) {
+         if (n.includes('tile') || n.includes('marble') || n.includes('granite')) keys.add('tile');
+         if (n.includes('plaster') || n.includes('juss')) keys.add('plaster');
+         if (n.includes('gypsum') || n.includes('drywall') || n.includes('board')) keys.add('gypsum');
+      }
+      if (c.includes('insulation') || c.includes('roofing') || n.includes('waterproofing') || n.includes('membrane')) keys.add('isogam');
+    });
+
+    if (keys.size === 0) return allKeys;
+    return Array.from(keys);
+  }, [activeProject, materials]);
+
   const handleOpenCategory = (cat) => {
     setActiveCategory(cat);
     resetInputs();
@@ -451,7 +482,7 @@ export default function EstimationCalculator({ onBack, initialCategory = 'menu',
     <Animated.View entering={FadeIn} leaving={FadeOut} style={styles.menuContainer}>
       <Text style={[styles.menuTitle, isRTL && styles.textRTL]}>{copy.chooseMaterial}</Text>
       <View style={styles.grid}>
-        {['block', 'brick', 'concrete', 'tile', 'plaster', 'paint', 'rebar', 'isogam', 'gypsum'].map((key) => (
+        {availableKeys.map((key) => (
           <TouchableOpacity
             key={key}
             style={[styles.gridCard, { backgroundColor: tc.white, borderColor: tc.cardBorder }]}

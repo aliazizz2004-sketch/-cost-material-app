@@ -16,6 +16,14 @@ if (Platform.OS === 'web' && typeof document !== 'undefined') {
 
   const style = document.createElement('style');
   style.textContent = `
+    /* Kurdish / Peshang custom font */
+    @font-face {
+      font-family: 'PeshangDes5Bold';
+      src: url('./assets/kufont/Peshang_Des_5_Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
     /* Force all elements to inherit font-family so the global stack is respected
        even within React Native Web's auto-generated container structure. */
     *, *::before, *::after {

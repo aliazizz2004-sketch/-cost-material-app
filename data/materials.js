@@ -94,7 +94,7 @@ const materials = [
     descKU: "چەسپی سمێنتی بۆ دانانی کاشی سرامیک و پۆرسلین و بەرد.",
     localBrands: ["Henkel Ceresit", "Mapei", "Turkish brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/7a/Tileadhesive.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1523413555809-0fb1d4edaf49?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -640,7 +640,7 @@ const materials = [
     descKU: "تانکی ھەڵگرتنی ئاوی سەربانی. پێویستە لە کوردستان.",
     localBrands: ["Local manufacturers", "Turkish tanks"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/6/68/Polyethylene_water_tank.jpg&w=400",
+    image: "https://images.unsplash.com/photo-1621252178007-8e6ded5b4819?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -756,7 +756,7 @@ const materials = [
     descKU: "پەمبەی بەرد بۆ ئینسولاسیۆنی گەرمی و دەنگی. بەرگری لە ئاگر.",
     localBrands: ["Rockwool", "Turkish brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/4/4b/Rock_wool_board.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -907,7 +907,7 @@ const materials = [
     descKU: "زەوی لامینەیت (پارکە) لەگەڵ دەسەی داری چاپکراو. زۆر یەکدەست و دووبارەبوو.",
     localBrands: ["Turkish laminate", "Chinese laminate", "AGT", "Kronospan"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/8/8a/Laminate_flooring.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1510344498361-b5413efb07ca?w=500&q=80",
   },
   {
     id: 53,
@@ -983,7 +983,7 @@ const materials = [
     descKU: "تۆڕی وایەری ئاسنی ئەلکراو بۆ بەھێزکردنی سلابی کۆنکریت.",
     localBrands: ["Local fabricators"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/f/f3/Wire_mesh.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1533036839356-9ac7f2d4499d?w=500&q=80",
   },
   {
     id: 48,
@@ -1019,7 +1019,7 @@ const materials = [
     descKU: "سیستەمی بەرزایی ھەڵواسراو بۆ ئۆفیس و شوێنی بازرگانی.",
     localBrands: ["Armstrong", "Turkish systems"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/7e/Suspended_ceiling_tiles.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 50,
@@ -1077,7 +1077,7 @@ const materials = [
     descKU: "کیلسای کوژراو بۆ ملاط و ڕازی کوردی کۆنی و سپی کردنی دیوار. بەرهەمهێنانی خۆماڵی لە بازیان.",
     localBrands: ["Bazian Lime", "Local Kilsa"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0b/Calciumhydroxide.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 58,
@@ -1095,7 +1095,7 @@ const materials = [
     descKU: "پوتیی دیواری بۆ ڕووی هەواری ناوەوە پێش بۆیەکردن. داپوشینی چرووک و کێشەکان.",
     localBrands: ["Henkel Ceresit", "Mapei", "Turkish brands", "Iranian brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5d/Plastering_wall.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 59,
@@ -1113,7 +1113,7 @@ const materials = [
     descKU: "جۆینتی سمێنتی ڕەنگاوڕەنگ بۆ پڕکردنەوەی نێوان کاشی.",
     localBrands: ["Henkel Ceresit", "Mapei", "Sika"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/a/a9/Grouting_tile.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1523413555809-0fb1d4edaf49?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1135,7 +1135,7 @@ const materials = [
     descKU: "پرۆفایلی چوارگۆشەی ئاسنی بۆش بۆ دەرگا، چوارچێوە، پەرگۆلا. بەکارهێنانی فراوان لە کوردستان.",
     localBrands: ["Med Steel", "Local fabricators", "Turkish imports"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/1/13/Hollow_structural_section.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1533036839356-9ac7f2d4499d?w=500&q=80",
   },
   {
     id: 61,
@@ -1153,7 +1153,7 @@ const materials = [
     descKU: "ئاسنی مەسطەح و تەختەی ئاسن بۆ دروستکردن و پەیوەندەکان و بنەما.",
     localBrands: ["Med Steel", "Halkawt Steel", "Alpha Steel"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/22/Steel_plates.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1533036839356-9ac7f2d4499d?w=500&q=80",
   },
   {
     id: 62,
@@ -1171,7 +1171,7 @@ const materials = [
     descKU: "سلابی کۆنکریتی پێشداکراوی بۆشی بۆ زەوی و سەربان. زۆر باوە لە بیناسازی نوێی کوردستان.",
     localBrands: ["Local precast factories", "Erbil Precast"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/28/Hollow_core_slab.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1193,7 +1193,7 @@ const materials = [
     descKU: "خشتی قوڕی بۆش لەگەڵ كزهەکانی ئەستووری. ئینسولاسیۆنی گەرمی باشتر لە خشتی پڕ.",
     localBrands: ["Ashur Brick", "Chamchamal Brick", "Local kilns"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/c/cc/Hollow_clay_brick.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356bfb?w=500&q=80",
   },
   {
     id: 64,
@@ -1211,7 +1211,7 @@ const materials = [
     descKU: "بلۆکی کۆنکریتی ئینتەرلۆک بۆ ڕێگاکان وشوێنی دەرەوە. زۆر باوە لە کوردستان.",
     localBrands: ["Local block factories", "Republic Blocks"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/9/9e/Interlocking_concrete_blocks.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356bfb?w=500&q=80",
   },
   {
     id: 65,
@@ -1229,7 +1229,7 @@ const materials = [
     descKU: "کەنارە کۆنکریتی پێشداکراو بۆ ئاستەنگی کەناری ڕێگا.",
     localBrands: ["Local block factories"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/e/eb/Concrete_curb.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1251,7 +1251,7 @@ const materials = [
     descKU: "کاشی سرامیکی دیواری بۆ حەمام و مەتبەخ. ھاوردە لە تورکیا و ئێران و چین.",
     localBrands: ["Turkish imports", "Iranian imports", "Chinese imports"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/e/e8/Tile_pattern.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1523413555809-0fb1d4edaf49?w=500&q=80",
   },
   {
     id: 67,
@@ -1269,7 +1269,7 @@ const materials = [
     descKU: "کاشی مۆزاییکی بچووک (شووشە، بەرد یان سرامیک) بۆ دیواری جوانکاری و حەمامەکان.",
     localBrands: ["Turkish imports", "Spanish imports"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/d/d0/Mosaic_tiles.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1523413555809-0fb1d4edaf49?w=500&q=80",
   },
   {
     id: 68,
@@ -1287,7 +1287,7 @@ const materials = [
     descKU: "کۆرنیشی جەبسی جوانکاری بۆ بەرزایی و دیوار. زۆر باوە لە ماڵەکانی کوردستان.",
     localBrands: ["Local gypsum workshops", "Bazian Gypsum"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/8/87/Gypsum_cornice.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=500&q=80",
   },
   {
     id: 69,
@@ -1305,7 +1305,7 @@ const materials = [
     descKU: "چینی سکریدی خوڵ-سمێنت بۆ ئاستکردنی زەوی پێش دانانی کاشی.",
     localBrands: ["Site mixed", "Knauf Screed", "Mapei"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/1/11/Floor_screed.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1590240974836-586bc114948a?w=500&q=80",
   },
   {
     id: 70,
@@ -1323,7 +1323,7 @@ const materials = [
     descKU: "کاشی ڕووناو دژێ سورڕوون بۆ حەمام، بالکۆن، و پلیکان.",
     localBrands: ["Turkish imports", "Spanish imports"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/5e/Non_slip_tiles.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1523413555809-0fb1d4edaf49?w=500&q=80",
   },
   {
     id: 71,
@@ -1341,7 +1341,7 @@ const materials = [
     descKU: "سیلیکۆنی نەرم بۆ داخستنی دەریچەکان و پەنجەرەکان و حەمامەکان.",
     localBrands: ["Sika", "Henkel", "Turkish brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/d/d6/Silicone_sealant.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 72,
@@ -1359,7 +1359,7 @@ const materials = [
     descKU: "سیستەمی ئینسولاسیۆن و ڕازی دەرەوە: فۆم + بەیس کۆت + شەبەکە + ڕازی جوانکاری.",
     localBrands: ["Mapei", "Sika", "Turkish EIFS systems"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/b/b4/EIFS_system.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1381,7 +1381,7 @@ const materials = [
     descKU: "بۆری HDPE بۆ ھێڵی سەرەکی ئاو لە ژێر زەوی و ئاویاری.",
     localBrands: ["Turkish HDPE", "Iranian HDPE"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/f/f4/HDPE_pipeline.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1621252178007-8e6ded5b4819?w=500&q=80",
   },
   {
     id: 74,
@@ -1399,7 +1399,7 @@ const materials = [
     descKU: "بۆری مس بۆ ئاوی خواردن لە بینای لوکس. بادەوام و ساخلامیانەی باشە.",
     localBrands: ["Turkish copper pipe", "Imported copper"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/70/Copper_tubes.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1621252178007-8e6ded5b4819?w=500&q=80",
   },
   {
     id: 75,
@@ -1417,7 +1417,7 @@ const materials = [
     descKU: "مستافراخانەی سرامیکی (کلۆزێت) لەگەڵ تەسنیف. براندێ تورکی و ئەورووپی.",
     localBrands: ["Vitra", "Eczacibasi (VitrA)", "Turkish brands", "Iranian brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/6/6e/Toilet_Western.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 76,
@@ -1435,7 +1435,7 @@ const materials = [
     descKU: "دستشووری سرامیکی بۆ حەمام. ئەنواعی ناو میز، پایەدار و دیواری.",
     localBrands: ["Vitra", "Turkish brands", "Iranian brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/7e/Washbasin_2020.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 77,
@@ -1453,7 +1453,7 @@ const materials = [
     descKU: "بۆیلەری کارەبایی (٨٠ لیتر). ئاسایی لە هەموو ماڵەکانی کوردستان.",
     localBrands: ["Ariston", "Vaillant", "Turkish brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/4/46/Electric_water_heater.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1475,7 +1475,7 @@ const materials = [
     descKU: "مانتای کارەبایی PVC بۆ پاراستنی کێبڵ لە ناو دیوار و بەرزایی.",
     localBrands: ["Turkish conduit", "Iranian conduit"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/a/ae/PVC_conduit.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?w=500&q=80",
   },
   {
     id: 79,
@@ -1493,7 +1493,7 @@ const materials = [
     descKU: "پانێلی ووشاندنی کارەبا (بانۆ) لەگەڵ پاراستنی MCB و RCD بۆ ماڵەکان.",
     localBrands: ["Schneider Electric", "ABB", "Turkish brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/c/c9/Electrical_distribution_board.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?w=500&q=80",
   },
   {
     id: 80,
@@ -1511,7 +1511,7 @@ const materials = [
     descKU: "ڕووناکی LED کراوە (٦٠×٦٠سم). جێگرەوەی چرایی فلوورەسانتی.",
     localBrands: ["Philips", "Osram", "Turkish LED brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/e/e1/LED_panel_light.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 81,
@@ -1529,7 +1529,7 @@ const materials = [
     descKU: "کێبڵی کارەبای مس ٦مم² بۆ هێڵی سەرەکی و ئامێرێ گران بار.",
     localBrands: ["Turkish Prysmian", "Turkish cables"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/6/60/Electrical_wire.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1544724569-5f546fd6f2b6?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1551,7 +1551,7 @@ const materials = [
     descKU: "تەختەی PIR ئینسولاسیۆن. کارایی گەرمی باشتر لە EPS و XPS.",
     localBrands: ["Kingspan", "Turkish PIR"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/29/Insulation_board_PIR.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=500&q=80",
   },
   {
     id: 83,
@@ -1569,7 +1569,7 @@ const materials = [
     descKU: "پانێلی فۆمی دەنگبڕ بۆ ستودیۆ و ئۆفیس و ژووری کۆبوونەوە.",
     localBrands: ["Turkish acoustic foam", "Imported brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/0/0a/Acoustic_foam_panels.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1591,7 +1591,7 @@ const materials = [
     descKU: "رووڵی بیتۆمینی کاتی کۆن بۆ بەرگری لە ئاو لە سەربانی.",
     localBrands: ["Turkish bitumen", "Iranian bitumen"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/a/a2/Bitumen_felt.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 85,
@@ -1609,7 +1609,7 @@ const materials = [
     descKU: "قەرپیچی قوڕی کۆنی بۆ سەربانی شێوی. زۆربە لە ڤیلا و یایلاقەکانی کوردستان.",
     localBrands: ["Turkish clay tiles", "Iranian clay tiles"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/2/2b/Clay_roof_tiles.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1523413555809-0fb1d4edaf49?w=500&q=80",
   },
   {
     id: 86,
@@ -1627,7 +1627,7 @@ const materials = [
     descKU: "تەختەی ئاسنی گالڤانایزی پرۆفایلداری بۆ سلاب. باوە لە بینای بازرگانی و کارگە.",
     localBrands: ["Local fabricators", "Turkish imports"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/7/7b/Metal_deck_roofing.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1533036839356-9ac7f2d4499d?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1649,7 +1649,7 @@ const materials = [
     descKU: "بۆری کۆنکریتی ئاسنداخراو بۆ ئاپاراتوسات و ئاپاراتوسەکانی شاری.",
     localBrands: ["Local precast factories"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/3/35/Concrete_pipe.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1621252178007-8e6ded5b4819?w=500&q=80",
   },
   {
     id: 88,
@@ -1667,7 +1667,7 @@ const materials = [
     descKU: "ملاتی خوڵ-سمێنت (ئیستوک) بۆ ڕازی ناوەوە و دەرەوەی دیوار. بەکارهێنانی زۆرترین لە عێراق.",
     localBrands: ["Site mixed", "Turkish premix"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/9/9f/Cement_plaster.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1590240974836-586bc114948a?w=500&q=80",
   },
   {
     id: 89,
@@ -1685,7 +1685,7 @@ const materials = [
     descKU: "جێنەرەیتەری دیزڵی پێویست لە عێراق هەروەک کارەبای دەوڵەت بەردەوام نییە. ویست کیلۆفۆڵت بۆ بینای ناوەند.",
     localBrands: ["Perkins", "Cummins", "Lister Petter", "Mitsubishi"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/6/67/Diesel_generator.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1707,7 +1707,7 @@ const materials = [
     descKU: "پانێلی کۆمپۆزیتی ئەلەمنیۆم بۆ فاسادی بینا و ئیعلانات. دوو چینی ئەلەمنیۆم لەگەڵ ناوازەی.",
     localBrands: ["Alucobond", "Local fabricators", "Turkish ACP"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/a/a6/Aluminum_composite_panel.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 91,
@@ -1725,7 +1725,7 @@ const materials = [
     descKU: "فاسادی شووشەی کورتن وۆل بۆ باڵەخانەی ئۆفیس و هۆتێل. دوو چینی شووشە.",
     localBrands: ["Local aluminum fabricators", "Turkish systems"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/8/8d/Curtain_wall_facade.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 92,
@@ -1743,7 +1743,7 @@ const materials = [
     descKU: "ئیمپریماتوری بیتۆمینی سارد بۆ ئامادەکردنی ڕووی کۆنکریت پێش دانانی مەمبرەین.",
     localBrands: ["Sika", "Turkish bitumen brands"],
     origin: "imported",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/5/53/Bituminous_paint.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1541888085994-b2586dbba27f?w=500&q=80",
   },
   {
     id: 93,
@@ -1761,7 +1761,7 @@ const materials = [
     descKU: "دەستگیرەی ئینۆکسی نەمامەژەنگ بۆ پلیکان و بالکۆن. ڕووی ئاوینەیی یان ماتەیی.",
     localBrands: ["Local fabricators", "Turkish stainless"],
     origin: "local",
-    image: "https://images.weserv.nl/?url=upload.wikimedia.org/wikipedia/commons/e/e0/Stainless_steel_handrail.jpg&w=600",
+    image: "https://images.unsplash.com/photo-1533036839356-9ac7f2d4499d?w=500&q=80",
   },
 
 ];

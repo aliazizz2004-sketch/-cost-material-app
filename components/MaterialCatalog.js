@@ -40,11 +40,11 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
 
   // Category filter based on purpose selection
   const purposeCategoryMap = {
-    Structural: ['Concrete', 'Steel & Rebar', 'Cement & Binding'],
-    Masonry: ['Masonry', 'Plaster & Bonding'],
-    Roofing: ['Insulation', 'Waterproofing'],
-    Plumbing: ['Plumbing'],
-    Finishing: ['Paint & Coatings', 'Flooring & Finishes', 'Gypsum & Drywall'],
+    Structural: ['Concrete', 'Structural', 'Binding', 'Aggregate'],
+    Masonry: ['Masonry', 'Binding'],
+    Roofing: ['Insulation', 'Roofing'],
+    Plumbing: ['Plumbing', 'Electrical'],
+    Finishing: ['Finishing', 'Openings'],
   };
 
   const filteredByPurpose = useMemo(() => {

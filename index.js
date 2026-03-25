@@ -16,14 +16,6 @@ if (Platform.OS === 'web' && typeof document !== 'undefined') {
 
   const style = document.createElement('style');
   style.textContent = `
-    /* Kurdish / Peshang custom font */
-    @font-face {
-      font-family: 'PeshangDes5Bold';
-      src: url('./assets/kufont/Peshang_Des_5_Bold.ttf') format('truetype');
-      font-weight: bold;
-      font-style: normal;
-    }
-
     /* Force all elements to inherit font-family so the global stack is respected
        even within React Native Web's auto-generated container structure. */
     *, *::before, *::after {
@@ -33,13 +25,13 @@ if (Platform.OS === 'web' && typeof document !== 'undefined') {
     /* Global fallback: include Arabic fonts in the base font stack for all common elements.
        This ensures Arabic/Kurdish script always resolves to a proper font even in LTR contexts. */
     html, body, div, span, p {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      font-family: 'PeshangDes5Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
                    'Noto Naskh Arabic', 'Noto Sans Arabic', Arial, sans-serif;
     }
 
     /* Kurdish / Arabic script: Force the correct font for the whole page when in RTL mode. */
     :lang(ar), :lang(ku), [dir="rtl"], [dir="rtl"] * {
-      font-family: 'Noto Naskh Arabic', 'Noto Sans Arabic', Arial, sans-serif !important;
+      font-family: 'PeshangDes5Bold', 'Noto Naskh Arabic', 'Noto Sans Arabic', Arial, sans-serif;
     }
 
     /* Ensure correct directionality and bidi rendering for mixed LTR/RTL content */

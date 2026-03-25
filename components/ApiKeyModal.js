@@ -59,8 +59,9 @@ export default function ApiKeyModal({ visible, onClose, onKeySaved }) {
 
         // Test the key with a simple request
         try {
-            const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${trimmed}`;
-            const response = await fetch(testUrl, {
+            // Test validity by making a minimal request to the specified 3.1 flash lite preview model
+            const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${trimmed}`;
+            const res = await fetch(testUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -69,8 +70,8 @@ export default function ApiKeyModal({ visible, onClose, onKeySaved }) {
                 }),
             });
 
-            if (!response.ok) {
-                const data = await response.json();
+            if (!res.ok) {
+                const data = await res.json();
                 throw new Error(data?.error?.message || "Invalid API key");
             }
 

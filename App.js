@@ -262,8 +262,8 @@ function AppContent() {
             <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "مادەکان" : "Materials"}</Text>
           </View>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
-            <Text style={[styles.statV, { color: tc.primary }]}>{rate ? Math.round(rate) : "--"}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "دینار / دۆلار" : "IQD / USD"}</Text>
+            <Text style={[styles.statV, { color: tc.primary }]}>{rate ? (Math.round(rate) * 100).toLocaleString() : "--"}</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "دینار / 100$" : "IQD / $100"}</Text>
           </View>
         </View>
 

@@ -20,6 +20,7 @@ import ProjectManager from "./components/ProjectManager";
 import CommunityForum from "./components/CommunityForum";
 import AIArchitect from "./components/AIArchitect";
 import ARVisualizer from "./components/ARVisualizer";
+import UserProfile from "./components/UserProfile";
 
 import { colors, darkColors, spacing, typography, radius, shadows } from "./styles/theme";
 import materialsData from "./data/materials";
@@ -31,6 +32,7 @@ function AppContent() {
   const { rate, loading: rateLoading } = useExchangeRate();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
+  const ku = lang === 'ku';
 
   const [currentView, setCurrentView] = useState("home");
   
@@ -52,6 +54,7 @@ function AppContent() {
     });
   }, []);
 
+  // Central navigation handler used by BottomNavBar AND sub-screens
   const handleNavNavigate = useCallback((viewId) => {
     if (viewId === 'store') {
       setActiveProjectId(null);
@@ -91,20 +94,20 @@ function AppContent() {
     }
   };
 
-  // UI Datasets
+  // UI Datasets — with Kurdish translations
   const topActions = [
-    { id: "ai", icon: "scan", title: "AI Recognizer", desc: "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
-    { id: "store", icon: "store", title: "Material Store", desc: "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => setCurrentView("storePurpose") },
-    { id: "est", icon: "layers", title: "Estimation Calc", desc: "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => setCurrentView("estimation") },
+    { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
+    { id: "store", icon: "store", title: ku ? "کۆگای مادەکان" : "Material Store", desc: ku ? "کاتەلۆگ و لیستی مادەکان" : "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => setCurrentView("storePurpose") },
+    { id: "est", icon: "layers", title: ku ? "ژمێرەری خەمڵاندن" : "Estimation Calc", desc: ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => setCurrentView("estimation") },
   ];
 
   const extraActions = [
-    { id: "aiArch", icon: "bot", title: "AI Architect", desc: "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => setCurrentView("aiArchitect") },
-    { id: "arViz", icon: "glasses", title: "AR Visualizer", desc: "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => setCurrentView("arVisualizer") },
-    { id: "delivery", icon: "truck", title: "Delivery Calc", desc: "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => setCurrentView("delivery") },
-    { id: "suppliers", icon: "book", title: "Suppliers", desc: "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => setCurrentView("suppliers") },
-    { id: "projects", icon: "projects", title: "Projects", desc: "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => setCurrentView("projects") },
-    { id: "community", icon: "chat", title: "Community", desc: "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => setCurrentView("community") },
+    { id: "aiArch", icon: "bot", title: ku ? "AI ئەندازیار" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => setCurrentView("aiArchitect") },
+    { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => setCurrentView("arVisualizer") },
+    { id: "delivery", icon: "truck", title: ku ? "ژمێرەری گواستنەوە" : "Delivery Calc", desc: ku ? "تێچووی بارکردن بۆ شارەکان" : "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => setCurrentView("delivery") },
+    { id: "suppliers", icon: "book", title: ku ? "دابینکەرەکان" : "Suppliers", desc: ku ? "پەیوەندی کردن بە فرۆشیارەوە" : "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => setCurrentView("suppliers") },
+    { id: "projects", icon: "projects", title: ku ? "پڕۆژەکان" : "Projects", desc: ku ? "بەڕێوەبردنی شوێنەکانت" : "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => setCurrentView("projects") },
+    { id: "community", icon: "chat", title: ku ? "کۆمەڵگا" : "Community", desc: ku ? "پرسیار بکە لە پسپۆڕەکان" : "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => setCurrentView("community") },
   ];
 
   if (rateLoading && !rate) {
@@ -115,15 +118,68 @@ function AppContent() {
     );
   }
 
-  // Router Blocks
-  if (currentView === "storePurpose") return <StorePurposeScreen onNavigate={handleNavNavigate} onBack={() => setCurrentView("home")} />;
-  if (currentView === "estimation") return <EstimationCalculator onBack={() => setCurrentView("home")} />;
-  if (currentView === "delivery") return <DeliveryCostEstimator onBack={() => setCurrentView("home")} />;
-  if (currentView === "suppliers") return <SupplierDirectory onBack={() => setCurrentView("home")} />;
-  if (currentView === "projects") return <ProjectManager projects={projects} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onBack={() => setCurrentView("home")} />;
-  if (currentView === "community") return <CommunityForum onBack={() => setCurrentView("home")} />;
-  if (currentView === "aiArchitect") return <AIArchitect onBack={() => setCurrentView("home")} />;
-  if (currentView === "arVisualizer") return <ARVisualizer onBack={() => setCurrentView("home")} />;
+  // Router Blocks — each view gets the BottomNavBar unless it's a full-page modal
+  const renderBottomNav = () => (
+    <BottomNavBar currentView={currentView} onNavigate={handleNavNavigate} />
+  );
+
+  if (currentView === "storePurpose") {
+    return (
+      <View style={{ flex: 1 }}>
+        <StorePurposeScreen onSelect={(purposes) => {
+          // After selecting purposes, navigate to store or stay (the component handles its own catalog)
+          // For now we just stay — StorePurposeScreen internally shows the catalog
+        }} onBack={() => setCurrentView("home")} onNavigate={handleNavNavigate} />
+      </View>
+    );
+  }
+  if (currentView === "estimation") return <View style={{ flex: 1 }}><EstimationCalculator onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "delivery") return <View style={{ flex: 1 }}><DeliveryCostEstimator onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "suppliers") return <View style={{ flex: 1 }}><SupplierDirectory onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "projects") return <View style={{ flex: 1 }}><ProjectManager projects={projects} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "community") return <View style={{ flex: 1 }}><CommunityForum onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "aiArchitect") return <View style={{ flex: 1 }}><AIArchitect onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "arVisualizer") return <View style={{ flex: 1 }}><ARVisualizer onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
+  if (currentView === "profile") return <View style={{ flex: 1 }}><UserProfile onBack={() => setCurrentView("home")} projects={projects} />{renderBottomNav()}</View>;
+  if (currentView === "aiHub") {
+    // AI Hub — show AI tools
+    return (
+      <View style={[styles.container, { backgroundColor: tc.offWhite }]}>
+        <StatusBar barStyle="light-content" backgroundColor={tc.primary} />
+        <View style={[styles.hero, { backgroundColor: tc.primary, paddingBottom: 30 }]}>
+          <SafeAreaView>
+            <View style={styles.headerTop}>
+              <View>
+                <Text style={styles.heroTitle}>{ku ? "ئامرازەکانی AI" : "AI Tools"}</Text>
+                <Text style={styles.heroSub}>{ku ? "ئامرازە زیرەکەکان بۆ بیناسازی" : "Smart construction tools"}</Text>
+              </View>
+              <LanguageToggle />
+            </View>
+          </SafeAreaView>
+        </View>
+        <ScrollView contentContainerStyle={[styles.scrollContent, { paddingTop: 20 }]} showsVerticalScrollIndicator={false}>
+          <View style={styles.mainGrid}>
+            {[
+              { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
+              { id: "aiArch", icon: "bot", title: ku ? "AI ئەندازیار" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => setCurrentView("aiArchitect") },
+              { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => setCurrentView("arVisualizer") },
+            ].map(a => (
+              <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
+                 <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
+                 <View style={styles.textWrap}>
+                   <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
+                   <Text style={styles.cardDesc}>{a.desc}</Text>
+                 </View>
+              </TouchableOpacity>
+            ))}
+          </View>
+          <View style={{ height: 100 }} />
+        </ScrollView>
+        <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={() => {}} />
+        {renderBottomNav()}
+      </View>
+    );
+  }
 
   // Home Screen
   return (
@@ -135,8 +191,8 @@ function AppContent() {
           <SafeAreaView>
             <View style={styles.headerTop}>
               <View>
-                <Text style={styles.heroTitle}>{lang === "ku" ? "زانیاری بیناسازی" : "Construction Intelligence"}</Text>
-                <Text style={styles.heroSub}>{lang === "ku" ? "بەڕێوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}</Text>
+                <Text style={styles.heroTitle}>{ku ? "زانیاری بیناسازی" : "Construction Intelligence"}</Text>
+                <Text style={styles.heroSub}>{ku ? "بەڕێوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}</Text>
               </View>
               <LanguageToggle />
             </View>
@@ -147,16 +203,16 @@ function AppContent() {
         <View style={styles.statsWrap}>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
             <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
-            <Text style={styles.statL}>Materials</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }]}>{ku ? "مادەکان" : "Materials"}</Text>
           </View>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
             <Text style={[styles.statV, { color: tc.primary }]}>{rate ? Math.round(rate) : "--"}</Text>
-            <Text style={styles.statL}>IQD / USD</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }]}>{ku ? "دینار / دۆلار" : "IQD / USD"}</Text>
           </View>
         </View>
 
         <View style={styles.mainGrid}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{lang === "ku" ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
           {topActions.map(a => (
             <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
                <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
@@ -169,7 +225,7 @@ function AppContent() {
         </View>
 
         <View style={styles.extraGridSection}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{lang === "ku" ? "زیاتر" : "Pro Features"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }]}>{ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
           <View style={styles.extraGrid}>
             {extraActions.map(a => (
               <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
@@ -186,7 +242,7 @@ function AppContent() {
       {/* AI Result Modal */}
       <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={() => {}} />
 
-      <BottomNavBar activeTab={currentView} onTabPress={setCurrentView} />
+      {renderBottomNav()}
     </View>
   );
 }
@@ -220,7 +276,7 @@ const styles = StyleSheet.create({
   statsWrap: { flexDirection: 'row', paddingHorizontal: 20, marginTop: -30, gap: 12 },
   statBox: { flex: 1, padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card, alignItems: 'center' },
   statV: { fontSize: 22, fontWeight: '700' },
-  statL: { fontSize: 12, color: '#64748B', marginTop: 4, textTransform: 'uppercase', letterSpacing: 0.5 },
+  statL: { fontSize: 12, marginTop: 4, textTransform: 'uppercase', letterSpacing: 0.5 },
   mainGrid: { paddingHorizontal: 20, marginTop: 24, gap: 12 },
   sectionTitle: { fontSize: 18, fontWeight: '700', marginBottom: 8 },
   mainCard: { flexDirection: 'row', alignItems: 'center', padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card },

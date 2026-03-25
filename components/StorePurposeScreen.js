@@ -5,14 +5,17 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { colors, darkColors, spacing, typography, radius, shadows } from '../styles/theme';
 import AppIcon from './AppIcon';
+import MaterialCatalog from './MaterialCatalog';
 
-export default function StorePurposeScreen({ onSelect, onBack }) {
+export default function StorePurposeScreen({ onBack, onNavigate }) {
   const { lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
   const ku = lang === 'ku';
 
   const [selected, setSelected] = useState([]);
+  const [showCatalog, setShowCatalog] = useState(false);
+  const [filterPurposes, setFilterPurposes] = useState([]);
 
   const toggleSelection = (id) => {
     if (selected.includes(id)) {
@@ -22,9 +25,24 @@ export default function StorePurposeScreen({ onSelect, onBack }) {
     }
   };
 
+  const handleContinue = (purposes) => {
+    setFilterPurposes(purposes);
+    setShowCatalog(true);
+  };
+
+  // If catalog is shown, render it
+  if (showCatalog) {
+    return (
+      <MaterialCatalog
+        filterPurposes={filterPurposes}
+        onBack={() => setShowCatalog(false)}
+      />
+    );
+  }
+
   const purposes = [
     { id: 'Structural', icon: 'layers', title: ku ? 'ستراکچەر و بناغە' : 'Foundation & Structure', desc: ku ? 'شیش، چیمەنتۆ، کۆنکریت' : 'Steel, cement, concrete' },
-    { id: 'Masonry', icon: 'category', title: ku ? 'دیوار و بیناسازی' : 'Walls & Masonry', desc: ku ? 'بلۆک، خشت، گەچ' : 'Blocks, bricks, mortar' },
+    { id: 'Masonry', icon: 'checklist', title: ku ? 'دیوار و بیناسازی' : 'Walls & Masonry', desc: ku ? 'بلۆک، خشت، گەچ' : 'Blocks, bricks, mortar' },
     { id: 'Roofing', icon: 'home', title: ku ? 'سەقف و داپۆشین' : 'Roofing & Insulation', desc: ku ? 'شینگل، عازل، ئیزۆگام' : 'Shingles, waterproofing, isogam' },
     { id: 'Plumbing', icon: 'settings', title: ku ? 'بۆری و کارەبا' : 'Plumbing & Electrical', desc: ku ? 'بۆری ئاو، وایەر، کەیبڵ' : 'Pipes, wires, cables' },
     { id: 'Finishing', icon: 'sparkles', title: ku ? 'پەرداخت و ڕووپۆشکردن' : 'Finishing & Decor', desc: ku ? 'بۆیەی، کاشی، سەقفی مەغریبی' : 'Paint, tiles, gypsum board' },
@@ -76,7 +94,7 @@ export default function StorePurposeScreen({ onSelect, onBack }) {
                   activeOpacity={0.8}
                   onPress={() => {
                     if (item.skip) {
-                      onSelect([]);
+                      handleContinue([]);
                     } else {
                       toggleSelection(item.id);
                     }
@@ -106,11 +124,11 @@ export default function StorePurposeScreen({ onSelect, onBack }) {
       </ScrollView>
 
       {selected.length > 0 && (
-        <Animated.View entering={FadeInDown.duration(300)} style={styles.footer}>
+        <Animated.View entering={FadeInDown.duration(300)} style={[styles.footer, { backgroundColor: tc.offWhite, borderTopColor: tc.cardBorder }]}>
           <TouchableOpacity 
             style={[styles.continueBtn, isRTL && styles.rowRTL]} 
             activeOpacity={0.85}
-            onPress={() => onSelect(selected)}
+            onPress={() => handleContinue(selected)}
           >
             <Text style={styles.continueBtnText}>{ku ? 'بەردەوام بە' : 'Continue'} ({selected.length})</Text>
             <Text style={styles.continueBtnArrow}>{isRTL ? '‹' : '›'}</Text>
@@ -171,8 +189,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: colors.mediumGray,
     alignItems: 'center', justifyContent: 'center',
-    marginLeft: isRTL ? 0 : 8,
-    marginRight: isRTL ? 8 : 0,
+    marginLeft: 8,
   },
   checkboxActive: {
     backgroundColor: colors.primary,
@@ -187,9 +204,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingBottom: Platform.OS === 'ios' ? spacing.xxl : spacing.lg,
     paddingTop: spacing.md,
-    backgroundColor: tc.offWhite,
     borderTopWidth: 1,
-    borderTopColor: tc.cardBorder,
   },
   continueBtn: {
     backgroundColor: colors.primary,

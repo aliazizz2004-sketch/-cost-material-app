@@ -14,6 +14,7 @@ import {
   Dimensions,
 } from "react-native";
 import Animated, { FadeIn, FadeInDown, FadeInUp, SlideInRight, Layout } from "react-native-reanimated";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
@@ -362,41 +363,82 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
   }, [userInput, lang, qualityTier]);
 
   const handleAddPhaseToStore = useCallback(
-    (phase) => {
-      if (!onAddToStore || !phase?.items) return;
-      const quantities = {};
-      let count = 0;
-      phase.items.forEach((item) => {
-        const mat = materialsData.find((m) => m.id == item.materialId);
-        if (mat) {
-          quantities[mat.id] = (quantities[mat.id] || 0) + Math.ceil(item.quantity);
-          count++;
-        }
-      });
-      onAddToStore(quantities);
-      setAddedCount(count);
-      setAddedToList(true);
+    async (phase) => {
+      if (!phase?.items) return;
+      try {
+        const existing = await AsyncStorage.getItem('costMaterialSavedLists');
+        const lists = existing ? JSON.parse(existing) : [];
+        
+        const validItems = [];
+        let totalCost = 0;
+        
+        phase.items.forEach((item) => {
+          const mat = materialsData.find((m) => m.id == item.materialId);
+          if (mat) {
+             const qty = Math.ceil(item.quantity);
+             validItems.push({ id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice });
+             totalCost += mat.basePrice * qty;
+          }
+        });
+        
+        if (validItems.length === 0) return;
+
+        const phaseName = lang === "ku" ? phase.phaseKU : phase.phaseEN;
+        const projectBase = lang === "ku" ? result?.projectSummary?.titleKU : result?.projectSummary?.titleEN;
+
+        lists.unshift({
+          id: Date.now().toString(),
+          name: projectBase ? `${projectBase} - ${phaseName}` : phaseName,
+          date: new Date().toISOString(),
+          items: validItems,
+          totalCost: totalCost,
+        });
+
+        await AsyncStorage.setItem('costMaterialSavedLists', JSON.stringify(lists));
+        setAddedCount(validItems.length);
+        setAddedToList(true);
+      } catch (e) { console.error('Error saving phase', e); }
     },
-    [onAddToStore]
+    [result, lang]
   );
 
-  const handleAddAllToStore = useCallback(() => {
-    if (!onAddToStore || !result?.phases) return;
-    const quantities = {};
-    let count = 0;
-    result.phases.forEach((phase) => {
-      (phase.items || []).forEach((item) => {
-        const mat = materialsData.find((m) => m.id == item.materialId);
-        if (mat) {
-          quantities[mat.id] = (quantities[mat.id] || 0) + Math.ceil(item.quantity);
-          count++;
-        }
-      });
-    });
-    onAddToStore(quantities);
-    setAddedCount(count);
-    setAddedToList(true);
-  }, [onAddToStore, result]);
+  const handleAddAllToStore = useCallback(async () => {
+    if (!result?.phases) return;
+    try {
+        const existing = await AsyncStorage.getItem('costMaterialSavedLists');
+        const lists = existing ? JSON.parse(existing) : [];
+        
+        const validItems = [];
+        let totalCost = 0;
+
+        result.phases.forEach((phase) => {
+          (phase.items || []).forEach((item) => {
+            const mat = materialsData.find((m) => m.id == item.materialId);
+            if (mat) {
+              const qty = Math.ceil(item.quantity);
+              validItems.push({ id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice });
+              totalCost += mat.basePrice * qty;
+            }
+          });
+        });
+
+        if (validItems.length === 0) return;
+        
+        const projectName = lang === "ku" ? result?.projectSummary?.titleKU : result?.projectSummary?.titleEN;
+        
+        lists.unshift({
+          id: Date.now().toString(),
+          name: projectName || (lang === "ku" ? "لێکدانەوەی AI" : "AI Estimate"),
+          date: new Date().toISOString(),
+          items: validItems,
+          totalCost: totalCost,
+        });
+
+        await AsyncStorage.setItem('costMaterialSavedLists', JSON.stringify(lists));
+        setAddedCount(validItems.length);
+        setAddedToList(true);
+    } catch (e) { console.error('Error saving all', e); }
+  }, [result, lang]);
 
   const getMaterialById = useCallback((id) => {
     return materialsData.find((m) => m.id == id);

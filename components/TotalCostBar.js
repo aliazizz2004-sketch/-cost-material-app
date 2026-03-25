@@ -3,15 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Platform, Image, ScrollView, 
 import { colors, spacing, radius, typography, shadows } from "../styles/theme";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
-
-const SaveIcon = ({ color = colors.white, isRTL }) => (
-    <View style={{ width: 16, height: 16, position: 'relative', marginRight: isRTL ? 0 : 6, marginLeft: isRTL ? 6 : 0 }}>
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: color, borderRadius: 2 }} />
-        <View style={{ position: 'absolute', top: 1, left: 2, right: 3, height: 5, backgroundColor: colors.primary, opacity: 0.8, borderRadius: 1 }} />
-        <View style={{ position: 'absolute', top: 2, right: 4, width: 2, height: 3, backgroundColor: color, borderRadius: 0.5 }} />
-        <View style={{ position: 'absolute', bottom: 1, left: 3, right: 3, height: 6, backgroundColor: colors.primary, opacity: 0.4, borderRadius: 1 }} />
-    </View>
-);
+import AppIcon from "./AppIcon";
 
 export default function TotalCostBar({ quantities, materials, onQuantityChange, onSelectItem, onSaveList, forceOpenModal, onClearAll }) {
     const { t, isRTL, lang } = useLanguage();
@@ -135,7 +127,9 @@ export default function TotalCostBar({ quantities, materials, onQuantityChange, 
                                     style={[styles.modalSaveBtnProfessional, isRTL && styles.rowRTL]}
                                     activeOpacity={0.8}
                                 >
-                                    <SaveIcon color={colors.white} isRTL={isRTL} />
+                                    <View style={{ marginRight: isRTL ? 0 : 8, marginLeft: isRTL ? 8 : 0 }}>
+                                        <AppIcon name="bookmark" size={18} color={colors.white} />
+                                    </View>
                                     <Text style={styles.modalSaveBtnTextProfessional}>{t("save")}</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity 

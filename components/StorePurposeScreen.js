@@ -36,6 +36,7 @@ export default function StorePurposeScreen({ onBack, onNavigate }) {
       <MaterialCatalog
         filterPurposes={filterPurposes}
         onBack={() => setShowCatalog(false)}
+        onNavigate={onNavigate}
       />
     );
   }

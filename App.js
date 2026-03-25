@@ -34,7 +34,8 @@ function AppContent() {
   const tc = isDark ? darkColors : colors;
   const ku = lang === 'ku';
 
-  const [currentView, setCurrentView] = useState("home");
+  const [navStack, setNavStack] = useState(["home"]);
+  const currentView = navStack[navStack.length - 1] || "home";
   
   // Projects State
   const [projects, setProjects] = useState([]);
@@ -58,10 +59,14 @@ function AppContent() {
   const handleNavNavigate = useCallback((viewId) => {
     if (viewId === 'store') {
       setActiveProjectId(null);
-      setCurrentView('storePurpose');
+      setNavStack(prev => [...prev, 'storePurpose']);
     } else {
-      setCurrentView(viewId);
+      setNavStack(prev => [...prev, viewId]);
     }
+  }, []);
+
+  const handleBack = useCallback(() => {
+    setNavStack(prev => prev.length > 1 ? prev.slice(0, -1) : ["home"]);
   }, []);
 
   const openAiCamera = async () => {
@@ -97,17 +102,17 @@ function AppContent() {
   // UI Datasets — with Kurdish translations
   const topActions = [
     { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
-    { id: "store", icon: "store", title: ku ? "کۆگای مادەکان" : "Material Store", desc: ku ? "کاتەلۆگ و لیستی مادەکان" : "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => setCurrentView("storePurpose") },
-    { id: "est", icon: "layers", title: ku ? "ژمێرەری خەمڵاندن" : "Estimation Calc", desc: ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => setCurrentView("estimation") },
+    { id: "store", icon: "store", title: ku ? "کۆگای مادەکان" : "Material Store", desc: ku ? "کاتەلۆگ و لیستی مادەکان" : "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => handleNavNavigate("storePurpose") },
+    { id: "est", icon: "layers", title: ku ? "ژمێرەری خەمڵاندن" : "Estimation Calc", desc: ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => handleNavNavigate("estimation") },
   ];
 
   const extraActions = [
-    { id: "aiArch", icon: "bot", title: ku ? "AI ئەندازیار" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => setCurrentView("aiArchitect") },
-    { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => setCurrentView("arVisualizer") },
-    { id: "delivery", icon: "truck", title: ku ? "ژمێرەری گواستنەوە" : "Delivery Calc", desc: ku ? "تێچووی بارکردن بۆ شارەکان" : "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => setCurrentView("delivery") },
-    { id: "suppliers", icon: "book", title: ku ? "دابینکەرەکان" : "Suppliers", desc: ku ? "پەیوەندی کردن بە فرۆشیارەوە" : "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => setCurrentView("suppliers") },
-    { id: "projects", icon: "projects", title: ku ? "پڕۆژەکان" : "Projects", desc: ku ? "بەڕێوەبردنی شوێنەکانت" : "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => setCurrentView("projects") },
-    { id: "community", icon: "chat", title: ku ? "کۆمەڵگا" : "Community", desc: ku ? "پرسیار بکە لە پسپۆڕەکان" : "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => setCurrentView("community") },
+    { id: "aiArch", icon: "bot", title: ku ? "ئەندازیاری AI" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
+    { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
+    { id: "delivery", icon: "truck", title: ku ? "ژمێرەری گواستنەوە" : "Delivery Calc", desc: ku ? "تێچووی بارکردن بۆ شارەکان" : "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => handleNavNavigate("delivery") },
+    { id: "suppliers", icon: "book", title: ku ? "دابینکەرەکان" : "Suppliers", desc: ku ? "پەیوەندی کردن بە فرۆشیارەوە" : "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => handleNavNavigate("suppliers") },
+    { id: "projects", icon: "projects", title: ku ? "پڕۆژەکان" : "Projects", desc: ku ? "بەڕێوەبردنی شوێنەکانت" : "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => handleNavNavigate("projects") },
+    { id: "community", icon: "chat", title: ku ? "کۆمەڵگا" : "Community", desc: ku ? "پرسیار بکە لە پسپۆڕەکان" : "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => handleNavNavigate("community") },
   ];
 
   if (rateLoading && !rate) {
@@ -129,18 +134,18 @@ function AppContent() {
         <StorePurposeScreen onSelect={(purposes) => {
           // After selecting purposes, navigate to store or stay (the component handles its own catalog)
           // For now we just stay — StorePurposeScreen internally shows the catalog
-        }} onBack={() => setCurrentView("home")} onNavigate={handleNavNavigate} />
+        }} onBack={handleBack} onNavigate={handleNavNavigate} />
       </View>
     );
   }
-  if (currentView === "estimation") return <View style={{ flex: 1 }}><EstimationCalculator onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "delivery") return <View style={{ flex: 1 }}><DeliveryCostEstimator onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "suppliers") return <View style={{ flex: 1 }}><SupplierDirectory onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "projects") return <View style={{ flex: 1 }}><ProjectManager projects={projects} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "community") return <View style={{ flex: 1 }}><CommunityForum onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "aiArchitect") return <View style={{ flex: 1 }}><AIArchitect onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "arVisualizer") return <View style={{ flex: 1 }}><ARVisualizer onBack={() => setCurrentView("home")} />{renderBottomNav()}</View>;
-  if (currentView === "profile") return <View style={{ flex: 1 }}><UserProfile onBack={() => setCurrentView("home")} projects={projects} />{renderBottomNav()}</View>;
+  if (currentView === "estimation") return <View style={{ flex: 1 }}><EstimationCalculator onBack={handleBack} />{renderBottomNav()}</View>;
+  if (currentView === "delivery") return <View style={{ flex: 1 }}><DeliveryCostEstimator onBack={handleBack} />{renderBottomNav()}</View>;
+  if (currentView === "suppliers") return <View style={{ flex: 1 }}><SupplierDirectory onBack={handleBack} />{renderBottomNav()}</View>;
+  if (currentView === "projects") return <View style={{ flex: 1 }}><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={{}} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onGoToStore={() => handleNavNavigate("storePurpose")} onGoToDelivery={() => handleNavNavigate("delivery")} onGoToEstimation={() => handleNavNavigate("estimation")} onBack={handleBack} />{renderBottomNav()}</View>;
+  if (currentView === "community") return <View style={{ flex: 1 }}><CommunityForum onBack={handleBack} />{renderBottomNav()}</View>;
+  if (currentView === "aiArchitect") return <View style={{ flex: 1 }}><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storePurpose")} />{renderBottomNav()}</View>;
+  if (currentView === "arVisualizer") return <View style={{ flex: 1 }}><ARVisualizer onBack={handleBack} />{renderBottomNav()}</View>;
+  if (currentView === "profile") return <View style={{ flex: 1 }}><UserProfile onBack={handleBack} projects={projects} />{renderBottomNav()}</View>;
   if (currentView === "aiHub") {
     // AI Hub — show AI tools
     return (
@@ -161,8 +166,8 @@ function AppContent() {
           <View style={styles.mainGrid}>
             {[
               { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
-              { id: "aiArch", icon: "bot", title: ku ? "AI ئەندازیار" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => setCurrentView("aiArchitect") },
-              { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => setCurrentView("arVisualizer") },
+              { id: "aiArch", icon: "bot", title: ku ? "ئەندازیاری AI" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
+              { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
             ].map(a => (
               <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
                  <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>

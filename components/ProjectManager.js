@@ -34,6 +34,8 @@ export default function ProjectManager({
   projects,
   setProjects,
   onOpenAiCamera,
+  setGlobalQuantities,
+  onNavigate,
 }) {
   const { t, lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
@@ -50,73 +52,73 @@ export default function ProjectManager({
     () =>
       lang === "ku"
         ? {
-            title: "بەڕێوەبردنی پڕۆژەکان",
-            subtitle: "پڕۆژەکانت بپارێزە و بەڕێوەببە",
-            create: "پڕۆژەیەکی نوێ دروست بکە",
-            name: "ناوی پڕۆژە",
-            note: "تێبینی (دلخوازانە)",
-            save: "پاشەکەوتکردن",
-            update: "نوێکردنەوە",
-            cancel: "هەڵوەشاندنەوە",
-            delete: "سڕینەوە",
-            load: "کردنەوە",
-            saveUpdate: "پاشەکەوتی نوێ",
-            noProjects: "هیچ پڕۆژەیەکت نییە. دەستبکە بە دروستکردنی یەکێک!",
-            date: "بەروار",
-            items: "بڕگە",
-            totalCost: "کۆی تێچوو",
-            namePlaceholder: "ناوی پڕۆژەکەت بنووسە...",
-            notePlaceholder: "تێبینی...",
-            projectCreated: "پڕۆژە پاشەکەوت کرا!",
-            projectUpdated: "پڕۆژە نوێ کرایەوە!",
-            projectDeleted: "پڕۆژە سڕایەوە",
-            confirmDelete: "دڵنیایت لە سڕینەوەی ئەم پڕۆژەیە؟",
-            yes: "بەڵێ",
-            no: "نەخێر",
-            saveCurrent: "هەڵبژاردنی ئێستا پاشەکەوت بکە",
-            back: "گەڕانەوە",
-            quickLinks: "ئامرازەکان",
-            goStore: "فرۆشگا",
-            goDelivery: "گەیاندن",
-            goEstimation: "خەمڵاندن",
-            noItems: "هیچ بابەتێکت هەڵنەبژاردووە. سەرەتا بابەت هەڵبژێرە!",
-            goToStore: "بڕۆ بۆ فرۆشگا",
-            exportPdf: "دەرهێنانی PDF",
-          }
+          title: "بەڕێوەبردنی پڕۆژەکان",
+          subtitle: "پڕۆژەکانت بپارێزە و بەڕێوەببە",
+          create: "پڕۆژەیەکی نوێ دروست بکە",
+          name: "ناوی پڕۆژە",
+          note: "تێبینی (دلخوازانە)",
+          save: "پاشەکەوتکردن",
+          update: "نوێکردنەوە",
+          cancel: "هەڵوەشاندنەوە",
+          delete: "سڕینەوە",
+          load: "کردنەوە",
+          saveUpdate: "پاشەکەوتی نوێ",
+          noProjects: "هیچ پڕۆژەیەکت نییە. دەستبکە بە دروستکردنی یەکێک!",
+          date: "بەروار",
+          items: "بڕگە",
+          totalCost: "کۆی تێچوو",
+          namePlaceholder: "ناوی پڕۆژەکەت بنووسە...",
+          notePlaceholder: "تێبینی...",
+          projectCreated: "پڕۆژە پاشەکەوت کرا!",
+          projectUpdated: "پڕۆژە نوێ کرایەوە!",
+          projectDeleted: "پڕۆژە سڕایەوە",
+          confirmDelete: "دڵنیایت لە سڕینەوەی ئەم پڕۆژەیە؟",
+          yes: "بەڵێ",
+          no: "نەخێر",
+          saveCurrent: "هەڵبژاردنی ئێستا پاشەکەوت بکە",
+          back: "گەڕانەوە",
+          quickLinks: "ئامرازەکان",
+          goStore: "فرۆشگا",
+          goDelivery: "گەیاندن",
+          goEstimation: "خەمڵاندن",
+          noItems: "هیچ بابەتێکت هەڵنەبژاردووە. سەرەتا بابەت هەڵبژێرە!",
+          goToStore: "بڕۆ بۆ فرۆشگا",
+          exportPdf: "دەرهێنانی PDF",
+        }
         : {
-            title: "Project Manager",
-            subtitle: "Save and manage your construction projects",
-            create: "Create New Project",
-            name: "Project Name",
-            note: "Note (optional)",
-            save: "Save",
-            update: "Update",
-            cancel: "Cancel",
-            delete: "Delete",
-            load: "Load",
-            saveUpdate: "Save Update",
-            noProjects: "No projects yet. Start by creating one!",
-            date: "Date",
-            items: "items",
-            totalCost: "Total Cost",
-            namePlaceholder: "Enter project name...",
-            notePlaceholder: "Add a note...",
-            projectCreated: "Project saved!",
-            projectUpdated: "Project updated!",
-            projectDeleted: "Project deleted",
-            confirmDelete: "Are you sure you want to delete this project?",
-            yes: "Yes",
-            no: "No",
-            saveCurrent: "Save current selection",
-            back: "Back",
-            quickLinks: "Quick Tools",
-            goStore: "Store",
-            goDelivery: "Delivery",
-            goEstimation: "Estimation",
-            noItems: "No items selected yet. Select items first!",
-            goToStore: "Go to Store",
-            exportPdf: "Export PDF",
-          },
+          title: "Project Manager",
+          subtitle: "Save and manage your construction projects",
+          create: "Create New Project",
+          name: "Project Name",
+          note: "Note (optional)",
+          save: "Save",
+          update: "Update",
+          cancel: "Cancel",
+          delete: "Delete",
+          load: "Load",
+          saveUpdate: "Save Update",
+          noProjects: "No projects yet. Start by creating one!",
+          date: "Date",
+          items: "items",
+          totalCost: "Total Cost",
+          namePlaceholder: "Enter project name...",
+          notePlaceholder: "Add a note...",
+          projectCreated: "Project saved!",
+          projectUpdated: "Project updated!",
+          projectDeleted: "Project deleted",
+          confirmDelete: "Are you sure you want to delete this project?",
+          yes: "Yes",
+          no: "No",
+          saveCurrent: "Save current selection",
+          back: "Back",
+          quickLinks: "Quick Tools",
+          goStore: "Store",
+          goDelivery: "Delivery",
+          goEstimation: "Estimation",
+          noItems: "No items selected yet. Select items first!",
+          goToStore: "Go to Store",
+          exportPdf: "Export PDF",
+        },
     [lang]
   );
 
@@ -189,11 +191,11 @@ export default function ProjectManager({
       const updated = projects.map((p) =>
         p.id === projectId
           ? {
-              ...p,
-              items: selectedItems,
-              totalCostUSD: totalCost + (p.deliveryCostUSD || 0),
-              date: new Date().toISOString(),
-            }
+            ...p,
+            items: selectedItems,
+            totalCostUSD: totalCost + (p.deliveryCostUSD || 0),
+            date: new Date().toISOString(),
+          }
           : p
       );
       await saveProjects(updated);
@@ -237,7 +239,7 @@ export default function ProjectManager({
     try {
       const dateStr = new Date(project.date).toLocaleDateString();
       const totalIQD = rate ? formatNumber(Math.round(project.totalCostUSD * rate)) : "0";
-      
+
       const html = `
         <html>
         <head>
@@ -272,32 +274,36 @@ export default function ProjectManager({
             <thead>
               <tr>
                 <th>${lang === 'ku' ? 'بڕگە' : 'Item'}</th>
-                <th>${lang === 'ku' ? 'بڕ' : 'Quantity'}</th>
-                <th>${lang === 'ku' ? 'تێچوو (خەمڵێندراو)' : 'Cost (est)'}</th>
+                <th>${lang === 'ku' ? 'بڕ' : 'Qty'}</th>
+                <th>${lang === 'ku' ? 'نرخی دانە' : 'Unit Price'}</th>
+                <th>${lang === 'ku' ? 'تێکڕای تێچوو' : 'Total Cost'}</th>
               </tr>
             </thead>
             <tbody>
               ${project.items.map(item => {
-                const mat = materials.find(m => m.id === item.id);
-                const matName = lang === "ku" && mat && mat.nameKU ? mat.nameKU : (mat ? mat.nameEN : "Unknown Item");
-                const cost = mat ? Math.round((mat.basePrice * item.qty) * (rate || 1)) : 0;
-                return `
+        const mat = materials.find(m => m.id === item.id);
+        const matName = lang === "ku" && mat && mat.nameKU ? mat.nameKU : (mat ? mat.nameEN : "Unknown Item");
+        const unitPrice = mat ? Math.round(mat.basePrice * (rate || 1)) : 0;
+        const totalCost = mat ? Math.round((mat.basePrice * item.qty) * (rate || 1)) : 0;
+        return `
                   <tr>
                     <td>${matName}</td>
                     <td>${item.qty}</td>
-                    <td>${formatNumber(cost)} IQD</td>
+                    <td>${formatNumber(unitPrice)} IQD</td>
+                    <td>${formatNumber(totalCost)} IQD</td>
                   </tr>
                 `;
-              }).join('')}
+      }).join('')}
               ${project.deliveryCostUSD ? `
                   <tr>
                     <td><em>${lang === 'ku' ? 'تێچووی گەیاندن' : 'Delivery Cost'}</em></td>
+                    <td>-</td>
                     <td>-</td>
                     <td>${formatNumber(Math.round(project.deliveryCostUSD * (rate || 1)))} IQD</td>
                   </tr>
               ` : ''}
               <tr class="total-row">
-                <td colspan="2" style="text-align: ${isRTL ? 'left' : 'right'}">${lang === 'ku' ? 'کۆی گشتی تێچوو:' : 'Total Estimated Cost:'}</td>
+                <td colspan="3" style="text-align: ${isRTL ? 'left' : 'right'}">${lang === 'ku' ? 'کۆی گشتی تێچوو:' : 'Total Estimated Cost:'}</td>
                 <td>${totalIQD} IQD</td>
               </tr>
             </tbody>
@@ -323,20 +329,11 @@ export default function ProjectManager({
         </body>
         </html>
       `;
-      
-      const { uri } = await Print.printToFileAsync({ html });
-      if (Platform.OS === 'web') {
-        // Fallback for web, mostly Print web creates an iframe print prompt automatically, 
-        // but if we want to ensure it works, we can just use printAsync
-        await Print.printAsync({ html });
-      } else {
-        const canShare = await Sharing.isAvailableAsync();
-        if (canShare) {
-          await Sharing.shareAsync(uri);
-        } else {
-          Alert.alert("PDF Saved", `File saved to: ${uri}`);
-        }
-      }
+
+      // Natively trigger the print/preview dialog directly for all platforms.
+      // This allows the user to preview the generated PDF, select "Save as PDF" (or print),
+      // adjust margins, scale, and paper size natively.
+      await Print.printAsync({ html });
     } catch (e) {
       console.warn(e);
       Alert.alert("Error", "Could not generate PDF");
@@ -355,7 +352,7 @@ export default function ProjectManager({
             <Text style={s.backBtnText}>{isRTL ? ">" : "<"}</Text>
           </TouchableOpacity>
           <View style={{ flex: 1 }}>
-            <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 8}}>
+            <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 8 }}>
               <AppIcon name="folder" size={24} color={colors.white} />
               <Text style={[s.headerTitle, isRTL && s.textRTL]}>
                 {copy.title}
@@ -408,7 +405,7 @@ export default function ProjectManager({
                 onPress={() => onGoToStore && onGoToStore()}
                 activeOpacity={0.8}
               >
-                <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                   <AppIcon name="store" size={16} color={colors.white} />
                   <Text style={s.goStoreBtnText}>{copy.goToStore}</Text>
                 </View>
@@ -462,15 +459,15 @@ export default function ProjectManager({
                           {totalIQD} IQD
                         </Text>
                       ) : null}
-                        <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 4, marginTop: 2}}>
-                          <AppIcon name="file-text" size={12} color={colors.darkGray} />
-                          <Text
-                            style={[s.projectNote, isRTL && s.textRTL, { marginTop: 0 }]}
-                            numberOfLines={1}
-                          >
-                            {project.note}
-                          </Text>
-                        </View>
+                      <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
+                        <AppIcon name="file-text" size={12} color={colors.darkGray} />
+                        <Text
+                          style={[s.projectNote, isRTL && s.textRTL, { marginTop: 0 }]}
+                          numberOfLines={1}
+                        >
+                          {project.note}
+                        </Text>
+                      </View>
                     </View>
                     <Text style={s.expandIcon}>
                       {isExpanded ? "▲" : "▼"}
@@ -516,24 +513,62 @@ export default function ProjectManager({
                             <Text style={s.quickLinkText}>{copy.goEstimation}</Text>
                           </TouchableOpacity>
                         </View>
+                        
+                        {/* ═══ AI Tools (Project Context) ═══ */}
+                        <Text style={[s.quickLinksLabel, isRTL && s.textRTL, { marginTop: 16 }]}>
+                          {lang === 'ku' ? 'ئامرازەکانی AI' : 'AI Tools'}
+                        </Text>
+                        <View style={[s.quickLinksRow, isRTL && s.rowRTL]}>
+                          <TouchableOpacity style={s.quickLinkBtn} onPress={() => { 
+                            const qtys = {}; project.items.forEach(i => qtys[i.id] = i.qty); 
+                            if(setGlobalQuantities) setGlobalQuantities(qtys); 
+                            if(onNavigate) onNavigate("ai", project.id); 
+                            if(onOpenAiCamera) onOpenAiCamera(); 
+                          }} activeOpacity={0.8}>
+                            <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(212,168,67,0.15)' }]}>
+                              <AppIcon name="scan" size={22} color={tc.accent} />
+                            </View>
+                            <Text style={s.quickLinkText}>{lang === 'ku' ? 'ناسینەوە' : 'Scanner'}</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={s.quickLinkBtn} onPress={() => { 
+                            const qtys = {}; project.items.forEach(i => qtys[i.id] = i.qty); 
+                            if(setGlobalQuantities) setGlobalQuantities(qtys); 
+                            if(onNavigate) onNavigate("aiArchitect", project.id); 
+                          }} activeOpacity={0.8}>
+                            <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(220,38,38,0.15)' }]}>
+                              <AppIcon name="bot" size={22} color="#DC2626" />
+                            </View>
+                            <Text style={s.quickLinkText}>{lang === 'ku' ? 'ئەندازیار' : 'Architect'}</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={s.quickLinkBtn} onPress={() => { 
+                            const qtys = {}; project.items.forEach(i => qtys[i.id] = i.qty); 
+                            if(setGlobalQuantities) setGlobalQuantities(qtys); 
+                            if(onNavigate) onNavigate("arVisualizer", project.id); 
+                          }} activeOpacity={0.8}>
+                            <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(124,58,237,0.15)' }]}>
+                              <AppIcon name="glasses" size={22} color="#7C3AED" />
+                            </View>
+                            <Text style={s.quickLinkText}>{lang === 'ku' ? 'بینەری AR' : 'AR View'}</Text>
+                          </TouchableOpacity>
+                        </View>
                       </View>
 
                       {project.deliveryStr && (
                         <View style={s.itemsList}>
-                          <Text style={[s.itemName, isRTL && s.textRTL, {fontWeight: 'bold', marginBottom: 4}]}>
+                          <Text style={[s.itemName, isRTL && s.textRTL, { fontWeight: 'bold', marginBottom: 4 }]}>
                             {lang === "ku" ? "گەیاندن (خەمڵێندراو):" : "Delivery (Est):"}
                           </Text>
-                          <Text style={[s.itemQty, isRTL && s.textRTL, {marginLeft: 0, fontWeight: 'normal', color: colors.darkGray}]}>{project.deliveryStr}</Text>
+                          <Text style={[s.itemQty, isRTL && s.textRTL, { marginLeft: 0, fontWeight: 'normal', color: colors.darkGray }]}>{project.deliveryStr}</Text>
                         </View>
                       )}
-                      
+
                       {project.estimations && Object.keys(project.estimations).length > 0 && (
                         <View style={s.itemsList}>
-                          <Text style={[s.itemName, isRTL && s.textRTL, {fontWeight: 'bold', marginBottom: 6}]}>
+                          <Text style={[s.itemName, isRTL && s.textRTL, { fontWeight: 'bold', marginBottom: 6 }]}>
                             {lang === "ku" ? "کەرەستە خەمڵێندراوەکان:" : "Estimations:"}
                           </Text>
                           {Object.values(project.estimations).map((estStr, i) => (
-                             <Text key={i} style={[s.itemQty, isRTL && s.textRTL, {marginLeft: 0, fontWeight: '500', color: colors.darkGray, marginBottom: 4}]}>• {estStr}</Text>
+                            <Text key={i} style={[s.itemQty, isRTL && s.textRTL, { marginLeft: 0, fontWeight: '500', color: colors.darkGray, marginBottom: 4 }]}>• {estStr}</Text>
                           ))}
                         </View>
                       )}
@@ -574,7 +609,7 @@ export default function ProjectManager({
                           onPress={() => setViewProject(project)}
                           activeOpacity={0.7}
                         >
-                          <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                          <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                             <AppIcon name="folder-open" size={16} color={colors.white} />
                             <Text style={s.loadBtnText}>{copy.load}</Text>
                           </View>
@@ -584,7 +619,7 @@ export default function ProjectManager({
                           onPress={() => updateProject(project.id)}
                           activeOpacity={0.7}
                         >
-                          <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                          <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                             <AppIcon name="save" size={16} color="#059669" />
                             <Text style={s.updateBtnText}>{copy.saveUpdate}</Text>
                           </View>
@@ -594,7 +629,7 @@ export default function ProjectManager({
                           onPress={() => exportPDF(project)}
                           activeOpacity={0.7}
                         >
-                          <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
+                          <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                             <AppIcon name="file-text" size={16} color="#4B5563" />
                             <Text style={s.exportBtnText}>{copy.exportPdf}</Text>
                           </View>
@@ -659,20 +694,6 @@ export default function ProjectManager({
                   </Text>
                 </View>
               ) : null}
-              {onOpenAiCamera && (
-                <TouchableOpacity 
-                  style={{ backgroundColor: colors.accent + '15', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8, flexDirection: 'row', alignItems: 'center', gap: 4 }}
-                  onPress={() => {
-                    setViewProject(null);
-                    onOpenAiCamera();
-                  }}
-                >
-                  <AppIcon name="scan" size={14} color={colors.accent} />
-                  <Text style={{ fontSize: 12, fontWeight: '700', color: colors.accent }}>
-                    {lang === 'ku' ? 'سکانکردنی AI' : 'AI Scan'}
-                  </Text>
-                </TouchableOpacity>
-              )}
             </View>
 
             {/* Full item list */}
@@ -743,83 +764,83 @@ export default function ProjectManager({
           <TouchableOpacity style={StyleSheet.absoluteFill} activeOpacity={1} onPress={() => setShowCreateModal(false)} />
           <Animated.View entering={FadeInUp.duration(350).springify().damping(22).stiffness(180)} style={s.modalCard} pointerEvents="box-none">
             <TouchableOpacity activeOpacity={1}>
-            <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', marginBottom: spacing.lg, gap: 8}}>
-              <AppIcon name="save" size={24} color={tc.charcoal} />
-              <Text style={[s.modalTitle, isRTL && s.textRTL, { marginBottom: 0 }]}>
-                {copy.create}
+              <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', marginBottom: spacing.lg, gap: 8 }}>
+                <AppIcon name="save" size={24} color={tc.charcoal} />
+                <Text style={[s.modalTitle, isRTL && s.textRTL, { marginBottom: 0 }]}>
+                  {copy.create}
+                </Text>
+              </View>
+
+              <Text style={[s.inputLabel, isRTL && s.textRTL]}>
+                {copy.name}
               </Text>
-            </View>
+              <TextInput
+                style={[s.input, isRTL && s.textRTL]}
+                placeholder={copy.namePlaceholder}
+                placeholderTextColor={colors.mediumGray}
+                value={projectName}
+                onChangeText={setProjectName}
+              />
 
-            <Text style={[s.inputLabel, isRTL && s.textRTL]}>
-              {copy.name}
-            </Text>
-            <TextInput
-              style={[s.input, isRTL && s.textRTL]}
-              placeholder={copy.namePlaceholder}
-              placeholderTextColor={colors.mediumGray}
-              value={projectName}
-              onChangeText={setProjectName}
-            />
-
-            <Text style={[s.inputLabel, isRTL && s.textRTL]}>
-              {copy.note}
-            </Text>
-            <TextInput
-              style={[s.input, s.inputMulti, isRTL && s.textRTL]}
-              placeholder={copy.notePlaceholder}
-              placeholderTextColor={colors.mediumGray}
-              value={projectNote}
-              onChangeText={setProjectNote}
-              multiline
-              numberOfLines={3}
-            />
-
-            <View style={[s.selectedSummary, currentItemCount === 0 && s.selectedSummaryWarning]}>
-              <Text style={[s.selectedText, isRTL && s.textRTL, currentItemCount === 0 && s.selectedTextWarning]}>
-                {currentItemCount > 0
-                  ? `${copy.saveCurrent}: ${currentItemCount} ${copy.items}`
-                  : `⚠️ ${copy.noItems}`}
+              <Text style={[s.inputLabel, isRTL && s.textRTL]}>
+                {copy.note}
               </Text>
-              {currentItemCount === 0 && (
+              <TextInput
+                style={[s.input, s.inputMulti, isRTL && s.textRTL]}
+                placeholder={copy.notePlaceholder}
+                placeholderTextColor={colors.mediumGray}
+                value={projectNote}
+                onChangeText={setProjectNote}
+                multiline
+                numberOfLines={3}
+              />
+
+              <View style={[s.selectedSummary, currentItemCount === 0 && s.selectedSummaryWarning]}>
+                <Text style={[s.selectedText, isRTL && s.textRTL, currentItemCount === 0 && s.selectedTextWarning]}>
+                  {currentItemCount > 0
+                    ? `${copy.saveCurrent}: ${currentItemCount} ${copy.items}`
+                    : `⚠️ ${copy.noItems}`}
+                </Text>
+                {currentItemCount === 0 && (
+                  <TouchableOpacity
+                    style={s.goStoreSmallBtn}
+                    onPress={() => {
+                      setShowCreateModal(false);
+                      onGoToStore && onGoToStore();
+                    }}
+                    activeOpacity={0.8}
+                  >
+                    <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                      <AppIcon name="store" size={16} color={colors.white} />
+                      <Text style={s.goStoreSmallBtnText}>{copy.goToStore}</Text>
+                    </View>
+                  </TouchableOpacity>
+                )}
+              </View>
+
+              <View style={[s.modalActions, isRTL && s.rowRTL]}>
                 <TouchableOpacity
-                  style={s.goStoreSmallBtn}
-                  onPress={() => {
-                    setShowCreateModal(false);
-                    onGoToStore && onGoToStore();
-                  }}
-                  activeOpacity={0.8}
+                  style={s.cancelBtn}
+                  onPress={() => setShowCreateModal(false)}
+                  activeOpacity={0.7}
                 >
-                  <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
-                    <AppIcon name="store" size={16} color={colors.white} />
-                    <Text style={s.goStoreSmallBtnText}>{copy.goToStore}</Text>
+                  <Text style={s.cancelBtnText}>{copy.cancel}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    s.saveBtn,
+                    (!projectName.trim() || currentItemCount === 0) && s.saveBtnDisabled,
+                  ]}
+                  onPress={createProject}
+                  disabled={!projectName.trim() || currentItemCount === 0}
+                  activeOpacity={0.85}
+                >
+                  <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                    <AppIcon name="save" size={18} color={colors.white} />
+                    <Text style={s.saveBtnText}>{copy.save}</Text>
                   </View>
                 </TouchableOpacity>
-              )}
-            </View>
-
-            <View style={[s.modalActions, isRTL && s.rowRTL]}>
-              <TouchableOpacity
-                style={s.cancelBtn}
-                onPress={() => setShowCreateModal(false)}
-                activeOpacity={0.7}
-              >
-                <Text style={s.cancelBtnText}>{copy.cancel}</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  s.saveBtn,
-                  (!projectName.trim() || currentItemCount === 0) && s.saveBtnDisabled,
-                ]}
-                onPress={createProject}
-                disabled={!projectName.trim() || currentItemCount === 0}
-                activeOpacity={0.85}
-              >
-                <View style={{flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
-                  <AppIcon name="save" size={18} color={colors.white} />
-                  <Text style={s.saveBtnText}>{copy.save}</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+              </View>
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
@@ -1207,5 +1228,32 @@ const s = StyleSheet.create({
     ...typography.subtitle,
     color: colors.white,
     fontWeight: "700",
+  },
+  aiToolsRow: {
+    flexDirection: 'row',
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.sm,
+    gap: 12,
+  },
+  aiToolBtn: {
+    flex: 1,
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderRadius: radius.lg,
+    ...shadows.card,
+  },
+  aiToolIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 6,
+  },
+  aiToolText: {
+    fontSize: 12,
+    fontWeight: '700',
   },
 });

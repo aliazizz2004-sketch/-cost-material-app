@@ -14,6 +14,7 @@ import AppIcon from "./components/AppIcon";
 
 // Features (Views)
 import StorePurposeScreen from "./components/StorePurposeScreen";
+import MaterialCatalog from "./components/MaterialCatalog";
 import EstimationCalculator from "./components/EstimationCalculator";
 import DeliveryCostEstimator from "./components/DeliveryCostEstimator";
 import SupplierDirectory from "./components/SupplierDirectory";
@@ -40,14 +41,14 @@ function AnimatedPage({ children, style }) {
 
 function AppContent() {
   const { t, lang, isRTL, kuFont } = useLanguage();
-  const { rate, loading: rateLoading } = useExchangeRate();
+  const { rate, loading: rateLoading, setManualRate } = useExchangeRate();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
   const ku = lang === 'ku';
 
   const [navStack, setNavStack] = useState(["home"]);
   const currentView = navStack[navStack.length - 1] || "home";
-  
+
   // Projects State
   const [projects, setProjects] = useState([]);
   const [activeProjectId, setActiveProjectId] = useState(null);
@@ -57,12 +58,45 @@ function AppContent() {
   const [aiLoading, setAiLoading] = useState(false);
   const [aiResult, setAiResult] = useState(null);
   const [capturedImageUri, setCapturedImageUri] = useState(null);
-  const [globalQuantities, setGlobalQuantities] = useState({});
+  const [globalQuantities, setGlobalQuantitiesState] = useState({});
+
+  const setGlobalQuantities = useCallback((value) => {
+    setGlobalQuantitiesState(prev => {
+      const next = typeof value === 'function' ? value(prev) : value;
+      if (activeProjectId) {
+        setProjects(oldProjects => {
+          const updated = oldProjects.map(p => {
+            if (p.id === activeProjectId) {
+              const items = [];
+              let totalCost = 0;
+              materialsData.forEach(m => {
+                const qty = next[m.id] || 0;
+                if (qty > 0) {
+                  items.push({ id: m.id, qty });
+                  totalCost += m.basePrice * qty;
+                }
+              });
+              return {
+                ...p,
+                items,
+                totalCostUSD: totalCost + (p.deliveryCostUSD || 0),
+                date: new Date().toISOString()
+              };
+            }
+            return p;
+          });
+          AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated)).catch(()=>{});
+          return updated;
+        });
+      }
+      return next;
+    });
+  }, [activeProjectId]);
 
   useEffect(() => {
     AsyncStorage.getItem("costMaterialProjects").then((v) => {
       if (v) {
-        try { setProjects(JSON.parse(v)); } catch (e) {}
+        try { setProjects(JSON.parse(v)); } catch (e) { }
       }
     });
   }, []);
@@ -77,7 +111,7 @@ function AppContent() {
       setNavStack(prev => [...prev, 'storePurpose']);
     } else {
       if (!projectId && (viewId === 'home' || viewId === 'aiHub' || viewId === 'projects' || viewId === 'profile')) {
-          setActiveProjectId(null);
+        setActiveProjectId(null);
       }
       setNavStack(prev => [...prev, viewId]);
     }
@@ -139,12 +173,12 @@ function AppContent() {
     if (!activeProjectId) return;
     const updated = projects.map(p => {
       if (p.id === activeProjectId) {
-         return {
-           ...p,
-           deliveryStr: str,
-           deliveryCostUSD: costUSD || 0,
-           totalCostUSD: (p.totalCostUSD || 0) + (costUSD || 0) - (p.deliveryCostUSD || 0)
-         };
+        return {
+          ...p,
+          deliveryStr: str,
+          deliveryCostUSD: costUSD || 0,
+          totalCostUSD: (p.totalCostUSD || 0) + (costUSD || 0) - (p.deliveryCostUSD || 0)
+        };
       }
       return p;
     });
@@ -156,8 +190,8 @@ function AppContent() {
     if (!activeProjectId) return;
     const updated = projects.map(p => {
       if (p.id === activeProjectId) {
-         const newEsts = { ...p.estimations, [matId]: estStr };
-         return { ...p, estimations: newEsts };
+        const newEsts = { ...p.estimations, [matId]: estStr };
+        return { ...p, estimations: newEsts };
       }
       return p;
     });
@@ -188,14 +222,29 @@ function AppContent() {
     );
   }
 
+  if (currentView === "storeAll") {
+    return (
+      <AnimatedPage>
+        <MaterialCatalog
+          filterPurposes={[]}
+          onBack={handleBack}
+          onNavigate={handleNavNavigate}
+          globalQuantities={globalQuantities}
+          setGlobalQuantities={setGlobalQuantities}
+        />
+        {renderBottomNav()}
+      </AnimatedPage>
+    );
+  }
+
 
   if (currentView === "estimation") return <AnimatedPage><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "delivery") return <AnimatedPage><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({...acc, [it.id]: it.qty}), {})} storeMaterials={materialsData} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "delivery") return <AnimatedPage><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({ ...acc, [it.id]: it.qty }), {})} storeMaterials={materialsData} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "suppliers") return <AnimatedPage><SupplierDirectory onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "projects") return <AnimatedPage><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storePurpose", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storePurpose"); })} onOpenAiCamera={openAiCamera} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "projects") return <AnimatedPage><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storeAll", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storeAll"); })} onOpenAiCamera={openAiCamera} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "community") return <AnimatedPage><CommunityForum onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "aiArchitect") return <AnimatedPage><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storePurpose")} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "arVisualizer") return <AnimatedPage><ARVisualizer onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "aiArchitect") return <AnimatedPage><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storeAll")} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "arVisualizer") return <AnimatedPage><ARVisualizer onBack={handleBack} onAddToStore={(qtys) => { setGlobalQuantities(prev => ({ ...prev, ...qtys })); handleNavNavigate("storeAll"); }} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "profile") return <AnimatedPage><UserProfile onBack={handleBack} projects={projects} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "aiHub") {
     // AI Hub — show AI tools
@@ -221,47 +270,17 @@ function AppContent() {
               { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
             ].map(a => (
               <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
-                 <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
-                 <View style={styles.textWrap}>
-                   <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
-                   <Text style={styles.cardDesc}>{a.desc}</Text>
-                 </View>
+                <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
+                <View style={styles.textWrap}>
+                  <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
+                  <Text style={styles.cardDesc}>{a.desc}</Text>
+                </View>
               </TouchableOpacity>
             ))}
           </View>
           <View style={{ height: 100 }} />
         </ScrollView>
-        <MaterialResultModal 
-          visible={aiModalVisible} 
-          onClose={() => setAiModalVisible(false)} 
-          result={aiResult} 
-          loading={aiLoading} 
-          imageUri={capturedImageUri} 
-          onAddToList={(id) => {
-            if (activeProjectId) {
-              setProjects(prev => {
-                const updated = prev.map(p => {
-                  if (p.id === activeProjectId) {
-                    const idx = p.items.findIndex(i => i.id === id);
-                    const newItems = [...p.items];
-                    if (idx >= 0) newItems[idx] = { ...newItems[idx], qty: newItems[idx].qty + 1 };
-                    else newItems.push({ id, qty: 1 });
-                    const mat = materialsData.find(m => m.id === id);
-                    const cost = (p.totalCostUSD || 0) + (mat?.basePrice || 0);
-                    return { ...p, items: newItems, totalCostUSD: cost };
-                  }
-                  return p;
-                });
-                AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated));
-                return updated;
-              });
-            } else {
-              setGlobalQuantities(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
-            }
-            setAiModalVisible(false);
-            alert(ku ? "زیادکرا بۆ پڕۆژەکە" : "Added to Project/List");
-          }} 
-        />
+        <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => { setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 })); setAiModalVisible(false); handleNavNavigate("storeAll"); }} />
         {renderBottomNav()}
       </View>
     );
@@ -291,21 +310,38 @@ function AppContent() {
             <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
             <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "مادەکان" : "Materials"}</Text>
           </View>
-          <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
+          <TouchableOpacity style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} activeOpacity={0.7} onPress={() => {
+            const currentStr = rate ? Math.round(rate * 100).toString() : "152000";
+            if (Platform.OS === 'web') {
+              const val = window.prompt(ku ? "نرخی گۆڕینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
+              if (val && !isNaN(Number(val))) setManualRate(Number(val) / 100);
+            } else {
+              Alert.prompt(
+                ku ? "گۆڕینی نرخی دۆلار" : "Change Exchange Rate",
+                ku ? "نرخی 100$ بە دینار بنووسە" : "Enter IQD value for 100$",
+                [
+                  { text: "Cancel", style: "cancel" },
+                  { text: ku ? "باشە" : "OK", onPress: (val) => { if(val && !isNaN(Number(val))) setManualRate(Number(val) / 100) }}
+                ],
+                "plain-text",
+                currentStr
+              );
+            }
+          }}>
             <Text style={[styles.statV, { color: tc.primary }]}>{rate ? (Math.round(rate) * 100).toLocaleString() : "--"}</Text>
             <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "دینار / 100$" : "IQD / $100"}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.mainGrid}>
           <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
           {topActions.map(a => (
             <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
-               <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
-               <View style={styles.textWrap}>
-                 <Text style={[styles.cardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
-                 <Text style={[styles.cardDesc, kuFont()]}>{a.desc}</Text>
-               </View>
+              <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
+              <View style={styles.textWrap}>
+                <Text style={[styles.cardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
+                <Text style={[styles.cardDesc, kuFont()]}>{a.desc}</Text>
+              </View>
             </TouchableOpacity>
           ))}
         </View>
@@ -325,37 +361,8 @@ function AppContent() {
         <View style={{ height: 100 }} />
       </ScrollView>
 
-      <MaterialResultModal 
-        visible={aiModalVisible} 
-        onClose={() => setAiModalVisible(false)} 
-        result={aiResult} 
-        loading={aiLoading} 
-        imageUri={capturedImageUri} 
-        onAddToList={(id) => {
-          if (activeProjectId) {
-            setProjects(prev => {
-              const updated = prev.map(p => {
-                if (p.id === activeProjectId) {
-                  const idx = p.items.findIndex(i => i.id === id);
-                  const newItems = [...p.items];
-                  if (idx >= 0) newItems[idx] = { ...newItems[idx], qty: newItems[idx].qty + 1 };
-                  else newItems.push({ id, qty: 1 });
-                  const mat = materialsData.find(m => m.id === id);
-                  const cost = (p.totalCostUSD || 0) + (mat?.basePrice || 0);
-                  return { ...p, items: newItems, totalCostUSD: cost };
-                }
-                return p;
-              });
-              AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated));
-              return updated;
-            });
-          } else {
-            setGlobalQuantities(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
-          }
-          setAiModalVisible(false);
-          alert(ku ? "زیادکرا بۆ پڕۆژەکە" : "Added to Project/List");
-        }} 
-      />
+      {/* AI Result Modal */}
+      <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => { setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 })); setAiModalVisible(false); handleNavNavigate("storePurpose"); }} />
 
       {renderBottomNav()}
     </View>
@@ -378,7 +385,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   loadingContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
   scrollContent: { paddingBottom: 40 },
-  hero: { 
+  hero: {
     paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight || 40) : 40,
     paddingBottom: 60,
     paddingHorizontal: 20,

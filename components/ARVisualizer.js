@@ -24,6 +24,7 @@ import Animated, {
   Layout,
 } from "react-native-reanimated";
 import * as ImagePicker from "expo-image-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
@@ -171,6 +172,8 @@ export default function ARVisualizer({ onBack, onAddToStore }) {
   const [showMaterialInfo, setShowMaterialInfo] = useState(false);
   const [estimatedArea, setEstimatedArea] = useState(null);
   const [showSourcePicker, setShowSourcePicker] = useState(true);
+  const [showAddedModal, setShowAddedModal] = useState(false);
+  const [addedItem, setAddedItem] = useState(null);
   const webVideoRef = useRef(null);
   const webStreamRef = useRef(null);
   const [webCameraActive, setWebCameraActive] = useState(false);
@@ -179,69 +182,69 @@ export default function ARVisualizer({ onBack, onAddToStore }) {
     () =>
       lang === "ku"
         ? {
-            title: "بینەری AR",
-            subtitle: "مادەکان لەسەر ژوورەکەت ببینە پێش کڕین",
-            takePhoto: "وێنە بگرە",
-            fromGallery: "لە گالێری",
-            camera: "کامێرا",
-            analyzing: "شیکردنەوەی ژوور...",
-            chooseMatLabel: "مادەیەک هەڵبژێرە",
-            chooseColor: "ڕەنگ هەڵبژێرە",
-            pattern: "شێواز",
-            opacity: "شەفافیەت",
-            roomInfo: "زانیاری ژوور",
-            wallArea: "ڕووبەری دیوار",
-            floorArea: "ڕووبەری زەوی",
-            ceilingHeight: "بەرزایی بەرزایی",
-            estimated: "خەمڵاندراو",
-            costEstimate: "خەمڵاندنی تێچوو",
-            materialNeeded: "مادەی پێویست",
-            totalCost: "کۆی تێچوو",
-            addToStore: "زیادکردن بۆ لیست",
-            retake: "وێنەی نوێ",
-            materialDetails: "وردەکاری مادە",
-            permissionTitle: "ڕێگەپێدان پێویستە",
-            permissionBody: "تکایە ڕێگە بدە بە کامێرا",
-            surfaceType: "جۆری ڕوو",
-            wall: "دیوار",
-            floor: "زەوی",
-            ceiling: "بەرزایی",
-            select: "هەڵبژێرە",
-            close: "داخستن",
-            tip: "ئامۆژگاری: وێنەی ڕووەکانی ژوورەکەت بگرە بۆ بینەرێکی باشتر",
-          }
+          title: "بینەری AR",
+          subtitle: "مادەکان لەسەر ژوورەکەت ببینە پێش کڕین",
+          takePhoto: "وێنە بگرە",
+          fromGallery: "لە گالێری",
+          camera: "کامێرا",
+          analyzing: "شیکردنەوەی ژوور...",
+          chooseMatLabel: "مادەیەک هەڵبژێرە",
+          chooseColor: "ڕەنگ هەڵبژێرە",
+          pattern: "شێواز",
+          opacity: "شەفافیەت",
+          roomInfo: "زانیاری ژوور",
+          wallArea: "ڕووبەری دیوار",
+          floorArea: "ڕووبەری زەوی",
+          ceilingHeight: "بەرزایی بەرزایی",
+          estimated: "خەمڵاندراو",
+          costEstimate: "خەمڵاندنی تێچوو",
+          materialNeeded: "مادەی پێویست",
+          totalCost: "کۆی تێچوو",
+          addToStore: "زیادکردن بۆ لیست",
+          retake: "وێنەی نوێ",
+          materialDetails: "وردەکاری مادە",
+          permissionTitle: "ڕێگەپێدان پێویستە",
+          permissionBody: "تکایە ڕێگە بدە بە کامێرا",
+          surfaceType: "جۆری ڕوو",
+          wall: "دیوار",
+          floor: "زەوی",
+          ceiling: "بەرزایی",
+          select: "هەڵبژێرە",
+          close: "داخستن",
+          tip: "ئامۆژگاری: وێنەی ڕووەکانی ژوورەکەت بگرە بۆ بینەرێکی باشتر",
+        }
         : {
-            title: "AR Visualizer",
-            subtitle: "See materials on YOUR room before buying",
-            takePhoto: "Take Photo",
-            fromGallery: "From Gallery",
-            camera: "Camera",
-            analyzing: "Analyzing room...",
-            chooseMatLabel: "Choose Material",
-            chooseColor: "Choose Color",
-            pattern: "Pattern",
-            opacity: "Opacity",
-            roomInfo: "Room Info",
-            wallArea: "Wall Area",
-            floorArea: "Floor Area",
-            ceilingHeight: "Ceiling Height",
-            estimated: "Estimated",
-            costEstimate: "Cost Estimate",
-            materialNeeded: "Material Needed",
-            totalCost: "Total Cost",
-            addToStore: "Add to List",
-            retake: "New Photo",
-            materialDetails: "Material Details",
-            permissionTitle: "Permission Required",
-            permissionBody: "Please allow camera access",
-            surfaceType: "Surface",
-            wall: "Wall",
-            floor: "Floor",
-            ceiling: "Ceiling",
-            select: "Select",
-            close: "Close",
-            tip: "Tip: Take a photo of your room surfaces for best visualization",
-          },
+          title: "AR Visualizer",
+          subtitle: "See materials on YOUR room before buying",
+          takePhoto: "Take Photo",
+          fromGallery: "From Gallery",
+          camera: "Camera",
+          analyzing: "Analyzing room...",
+          chooseMatLabel: "Choose Material",
+          chooseColor: "Choose Color",
+          pattern: "Pattern",
+          opacity: "Opacity",
+          roomInfo: "Room Info",
+          wallArea: "Wall Area",
+          floorArea: "Floor Area",
+          ceilingHeight: "Ceiling Height",
+          estimated: "Estimated",
+          costEstimate: "Cost Estimate",
+          materialNeeded: "Material Needed",
+          totalCost: "Total Cost",
+          addToStore: "Add to List",
+          retake: "New Photo",
+          materialDetails: "Material Details",
+          permissionTitle: "Permission Required",
+          permissionBody: "Please allow camera access",
+          surfaceType: "Surface",
+          wall: "Wall",
+          floor: "Floor",
+          ceiling: "Ceiling",
+          select: "Select",
+          close: "Close",
+          tip: "Tip: Take a photo of your room surfaces for best visualization",
+        },
     [lang]
   );
 
@@ -259,7 +262,7 @@ export default function ARVisualizer({ onBack, onAddToStore }) {
       setTimeout(() => {
         if (webVideoRef.current) {
           webVideoRef.current.srcObject = stream;
-          webVideoRef.current.play?.().catch(() => {});
+          webVideoRef.current.play?.().catch(() => { });
         }
       }, 100);
     } catch (err) {
@@ -503,15 +506,26 @@ Return ONLY valid JSON:
     return { mat, quantity, costUSD, costIQD, unit: mat.unit };
   }, [selectedPalette, estimatedArea, rate]);
 
-  const handleAddToStore = useCallback(() => {
+  const handleAddToStore = useCallback(async () => {
     if (!selectedPalette || !costEstimate) return;
-    const quantities = {};
-    quantities[costEstimate.mat.id] = costEstimate.quantity;
-    onAddToStore?.(quantities);
-    Alert.alert(
-      lang === "ku" ? "سەرکەوتوو" : "Success",
-      lang === "ku" ? "مادەکە زیادکرا بۆ لیست" : "Material added to store list"
-    );
+    try {
+      const existing = await AsyncStorage.getItem('costMaterialSavedLists');
+      const lists = existing ? JSON.parse(existing) : [];
+      const mat = costEstimate.mat;
+      const qty = costEstimate.quantity;
+      const listItem = { id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice };
+      lists.unshift({
+        id: Date.now().toString(),
+        name: lang === "ku" ? (selectedPalette.nameKU || selectedPalette.nameEN) : selectedPalette.nameEN,
+        date: new Date().toISOString(),
+        items: [listItem],
+        totalCost: mat.basePrice * qty,
+      });
+      await AsyncStorage.setItem('costMaterialSavedLists', JSON.stringify(lists));
+    } catch (e) { console.error('AR add to list error', e); }
+    setAddedItem(costEstimate);
+    setShowAddedModal(true);
+    onAddToStore?.({ [costEstimate.mat.id]: costEstimate.quantity });
   }, [selectedPalette, costEstimate, onAddToStore, lang]);
 
   const handleRetake = useCallback(() => {
@@ -541,8 +555,8 @@ Return ONLY valid JSON:
       left: 0,
       right: 0,
       bottom: 0,
-      opacity: 0.85,
-      ...(Platform.OS === 'web' && { mixBlendMode: 'hard-light' })
+      opacity: overlayOpacity,
+      ...(Platform.OS === 'web' && { mixBlendMode: 'multiply' })
     };
 
     // For web: use CSS background patterns for realistic material look
@@ -1064,6 +1078,70 @@ Return ONLY valid JSON:
           )}
         </ScrollView>
       </Animated.View>
+
+      {/* ─── Added to List Modal ─── */}
+      {showAddedModal && addedItem && (
+        <Modal
+          visible={showAddedModal}
+          transparent
+          animationType="slide"
+          onRequestClose={() => setShowAddedModal(false)}
+        >
+          <View style={arS.modalOverlay}>
+            <TouchableOpacity style={arS.modalBackdrop} activeOpacity={1} onPress={() => setShowAddedModal(false)} />
+            <Animated.View entering={FadeInDown.duration(300)} style={[arS.addedModal, { backgroundColor: tc.card }]}>
+              {/* Header */}
+              <View style={[arS.addedModalHeader, isRTL && { flexDirection: 'row-reverse' }]}>
+                <View style={arS.checkCircle}>
+                  <Text style={{ fontSize: 22 }}>✅</Text>
+                </View>
+                <View style={{ flex: 1, marginHorizontal: 12 }}>
+                  <Text style={[arS.addedModalTitle, isRTL && { textAlign: 'right' }, { color: tc.charcoal }]}>
+                    {lang === 'ku' ? 'زیادکرا بۆ لیست' : 'Added to List'}
+                  </Text>
+                  <Text style={[arS.addedModalSub, isRTL && { textAlign: 'right' }, { color: tc.mediumGray }]}>
+                    {lang === 'ku' ? 'مادەکە پاشەکەوت کرا' : 'Item saved successfully'}
+                  </Text>
+                </View>
+                <TouchableOpacity onPress={() => setShowAddedModal(false)} style={arS.closeBtn}>
+                  <Text style={[arS.closeBtnText, { color: tc.mediumGray }]}>✕</Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* Item Row */}
+              <View style={[arS.itemRow, { backgroundColor: tc.offWhite, borderColor: tc.cardBorder }, isRTL && { flexDirection: 'row-reverse' }]}>
+                <View style={[arS.itemIcon, { backgroundColor: 'rgba(212,168,67,0.15)' }]}>
+                  <Text style={{ fontSize: 24 }}>{selectedPalette?.icon || '🧱'}</Text>
+                </View>
+                <View style={{ flex: 1, marginHorizontal: 12 }}>
+                  <Text style={[arS.itemName, isRTL && { textAlign: 'right' }, { color: tc.charcoal }]}>
+                    {lang === 'ku' ? (addedItem.mat.nameKU || addedItem.mat.nameEN) : addedItem.mat.nameEN}
+                  </Text>
+                  <Text style={[arS.itemMeta, isRTL && { textAlign: 'right' }, { color: tc.mediumGray }]}>
+                    {addedItem.quantity} {lang === 'ku' ? addedItem.mat.unitKU : addedItem.mat.unitEN}
+                  </Text>
+                </View>
+                <View style={[arS.itemCostWrap, isRTL && { alignItems: 'flex-start' }]}>
+                  <Text style={[arS.itemCost, { color: colors.accent }]}>${addedItem.costUSD.toLocaleString()}</Text>
+                  {addedItem.costIQD && <Text style={[arS.itemCostSub, { color: tc.mediumGray }]}>≈ {addedItem.costIQD.toLocaleString()} {lang === 'ku' ? 'د.ع' : 'IQD'}</Text>}
+                </View>
+              </View>
+
+              {/* Bottom: Go to Store icon button */}
+              <TouchableOpacity
+                style={[arS.goToStoreBtn, { borderTopColor: tc.cardBorder }]}
+                onPress={() => { setShowAddedModal(false); onAddToStore?.({ [addedItem.mat.id]: addedItem.quantity }); }}
+                activeOpacity={0.85}
+              >
+                <Text style={arS.goToStoreBtnIcon}>🛒</Text>
+                <Text style={[arS.goToStoreBtnText, isRTL && { marginRight: 8, marginLeft: 0 }]}>
+                  {lang === 'ku' ? 'بڕۆ بۆ کۆگا' : 'Go to Store'}
+                </Text>
+              </TouchableOpacity>
+            </Animated.View>
+          </View>
+        </Modal>
+      )}
     </Animated.View>
   );
 }
@@ -1307,4 +1385,46 @@ const s = StyleSheet.create({
   },
   suggestionBullet: { color: colors.accent, fontSize: 12, marginTop: 2 },
   suggestionText: { ...typography.body, flex: 1, lineHeight: 20 },
+});
+
+// Added List Modal styles (separate from main StyleSheet to avoid conflicts)
+const arS = StyleSheet.create({
+  modalOverlay: {
+    flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalBackdrop: { ...StyleSheet.absoluteFillObject },
+  addedModal: {
+    borderTopLeftRadius: 24, borderTopRightRadius: 24,
+    paddingTop: 24, paddingHorizontal: 20, paddingBottom: 40,
+    elevation: 20, shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 20,
+  },
+  addedModalHeader: {
+    flexDirection: 'row', alignItems: 'center', marginBottom: 20,
+  },
+  checkCircle: {
+    width: 48, height: 48, borderRadius: 24,
+    backgroundColor: 'rgba(34,197,94,0.12)', alignItems: 'center', justifyContent: 'center',
+  },
+  addedModalTitle: { fontSize: 17, fontWeight: '700' },
+  addedModalSub: { fontSize: 13, marginTop: 2 },
+  closeBtn: { padding: 8 },
+  closeBtnText: { fontSize: 18, fontWeight: '700' },
+  itemRow: {
+    flexDirection: 'row', alignItems: 'center', borderRadius: 16,
+    padding: 16, borderWidth: 1, marginBottom: 20,
+  },
+  itemIcon: {
+    width: 52, height: 52, borderRadius: 14, alignItems: 'center', justifyContent: 'center',
+  },
+  itemName: { fontSize: 15, fontWeight: '700', marginBottom: 4 },
+  itemMeta: { fontSize: 13 },
+  itemCostWrap: { alignItems: 'flex-end' },
+  itemCost: { fontSize: 16, fontWeight: '800' },
+  itemCostSub: { fontSize: 12, marginTop: 2 },
+  goToStoreBtn: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    paddingTop: 16, borderTopWidth: 1, gap: 10,
+  },
+  goToStoreBtnIcon: { fontSize: 22 },
+  goToStoreBtnText: { fontSize: 16, fontWeight: '700', color: colors.accent, marginLeft: 8 },
 });

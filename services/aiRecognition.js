@@ -3,7 +3,7 @@ import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
 const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash"];
 let geminiBlockedUntil = 0;
 
 function clampConfidence(value) {
@@ -83,9 +83,9 @@ function deriveCatalogRecommendations(referenceMaterial, fallbackCategory) {
   const categoryPool = referenceMaterial
     ? materials.filter((item) => item.categoryEN === referenceMaterial.categoryEN && item.id !== referenceMaterial.id)
     : materials.filter((item) => {
-        const en = String(fallbackCategory || "").toLowerCase();
-        return en && item.categoryEN.toLowerCase().includes(en);
-      });
+      const en = String(fallbackCategory || "").toLowerCase();
+      return en && item.categoryEN.toLowerCase().includes(en);
+    });
 
   const sortedPool = [...categoryPool].sort((a, b) => a.basePrice - b.basePrice);
   const cheaperMaterial = referenceMaterial
@@ -96,41 +96,41 @@ function deriveCatalogRecommendations(referenceMaterial, fallbackCategory) {
   return {
     cheaperAlternativeEN: cheaperMaterial
       ? {
-          name: cheaperMaterial.nameEN,
-          reason: referenceMaterial
-            ? `Lower reference price than ${referenceMaterial.nameEN} while staying in the same category.`
-            : "Lower-cost option from a similar construction category.",
-          estimatedSavings: referenceMaterial
-            ? `$${Math.max(referenceMaterial.basePrice - cheaperMaterial.basePrice, 0)} per reference unit`
-            : "Lower-cost reference option",
-        }
+        name: cheaperMaterial.nameEN,
+        reason: referenceMaterial
+          ? `Lower reference price than ${referenceMaterial.nameEN} while staying in the same category.`
+          : "Lower-cost option from a similar construction category.",
+        estimatedSavings: referenceMaterial
+          ? `$${Math.max(referenceMaterial.basePrice - cheaperMaterial.basePrice, 0)} per reference unit`
+          : "Lower-cost reference option",
+      }
       : null,
     cheaperAlternativeKU: cheaperMaterial
       ? {
-          name: cheaperMaterial.nameKU,
-          reason: referenceMaterial
-            ? `نرخی سەرچاوەی کەمتر هەیە لە ${referenceMaterial.nameKU} لە هەمان پۆلدا.`
-            : "هەڵبژاردەیەکی هەرزانترە لە هەمان جۆری کاری بیناسازیدا.",
-          estimatedSavings: referenceMaterial
-            ? `${Math.max(referenceMaterial.basePrice - cheaperMaterial.basePrice, 0)} دۆلار بۆ یەکەی سەرچاوە`
-            : "هەڵبژاردەیەکی سەرچاوەی هەرزانتر",
-        }
+        name: cheaperMaterial.nameKU,
+        reason: referenceMaterial
+          ? `نرخی سەرچاوەی کەمتر هەیە لە ${referenceMaterial.nameKU} لە هەمان پۆلدا.`
+          : "هەڵبژاردەیەکی هەرزانترە لە هەمان جۆری کاری بیناسازیدا.",
+        estimatedSavings: referenceMaterial
+          ? `${Math.max(referenceMaterial.basePrice - cheaperMaterial.basePrice, 0)} دۆلار بۆ یەکەی سەرچاوە`
+          : "هەڵبژاردەیەکی سەرچاوەی هەرزانتر",
+      }
       : null,
     recommendedOptionEN: recommendedMaterial
       ? {
-          name: recommendedMaterial.nameEN,
-          reason: referenceMaterial
-            ? `Recommended as a practical alternative in the ${referenceMaterial.categoryEN} category.`
-            : "Recommended as a practical material in the same general category.",
-        }
+        name: recommendedMaterial.nameEN,
+        reason: referenceMaterial
+          ? `Recommended as a practical alternative in the ${referenceMaterial.categoryEN} category.`
+          : "Recommended as a practical material in the same general category.",
+      }
       : null,
     recommendedOptionKU: recommendedMaterial
       ? {
-          name: recommendedMaterial.nameKU,
-          reason: referenceMaterial
-            ? `وەک هەڵبژاردەیەکی گونجاو پێشنیار دەکرێت لە پۆلی ${referenceMaterial.categoryKU}.`
-            : "وەک هەڵبژاردەیەکی گونجاو پێشنیار دەکرێت لە هەمان جۆری گشتی مادەکاندا.",
-        }
+        name: recommendedMaterial.nameKU,
+        reason: referenceMaterial
+          ? `وەک هەڵبژاردەیەکی گونجاو پێشنیار دەکرێت لە پۆلی ${referenceMaterial.categoryKU}.`
+          : "وەک هەڵبژاردەیەکی گونجاو پێشنیار دەکرێت لە هەمان جۆری گشتی مادەکاندا.",
+      }
       : null,
   };
 }

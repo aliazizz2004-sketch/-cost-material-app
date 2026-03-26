@@ -60,9 +60,23 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
   // Category list dynamically built
   const activeCategories = useMemo(() => {
     const catsMap = new Map();
+    const cleanKurdishNames = {
+      'Concrete': 'کۆنکریت',
+      'Binding': 'چیمەنتۆ',
+      'Masonry': 'خشت و بلۆک',
+      'Aggregate': 'چەو و لم',
+      'Steel': 'شیش',
+      'Wood': 'دار و تەختە',
+      'Plumbing': 'بۆری و ئاوەڕۆ',
+      'Electrical': 'کارەبا',
+      'Structural': 'ستراکچەر و بناغە',
+      'Finishing': 'پەرداخت و ناوەوە',
+      'Roofing': 'سەقف و داپۆشین',
+      'Insulation': 'عازل',
+    };
     filteredByPurpose.forEach(m => {
         if (m.categoryEN) {
-          catsMap.set(m.categoryEN, m.categoryKU || m.categoryEN);
+          catsMap.set(m.categoryEN, cleanKurdishNames[m.categoryEN] || m.categoryEN);
         }
     });
     return [
@@ -249,7 +263,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
                        else if(c.id === 'Plumbing') icon = 'droplet';
                        else if(c.id === 'Electrical') icon = 'zap';
                        else if(c.id === 'Structural') icon = 'home';
-                       return { id: c.id, isCategory: true, label: (ku && c.id !== 'All') ? `${c.labelKU} (${c.labelEN})` : (ku && c.id === 'All' ? c.labelKU : c.labelEN), icon };
+                       return { id: c.id, isCategory: true, label: ku ? c.labelKU : c.labelEN, icon };
                      }) ]}
                      keyExtractor={(item, idx) => item.id || 'header-'+idx}
                      showsVerticalScrollIndicator={false}

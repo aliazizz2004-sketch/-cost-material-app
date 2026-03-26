@@ -22,65 +22,73 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "../sty
 import materialsData from "../data/materials";
 
 const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 async function callGeminiWithRetry(prompt) {
   let lastError = null;
 
-  for (let attempt = 0; attempt < 2; attempt++) {
-    try {
-      if (attempt > 0) await new Promise(r => setTimeout(r, 1000));
-
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${GEMINI_API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              temperature: 0.4,
-              maxOutputTokens: 2500,
-              responseMimeType: "application/json",
-            },
-          }),
-        }
-      );
-
-      if (response.status === 429) {
-        lastError = new Error(`Rate limited`);
-        await new Promise(r => setTimeout(r, 1500));
-        continue;
-      }
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const data = await response.json();
-      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-      if (!text) throw new Error("Empty response from AI");
-
-      const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
-      let parsed;
+  for (const model of GEMINI_MODELS) {
+    for (let attempt = 0; attempt < 2; attempt++) {
       try {
-        parsed = JSON.parse(cleaned);
-      } catch {
-        const objectMatch = cleaned.match(/\{[\s\S]*\}/);
-        if (objectMatch) {
-          parsed = JSON.parse(objectMatch[0]);
-        } else {
-          throw new Error("Could not parse response");
-        }
-      }
+        if (attempt > 0) await delay(2500);
 
-      return parsed;
-    } catch (err) {
-      lastError = err;
+        const response = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: {
+                temperature: 0.2,
+                maxOutputTokens: 4096,
+                responseMimeType: "application/json",
+              },
+            }),
+          }
+        );
+
+        if (response.status === 429) {
+          console.warn(`[AIArchitect] ${model} returned 429, retrying...`);
+          lastError = new Error(`Rate limited (${model})`);
+          await delay(3000);
+          continue;
+        }
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status} from ${model}`);
+        }
+
+        const data = await response.json();
+        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+        if (!text) throw new Error("Empty response from AI");
+
+        const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
+        let parsed;
+        try {
+          parsed = JSON.parse(cleaned);
+        } catch {
+          const objectMatch = cleaned.match(/\{[\s\S]*\}/);
+          if (objectMatch) {
+            parsed = JSON.parse(objectMatch[0]);
+          } else {
+            throw new Error("Could not parse response");
+          }
+        }
+
+        return parsed;
+      } catch (err) {
+        console.warn(`[AIArchitect] ${model} attempt ${attempt + 1} failed:`, err.message);
+        lastError = err;
+      }
     }
   }
 
-  throw lastError || new Error("AI request failed");
+  throw lastError || new Error("All AI models failed");
 }
 
 const PRESET_PROJECTS = {
@@ -220,7 +228,8 @@ JSON shape:
   "notesKU": ["بەپێی ستانداردی یاسای بینای عێراق و ACI 318", "١٠-١٥% بۆ گۆڕانکاری پێشنیار دەکرێت"],
   "tipsEN": ["Buy cement in bulk for 10-15% savings"],
   "tipsKU": ["سمێنت بە کۆمەڵ بکڕە بۆ ١٠-١٥% پاشەکەوت"]
-}`;}
+}`;
+}
 
 
 export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
@@ -238,82 +247,84 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
   const [showPresetsModal, setShowPresetsModal] = useState(false);
   const [showResultDetail, setShowResultDetail] = useState(false);
   const [qualityTier, setQualityTier] = useState(null); // null = not chosen yet, "budget" | "standard" | "premium"
-  const [addedToList, setAddedToList] = useState(false); // shows bottom success card
+  const [addedToList, setAddedToList] = useState(false); // shows bottom success modal
   const [addedCount, setAddedCount] = useState(0);
+  const [addedItems, setAddedItems] = useState([]); // actual list of added items
+  const [addedListName, setAddedListName] = useState('');
 
   const copy = useMemo(
     () =>
       lang === "ku"
         ? {
-            title: "AI ئەندازیار",
-            subtitle: "پڕۆژەکەت وەسف بکە، AI لیستی تەواوی مادەکان دروست دەکات",
-            inputPlaceholder: "پڕۆژەکەت وەسف بکە... بۆ نموونە: خانووی ٢٠٠م² دوو نهۆم لە هەولێر...",
-            generate: "لیستی مادەکان دروست بکە",
-            generating: "شیکردنەوە و ژمارەکردن...",
-            presets: "پڕۆژە ئامادەکراوەکان",
-            presetsSubtitle: "یەکێک هەڵبژێرە بۆ دەست پێکردنی خێرا",
-            totalCost: "کۆی تێچووی خەمڵاندراو",
-            duration: "ماوەی خەمڵاندراو",
-            days: "ڕۆژ",
-            phases: "قۆناغەکان",
-            notes: "تێبینییەکان",
-            tips: "ئامۆژگارییەکان",
-            addAllToStore: "هەموو مادەکان زیاد بکە",
-            addPhaseToStore: "زیادکردنی ئەم قۆناغە",
-            tryAgain: "دووبارە هەوڵبدەوە",
-            errorMsg: "هەڵە ڕوویدا. تکایە دووبارە هەوڵبدەوە.",
-            or: "یان",
-            typingHint: "پڕۆژەکەت بنووسە یان لە پڕۆژە ئامادەکراوەکان هەڵبژێرە",
-            area: "ڕووبەر",
-            items: "مادە",
-            back: "گەڕانەوە",
-            quantity: "بڕ",
-            materialAdded: "مادەکان زیادکران بۆ لیست",
-            chooseTier: "ئاستی کوالیتی هەڵبژێرە",
-            budget: "ئابووری",
-            budgetDesc: "کەمترین تێچوو",
-            standard: "ئاسایی",
-            standardDesc: "کوالیتی باش بە نرخی مامناوەند",
-            premium: "سەرتر",
-            premiumDesc: "باشترین کوالیتی",
-            viewStore: "بینینی لیست",
-            durationLabel: "ماوەی بیناسازی",
-          }
+          title: "AI ئەندازیار",
+          subtitle: "پڕۆژەکەت وەسف بکە، AI لیستی تەواوی مادەکان دروست دەکات",
+          inputPlaceholder: "پڕۆژەکەت وەسف بکە... بۆ نموونە: خانووی ٢٠٠م² دوو نهۆم لە هەولێر...",
+          generate: "لیستی مادەکان دروست بکە",
+          generating: "شیکردنەوە و ژمارەکردن...",
+          presets: "پڕۆژە ئامادەکراوەکان",
+          presetsSubtitle: "یەکێک هەڵبژێرە بۆ دەست پێکردنی خێرا",
+          totalCost: "کۆی تێچووی خەمڵاندراو",
+          duration: "ماوەی خەمڵاندراو",
+          days: "ڕۆژ",
+          phases: "قۆناغەکان",
+          notes: "تێبینییەکان",
+          tips: "ئامۆژگارییەکان",
+          addAllToStore: "هەموو مادەکان زیاد بکە",
+          addPhaseToStore: "زیادکردنی ئەم قۆناغە",
+          tryAgain: "دووبارە هەوڵبدەوە",
+          errorMsg: "هەڵە ڕوویدا. تکایە دووبارە هەوڵبدەوە.",
+          or: "یان",
+          typingHint: "پڕۆژەکەت بنووسە یان لە پڕۆژە ئامادەکراوەکان هەڵبژێرە",
+          area: "ڕووبەر",
+          items: "مادە",
+          back: "گەڕانەوە",
+          quantity: "بڕ",
+          materialAdded: "مادەکان زیادکران بۆ لیست",
+          chooseTier: "ئاستی کوالیتی هەڵبژێرە",
+          budget: "ئابووری",
+          budgetDesc: "کەمترین تێچوو",
+          standard: "ئاسایی",
+          standardDesc: "کوالیتی باش بە نرخی مامناوەند",
+          premium: "سەرتر",
+          premiumDesc: "باشترین کوالیتی",
+          viewStore: "بینینی لیست",
+          durationLabel: "ماوەی بیناسازی",
+        }
         : {
-            title: "AI Architect",
-            subtitle: "Describe your project, AI generates the complete material list",
-            inputPlaceholder: "Describe your project... e.g. 200m² two-story house in Erbil with 4 bedrooms...",
-            generate: "Generate Material List",
-            generating: "Analyzing & Calculating...",
-            presets: "Quick Start Projects",
-            presetsSubtitle: "Choose one to get started instantly",
-            totalCost: "Estimated Total Cost",
-            duration: "Estimated Duration",
-            days: "days",
-            phases: "Construction Phases",
-            notes: "Professional Notes",
-            tips: "Money-Saving Tips",
-            addAllToStore: "Add All Materials to Store",
-            addPhaseToStore: "Add this Phase",
-            tryAgain: "Try Again",
-            errorMsg: "An error occurred. Please try again.",
-            or: "or",
-            typingHint: "Type your project or choose a preset",
-            area: "Area",
-            items: "items",
-            back: "Back",
-            quantity: "Qty",
-            materialAdded: "Materials added to your list!",
-            chooseTier: "Choose Quality Tier",
-            budget: "Budget",
-            budgetDesc: "Lowest cost",
-            standard: "Standard",
-            standardDesc: "Good quality, fair price",
-            premium: "Premium",
-            premiumDesc: "Best quality",
-            viewStore: "View Store List",
-            durationLabel: "Construction Duration",
-          },
+          title: "AI Architect",
+          subtitle: "Describe your project, AI generates the complete material list",
+          inputPlaceholder: "Describe your project... e.g. 200m² two-story house in Erbil with 4 bedrooms...",
+          generate: "Generate Material List",
+          generating: "Analyzing & Calculating...",
+          presets: "Quick Start Projects",
+          presetsSubtitle: "Choose one to get started instantly",
+          totalCost: "Estimated Total Cost",
+          duration: "Estimated Duration",
+          days: "days",
+          phases: "Construction Phases",
+          notes: "Professional Notes",
+          tips: "Money-Saving Tips",
+          addAllToStore: "Add All Materials to Store",
+          addPhaseToStore: "Add this Phase",
+          tryAgain: "Try Again",
+          errorMsg: "An error occurred. Please try again.",
+          or: "or",
+          typingHint: "Type your project or choose a preset",
+          area: "Area",
+          items: "items",
+          back: "Back",
+          quantity: "Qty",
+          materialAdded: "Materials added to your list!",
+          chooseTier: "Choose Quality Tier",
+          budget: "Budget",
+          budgetDesc: "Lowest cost",
+          standard: "Standard",
+          standardDesc: "Good quality, fair price",
+          premium: "Premium",
+          premiumDesc: "Best quality",
+          viewStore: "View Store List",
+          durationLabel: "Construction Duration",
+        },
     [lang]
   );
 
@@ -360,19 +371,19 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
       try {
         const existing = await AsyncStorage.getItem('costMaterialSavedLists');
         const lists = existing ? JSON.parse(existing) : [];
-        
+
         const validItems = [];
         let totalCost = 0;
-        
+
         phase.items.forEach((item) => {
           const mat = materialsData.find((m) => m.id == item.materialId);
           if (mat) {
-             const qty = Math.ceil(item.quantity);
-             validItems.push({ id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice });
-             totalCost += mat.basePrice * qty;
+            const qty = Math.ceil(item.quantity);
+            validItems.push({ id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice });
+            totalCost += mat.basePrice * qty;
           }
         });
-        
+
         if (validItems.length === 0) return;
 
         const phaseName = lang === "ku" ? phase.phaseKU : phase.phaseEN;
@@ -387,7 +398,10 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
         });
 
         await AsyncStorage.setItem('costMaterialSavedLists', JSON.stringify(lists));
+        const listName = projectBase ? `${projectBase} - ${phaseName}` : phaseName;
         setAddedCount(validItems.length);
+        setAddedItems(validItems);
+        setAddedListName(listName);
         setAddedToList(true);
       } catch (e) { console.error('Error saving phase', e); }
     },
@@ -397,38 +411,41 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
   const handleAddAllToStore = useCallback(async () => {
     if (!result?.phases) return;
     try {
-        const existing = await AsyncStorage.getItem('costMaterialSavedLists');
-        const lists = existing ? JSON.parse(existing) : [];
-        
-        const validItems = [];
-        let totalCost = 0;
+      const existing = await AsyncStorage.getItem('costMaterialSavedLists');
+      const lists = existing ? JSON.parse(existing) : [];
 
-        result.phases.forEach((phase) => {
-          (phase.items || []).forEach((item) => {
-            const mat = materialsData.find((m) => m.id == item.materialId);
-            if (mat) {
-              const qty = Math.ceil(item.quantity);
-              validItems.push({ id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice });
-              totalCost += mat.basePrice * qty;
-            }
-          });
+      const validItems = [];
+      let totalCost = 0;
+
+      result.phases.forEach((phase) => {
+        (phase.items || []).forEach((item) => {
+          const mat = materialsData.find((m) => m.id == item.materialId);
+          if (mat) {
+            const qty = Math.ceil(item.quantity);
+            validItems.push({ id: mat.id, qty, nameEN: mat.nameEN, nameKU: mat.nameKU, basePrice: mat.basePrice });
+            totalCost += mat.basePrice * qty;
+          }
         });
+      });
 
-        if (validItems.length === 0) return;
-        
-        const projectName = lang === "ku" ? result?.projectSummary?.titleKU : result?.projectSummary?.titleEN;
-        
-        lists.unshift({
-          id: Date.now().toString(),
-          name: projectName || (lang === "ku" ? "لێکدانەوەی AI" : "AI Estimate"),
-          date: new Date().toISOString(),
-          items: validItems,
-          totalCost: totalCost,
-        });
+      if (validItems.length === 0) return;
 
-        await AsyncStorage.setItem('costMaterialSavedLists', JSON.stringify(lists));
-        setAddedCount(validItems.length);
-        setAddedToList(true);
+      const projectName = lang === "ku" ? result?.projectSummary?.titleKU : result?.projectSummary?.titleEN;
+
+      lists.unshift({
+        id: Date.now().toString(),
+        name: projectName || (lang === "ku" ? "لێکدانەوەی AI" : "AI Estimate"),
+        date: new Date().toISOString(),
+        items: validItems,
+        totalCost: totalCost,
+      });
+
+      await AsyncStorage.setItem('costMaterialSavedLists', JSON.stringify(lists));
+      const pName = projectName || (lang === "ku" ? "لێکدانەوەی AI" : "AI Estimate");
+      setAddedCount(validItems.length);
+      setAddedItems(validItems);
+      setAddedListName(pName);
+      setAddedToList(true);
     } catch (e) { console.error('Error saving all', e); }
   }, [result, lang]);
 
@@ -703,9 +720,9 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
                   <Text style={s.statValue}>
                     {result.phases
                       ? result.phases.reduce(
-                          (sum, p) => sum + (p.items?.length || 0),
-                          0
-                        )
+                        (sum, p) => sum + (p.items?.length || 0),
+                        0
+                      )
                       : 0}
                   </Text>
                   <Text style={[s.statLabel, isRTL && s.textRTL]}>{copy.items}</Text>
@@ -940,30 +957,69 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
         )}
       </ScrollView>
 
-      {/* ─── Bottom Success Card ─── */}
-      {addedToList && (
-        <Animated.View entering={FadeInDown.duration(300)} style={[s.bottomSuccessCard, { backgroundColor: tc.card, borderTopColor: tc.cardBorder }]}>
-          <View style={[s.bottomSuccessRow, isRTL && { flexDirection: "row-reverse" }]}>
-            <View style={s.bottomSuccessCheck}>
-              <Text style={{ fontSize: 20 }}>✅</Text>
-            </View>
-            <View style={{ flex: 1, marginHorizontal: spacing.md }}>
-              <Text style={[s.bottomSuccessTitle, isRTL && s.textRTL, { color: tc.charcoal }]}>
-                {copy.materialAdded}
-              </Text>
-              <Text style={[s.bottomSuccessSubtitle, isRTL && s.textRTL, { color: tc.mediumGray }]}>
-                {addedCount} {copy.items}
-              </Text>
-            </View>
-            <TouchableOpacity
-              style={s.bottomSuccessBtn}
-              onPress={onViewStore || onBack}
-              activeOpacity={0.85}
-            >
-              <Text style={s.bottomSuccessBtnText}>{copy.viewStore}</Text>
-            </TouchableOpacity>
+      {/* ─── Added to List Modal ─── */}
+      {addedToList && addedItems.length > 0 && (
+        <Modal
+          visible={addedToList}
+          transparent
+          animationType="slide"
+          onRequestClose={() => setAddedToList(false)}
+        >
+          <View style={aiS.modalOverlay}>
+            <TouchableOpacity style={aiS.modalBackdrop} activeOpacity={1} onPress={() => setAddedToList(false)} />
+            <Animated.View entering={FadeInDown.duration(300)} style={[aiS.addedModal, { backgroundColor: tc.card }]}>
+              {/* Header */}
+              <View style={[aiS.addedHeader, isRTL && { flexDirection: 'row-reverse' }]}>
+                <View style={aiS.checkCircle}>
+                  <Text style={{ fontSize: 22 }}>✅</Text>
+                </View>
+                <View style={{ flex: 1, marginHorizontal: 12 }}>
+                  <Text style={[aiS.addedTitle, isRTL && { textAlign: 'right' }, { color: tc.charcoal }]}>
+                    {lang === 'ku' ? 'زیادکرا بۆ لیست' : 'Added to List'}
+                  </Text>
+                  <Text style={[aiS.addedSub, isRTL && { textAlign: 'right' }, { color: tc.mediumGray }]} numberOfLines={1}>
+                    {addedListName}
+                  </Text>
+                </View>
+                <TouchableOpacity onPress={() => setAddedToList(false)} style={aiS.closeBtn}>
+                  <Text style={[aiS.closeBtnText, { color: tc.mediumGray }]}>✕</Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* Items List */}
+              <ScrollView style={{ maxHeight: 320 }} showsVerticalScrollIndicator={false}>
+                {addedItems.map((item, idx) => (
+                  <View key={item.id + idx} style={[aiS.listItem, isRTL && { flexDirection: 'row-reverse' }, { borderBottomColor: tc.cardBorder }]}>
+                    <View style={[aiS.itemNum, { backgroundColor: colors.accent }]}>
+                      <Text style={aiS.itemNumText}>{idx + 1}</Text>
+                    </View>
+                    <View style={{ flex: 1, marginHorizontal: 10 }}>
+                      <Text style={[aiS.itemName, isRTL && { textAlign: 'right' }, { color: tc.charcoal }]} numberOfLines={2}>
+                        {lang === 'ku' ? (item.nameKU || item.nameEN) : item.nameEN}
+                      </Text>
+                    </View>
+                    <View style={[aiS.itemRight, isRTL && { alignItems: 'flex-start' }]}>
+                      <Text style={[aiS.itemQty, { color: colors.accent }]}>×{item.qty}</Text>
+                      <Text style={[aiS.itemCost, { color: tc.mediumGray }]}>${Math.round(item.basePrice * item.qty).toLocaleString()}</Text>
+                    </View>
+                  </View>
+                ))}
+              </ScrollView>
+
+              {/* Divider + Go to Store */}
+              <TouchableOpacity
+                style={[aiS.goToStoreBtn, { borderTopColor: tc.cardBorder }]}
+                onPress={() => { setAddedToList(false); onViewStore?.(); }}
+                activeOpacity={0.85}
+              >
+                <Text style={aiS.goToStoreBtnIcon}>🛒</Text>
+                <Text style={[aiS.goToStoreBtnText, isRTL && { marginRight: 8, marginLeft: 0 }]}>
+                  {lang === 'ku' ? 'بۜۆ بۆ کۆگا و لیست' : 'Go to Store & List'}
+                </Text>
+              </TouchableOpacity>
+            </Animated.View>
           </View>
-        </Animated.View>
+        </Modal>
       )}
     </Animated.View>
   );
@@ -1499,4 +1555,48 @@ const s = StyleSheet.create({
     ...typography.caption,
     fontWeight: "800",
   },
+});
+
+// Modal styles for Added Items
+const aiS = StyleSheet.create({
+  modalOverlay: {
+    flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalBackdrop: { ...StyleSheet.absoluteFillObject },
+  addedModal: {
+    borderTopLeftRadius: 24, borderTopRightRadius: 24,
+    paddingTop: 24, paddingHorizontal: 20, paddingBottom: 40,
+    elevation: 20, shadowColor: '#000', shadowOpacity: 0.25, shadowRadius: 20,
+    maxHeight: '85%',
+  },
+  addedHeader: {
+    flexDirection: 'row', alignItems: 'center', marginBottom: 16,
+  },
+  checkCircle: {
+    width: 48, height: 48, borderRadius: 24,
+    backgroundColor: 'rgba(34,197,94,0.12)', alignItems: 'center', justifyContent: 'center',
+  },
+  addedTitle: { fontSize: 17, fontWeight: '700' },
+  addedSub: { fontSize: 13, marginTop: 2 },
+  closeBtn: { padding: 8 },
+  closeBtnText: { fontSize: 18, fontWeight: '700' },
+  listItem: {
+    flexDirection: 'row', alignItems: 'center',
+    paddingVertical: 12, borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  itemNum: {
+    width: 28, height: 28, borderRadius: 14,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  itemNumText: { color: '#FFF', fontSize: 12, fontWeight: '700' },
+  itemName: { fontSize: 14, fontWeight: '600', lineHeight: 20 },
+  itemRight: { alignItems: 'flex-end', minWidth: 60 },
+  itemQty: { fontSize: 14, fontWeight: '700' },
+  itemCost: { fontSize: 12, marginTop: 2 },
+  goToStoreBtn: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    paddingTop: 16, marginTop: 8, borderTopWidth: 1, gap: 10,
+  },
+  goToStoreBtnIcon: { fontSize: 22 },
+  goToStoreBtnText: { fontSize: 16, fontWeight: '700', color: colors.accent, marginLeft: 8 },
 });

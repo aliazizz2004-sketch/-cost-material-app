@@ -21,7 +21,7 @@ export function ExchangeRateProvider({ children }) {
         AsyncStorage.getItem(CACHE_KEY).then((cached) => {
             if (cached) {
                 try {
-                    const { rate: cachedRate, timestamp } = JSON.parse(cached);
+                    const { rate: cachedRate, timestamp, isManual } = JSON.parse(cached);
                     if (cachedRate) {
                         setRate(cachedRate);
                         setLastUpdated(new Date(timestamp));
@@ -31,32 +31,53 @@ export function ExchangeRateProvider({ children }) {
         });
     }, []);
 
+    const setManualRate = useCallback(async (newRate) => {
+        setRate(newRate);
+        setLastUpdated(new Date());
+        await AsyncStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({ rate: newRate, timestamp: Date.now(), isManual: true })
+        );
+    }, []);
+
     const fetchRate = useCallback(async () => {
         try {
             setLoading(true);
             setError(null);
-            setIsOffline(false);
-            const response = await axios.get(API_URL, { timeout: 10000 });
-            const iqRate = response.data?.rates?.IQD;
-            if (iqRate) {
-                setRate(iqRate);
-                setLastUpdated(new Date());
-                // Cache for offline use
-                await AsyncStorage.setItem(
-                    CACHE_KEY,
-                    JSON.stringify({ rate: iqRate, timestamp: Date.now() })
-                );
-            } else {
-                // Fallback rate if API doesn't return IQD
-                setRate(1310);
-                setLastUpdated(new Date());
+            // Check if we have a manual rate cached
+            const cached = await AsyncStorage.getItem(CACHE_KEY);
+            let hasManual = false;
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (parsed.isManual && parsed.rate) {
+                    hasManual = true;
+                    setRate(parsed.rate);
+                    setLastUpdated(new Date(parsed.timestamp || Date.now()));
+                }
+            }
+
+            if (!hasManual) {
+                const response = await axios.get(API_URL, { timeout: 10000 });
+                const iqRate = response.data?.rates?.IQD;
+                if (iqRate) {
+                    setRate(iqRate);
+                    setLastUpdated(new Date());
+                    await AsyncStorage.setItem(
+                        CACHE_KEY,
+                        JSON.stringify({ rate: iqRate, timestamp: Date.now() })
+                    );
+                } else {
+                    if (!rate) {
+                        setRate(1310);
+                        setLastUpdated(new Date());
+                    }
+                }
             }
         } catch (err) {
             console.warn("Exchange rate fetch failed, using fallback:", err.message);
             setIsOffline(true);
-            // Use cached or fallback rate so the app is always functional
             if (!rate) {
-                setRate(1310);
+                setRate(1520); // Real world backup rate
                 setLastUpdated(new Date());
             }
             setError(err.message);
@@ -80,6 +101,7 @@ export function ExchangeRateProvider({ children }) {
         lastUpdated,
         isOffline,
         refresh: fetchRate,
+        setManualRate,
     };
 
     return (

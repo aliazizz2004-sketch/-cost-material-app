@@ -287,12 +287,15 @@ function AppContent() {
     setShowProjectCart(false);
     setProjectCartItems([]);
 
+    // Navigate to projects view automatically
+    handleNavNavigate('projects', activeProjectId);
+
     // Show success
     if (typeof window !== 'undefined' && window.alert) {
       const msg = lang === 'ku' ? '✅ بابەتەکان زیادکران بۆ پڕۆژە!' : '✅ Items added to project!';
       window.alert(msg);
     }
-  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang]);
+  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang, handleNavNavigate]);
 
   if (rateLoading && !rate) {
     return (

@@ -342,7 +342,12 @@ export default function ProjectManager({
       // Natively trigger the print/preview dialog directly for all platforms.
       // This allows the user to preview the generated PDF, select "Save as PDF" (or print),
       // adjust margins, scale, and paper size natively.
-      await Print.printAsync({ html });
+      if (Platform.OS === 'web') {
+        await Print.printAsync({ html });
+      } else {
+        const { uri } = await Print.printToFileAsync({ html });
+        await Sharing.shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+      }
     } catch (e) {
       console.warn(e);
       Alert.alert("Error", "Could not generate PDF");
@@ -668,8 +673,8 @@ export default function ProjectManager({
         animationType="none"
         onRequestClose={() => setViewProject(null)}
       >
-        <Animated.View entering={FadeIn.duration(200)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.55)', justifyContent: 'flex-end' }}>
-          <Animated.View entering={FadeInDown.duration(380).springify().damping(22).stiffness(180)} style={[s.modalContent, { backgroundColor: tc.offWhite, maxHeight: '85%' }]}>
+        <Animated.View entering={FadeIn.duration(200)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.55)', justifyContent: 'flex-start' }}>
+          <Animated.View entering={FadeInDown.duration(380).springify().damping(22).stiffness(180)} style={[s.modalContent, { backgroundColor: tc.offWhite, flex: 1, marginTop: Platform.OS === 'ios' ? 44 : 20, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl }]}>
             <View style={[s.modalHeader, isRTL && s.rowRTL, { marginBottom: 4 }]}>
               <View style={{ flex: 1 }}>
                 <Text style={[s.modalTitle, isRTL && s.textRTL, { color: tc.charcoal }]} numberOfLines={1}>

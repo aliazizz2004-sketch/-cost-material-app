@@ -19,7 +19,7 @@ import materialsData from '../data/materials';
 
 const SAVED_LISTS_KEY = 'costMaterialSavedLists';
 
-export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEstimation, onNavigate, globalQuantities, setGlobalQuantities }) {
+export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEstimation, onNavigate, globalQuantities, setGlobalQuantities, onAddToProject, activeProjectId, materials: externalMaterials }) {
   const { lang, isRTL, t } = useLanguage();
   const { isDark } = useTheme();
   const { rate } = useExchangeRate();
@@ -403,6 +403,29 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
         forceOpenModal={forceOpenModal}
         onClearAll={handleClearAll}
       />
+
+      {/* Add to Project floating button */}
+      {activeProjectId && onAddToProject && Object.keys(quantities).filter(k => quantities[k] > 0).length > 0 && (
+        <TouchableOpacity
+          style={{ position: 'absolute', bottom: 180, left: 20, right: 20, backgroundColor: colors.primary, paddingVertical: 14, borderRadius: 14, flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 8, ...shadows.cardLifted }}
+          onPress={() => {
+            const items = Object.entries(quantities).filter(([_, qty]) => qty > 0).map(([id, qty]) => {
+              const mat = materialsData.find(m => String(m.id) === String(id));
+              if (!mat) return null;
+              return { id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty, unitPrice: mat.basePrice, unit: mat.unit };
+            }).filter(Boolean);
+            const src = ku ? 'کۆگای مادەکان' : 'Material Store';
+            onAddToProject(items, src);
+          }}
+          activeOpacity={0.85}
+        >
+          <Text style={{ fontSize: 18 }}>📁</Text>
+          <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{ku ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+          <View style={{ backgroundColor: 'rgba(255,255,255,0.3)', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 12 }}>
+            <Text style={{ color: '#fff', fontSize: 12, fontWeight: '800' }}>{Object.values(quantities).filter(v => v > 0).length}</Text>
+          </View>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

@@ -232,7 +232,7 @@ JSON shape:
 }
 
 
-export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
+export default function AIArchitect({ onBack, onAddToStore, onViewStore, onAddToProject, activeProjectId }) {
   const { t, lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const { rate } = useExchangeRate();
@@ -936,6 +936,35 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore }) {
                 <Text style={s.addAllBtnIcon}>🛒</Text>
                 <Text style={s.addAllBtnText}>{copy.addAllToStore}</Text>
               </TouchableOpacity>
+
+              {activeProjectId && onAddToProject && (
+                <TouchableOpacity
+                  style={[s.addAllBtn, { backgroundColor: colors.primary }]}
+                  onPress={() => {
+                    const items = [];
+                    (result.phases || []).forEach(phase => {
+                      (phase.items || []).forEach(item => {
+                        const mat = getMaterialById(item.materialId);
+                        if (mat) {
+                          const qty = Math.ceil(item.quantity);
+                          const existing = items.find(i => i.id === mat.id);
+                          if (existing) {
+                            existing.qty += qty;
+                          } else {
+                            items.push({ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty, unitPrice: mat.basePrice, unit: mat.unit });
+                          }
+                        }
+                      });
+                    });
+                    const src = lang === 'ku' ? 'ئەندازیاری AI' : 'AI Architect';
+                    onAddToProject(items, src);
+                  }}
+                  activeOpacity={0.85}
+                >
+                  <Text style={s.addAllBtnIcon}>📁</Text>
+                  <Text style={s.addAllBtnText}>{lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+                </TouchableOpacity>
+              )}
 
               <TouchableOpacity
                 style={[s.newEstimateBtn, { borderColor: tc.cardBorder }]}

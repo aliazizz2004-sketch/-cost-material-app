@@ -13,7 +13,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { colors, darkColors, spacing, typography, radius, shadows } from '../styles/theme';
 
-export default function EstimationCalculator({ onBack, initialCategory = 'menu', activeProjectName, onAutoSave, activeProject, materials }) {
+export default function EstimationCalculator({ onBack, initialCategory = 'menu', activeProjectName, onAutoSave, activeProject, materials, onAddToProject, activeProjectId }) {
   const { lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
@@ -789,6 +789,22 @@ export default function EstimationCalculator({ onBack, initialCategory = 'menu',
               <View style={[styles.infoWrapper, { backgroundColor: tc.infoBackground, borderColor: tc.infoBorder }]}>
                 <Text style={[styles.infoTextValue, isRTL && styles.textRTL, { color: tc.infoText }]}>{result.infoText}</Text>
               </View>
+            )}
+
+            {/* Add to Project button */}
+            {activeProjectId && onAddToProject && (
+              <TouchableOpacity
+                style={{ backgroundColor: colors.primary, paddingVertical: 14, borderRadius: 14, alignItems: 'center', marginTop: spacing.md, flexDirection: isRTL ? 'row-reverse' : 'row', justifyContent: 'center', gap: 8, paddingHorizontal: 20 }}
+                onPress={() => {
+                  const title = copy.materials[activeCategory]?.title || activeCategory;
+                  const estText = `${title}: ${result.primaryValue} | ${result.totalValue}`;
+                  onAddToProject([], lang === 'ku' ? 'ژمێرەری خەمڵاندن' : 'Estimation Calculator', null, estText);
+                }}
+                activeOpacity={0.85}
+              >
+                <Text style={{ fontSize: 18 }}>📁</Text>
+                <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+              </TouchableOpacity>
             )}
           </Animated.View>
         )}

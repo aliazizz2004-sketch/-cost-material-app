@@ -28,6 +28,7 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "./styl
 import materialsData from "./data/materials";
 import { recognizeMaterial } from "./services/aiRecognition";
 import MaterialResultModal from "./components/MaterialResultModal";
+import AddToProjectCard from "./components/AddToProjectCard";
 import { PageEnter, PageFadeIn } from "./components/animations";
 
 // Wraps any view in a reanimated entering animation
@@ -52,6 +53,17 @@ function AppContent() {
   // Projects State
   const [projects, setProjects] = useState([]);
   const [activeProjectId, setActiveProjectId] = useState(null);
+
+  // Lifted project creation state (persists across navigation)
+  const [pendingProjectName, setPendingProjectName] = useState("");
+  const [pendingProjectNote, setPendingProjectNote] = useState("");
+
+  // Add-to-Project Cart
+  const [projectCartItems, setProjectCartItems] = useState([]);
+  const [projectCartSource, setProjectCartSource] = useState("");
+  const [projectCartDelivery, setProjectCartDelivery] = useState(null);
+  const [projectCartEstimation, setProjectCartEstimation] = useState(null);
+  const [showProjectCart, setShowProjectCart] = useState(false);
 
   // AI Modal
   const [aiModalVisible, setAiModalVisible] = useState(false);
@@ -110,7 +122,7 @@ function AppContent() {
       if (!projectId) setActiveProjectId(null);
       setNavStack(prev => [...prev, 'storePurpose']);
     } else {
-      if (!projectId && (viewId === 'home' || viewId === 'aiHub' || viewId === 'projects' || viewId === 'profile')) {
+      if (!projectId && (viewId === 'home' || viewId === 'profile')) {
         setActiveProjectId(null);
       }
       setNavStack(prev => [...prev, viewId]);
@@ -199,6 +211,89 @@ function AppContent() {
     AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated));
   }, [activeProjectId, projects]);
 
+  // ═══ Unified Add-to-Project handler ═══
+  const handleShowProjectCart = useCallback((items, source, delivery = null, estimation = null) => {
+    setProjectCartItems(items || []);
+    setProjectCartSource(source || "");
+    setProjectCartDelivery(delivery);
+    setProjectCartEstimation(estimation);
+    setShowProjectCart(true);
+  }, []);
+
+  const handleConfirmAddToProject = useCallback((items) => {
+    if (!activeProjectId) {
+      // No active project — create one or show alert
+      if (typeof window !== 'undefined' && window.alert) {
+        const msg = lang === 'ku' ? 'تکایە سەرەتا پڕۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
+        window.alert(msg);
+      }
+      setShowProjectCart(false);
+      return;
+    }
+
+    const updated = projects.map(p => {
+      if (p.id !== activeProjectId) return p;
+
+      // Merge new material items into existing project items
+      const existingItems = [...(p.items || [])];
+      (items || []).forEach(newItem => {
+        const idx = existingItems.findIndex(e => e.id === newItem.id);
+        if (idx >= 0) {
+          existingItems[idx] = { ...existingItems[idx], qty: existingItems[idx].qty + (newItem.qty || 1) };
+        } else {
+          existingItems.push({ id: newItem.id, qty: newItem.qty || 1 });
+        }
+      });
+
+      // Recalculate total cost from items
+      let totalCost = 0;
+      existingItems.forEach(item => {
+        const mat = materialsData.find(m => m.id === item.id);
+        if (mat) totalCost += mat.basePrice * item.qty;
+      });
+
+      // Add delivery cost if present
+      const delivCost = projectCartDelivery ? (projectCartDelivery.costUSD || 0) : (p.deliveryCostUSD || 0);
+      const delivStr = projectCartDelivery ? (projectCartDelivery.label || p.deliveryStr) : p.deliveryStr;
+
+      // Add estimation if present
+      const ests = { ...(p.estimations || {}) };
+      if (projectCartEstimation) {
+        ests[Date.now()] = projectCartEstimation;
+      }
+
+      return {
+        ...p,
+        items: existingItems,
+        totalCostUSD: totalCost + delivCost,
+        deliveryCostUSD: delivCost,
+        deliveryStr: delivStr || p.deliveryStr,
+        estimations: ests,
+        date: new Date().toISOString(),
+      };
+    });
+
+    setProjects(updated);
+    AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated)).catch(() => {});
+
+    // Also update globalQuantities
+    const proj = updated.find(p => p.id === activeProjectId);
+    if (proj) {
+      const qtys = {};
+      proj.items.forEach(it => { qtys[it.id] = it.qty; });
+      setGlobalQuantitiesState(qtys);
+    }
+
+    setShowProjectCart(false);
+    setProjectCartItems([]);
+
+    // Show success
+    if (typeof window !== 'undefined' && window.alert) {
+      const msg = lang === 'ku' ? '✅ بابەتەکان زیادکران بۆ پڕۆژە!' : '✅ Items added to project!';
+      window.alert(msg);
+    }
+  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang]);
+
   if (rateLoading && !rate) {
     return (
       <View style={[styles.loadingContainer, { backgroundColor: tc.primary }]}>
@@ -231,20 +326,24 @@ function AppContent() {
           onNavigate={handleNavNavigate}
           globalQuantities={globalQuantities}
           setGlobalQuantities={setGlobalQuantities}
+          onAddToProject={handleShowProjectCart}
+          activeProjectId={activeProjectId}
+          materials={materialsData}
         />
+        <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
         {renderBottomNav()}
       </AnimatedPage>
     );
   }
 
 
-  if (currentView === "estimation") return <AnimatedPage><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "delivery") return <AnimatedPage><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({ ...acc, [it.id]: it.qty }), {})} storeMaterials={materialsData} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "estimation") return <AnimatedPage><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
+  if (currentView === "delivery") return <AnimatedPage><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({ ...acc, [it.id]: it.qty }), {})} storeMaterials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
   if (currentView === "suppliers") return <AnimatedPage><SupplierDirectory onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "projects") return <AnimatedPage><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} activeProjectId={activeProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storeAll", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storeAll"); })} onOpenAiCamera={openAiCamera} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "projects") return <AnimatedPage><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} activeProjectId={activeProjectId} setActiveProjectId={setActiveProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storeAll", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storeAll"); })} onOpenAiCamera={openAiCamera} pendingProjectName={pendingProjectName} setPendingProjectName={setPendingProjectName} pendingProjectNote={pendingProjectNote} setPendingProjectNote={setPendingProjectNote} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "community") return <AnimatedPage><CommunityForum onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "aiArchitect") return <AnimatedPage><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storeAll")} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "arVisualizer") return <AnimatedPage><ARVisualizer onBack={handleBack} onAddToStore={(qtys) => { setGlobalQuantities(prev => ({ ...prev, ...qtys })); handleNavNavigate("storeAll"); }} />{renderBottomNav()}</AnimatedPage>;
+  if (currentView === "aiArchitect") return <AnimatedPage><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storeAll")} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
+  if (currentView === "arVisualizer") return <AnimatedPage><ARVisualizer onBack={handleBack} onAddToStore={(qtys) => { setGlobalQuantities(prev => ({ ...prev, ...qtys })); handleNavNavigate("storeAll"); }} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
   if (currentView === "profile") return <AnimatedPage><UserProfile onBack={handleBack} projects={projects} />{renderBottomNav()}</AnimatedPage>;
   if (currentView === "aiHub") {
     // AI Hub — show AI tools
@@ -280,7 +379,15 @@ function AppContent() {
           </View>
           <View style={{ height: 100 }} />
         </ScrollView>
-        <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => { setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 })); setAiModalVisible(false); handleNavNavigate("storeAll"); }} />
+        <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => {
+          const mat = materialsData.find(m => m.id === matId);
+          if (mat && activeProjectId) {
+            handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
+          }
+          setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 }));
+          setAiModalVisible(false);
+        }} />
+        <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
         {renderBottomNav()}
       </View>
     );
@@ -362,7 +469,15 @@ function AppContent() {
       </ScrollView>
 
       {/* AI Result Modal */}
-      <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => { setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 })); setAiModalVisible(false); handleNavNavigate("storePurpose"); }} />
+      <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => {
+        const mat = materialsData.find(m => m.id === matId);
+        if (mat && activeProjectId) {
+          handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
+        }
+        setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 }));
+        setAiModalVisible(false);
+      }} />
+      <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
 
       {renderBottomNav()}
     </View>

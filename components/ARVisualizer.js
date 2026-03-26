@@ -154,7 +154,7 @@ const MATERIAL_PALETTES = [
   },
 ];
 
-export default function ARVisualizer({ onBack, onAddToStore }) {
+export default function ARVisualizer({ onBack, onAddToStore, onAddToProject, activeProjectId }) {
   const { t, lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const { rate } = useExchangeRate();
@@ -527,6 +527,14 @@ Return ONLY valid JSON:
     setShowAddedModal(true);
     onAddToStore?.({ [costEstimate.mat.id]: costEstimate.quantity });
   }, [selectedPalette, costEstimate, onAddToStore, lang]);
+
+  const handleAddToProject = useCallback(() => {
+    if (!selectedPalette || !costEstimate || !onAddToProject) return;
+    const mat = costEstimate.mat;
+    const items = [{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: costEstimate.quantity, unitPrice: mat.basePrice, unit: mat.unit }];
+    const src = lang === 'ku' ? 'بینەری AR' : 'AR Visualizer';
+    onAddToProject(items, src);
+  }, [selectedPalette, costEstimate, onAddToProject, lang]);
 
   const handleRetake = useCallback(() => {
     setCapturedImage(null);
@@ -1055,6 +1063,16 @@ Return ONLY valid JSON:
               >
                 <Text style={s.addToStoreBtnText}>🛒 {copy.addToStore}</Text>
               </TouchableOpacity>
+
+              {activeProjectId && onAddToProject && (
+                <TouchableOpacity
+                  style={[s.addToStoreBtn, { backgroundColor: colors.primary, marginTop: 8 }]}
+                  onPress={handleAddToProject}
+                  activeOpacity={0.85}
+                >
+                  <Text style={s.addToStoreBtnText}>📁 {lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+                </TouchableOpacity>
+              )}
             </Animated.View>
           )}
 

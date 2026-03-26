@@ -36,14 +36,22 @@ export default function ProjectManager({
   onOpenAiCamera,
   setGlobalQuantities,
   onNavigate,
+  setActiveProjectId,
+  pendingProjectName = "",
+  setPendingProjectName,
+  pendingProjectNote = "",
+  setPendingProjectNote,
 }) {
   const { t, lang, isRTL } = useLanguage();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
   const { rate } = useExchangeRate();
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [projectName, setProjectName] = useState("");
-  const [projectNote, setProjectNote] = useState("");
+  // Use lifted state from App.js so name persists across navigation
+  const projectName = pendingProjectName;
+  const setProjectName = setPendingProjectName || (() => {});
+  const projectNote = pendingProjectNote;
+  const setProjectNote = setPendingProjectNote || (() => {});
   const [expandedId, setExpandedId] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [viewProject, setViewProject] = useState(null); // for the open/detail modal
@@ -164,11 +172,12 @@ export default function ProjectManager({
 
     const updated = [newProject, ...projects];
     await saveProjects(updated);
+    if (setActiveProjectId) setActiveProjectId(newProject.id);
     setProjectName("");
     setProjectNote("");
     setShowCreateModal(false);
     Alert.alert("✅", copy.projectCreated);
-  }, [projectName, projectNote, currentQuantities, materials, projects, saveProjects, copy, currentItemCount]);
+  }, [projectName, projectNote, currentQuantities, materials, projects, saveProjects, copy, currentItemCount, setActiveProjectId]);
 
   // Update existing project with current selections
   const updateProject = useCallback(

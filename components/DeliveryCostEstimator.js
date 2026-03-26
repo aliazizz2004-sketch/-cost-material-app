@@ -20,7 +20,7 @@ import {
   calculateDeliveryCost,
 } from "../data/deliveryData";
 
-export default function DeliveryCostEstimator({ onBack, activeProjectName, onAutoSave, storeQuantities, storeMaterials }) {
+export default function DeliveryCostEstimator({ onBack, activeProjectName, onAutoSave, storeQuantities, storeMaterials, onAddToProject, activeProjectId }) {
   const { t, lang, isRTL } = useLanguage();
   const { rate } = useExchangeRate();
   const { isDark } = useTheme();
@@ -607,6 +607,23 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
             ℹ️ {copy.info}
           </Text>
         </View>
+
+        {/* Add to Project Button */}
+        {result && !result.error && activeProjectId && onAddToProject && (
+          <TouchableOpacity
+            style={{ backgroundColor: colors.primary, paddingVertical: 14, borderRadius: 14, alignItems: 'center', marginTop: spacing.md, flexDirection: isRTL ? 'row-reverse' : 'row', justifyContent: 'center', gap: 8, paddingHorizontal: 20 }}
+            onPress={() => {
+              const fromStr = getCityName(fromCity);
+              const toStr = getCityName(toCity);
+              const label = `${fromStr} ➜ ${toStr}`;
+              onAddToProject([], lang === 'ku' ? 'تێچووی گەیاندن' : 'Delivery Cost', { label, costUSD: result.costUSD });
+            }}
+            activeOpacity={0.85}
+          >
+            <Text style={{ fontSize: 18 }}>📁</Text>
+            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+          </TouchableOpacity>
+        )}
 
         <View style={{ height: 40 }} />
       </ScrollView>

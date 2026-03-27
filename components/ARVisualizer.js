@@ -164,6 +164,8 @@ export default function ARVisualizer({ onBack, onAddToStore, onAddToProject, act
   const [capturedImage, setCapturedImage] = useState(null);
   const [capturedImageBase64, setCapturedImageBase64] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isRendering, setIsRendering] = useState(false);
+  const [finalInpaintedImage, setFinalInpaintedImage] = useState(null);
   const [roomAnalysis, setRoomAnalysis] = useState(null);
   const [selectedPalette, setSelectedPalette] = useState(null);
   const [selectedColorIdx, setSelectedColorIdx] = useState(0);
@@ -580,6 +582,7 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
   const handleRetake = useCallback(() => {
     setCapturedImage(null);
     setCapturedImageBase64(null);
+    setFinalInpaintedImage(null);
     setRoomAnalysis(null);
     setSelectedPalette(null);
     setSelectedColorIdx(0);
@@ -587,6 +590,44 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
     setShowSourcePicker(true);
     stopWebCamera();
   }, [stopWebCamera]);
+
+  const handleRenderPhotorealistic = useCallback(async () => {
+    if (!capturedImageBase64 || !selectedPalette) return;
+    setIsRendering(true);
+    try {
+      const matName = lang === "ku" ? selectedPalette.nameKU : selectedPalette.nameEN;
+      
+      // Convert base64 to Blob for FormData
+      const byteCharacters = atob(capturedImageBase64);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: 'image/jpeg' });
+
+      const formData = new FormData();
+      formData.append("image", blob, "room.jpg");
+      formData.append("materialName", matName);
+
+      const response = await fetch("http://localhost:3001/api/render-wall", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.finalImageUrl) {
+        setFinalInpaintedImage(data.finalImageUrl);
+      } else {
+        throw new Error(data.error || "Rendering failed");
+      }
+    } catch (err) {
+      console.error(err);
+      Alert.alert("Render Error", err.message);
+    } finally {
+      setIsRendering(false);
+    }
+  }, [capturedImageBase64, selectedPalette, lang]);
 
   // ─── Pattern Renderer (CSS-based overlay with real patterns) ───
   const renderOverlay = useMemo(() => {
@@ -918,22 +959,29 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
 
       {/* Image with Overlay */}
       <View style={s.arViewport}>
-        {capturedImage && (
+        {capturedImage && !finalInpaintedImage && (
           <Image
             source={{ uri: capturedImage }}
             style={s.arImage}
             resizeMode="cover"
           />
         )}
+        {finalInpaintedImage && (
+          <Image
+            source={{ uri: finalInpaintedImage }}
+            style={s.arImage}
+            resizeMode="cover"
+          />
+        )}
 
         {/* Material Overlay */}
-        {selectedPalette && renderOverlay}
+        {selectedPalette && !finalInpaintedImage && renderOverlay}
 
         {/* Loading overlay */}
-        {isAnalyzing && (
+        {(isAnalyzing || isRendering) && (
           <View style={s.analyzingOverlay}>
             <ActivityIndicator size="large" color="#FFF" />
-            <Text style={s.analyzingText}>{copy.analyzing}</Text>
+            <Text style={s.analyzingText}>{isRendering ? (lang === "ku" ? "دروستکردنی وێنەی ڕاستەقینە..." : "Rendering Photorealistic Image...") : copy.analyzing}</Text>
           </View>
         )}
 
@@ -1120,6 +1168,16 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
                   <Text style={s.addToStoreBtnText}>📁 {lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
                 </TouchableOpacity>
               )}
+
+              {/* HD Render button */}
+              <TouchableOpacity
+                style={[s.addToStoreBtn, { backgroundColor: "#10B981", marginTop: 8 }]}
+                onPress={handleRenderPhotorealistic}
+                disabled={isRendering}
+                activeOpacity={0.85}
+              >
+                <Text style={s.addToStoreBtnText}>✨ {lang === 'ku' ? 'تەواوکردنی ڕاستەقینە (API)' : 'HD Render (API)'}</Text>
+              </TouchableOpacity>
             </Animated.View>
           )}
 

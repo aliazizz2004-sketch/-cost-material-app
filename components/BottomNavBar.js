@@ -1,4 +1,4 @@
-/**
+﻿/**
  * BottomNavBar – Professional 5-tab navigation bar.
  * Uses real Lucide SVG icons via AppIcon + small descriptive labels.
  * Active tab gets an accent pill indicator with smooth animations.
@@ -26,30 +26,35 @@ const NAV_ITEMS = [
     icon: 'home',
     labelEN: 'Home',
     labelKU: 'سەرەکی',
+    labelAR: 'الرئيسية',
   },
   {
     id: 'store',
     icon: 'store',
     labelEN: 'Materials',
     labelKU: 'مادەکان',
+    labelAR: 'المواد',
   },
   {
-    id: 'aiHub',          // ← opens the AI Hub screen
+    id: 'aiHub',
     icon: 'sparkles',
     labelEN: 'AI Tools',
     labelKU: 'ئامرازی AI',
+    labelAR: 'أدوات الذكاء',
   },
   {
     id: 'projects',
     icon: 'projects',
     labelEN: 'Projects',
-    labelKU: 'پڕۆژەکان',
+    labelKU: 'پ\u0631ۆژەکان',
+    labelAR: 'المشاريع',
   },
   {
     id: 'profile',
     icon: 'profile',
     labelEN: 'Profile',
     labelKU: 'پرۆفایل',
+    labelAR: 'حسابي',
   },
 ];
 
@@ -162,8 +167,7 @@ function NavTab({ item, isActive, isDark, lang, kuFont, accentColor, inactiveCol
       onPress={handlePress}
       activeOpacity={0.8}
       style={styles.tabTouchable}
-      accessibilityRole="button"
-      accessibilityLabel={lang === 'ku' ? item.labelKU : item.labelEN}
+      accessibilityLabel={lang === 'ar' ? item.labelAR : lang === 'ku' ? item.labelKU : item.labelEN}
     >
       <Animated.View style={[styles.tabContent, { transform: [{ scale: scaleAnim }] }]}>
         {/* Pill background */}
@@ -189,12 +193,11 @@ function NavTab({ item, isActive, isDark, lang, kuFont, accentColor, inactiveCol
           }
         ]} />
 
-        {/* Label */}
         <Text
           style={[styles.tabLabel, { color: labelColor, fontWeight }, lang === 'ku' ? kuFont() : {}]}
           numberOfLines={1}
         >
-          {lang === 'ku' ? item.labelKU : item.labelEN}
+          {lang === 'ar' ? item.labelAR : lang === 'ku' ? item.labelKU : item.labelEN}
         </Text>
       </Animated.View>
     </TouchableOpacity>

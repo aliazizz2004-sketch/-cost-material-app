@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Interactive Material Checklists
  * Auto-suggests supplementary materials based on selected materials
  * Phase-based construction checklists for Kurdistan/Iraq
@@ -16,7 +16,7 @@ export const MATERIAL_SUGGESTIONS = {
   3: [ // SRC Cement
     { id: 15, reasonEN: "Sand is needed for mortar mix", reasonKU: "خوڵ پێویستە بۆ تێکەڵەی ملاط" },
     { id: 16, reasonEN: "Gravel needed for concrete", reasonKU: "بەرد پێویستە بۆ کۆنکریت" },
-    { id: 37, reasonEN: "Waterproofing membrane for foundations", reasonKU: "مەمبرەینی بەرگری لە ئاو بۆ بنەڕەت" },
+    { id: 37, reasonEN: "Waterproofing membrane for foundations", reasonKU: "مەمبرەینی بەرگری لە ئاو بۆ بنە\u0631ەت" },
   ],
   6: [ // Rebar
     { id: 1, reasonEN: "Cement for concrete mix", reasonKU: "سمێنت (چیمەنتۆ) بۆ تێکەڵەی کۆنکریت" },
@@ -26,12 +26,12 @@ export const MATERIAL_SUGGESTIONS = {
   9: [ // Concrete Block 20cm
     { id: 1, reasonEN: "Cement for mortar joints", reasonKU: "سمێنت (چیمەنتۆ) بۆ بەستنی بلۆکەکان" },
     { id: 15, reasonEN: "Sand for mortar", reasonKU: "خوڵ بۆ ملاط" },
-    { id: 4, reasonEN: "Gypsum plaster for wall finishing", reasonKU: "جەبس بۆ ڕازی دیوار" },
+    { id: 4, reasonEN: "Gypsum plaster for wall finishing", reasonKU: "جەبس بۆ \u0631ازی دیوار" },
   ],
   10: [ // Concrete Block 15cm
     { id: 1, reasonEN: "Cement for mortar joints", reasonKU: "سمێنت (چیمەنتۆ) بۆ بەستنی بلۆکەکان" },
     { id: 15, reasonEN: "Sand for mortar", reasonKU: "خوڵ بۆ ملاط" },
-    { id: 4, reasonEN: "Gypsum plaster for wall finishing", reasonKU: "جەبس بۆ ڕازی دیوار" },
+    { id: 4, reasonEN: "Gypsum plaster for wall finishing", reasonKU: "جەبس بۆ \u0631ازی دیوار" },
   ],
   11: [ // Red Clay Brick
     { id: 1, reasonEN: "Cement for brick mortar", reasonKU: "سمێنت (چیمەنتۆ) بۆ ملاطی خشت" },
@@ -49,7 +49,7 @@ export const MATERIAL_SUGGESTIONS = {
     { id: 5, reasonEN: "Tile adhesive or cement mortar", reasonKU: "چەسپی کاشی یان ملاطی سمێنت (چیمەنتۆ)" },
   ],
   24: [ // Gypsum Board
-    { id: 25, reasonEN: "Paint for finishing", reasonKU: "بۆیە بۆ ڕازاندنەوە" },
+    { id: 25, reasonEN: "Paint for finishing", reasonKU: "بۆیە بۆ \u0631ازاندنەوە" },
   ],
   25: [ // Interior Paint
     { id: 4, reasonEN: "Gypsum plaster for wall prep", reasonKU: "جەبس بۆ ئامادەکردنی دیوار" },
@@ -82,11 +82,11 @@ export const CONSTRUCTION_PHASES = [
   {
     id: "foundation",
     nameEN: "Foundation & Structure",
-    nameKU: "بنەڕەت و ئینشایی",
+    nameKU: "بنە\u0631ەت و ئینشایی",
     icon: "🏗️",
     materialIds: [3, 1, 6, 15, 16, 17, 18, 37],
     descEN: "Foundation, columns, beams, and slabs",
-    descKU: "بنەڕەت، ستوون، تیر، و سلاب",
+    descKU: "بنە\u0631ەت، ستوون، تیر، و سلاب",
   },
   {
     id: "walls",
@@ -113,16 +113,16 @@ export const CONSTRUCTION_PHASES = [
     icon: "🔌",
     materialIds: [32, 33, 34, 35, 36],
     descEN: "Water, drainage, and electrical systems",
-    descKU: "ئاو، لاڕێژ، و سیستەمی کارەبا",
+    descKU: "ئاو، لا\u0631ێژ، و سیستەمی کارەبا",
   },
   {
     id: "finishing",
     nameEN: "Finishing & Fit-out",
-    nameKU: "پەرداخت و ڕازاندنەوە",
+    nameKU: "پەرداخت و \u0631ازاندنەوە",
     icon: "🎨",
     materialIds: [19, 20, 21, 22, 23, 24, 25, 26, 5],
     descEN: "Tiles, marble, paint, and gypsum board",
-    descKU: "کاشی، مەڕمەڕ، بۆیە، و تەختەی جەبس",
+    descKU: "کاشی، مە\u0631مە\u0631، بۆیە، و تەختەی جەبس",
   },
   {
     id: "openings",

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+﻿import React, { useState, useMemo, useCallback } from "react";
 import {
   View,
   Text,
@@ -37,7 +37,37 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
 
   const copy = useMemo(
     () =>
-      lang === "ku"
+      lang === "ar"
+        ? {
+          title: "حاسبة تكلفة التوصيل",
+          subtitle: "تقدير تكاليف النقل بين مدن العراق وكردستان",
+          from: "من مدينة",
+          to: "إلى مدينة",
+          selectCity: "اختر المدينة",
+          weight: "الوزن (طن)",
+          materialType: "نوع المادة",
+          calculate: "تخمين التكلفة",
+          result: "النتيجة",
+          distance: "المسافة",
+          km: "كم",
+          costPerTon: "التكلفة لكل طن",
+          totalCost: "إجمالي تكلفة التوصيل",
+          routeType: "نوع الطريق",
+          noRoute: "عذراً، لا تتوفر معلومات مسار بين هاتين المدينتين",
+          light: "خفيف (عوازل، فوم)",
+          standard: "قياسي (سمنت، بلوك)",
+          heavy: "ثقيل (حديد، شيش)",
+          liquid: "سائل (صبغ، خرسانة)",
+          fragile: "قابل للكسر (زجاج، كاشي)",
+          searchCity: "ابحث عن مدينة...",
+          back: "رجوع",
+          kurdistanCities: "مدن إقليم كردستان",
+          iraqCities: "مدن العراق",
+          sameCity: "لا يمكن أن تكون مدينة الانطلاق مطابقة لمدينة الوصول",
+          weightMultiplier: "نوع المادة",
+          info: "هذه الأسعار تقديرات مبنية على أسعار النقل في السوق العراقي. الأسعار الفعلية قد تختلف.",
+        }
+        : lang === "ku"
         ? {
           title: "خەمڵاندنی تێچووی گەیاندن",
           subtitle: "تێچووی گەیاندنی مادەکان لە نێوان شارەکانی کوردستان و عێراق",
@@ -52,20 +82,20 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
           km: "کم",
           costPerTon: "تێچوو بۆ هەر تۆنێک",
           totalCost: "کۆی تێچووی گەیاندن",
-          routeType: "جۆری ڕێگا",
-          noRoute: "ببوورە، ڕێگایەکی ئاماژەکراو نییە لە نێوان ئەم دوو شارەدا",
+          routeType: "جۆری \u0631ێگا",
+          noRoute: "ببوورە، \u0631ێگایەکی ئاماژەکراو نییە لە نێوان ئەم دوو شارەدا",
           light: "سووک (ئینسولاسیۆن، فۆم)",
           standard: "ئاسایی (سمێنت/چیمەنتۆ، بلۆک)",
           heavy: "قورس (ئاسن، میلە)",
           liquid: "شلە (بۆیە، کۆنکریت)",
           fragile: "شکێنراو (شووشە، کاشی)",
-          searchCity: "گەڕان بۆ شار...",
-          back: "گەڕانەوە",
+          searchCity: "گە\u0631ان بۆ شار...",
+          back: "گە\u0631انەوە",
           kurdistanCities: "شارەکانی کوردستان",
           iraqCities: "شارەکانی عێراق",
           sameCity: "شاری مەبەست و سەرچاوە ناتوانن هاوشێوە بن",
           weightMultiplier: "جۆری مادە",
-          info: "ئەم نرخانە خەمڵاندنن بەپێی نرخی بازاڕی گەیاندن لە عێراق و کوردستان. نرخی ڕاستەقینە دەکرێت جیاواز بێت بەگوێرەی دابینکار.",
+          info: "ئەم نرخانە خەمڵاندنن بەپێی نرخی بازا\u0631ی گەیاندن لە عێراق و کوردستان. نرخی \u0631استەقینە دەکرێت جیاواز بێت.",
         }
         : {
           title: "Delivery Cost Estimator",
@@ -94,7 +124,7 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
           iraqCities: "Iraq Cities",
           sameCity: "Origin and destination cannot be the same",
           weightMultiplier: "Material Type",
-          info: "These rates are estimates based on Iraq & Kurdistan market delivery rates. Actual rates may vary by supplier.",
+          info: "These rates are estimates based on Iraq & Kurdistan market delivery rates. Actual rates may vary.",
         },
     [lang]
   );
@@ -126,7 +156,7 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
     (cityId) => {
       const city = CITIES.find((c) => c.id === cityId);
       if (!city) return "";
-      return lang === "ku" ? city.nameKU : city.nameEN;
+      return lang === "ar" ? city.nameAR : lang === "ku" ? city.nameKU : city.nameEN;
     },
     [lang]
   );
@@ -169,7 +199,8 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
     return CITIES.filter(
       (c) =>
         c.nameEN.toLowerCase().includes(q) ||
-        c.nameKU.includes(q) ||
+        (c.nameKU && c.nameKU.includes(q)) ||
+        (c.nameAR && c.nameAR.includes(q)) ||
         c.id.includes(q)
     );
   }, [citySearch]);
@@ -368,10 +399,10 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
           <View style={{ backgroundColor: isDark ? '#1A2535' : '#EBF5FF', paddingHorizontal: 16, paddingVertical: 12, marginBottom: 20, borderRadius: 12, flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', borderWidth: 1, borderColor: isDark ? '#2A3A4F' : '#BFDBFE' }}>
              <View style={{ flex: 1 }}>
                <Text style={{ color: isDark ? '#93C5FD' : '#1E3A8A', fontWeight: '700', fontSize: 13, textAlign: isRTL ? 'right' : 'left', marginBottom: 2 }}>
-                  {lang === "ku" ? `پڕۆژەی چالاک: ${activeProjectName}` : `Active Project: ${activeProjectName}`}
+                  {lang === "ar" ? `المشروع النشط: ${activeProjectName}` : lang === "ku" ? `پ\u0631ۆژەی چالاک: ${activeProjectName}` : `Active Project: ${activeProjectName}`}
                </Text>
                <Text style={{ color: isDark ? '#60A5FA' : '#3B82F6', fontWeight: '600', fontSize: 11, textAlign: isRTL ? 'right' : 'left' }}>
-                  {lang === "ku" ? "گۆڕانکارییەکان خۆکارانە پاشەکەوت دەکرێن" : "Changes are saved automatically"}
+                  {lang === "ar" ? "تُحفظ التغييرات تلقائيًا" : lang === "ku" ? "گۆ\u0631انکارییەکان خۆکارانە پاشەکەوت دەکرێن" : "Changes are saved automatically"}
                </Text>
              </View>
           </View>
@@ -387,10 +418,10 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
             <Text style={{ fontSize: 22, marginRight: isRTL ? 0 : 12, marginLeft: isRTL ? 12 : 0 }}>📦</Text>
             <View style={{ flex: 1 }}>
               <Text style={{ color: isDark ? '#93C5FD' : '#1E40AF', fontWeight: '700', fontSize: 13, textAlign: isRTL ? 'right' : 'left' }}>
-                {lang === "ku" ? `هێنانەوە لە فرۆشگا (${storeItemCount} بڕگە)` : `Import from Store (${storeItemCount} items)`}
+                {lang === "ar" ? `استيراد من المخزن (${storeItemCount} عناصر)` : lang === "ku" ? `هێنانەوە لە فرۆشگا (${storeItemCount} ب\u0631گە)` : `Import from Store (${storeItemCount} items)`}
               </Text>
               <Text style={{ color: isDark ? '#60A5FA' : '#3B82F6', fontWeight: '500', fontSize: 11, textAlign: isRTL ? 'right' : 'left', marginTop: 2 }}>
-                {lang === "ku" ? "کێشی بڕگەکانی فرۆشگا بۆ تۆن دابنێ" : "Auto-fill weight from your store selections"}
+                {lang === "ar" ? "ملء الوزن تلقائياً من اختياراتك" : lang === "ku" ? "کێشی ب\u0631گەکانی فرۆشگا بۆ تۆن دابنێ" : "Auto-fill weight from your store selections"}
               </Text>
             </View>
             <Text style={{ fontSize: 18, color: isDark ? '#60A5FA' : '#2563EB' }}>→</Text>
@@ -450,7 +481,7 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
           >
             <Text style={s.swapIcon}>⇅</Text>
             <Text style={s.swapText}>
-              {lang === "ku" ? "گۆڕینەوە" : "Swap"}
+              {lang === "ar" ? "تبديل" : lang === "ku" ? "گۆ\u0631ینەوە" : "Swap"}
             </Text>
           </TouchableOpacity>
         )}
@@ -523,7 +554,7 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
               </Text>
               <View style={s.routeBadge}>
                 <Text style={s.routeBadgeText}>
-                  {lang === "ku" ? result.tier?.ku : result.tier?.en}
+                  {lang === "ar" ? result.tier?.ar : lang === "ku" ? result.tier?.ku : result.tier?.en}
                 </Text>
               </View>
             </View>
@@ -616,12 +647,12 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
               const fromStr = getCityName(fromCity);
               const toStr = getCityName(toCity);
               const label = `${fromStr} ➜ ${toStr}`;
-              onAddToProject([], lang === 'ku' ? 'تێچووی گەیاندن' : 'Delivery Cost', { label, costUSD: result.costUSD });
+              onAddToProject([], lang === 'ar' ? 'تكلفة التوصيل' : lang === 'ku' ? 'تێچووی گەیاندن' : 'Delivery Cost', { label, costUSD: result.costUSD });
             }}
             activeOpacity={0.85}
           >
             <Text style={{ fontSize: 18 }}>📁</Text>
-            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{lang === 'ar' ? 'إضافة إلى المشروع' : lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
           </TouchableOpacity>
         )}
 

@@ -46,6 +46,7 @@ function AppContent() {
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
   const ku = lang === 'ku';
+  const ar = lang === 'ar';
 
   const [navStack, setNavStack] = useState(["home"]);
   const currentView = navStack[navStack.length - 1] || "home";
@@ -74,36 +75,9 @@ function AppContent() {
 
   const setGlobalQuantities = useCallback((value) => {
     setGlobalQuantitiesState(prev => {
-      const next = typeof value === 'function' ? value(prev) : value;
-      if (activeProjectId) {
-        setProjects(oldProjects => {
-          const updated = oldProjects.map(p => {
-            if (p.id === activeProjectId) {
-              const items = [];
-              let totalCost = 0;
-              materialsData.forEach(m => {
-                const qty = next[m.id] || 0;
-                if (qty > 0) {
-                  items.push({ id: m.id, qty });
-                  totalCost += m.basePrice * qty;
-                }
-              });
-              return {
-                ...p,
-                items,
-                totalCostUSD: totalCost + (p.deliveryCostUSD || 0),
-                date: new Date().toISOString()
-              };
-            }
-            return p;
-          });
-          AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated)).catch(()=>{});
-          return updated;
-        });
-      }
-      return next;
+      return typeof value === 'function' ? value(prev) : value;
     });
-  }, [activeProjectId]);
+  }, []);
 
   useEffect(() => {
     AsyncStorage.getItem("costMaterialProjects").then((v) => {
@@ -119,12 +93,8 @@ function AppContent() {
       setActiveProjectId(projectId);
     }
     if (viewId === 'store') {
-      if (!projectId) setActiveProjectId(null);
       setNavStack(prev => [...prev, 'storePurpose']);
     } else {
-      if (!projectId && (viewId === 'home' || viewId === 'profile')) {
-        setActiveProjectId(null);
-      }
       setNavStack(prev => [...prev, viewId]);
     }
   }, []);
@@ -165,18 +135,18 @@ function AppContent() {
 
   // UI Datasets — with Kurdish translations
   const topActions = [
-    { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
-    { id: "store", icon: "store", title: ku ? "کۆگای مادەکان" : "Material Store", desc: ku ? "کاتەلۆگ و لیستی مادەکان" : "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => handleNavNavigate("storePurpose") },
-    { id: "est", icon: "layers", title: ku ? "ژمێرەری خەملاندن (زەڕعە)" : "Estimation Calc (زەڕعە)", desc: ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => handleNavNavigate("estimation") },
+    { id: "ai", icon: "scan", title: ar ? "تعرف AI" : ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ar ? "مسح المواد وتحديدها" : ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
+    { id: "store", icon: "store", title: ar ? "مخزن المواد" : ku ? "کۆگای مادەکان" : "Material Store", desc: ar ? "الكتالوج وبناء جدول الكميات" : ku ? "کاتەلۆگ و لیستی مادەکان" : "Catalog & BOQ building", color: tc.info, bg: "rgba(52,152,219,0.15)", onPress: () => handleNavNavigate("storePurpose") },
+    { id: "est", icon: "layers", title: ar ? "حاسبة التقدير" : ku ? "ژمێرەری خەملاندن (زە\u0631عە)" : "Estimation Calc", desc: ar ? "حسابات هندسية تفصيلية" : ku ? "ژمێریاری ئەندازیاری وردەکاری" : "Detailed engineering calc", color: tc.success, bg: "rgba(46,204,113,0.15)", onPress: () => handleNavNavigate("estimation") },
   ];
 
   const extraActions = [
-    { id: "aiArch", icon: "bot", title: ku ? "ئەندازیاری AI" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
-    { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
-    { id: "delivery", icon: "truck", title: ku ? "ژمێرەری گواستنەوە" : "Delivery Calc", desc: ku ? "تێچووی بارکردن بۆ شارەکان" : "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => handleNavNavigate("delivery") },
-    { id: "suppliers", icon: "book", title: ku ? "دابینکەرەکان" : "Suppliers", desc: ku ? "پەیوەندی کردن بە فرۆشیارەوە" : "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => handleNavNavigate("suppliers") },
-    { id: "projects", icon: "projects", title: ku ? "پڕۆژەکان" : "Projects", desc: ku ? "بەڕێوەبردنی شوێنەکانت" : "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => handleNavNavigate("projects") },
-    { id: "community", icon: "chat", title: ku ? "کۆمەڵگا" : "Community", desc: ku ? "پرسیار بکە لە پسپۆڕەکان" : "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => handleNavNavigate("community") },
+    { id: "aiArch", icon: "bot", title: ar ? "معمار AI" : ku ? "ئەندازیاری AI" : "AI Architect", desc: ar ? "إنشاء قائمة مواد كاملة" : ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
+    { id: "arViz", icon: "glasses", title: ar ? "مشاهد AR" : ku ? "بینەری AR" : "AR Visualizer", desc: ar ? "معاينة المواد قبل الشراء" : ku ? "پێشبینیی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
+    { id: "delivery", icon: "truck", title: ar ? "حاسبة التوصيل" : ku ? "ژمێرەری گواستنەوە" : "Delivery Calc", desc: ar ? "تكلفة الشحن بين المدن" : ku ? "تێچووی بارکردن بۆ شارەکان" : "Shipping across cities", color: "#059669", bg: "rgba(5,150,105,0.15)", onPress: () => handleNavNavigate("delivery") },
+    { id: "suppliers", icon: "book", title: ar ? "الموردون" : ku ? "دابینکەرەکان" : "Suppliers", desc: ar ? "تواصل مع الموردين" : ku ? "پەیوەندی کردن بە فرۆشیارەوە" : "Connect with vendors", color: "#0891B2", bg: "rgba(8,145,178,0.15)", onPress: () => handleNavNavigate("suppliers") },
+    { id: "projects", icon: "projects", title: ar ? "المشاريع" : ku ? "پ\u0631ۆژەکان" : "Projects", desc: ar ? "إدارة مشاريعك" : ku ? "بە\u0631ێوەبردنی شوێنەکانت" : "Manage your sites", color: "#D97706", bg: "rgba(217,119,6,0.15)", onPress: () => handleNavNavigate("projects") },
+    { id: "community", icon: "chat", title: ar ? "المجتمع" : ku ? "کۆمەڵگا" : "Community", desc: ar ? "اسأل الخبراء" : ku ? "پرسیار بکە لە پسپۆ\u0631ەکان" : "Ask experts Q&A", color: tc.primary, bg: "rgba(10,22,40,0.15)", onPress: () => handleNavNavigate("community") },
   ];
 
   const activeProject = projects.find(p => p.id === activeProjectId);
@@ -224,7 +194,7 @@ function AppContent() {
     if (!activeProjectId) {
       // No active project — create one or show alert
       if (typeof window !== 'undefined' && window.alert) {
-        const msg = lang === 'ku' ? 'تکایە سەرەتا پڕۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
+        const msg = lang === 'ar' ? 'الرجاء إنشاء أو فتح مشروع أولاً.' : lang === 'ku' ? 'تکایە سەرەتا پ\u0631ۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
         window.alert(msg);
       }
       setShowProjectCart(false);
@@ -292,7 +262,7 @@ function AppContent() {
 
     // Show success
     if (typeof window !== 'undefined' && window.alert) {
-      const msg = lang === 'ku' ? '✅ بابەتەکان زیادکران بۆ پڕۆژە!' : '✅ Items added to project!';
+      const msg = lang === 'ar' ? '✅ تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? '✅ بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : '✅ Items added to project!';
       window.alert(msg);
     }
   }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang, handleNavNavigate]);
@@ -356,20 +326,26 @@ function AppContent() {
         <View style={[styles.hero, { backgroundColor: tc.primary, paddingBottom: 30 }]}>
           <SafeAreaView>
             <View style={styles.headerTop}>
-              <View>
-                <Text style={styles.heroTitle}>{ku ? "ئامرازەکانی AI" : "AI Tools"}</Text>
-                <Text style={styles.heroSub}>{ku ? "ئامرازە زیرەکەکان بۆ بیناسازی" : "Smart construction tools"}</Text>
+              <View style={styles.headerRow}>
+                <Text style={[styles.heroTitle]}>
+                  {ar ? "أدوات AI" : ku ? "ئامرازەکانی AI" : "AI Tools"}
+                </Text>
               </View>
-              <LanguageToggle />
+              <View style={styles.headerRow}>
+                <Text style={styles.heroSub}>
+                  {ar ? "أدوات بناء ذكية" : ku ? "ئامرازە زیرەکەکان بۆ بیناسازی" : "Smart construction tools"}
+                </Text>
+                <LanguageToggle />
+              </View>
             </View>
           </SafeAreaView>
         </View>
         <ScrollView contentContainerStyle={[styles.scrollContent, { paddingTop: 20 }]} showsVerticalScrollIndicator={false}>
           <View style={styles.mainGrid}>
             {[
-              { id: "ai", icon: "scan", title: ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
-              { id: "aiArch", icon: "bot", title: ku ? "ئەندازیاری AI" : "AI Architect", desc: ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
-              { id: "arViz", icon: "glasses", title: ku ? "بینەری AR" : "AR Visualizer", desc: ku ? "پێشبینینی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
+              { id: "ai", icon: "scan", title: ar ? "تعرف AI" : ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ar ? "مسح المواد" : ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
+              { id: "aiArch", icon: "bot", title: ar ? "معمار AI" : ku ? "ئەندازیاری AI" : "AI Architect", desc: ar ? "إنشاء قائمة مواد كاملة" : ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
+              { id: "arViz", icon: "glasses", title: ar ? "مشاهد AR" : ku ? "بینەری AR" : "AR Visualizer", desc: ar ? "معاينة المواد قبل الشراء" : ku ? "پێشبینیی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
             ].map(a => (
               <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
                 <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
@@ -385,7 +361,7 @@ function AppContent() {
         <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => {
           const mat = materialsData.find(m => m.id === matId);
           if (mat && activeProjectId) {
-            handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
+            handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ar' ? 'تعرف AI' : lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
           }
           setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 }));
           setAiModalVisible(false);
@@ -405,11 +381,17 @@ function AppContent() {
         <View style={[styles.hero, { backgroundColor: tc.primary }]}>
           <SafeAreaView>
             <View style={styles.headerTop}>
-              <View>
-                <Text style={[styles.heroTitle, kuFont()]}>{ku ? "زانیاری بیناسازی" : "Construction Intelligence"}</Text>
-                <Text style={[styles.heroSub, kuFont()]}>{ku ? "بەڕێوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}</Text>
+              <View style={styles.headerRow}>
+                <Text style={[styles.heroTitle, kuFont()]} numberOfLines={1} adjustsFontSizeToFit>
+                  {ar ? "ذكاء البناء" : ku ? "زانیاری بیناسازی" : "Construction Intelligence"}
+                </Text>
               </View>
-              <LanguageToggle />
+              <View style={styles.headerRow}>
+                <Text style={[styles.heroSub, kuFont()]}>
+                  {ar ? "إدارة مشاريعك بسهولة" : ku ? "بەریوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}
+                </Text>
+                <LanguageToggle />
+              </View>
             </View>
           </SafeAreaView>
         </View>
@@ -418,17 +400,17 @@ function AppContent() {
         <View style={styles.statsWrap}>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
             <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "مادەکان" : "Materials"}</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "المواد" : ku ? "مادەکان" : "Materials"}</Text>
           </View>
           <TouchableOpacity style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} activeOpacity={0.7} onPress={() => {
             const currentStr = rate ? Math.round(rate * 100).toString() : "152000";
             if (Platform.OS === 'web') {
-              const val = window.prompt(ku ? "نرخی گۆڕینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
+              const val = window.prompt(ar ? "سعر الصرف بالدينار لـ 100$:" : ku ? "نرخی گۆ\u0631ینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
               if (val && !isNaN(Number(val))) setManualRate(Number(val) / 100);
             } else {
               Alert.prompt(
-                ku ? "گۆڕینی نرخی دۆلار" : "Change Exchange Rate",
-                ku ? "نرخی 100$ بە دینار بنووسە" : "Enter IQD value for 100$",
+                ar ? "تغيير سعر الصرف" : ku ? "گۆ\u0631ینی نرخی دۆلار" : "Change Exchange Rate",
+                ar ? "أدخل قيمة 100$ بالدينار" : ku ? "نرخی 100$ بە دینار بنووسە" : "Enter IQD value for 100$",
                 [
                   { text: "Cancel", style: "cancel" },
                   { text: ku ? "باشە" : "OK", onPress: (val) => { if(val && !isNaN(Number(val))) setManualRate(Number(val) / 100) }}
@@ -438,13 +420,15 @@ function AppContent() {
               );
             }
           }}>
-            <Text style={[styles.statV, { color: tc.primary }]}>{rate ? (Math.round(rate) * 100).toLocaleString() : "--"}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ku ? "دینار / 100$" : "IQD / $100"}</Text>
+            <Text style={[styles.statV, { color: tc.primary }]}>
+              {rate ? Math.round(rate * 100).toLocaleString() : "--"}
+            </Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "د.ع / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.mainGrid}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "الأدوات الرئيسية" : ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
           {topActions.map(a => (
             <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
               <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
@@ -457,7 +441,7 @@ function AppContent() {
         </View>
 
         <View style={styles.extraGridSection}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "ميزات احترافية" : ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
           <View style={styles.extraGrid}>
             {extraActions.map(a => (
               <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
@@ -475,7 +459,7 @@ function AppContent() {
       <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => {
         const mat = materialsData.find(m => m.id === matId);
         if (mat && activeProjectId) {
-          handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
+          handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ar' ? 'تعرف AI' : lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
         }
         setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 }));
         setAiModalVisible(false);
@@ -510,8 +494,9 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
   },
-  headerTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  heroTitle: { fontSize: 24, fontWeight: '800', color: '#fff' },
+  headerTop: { flexDirection: 'column', alignItems: 'flex-start', gap: 10 },
+  headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' },
+  heroTitle: { fontSize: 20, fontWeight: '800', color: '#fff', flexShrink: 1 },
   heroSub: { fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 },
   statsWrap: { flexDirection: 'row', paddingHorizontal: 20, marginTop: -30, gap: 12 },
   statBox: { flex: 1, padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card, alignItems: 'center' },

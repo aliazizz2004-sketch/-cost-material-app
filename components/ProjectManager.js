@@ -58,39 +58,74 @@ export default function ProjectManager({
 
   const copy = useMemo(
     () =>
-      lang === "ku"
+      lang === "ar"
         ? {
-          title: "بەڕێوەبردنی پڕۆژەکان",
-          subtitle: "پڕۆژەکانت بپارێزە و بەڕێوەببە",
-          create: "پڕۆژەیەکی نوێ دروست بکە",
-          name: "ناوی پڕۆژە",
+          title: "إدارة المشاريع",
+          subtitle: "احفظ وأدر مشاريعك الهندسية",
+          create: "إنشاء مشروع جديد",
+          name: "اسم المشروع",
+          note: "ملاحظة (اختياري)",
+          save: "حفظ",
+          update: "تحديث",
+          cancel: "إلغاء",
+          delete: "حذف",
+          load: "فتح",
+          saveUpdate: "حفظ التحديث",
+          noProjects: "لا توجد مشاريع بعد. ابدأ بإنشاء مشروعك الأول!",
+          date: "التاريخ",
+          items: "عناصر",
+          totalCost: "التكلفة الإجمالية",
+          namePlaceholder: "أدخل اسم المشروع...",
+          notePlaceholder: "تلميحات أو ملاحظات...",
+          projectCreated: "تم حفظ المشروع!",
+          projectUpdated: "تم تحديث المشروع!",
+          projectDeleted: "تم حذف المشروع",
+          confirmDelete: "هل أنت متأكد أنك تريد حذف هذا المشروع؟",
+          yes: "نعم",
+          no: "لا",
+          saveCurrent: "حفظ الاختيار الحالي",
+          back: "رجوع",
+          quickLinks: "الأدوات",
+          goStore: "المخزن",
+          goDelivery: "التوصيل",
+          goEstimation: "الحسابات",
+          noItems: "لم يتم اختيار أي مواد. حدد المواد أولاً!",
+          goToStore: "الذهاب للمخزن",
+          exportPdf: "تصدير PDF",
+        }
+        : lang === "ku"
+        ? {
+          title: "بە\u0631ێوەبردنی پ\u0631ۆژەکان",
+          subtitle: "پ\u0631ۆژەکانت بپارێزە و بە\u0631ێوەببە",
+          create: "پ\u0631ۆژەیەکی نوێ دروست بکە",
+          name: "ناوی پ\u0631ۆژە",
           note: "تێبینی (دلخوازانە)",
           save: "پاشەکەوتکردن",
           update: "نوێکردنەوە",
           cancel: "هەڵوەشاندنەوە",
-          delete: "سڕینەوە",
+          delete: "س\u0631ینەوە",
           load: "کردنەوە",
           saveUpdate: "پاشەکەوتی نوێ",
-          noProjects: "هیچ پڕۆژەیەکت نییە. دەستبکە بە دروستکردنی یەکێک!",
+          noProjects: "هیچ پ\u0631ۆژەیەکت نییە. دەستبکە بە دروستکردنی یەکێک!",
           date: "بەروار",
-          items: "بڕگە",
+          items: "ب\u0631گە",
           totalCost: "کۆی تێچوو",
-          namePlaceholder: "ناوی پڕۆژەکەت بنووسە...",
+          namePlaceholder: "ناوی پ\u0631ۆژەکەت بنووسە...",
           notePlaceholder: "تێبینی...",
-          projectCreated: "پڕۆژە پاشەکەوت کرا!",
-          projectUpdated: "پڕۆژە نوێ کرایەوە!",
-          projectDeleted: "پڕۆژە سڕایەوە",
-          confirmDelete: "دڵنیایت لە سڕینەوەی ئەم پڕۆژەیە؟",
+          projectCreated: "پ\u0631ۆژە پاشەکەوت کرا!",
+          projectUpdated: "پ\u0631ۆژە نوێ کرایەوە!",
+          projectDeleted: "پ\u0631ۆژە س\u0631ایەوە",
+          confirmDelete: "دڵنیایت لە س\u0631ینەوەی ئەم پ\u0631ۆژەیە؟",
           yes: "بەڵێ",
           no: "نەخێر",
           saveCurrent: "هەڵبژاردنی ئێستا پاشەکەوت بکە",
-          back: "گەڕانەوە",
+          back: "گە\u0631انەوە",
           quickLinks: "ئامرازەکان",
           goStore: "فرۆشگا",
           goDelivery: "گەیاندن",
           goEstimation: "خەمڵاندن",
           noItems: "هیچ بابەتێکت هەڵنەبژاردووە. سەرەتا بابەت هەڵبژێرە!",
-          goToStore: "بڕۆ بۆ فرۆشگا",
+          goToStore: "ب\u0631ۆ بۆ فرۆشگا",
           exportPdf: "دەرهێنانی PDF",
         }
         : {
@@ -145,10 +180,6 @@ export default function ProjectManager({
 
   const createProject = useCallback(async () => {
     if (!projectName.trim()) return;
-    if (currentItemCount === 0) {
-      Alert.alert("⚠️", copy.noItems);
-      return;
-    }
 
     // Gather selected items
     const selectedItems = [];
@@ -182,10 +213,7 @@ export default function ProjectManager({
   // Update existing project with current selections
   const updateProject = useCallback(
     async (projectId) => {
-      if (currentItemCount === 0) {
-        Alert.alert("⚠️", copy.noItems);
-        return;
-      }
+      // No item check needed
 
       const selectedItems = [];
       let totalCost = 0;
@@ -215,18 +243,26 @@ export default function ProjectManager({
 
   const deleteProject = useCallback(
     (id) => {
-      Alert.alert("🗑️", copy.confirmDelete, [
-        { text: copy.no, style: "cancel" },
-        {
-          text: copy.yes,
-          style: "destructive",
-          onPress: async () => {
-            const updated = projects.filter((p) => p.id !== id);
-            await saveProjects(updated);
-            if (expandedId === id) setExpandedId(null);
+      const execDelete = async () => {
+        const updated = projects.filter((p) => p.id !== id);
+        await saveProjects(updated);
+        if (expandedId === id) setExpandedId(null);
+      };
+
+      if (Platform.OS === 'web') {
+        if (window.confirm(copy.confirmDelete)) {
+          execDelete();
+        }
+      } else {
+        Alert.alert("🗑️", copy.confirmDelete, [
+          { text: copy.no, style: "cancel" },
+          {
+            text: copy.yes,
+            style: "destructive",
+            onPress: execDelete,
           },
-        },
-      ]);
+        ]);
+      }
     },
     [projects, saveProjects, copy, expandedId]
   );
@@ -270,9 +306,9 @@ export default function ProjectManager({
         </head>
         <body>
           <div class="header">
-            <h1>${lang === 'ku' ? 'خەمڵاندنی پڕۆژە' : 'Project Estimate'}</h1>
+            <h1>${lang === 'ku' ? 'خەمڵاندنی پ\u0631ۆژە' : 'Project Estimate'}</h1>
             <div class="meta">
-              <strong>${lang === 'ku' ? 'ناوی پڕۆژە:' : 'Project:'}</strong> ${project.name}<br>
+              <strong>${lang === 'ku' ? 'ناوی پ\u0631ۆژە:' : 'Project:'}</strong> ${project.name}<br>
               <strong>${lang === 'ku' ? 'بەروار:' : 'Date:'}</strong> ${dateStr}<br>
               ${project.note ? `<strong>${lang === 'ku' ? 'تێبینی:' : 'Note:'}</strong> ${project.note}<br>` : ''}
             </div>
@@ -282,10 +318,10 @@ export default function ProjectManager({
           <table>
             <thead>
               <tr>
-                <th>${lang === 'ku' ? 'بڕگە' : 'Item'}</th>
-                <th>${lang === 'ku' ? 'بڕ' : 'Qty'}</th>
+                <th>${lang === 'ku' ? 'ب\u0631گە' : 'Item'}</th>
+                <th>${lang === 'ku' ? 'ب\u0631' : 'Qty'}</th>
                 <th>${lang === 'ku' ? 'نرخی دانە' : 'Unit Price'}</th>
-                <th>${lang === 'ku' ? 'تێکڕای تێچوو' : 'Total Cost'}</th>
+                <th>${lang === 'ku' ? 'تێک\u0631ای تێچوو' : 'Total Cost'}</th>
               </tr>
             </thead>
             <tbody>
@@ -343,7 +379,16 @@ export default function ProjectManager({
       // This allows the user to preview the generated PDF, select "Save as PDF" (or print),
       // adjust margins, scale, and paper size natively.
       if (Platform.OS === 'web') {
-        await Print.printAsync({ html });
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        iframe.contentDocument.write(html);
+        iframe.contentDocument.close();
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+        setTimeout(() => {
+          document.body.removeChild(iframe);
+        }, 1000);
       } else {
         const { uri } = await Print.printToFileAsync({ html });
         await Sharing.shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
@@ -498,7 +543,11 @@ export default function ProjectManager({
                         <View style={[s.quickLinksRow, isRTL && s.rowRTL]}>
                           <TouchableOpacity
                             style={s.quickLinkBtn}
-                            onPress={() => onGoToStore && onGoToStore(project.id)}
+                            onPress={(e) => {
+                              if (e && e.stopPropagation) e.stopPropagation();
+                              if (setActiveProjectId) setActiveProjectId(project.id);
+                              if (onGoToStore) onGoToStore(project.id);
+                            }}
                             activeOpacity={0.8}
                           >
                             <View style={[s.quickLinkIcon, { backgroundColor: "#EBF5FF" }]}>
@@ -508,7 +557,11 @@ export default function ProjectManager({
                           </TouchableOpacity>
                           <TouchableOpacity
                             style={s.quickLinkBtn}
-                            onPress={() => onGoToDelivery && onGoToDelivery(project.id)}
+                            onPress={(e) => {
+                              if (e && e.stopPropagation) e.stopPropagation();
+                              if (setActiveProjectId) setActiveProjectId(project.id);
+                              if (onGoToDelivery) onGoToDelivery(project.id);
+                            }}
                             activeOpacity={0.8}
                           >
                             <View style={[s.quickLinkIcon, { backgroundColor: "#ECFDF5" }]}>
@@ -518,7 +571,11 @@ export default function ProjectManager({
                           </TouchableOpacity>
                           <TouchableOpacity
                             style={s.quickLinkBtn}
-                            onPress={() => onGoToEstimation && onGoToEstimation(project.id)}
+                            onPress={(e) => {
+                              if (e && e.stopPropagation) e.stopPropagation();
+                              if (setActiveProjectId) setActiveProjectId(project.id);
+                              if (onGoToEstimation) onGoToEstimation(project.id);
+                            }}
                             activeOpacity={0.8}
                           >
                             <View style={[s.quickLinkIcon, { backgroundColor: "#FFF7ED" }]}>
@@ -533,20 +590,19 @@ export default function ProjectManager({
                           {lang === 'ku' ? 'ئامرازەکانی AI' : 'AI Tools'}
                         </Text>
                         <View style={[s.quickLinksRow, isRTL && s.rowRTL]}>
-                          <TouchableOpacity style={s.quickLinkBtn} onPress={() => { 
-                            const qtys = {}; project.items.forEach(i => qtys[i.id] = i.qty); 
-                            if(setGlobalQuantities) setGlobalQuantities(qtys); 
-                            if(onNavigate) onNavigate("ai", project.id); 
-                            if(onOpenAiCamera) onOpenAiCamera(); 
+                          <TouchableOpacity style={s.quickLinkBtn} onPress={(e) => { 
+                            if (e && e.stopPropagation) e.stopPropagation();
+                            if (setActiveProjectId) setActiveProjectId(project.id);
+                            if (onOpenAiCamera) onOpenAiCamera(); 
                           }} activeOpacity={0.8}>
                             <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(212,168,67,0.15)' }]}>
                               <AppIcon name="scan" size={22} color={tc.accent} />
                             </View>
                             <Text style={s.quickLinkText}>{lang === 'ku' ? 'ناسینەوە' : 'Scanner'}</Text>
                           </TouchableOpacity>
-                          <TouchableOpacity style={s.quickLinkBtn} onPress={() => { 
-                            const qtys = {}; project.items.forEach(i => qtys[i.id] = i.qty); 
-                            if(setGlobalQuantities) setGlobalQuantities(qtys); 
+                          <TouchableOpacity style={s.quickLinkBtn} onPress={(e) => { 
+                            if (e && e.stopPropagation) e.stopPropagation();
+                            if (setActiveProjectId) setActiveProjectId(project.id);
                             if(onNavigate) onNavigate("aiArchitect", project.id); 
                           }} activeOpacity={0.8}>
                             <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(220,38,38,0.15)' }]}>
@@ -554,9 +610,9 @@ export default function ProjectManager({
                             </View>
                             <Text style={s.quickLinkText}>{lang === 'ku' ? 'ئەندازیار' : 'Architect'}</Text>
                           </TouchableOpacity>
-                          <TouchableOpacity style={s.quickLinkBtn} onPress={() => { 
-                            const qtys = {}; project.items.forEach(i => qtys[i.id] = i.qty); 
-                            if(setGlobalQuantities) setGlobalQuantities(qtys); 
+                          <TouchableOpacity style={s.quickLinkBtn} onPress={(e) => { 
+                            if (e && e.stopPropagation) e.stopPropagation();
+                            if (setActiveProjectId) setActiveProjectId(project.id);
                             if(onNavigate) onNavigate("arVisualizer", project.id); 
                           }} activeOpacity={0.8}>
                             <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(124,58,237,0.15)' }]}>
@@ -629,16 +685,6 @@ export default function ProjectManager({
                           </View>
                         </TouchableOpacity>
                         <TouchableOpacity
-                          style={s.updateBtn}
-                          onPress={() => updateProject(project.id)}
-                          activeOpacity={0.7}
-                        >
-                          <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-                            <AppIcon name="save" size={16} color="#059669" />
-                            <Text style={s.updateBtnText}>{copy.saveUpdate}</Text>
-                          </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity
                           style={s.exportBtn}
                           onPress={() => exportPDF(project)}
                           activeOpacity={0.7}
@@ -650,7 +696,10 @@ export default function ProjectManager({
                         </TouchableOpacity>
                         <TouchableOpacity
                           style={s.deleteBtn}
-                          onPress={() => deleteProject(project.id)}
+                          onPress={(e) => {
+                            if (e && e.stopPropagation) e.stopPropagation();
+                            deleteProject(project.id);
+                          }}
                           activeOpacity={0.7}
                         >
                           <AppIcon name="trash" size={18} color="#DC2626" />
@@ -674,16 +723,16 @@ export default function ProjectManager({
         onRequestClose={() => setViewProject(null)}
       >
         <Animated.View entering={FadeIn.duration(200)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.55)', justifyContent: 'flex-start' }}>
-          <Animated.View entering={FadeInDown.duration(380).springify().damping(22).stiffness(180)} style={[s.modalContent, { backgroundColor: tc.offWhite, flex: 1, marginTop: Platform.OS === 'ios' ? 44 : 20, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl }]}>
-            <View style={[s.modalHeader, isRTL && s.rowRTL, { marginBottom: 4 }]}>
-              <View style={{ flex: 1 }}>
-                <Text style={[s.modalTitle, isRTL && s.textRTL, { color: tc.charcoal }]} numberOfLines={1}>
+          <Animated.View entering={FadeInDown.duration(380).springify().damping(22).stiffness(180)} style={[{ backgroundColor: tc.offWhite, flex: 1, marginTop: Platform.OS === 'ios' ? 44 : 20, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl, paddingHorizontal: spacing.xl, paddingTop: spacing.xl, paddingBottom: spacing.xl }]}>
+            <View style={[isRTL ? { flexDirection: 'row-reverse' } : { flexDirection: 'row' }, { alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }]}>
+              <View style={{ flex: 1, paddingRight: isRTL ? 0 : 12, paddingLeft: isRTL ? 12 : 0 }}>
+                <Text style={[s.modalTitle, isRTL && s.textRTL, { color: tc.charcoal, marginBottom: 0 }]} numberOfLines={1}>
                   {viewProject?.name}
                 </Text>
-                {viewProject?.note ? <Text style={[{ fontSize: 12, color: tc.mediumGray, marginTop: 2 }, isRTL && s.textRTL]}>{viewProject.note}</Text> : null}
+                {viewProject?.note ? <Text style={[{ fontSize: 12, color: tc.mediumGray, marginTop: 4 }, isRTL && s.textRTL]}>{viewProject.note}</Text> : null}
               </View>
-              <TouchableOpacity onPress={() => setViewProject(null)} style={{ padding: 8 }}>
-                <Text style={{ fontSize: 22, color: tc.mediumGray }}>✕</Text>
+              <TouchableOpacity onPress={() => setViewProject(null)} style={{ padding: 8, backgroundColor: 'rgba(0,0,0,0.05)', borderRadius: 20 }}>
+                <Text style={{ fontSize: 16, color: tc.mediumGray, fontWeight: 'bold' }}>✕</Text>
               </TouchableOpacity>
             </View>
 
@@ -691,7 +740,7 @@ export default function ProjectManager({
             <View style={[{ flexDirection: isRTL ? 'row-reverse' : 'row', gap: 12, marginBottom: 16, flexWrap: 'wrap' }]}>
               <View style={{ backgroundColor: colors.primary + '15', paddingHorizontal: 12, paddingVertical: 6, borderRadius: 8 }}>
                 <Text style={{ fontSize: 13, fontWeight: '700', color: colors.primary }}>
-                  {viewProject?.items?.length || 0} {lang === 'ku' ? 'بڕگە' : 'items'}
+                  {viewProject?.items?.length || 0} {lang === 'ku' ? 'ب\u0631گە' : 'items'}
                 </Text>
               </View>
               {viewProject?.totalCostUSD ? (
@@ -727,7 +776,7 @@ export default function ProjectManager({
                       </Text>
                     </View>
                     <View style={{ alignItems: isRTL ? 'flex-start' : 'flex-end', marginLeft: isRTL ? 0 : 12, marginRight: isRTL ? 12 : 0 }}>
-                      <Text style={{ fontSize: 14, fontWeight: '700', color: tc.primary }}>×{item.qty}</Text>
+                      <Text style={{ fontSize: 14, fontWeight: '700', color: tc.primary }}>{isRTL ? `${item.qty}×` : `×${item.qty}`}</Text>
                       <Text style={{ fontSize: 12, color: colors.accent, fontWeight: '600' }}>${itemCost.toFixed(0)}</Text>
                     </View>
                   </View>
@@ -809,27 +858,12 @@ export default function ProjectManager({
                 numberOfLines={3}
               />
 
-              <View style={[s.selectedSummary, currentItemCount === 0 && s.selectedSummaryWarning]}>
-                <Text style={[s.selectedText, isRTL && s.textRTL, currentItemCount === 0 && s.selectedTextWarning]}>
+              <View style={[s.selectedSummary]}>
+                <Text style={[s.selectedText, isRTL && s.textRTL]}>
                   {currentItemCount > 0
                     ? `${copy.saveCurrent}: ${currentItemCount} ${copy.items}`
-                    : `⚠️ ${copy.noItems}`}
+                    : (lang === 'ku' ? "هیچ بابەتێک هەڵنەبژێردراوە. دەتوانیت پاشەکەوتی بکەیت و دواتر بابەت زیاد بکەیت." : "No items selected. You can save and add items later.")}
                 </Text>
-                {currentItemCount === 0 && (
-                  <TouchableOpacity
-                    style={s.goStoreSmallBtn}
-                    onPress={() => {
-                      setShowCreateModal(false);
-                      onGoToStore && onGoToStore();
-                    }}
-                    activeOpacity={0.8}
-                  >
-                    <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-                      <AppIcon name="store" size={16} color={colors.white} />
-                      <Text style={s.goStoreSmallBtnText}>{copy.goToStore}</Text>
-                    </View>
-                  </TouchableOpacity>
-                )}
               </View>
 
               <View style={[s.modalActions, isRTL && s.rowRTL]}>
@@ -843,10 +877,10 @@ export default function ProjectManager({
                 <TouchableOpacity
                   style={[
                     s.saveBtn,
-                    (!projectName.trim() || currentItemCount === 0) && s.saveBtnDisabled,
+                    (!projectName.trim()) && s.saveBtnDisabled,
                   ]}
                   onPress={createProject}
-                  disabled={!projectName.trim() || currentItemCount === 0}
+                  disabled={!projectName.trim()}
                   activeOpacity={0.85}
                 >
                   <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', justifyContent: 'center', gap: 6 }}>

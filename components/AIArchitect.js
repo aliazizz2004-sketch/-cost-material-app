@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useCallback, useEffect } from "react";
+﻿import React, { useState, useRef, useMemo, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -101,12 +101,12 @@ const PRESET_PROJECTS = {
     { id: "wall_fence", icon: "🧱", label: "Boundary Wall (50m)", prompt: "A concrete boundary wall/fence, 50 meters long, 2.5 meters height, with foundation, block wall, plaster and paint finishing." },
   ],
   ku: [
-    { id: "house_small", icon: "🏠", label: "خانووی بچووک (١٠٠م²)", prompt: "خانووی بچووکی یەک نهۆم، ١٠٠م² ڕووبەری گشتی، ٣ ژووری نوستن، ١ حەمام، چێشتخانە، ژووری دانیشتن. بیناسازی ئاسایی لە هەولێر." },
-    { id: "house_medium", icon: "🏡", label: "خانووی دوو نهۆم (٢٠٠م²)", prompt: "خانووی دوو نهۆم، ٢٠٠م² ڕووبەری گشتی، ٤ ژووری نوستن، ٢ حەمام، چێشتخانە، ٢ ژووری دانیشتن، بەلکۆنە. بیناسازی مۆدێرن لە سلێمانی." },
-    { id: "house_large", icon: "🏰", label: "ڤیلا لەگەڵ ژێرزەوی (٣٥٠م²)", prompt: "ڤیلای لوکس لەگەڵ ژێرزەوی، ٣٥٠م² ڕووبەری گشتی، ٥ ژووری نوستن، ٣ حەمام، ٢ چێشتخانە، ژووری دانیشتنی گەورە، گاراج. کۆتاییکاری سەرتر لە هەولێر." },
-    { id: "apartment", icon: "🏢", label: "شوقە (١٢٠م²)", prompt: "نوێکردنەوەی شوقە، ١٢٠م² ڕووبەر، ٣ ژووری نوستن، ٢ حەمام، چێشتخانە و ژووری دانیشتنی کراوە. کۆتاییکاری مۆدێرن تەنها (بێ کاری سازەیی)." },
-    { id: "commercial", icon: "🏪", label: "دوکان/ئۆفیس (٨٠م²)", prompt: "دوکانێکی بچووک یان ئۆفیس، ٨٠م² ڕووبەر، پلانی کراوە، ١ حەمام، ڕووی شووشەیی، کاری بەرزایی، دامەزراندنی کارەبا و ڕوناکی." },
-    { id: "wall_fence", icon: "🧱", label: "دیواری دەوروبەر (٥٠م)", prompt: "دیواری کۆنکریتی دەوروبەر، ٥٠ مەتر درێژی، ٢.٥ مەتر بەرزی، لەگەڵ بنەڕەت، دیواری بلۆک، ڕاز و بۆیە." },
+    { id: "house_small", icon: "🏠", label: "خانووی بچووک (١٠٠م²)", prompt: "خانووی بچووکی یەک نهۆم، ١٠٠م² \u0631ووبەری گشتی، ٣ ژووری نوستن، ١ حەمام، چێشتخانە، ژووری دانیشتن. بیناسازی ئاسایی لە هەولێر." },
+    { id: "house_medium", icon: "🏡", label: "خانووی دوو نهۆم (٢٠٠م²)", prompt: "خانووی دوو نهۆم، ٢٠٠م² \u0631ووبەری گشتی، ٤ ژووری نوستن، ٢ حەمام، چێشتخانە، ٢ ژووری دانیشتن، بەلکۆنە. بیناسازی مۆدێرن لە سلێمانی." },
+    { id: "house_large", icon: "🏰", label: "ڤیلا لەگەڵ ژێرزەوی (٣٥٠م²)", prompt: "ڤیلای لوکس لەگەڵ ژێرزەوی، ٣٥٠م² \u0631ووبەری گشتی، ٥ ژووری نوستن، ٣ حەمام، ٢ چێشتخانە، ژووری دانیشتنی گەورە، گاراج. کۆتاییکاری سەرتر لە هەولێر." },
+    { id: "apartment", icon: "🏢", label: "شوقە (١٢٠م²)", prompt: "نوێکردنەوەی شوقە، ١٢٠م² \u0631ووبەر، ٣ ژووری نوستن، ٢ حەمام، چێشتخانە و ژووری دانیشتنی کراوە. کۆتاییکاری مۆدێرن تەنها (بێ کاری سازەیی)." },
+    { id: "commercial", icon: "🏪", label: "دوکان/ئۆفیس (٨٠م²)", prompt: "دوکانێکی بچووک یان ئۆفیس، ٨٠م² \u0631ووبەر، پلانی کراوە، ١ حەمام، \u0631ووی شووشەیی، کاری بەرزایی، دامەزراندنی کارەبا و \u0631وناکی." },
+    { id: "wall_fence", icon: "🧱", label: "دیواری دەوروبەر (٥٠م)", prompt: "دیواری کۆنکریتی دەوروبەر، ٥٠ مەتر درێژی، ٢.٥ مەتر بەرزی، لەگەڵ بنە\u0631ەت، دیواری بلۆک، \u0631از و بۆیە." },
   ],
 };
 
@@ -199,9 +199,9 @@ JSON shape:
 {
   "projectSummary": {
     "titleEN": "Short title",
-    "titleKU": "ناونیشانی پڕۆژە",
+    "titleKU": "ناونیشانی پ\u0631ۆژە",
     "descriptionEN": "Brief scope summary",
-    "descriptionKU": "کورتەی پڕۆژەکە",
+    "descriptionKU": "کورتەی پ\u0631ۆژەکە",
     "totalAreaM2": 200,
     "estimatedDurationDays": 150,
     "qualityTierEN": "Standard",
@@ -210,7 +210,7 @@ JSON shape:
   "phases": [
     {
       "phaseEN": "Foundation & Structure",
-      "phaseKU": "بنەڕەت و سازە",
+      "phaseKU": "بنە\u0631ەت و سازە",
       "order": 1,
       "durationDays": 40,
       "items": [
@@ -218,16 +218,16 @@ JSON shape:
           "materialId": 1,
           "quantity": 15,
           "noteEN": "15 tons OPC cement for foundation and structural concrete (C25 grade, ACI 318)",
-          "noteKU": "١٥ تۆن سمێنت بۆ بنەڕەت و کۆنکریتی سازەیی"
+          "noteKU": "۱۵ تۆن سمێنت بۆ بنە\u0631ەت و کۆنکریتی سازەیی"
         }
       ]
     }
   ],
   "totalEstimateUSD": 45000,
   "notesEN": ["Based on Iraqi Building Code + ACI 318 standards", "10-15% contingency recommended"],
-  "notesKU": ["بەپێی ستانداردی یاسای بینای عێراق و ACI 318", "١٠-١٥% بۆ گۆڕانکاری پێشنیار دەکرێت"],
+  "notesKU": ["بەپێی ستانداردی یاسای بینای عێراق و ACI 318", "۱۰-۱۵% بۆ گۆ\u0631انکاری پێشنیار دەکرێت"],
   "tipsEN": ["Buy cement in bulk for 10-15% savings"],
-  "tipsKU": ["سمێنت بە کۆمەڵ بکڕە بۆ ١٠-١٥% پاشەکەوت"]
+  "tipsKU": ["سمێنت بە کۆمەڵ بک\u0631ە بۆ ۱۰-۱۵% پاشەکەوت"]
 }`;
 }
 
@@ -246,39 +246,75 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore, onAddTo
   const [expandedPhases, setExpandedPhases] = useState({});
   const [showPresetsModal, setShowPresetsModal] = useState(false);
   const [showResultDetail, setShowResultDetail] = useState(false);
-  const [qualityTier, setQualityTier] = useState(null); // null = not chosen yet, "budget" | "standard" | "premium"
-  const [addedToList, setAddedToList] = useState(false); // shows bottom success modal
+  const [qualityTier, setQualityTier] = useState(null);
+  const [addedToList, setAddedToList] = useState(false);
   const [addedCount, setAddedCount] = useState(0);
-  const [addedItems, setAddedItems] = useState([]); // actual list of added items
+  const [addedItems, setAddedItems] = useState([]);
   const [addedListName, setAddedListName] = useState('');
 
   const copy = useMemo(
     () =>
-      lang === "ku"
+      lang === "ar"
+        ? {
+          title: "معمار الذكاء الاصطناعي",
+          subtitle: "صف مشروعك، سيقوم الذكاء بإنشاء قائمة المواد الكاملة",
+          inputPlaceholder: "صف مشروعك... مثال: بيت 200م² ثنائي الطوابق في أربيل...",
+          generate: "إنشاء قائمة المواد",
+          generating: "تحليل وحساب...",
+          presets: "مشاريع جاهزة",
+          presetsSubtitle: "اختر أحدها للبدء فوراً",
+          totalCost: "إجمالي التكلفة التقديرية",
+          duration: "المدة التقديرية",
+          days: "يوم",
+          phases: "مراحل البناء",
+          notes: "ملاحظات مهنية",
+          tips: "نصائح لتوفير المال",
+          addAllToStore: "إضافة جميع المواد إلى المخزن",
+          addPhaseToStore: "إضافة هذه المرحلة",
+          tryAgain: "حاول مجدداً",
+          errorMsg: "حدث خطأ. يرجى المحاولة مجدداً.",
+          or: "أو",
+          typingHint: "اكتب مشروعك أو اختر مشروعاً جاهزاً",
+          area: "المساحة",
+          items: "عناصر",
+          back: "رجوع",
+          quantity: "الكمية",
+          materialAdded: "تمت إضافة المواد إلى قائمتك!",
+          chooseTier: "اختر مستوى الجودة",
+          budget: "اقتصادي",
+          budgetDesc: "أقل تكلفة",
+          standard: "قياسي",
+          standardDesc: "جودة جيدة بسعر معقول",
+          premium: "فاخر",
+          premiumDesc: "أفضل جودة",
+          viewStore: "عرض قائمة المخزن",
+          durationLabel: "مدة البناء",
+        }
+        : lang === "ku"
         ? {
           title: "AI ئەندازیار",
-          subtitle: "پڕۆژەکەت وەسف بکە، AI لیستی تەواوی مادەکان دروست دەکات",
-          inputPlaceholder: "پڕۆژەکەت وەسف بکە... بۆ نموونە: خانووی ٢٠٠م² دوو نهۆم لە هەولێر...",
+          subtitle: "پ\u0631ۆژەکەت وەسف بکە، AI لیستی تەواوی مادەکان دروست دەکات",
+          inputPlaceholder: "پ\u0631ۆژەکەت وەسف بکە... بۆ نموونە: خانووی ۲۰۰م² دوو نهۆم لە هەولێر...",
           generate: "لیستی مادەکان دروست بکە",
           generating: "شیکردنەوە و ژمارەکردن...",
-          presets: "پڕۆژە ئامادەکراوەکان",
+          presets: "پ\u0631ۆژە ئامادەکراوەکان",
           presetsSubtitle: "یەکێک هەڵبژێرە بۆ دەست پێکردنی خێرا",
           totalCost: "کۆی تێچووی خەمڵاندراو",
           duration: "ماوەی خەمڵاندراو",
-          days: "ڕۆژ",
+          days: "\u0631ۆژ",
           phases: "قۆناغەکان",
           notes: "تێبینییەکان",
           tips: "ئامۆژگارییەکان",
           addAllToStore: "هەموو مادەکان زیاد بکە",
           addPhaseToStore: "زیادکردنی ئەم قۆناغە",
           tryAgain: "دووبارە هەوڵبدەوە",
-          errorMsg: "هەڵە ڕوویدا. تکایە دووبارە هەوڵبدەوە.",
+          errorMsg: "هەڵە \u0631وویدا. تکایە دووبارە هەوڵبدەوە.",
           or: "یان",
-          typingHint: "پڕۆژەکەت بنووسە یان لە پڕۆژە ئامادەکراوەکان هەڵبژێرە",
-          area: "ڕووبەر",
+          typingHint: "پ\u0631ۆژەکەت بنووسە یان لە پ\u0631ۆژە ئامادەکراوەکان هەڵبژێرە",
+          area: "\u0631ووبەر",
           items: "مادە",
-          back: "گەڕانەوە",
-          quantity: "بڕ",
+          back: "گە\u0631انەوە",
+          quantity: "ب\u0631",
           materialAdded: "مادەکان زیادکران بۆ لیست",
           chooseTier: "ئاستی کوالیتی هەڵبژێرە",
           budget: "ئابووری",
@@ -746,7 +782,7 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore, onAddTo
             {/* Timeline / Cash Flow Chart */}
             <Animated.View entering={FadeInDown.duration(300).delay(250)} style={s.section}>
               <Text style={[s.sectionTitle, isRTL && s.textRTL, { color: tc.charcoal }]}>
-                {lang === "ku" ? "ڕۆژژمێر و تێچووی دارایی (Cash Flow)" : "Timeline & Cash Flow Forecast"}
+                {lang === "ku" ? "\u0631ۆژژمێر و تێچووی دارایی (Cash Flow)" : "Timeline & Cash Flow Forecast"}
               </Text>
               <View style={[s.timelineCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
                 {(result.phases || []).map((phase, idx) => {
@@ -860,13 +896,25 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore, onAddTo
                         })}
 
                         {/* Phase add button */}
-                        <TouchableOpacity
-                          style={s.addPhaseBtn}
-                          onPress={() => handleAddPhaseToStore(phase)}
-                          activeOpacity={0.85}
-                        >
-                          <Text style={s.addPhaseBtnText}>{copy.addPhaseToStore}</Text>
-                        </TouchableOpacity>
+                        {onAddToProject && (
+                          <TouchableOpacity
+                            style={[s.addPhaseBtn, { backgroundColor: colors.primary }]}
+                            onPress={() => {
+                              const items = [];
+                              (phase.items || []).forEach(item => {
+                                const mat = getMaterialById(item.materialId);
+                                if (mat) {
+                                  items.push({ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: Math.ceil(item.quantity), unitPrice: mat.basePrice, unit: mat.unit });
+                                }
+                              });
+                              const src = lang === 'ku' ? `ئەندازیاری AI - ${phase.phaseKU}` : `AI Architect - ${phase.phaseEN}`;
+                              onAddToProject(items, src);
+                            }}
+                            activeOpacity={0.85}
+                          >
+                            <Text style={[s.addPhaseBtnText, { color: '#fff' }]}>{lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
+                          </TouchableOpacity>
+                        )}
                       </Animated.View>
                     )}
                   </Animated.View>
@@ -928,18 +976,9 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore, onAddTo
 
             {/* Action Buttons */}
             <View style={[s.section, { gap: spacing.md }]}>
-              <TouchableOpacity
-                style={s.addAllBtn}
-                onPress={handleAddAllToStore}
-                activeOpacity={0.85}
-              >
-                <Text style={s.addAllBtnIcon}>🛒</Text>
-                <Text style={s.addAllBtnText}>{copy.addAllToStore}</Text>
-              </TouchableOpacity>
-
-              {activeProjectId && onAddToProject && (
+              {onAddToProject && (
                 <TouchableOpacity
-                  style={[s.addAllBtn, { backgroundColor: colors.primary }]}
+                  style={[s.addAllBtn, { backgroundColor: colors.accent }]}
                   onPress={() => {
                     const items = [];
                     (result.phases || []).forEach(phase => {
@@ -962,7 +1001,7 @@ export default function AIArchitect({ onBack, onAddToStore, onViewStore, onAddTo
                   activeOpacity={0.85}
                 >
                   <Text style={s.addAllBtnIcon}>📁</Text>
-                  <Text style={s.addAllBtnText}>{lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+                  <Text style={s.addAllBtnText}>{lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
                 </TouchableOpacity>
               )}
 

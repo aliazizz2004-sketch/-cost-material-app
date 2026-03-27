@@ -69,7 +69,7 @@ const MATERIAL_PALETTES = [
     materialIds: [21],
     icon: "💎",
     nameEN: "Marble",
-    nameKU: "مەڕمەڕ",
+    nameKU: "مە\u0631مە\u0631",
     categoryEN: "Floor / Wall",
     categoryKU: "زەوی / دیوار",
     previewColors: ["#F5F2EE", "#E8E0D4", "#DDD8D0", "#C8BFB4"],
@@ -180,38 +180,71 @@ export default function ARVisualizer({ onBack, onAddToStore, onAddToProject, act
 
   const copy = useMemo(
     () =>
-      lang === "ku"
+      lang === "ar"
         ? {
-          title: "بینەری AR",
-          subtitle: "مادەکان لەسەر ژوورەکەت ببینە پێش کڕین",
-          takePhoto: "وێنە بگرە",
-          fromGallery: "لە گالێری",
-          camera: "کامێرا",
-          analyzing: "شیکردنەوەی ژوور...",
-          chooseMatLabel: "مادەیەک هەڵبژێرە",
-          chooseColor: "ڕەنگ هەڵبژێرە",
-          pattern: "شێواز",
-          opacity: "شەفافیەت",
-          roomInfo: "زانیاری ژوور",
-          wallArea: "ڕووبەری دیوار",
-          floorArea: "ڕووبەری زەوی",
-          ceilingHeight: "بەرزایی بەرزایی",
-          estimated: "خەمڵاندراو",
-          costEstimate: "خەمڵاندنی تێچوو",
-          materialNeeded: "مادەی پێویست",
-          totalCost: "کۆی تێچوو",
-          addToStore: "زیادکردن بۆ لیست",
-          retake: "وێنەی نوێ",
-          materialDetails: "وردەکاری مادە",
-          permissionTitle: "ڕێگەپێدان پێویستە",
-          permissionBody: "تکایە ڕێگە بدە بە کامێرا",
-          surfaceType: "جۆری ڕوو",
-          wall: "دیوار",
-          floor: "زەوی",
-          ceiling: "بەرزایی",
-          select: "هەڵبژێرە",
-          close: "داخستن",
-          tip: "ئامۆژگاری: وێنەی ڕووەکانی ژوورەکەت بگرە بۆ بینەرێکی باشتر",
+          title: "\u0645\u0634\u0627\u0647\u062f \u0627\u0644\u0648\u0627\u0642\u0639 \u0627\u0644\u0645\u0639\u0632\u0632",
+          subtitle: "\u0634\u0627\u0647\u062f \u0627\u0644\u0645\u0648\u0627\u062f \u0639\u0644\u0649 \u063a\u0631\u0641\u062a\u0643 \u0642\u0628\u0644 \u0627\u0644\u0634\u0631\u0627\u0621",
+          takePhoto: "\u0627\u0644\u062a\u0642\u0627\u0637 \u0635\u0648\u0631\u0629",
+          fromGallery: "\u0645\u0646 \u0627\u0644\u0645\u0639\u0631\u0636",
+          camera: "\u0643\u0627\u0645\u064a\u0631\u0627",
+          analyzing: "\u062a\u062d\u0644\u064a\u0644 \u0627\u0644\u063a\u0631\u0641\u0629...",
+          chooseMatLabel: "\u0627\u062e\u062a\u0631 \u0645\u0627\u062f\u0629",
+          chooseColor: "\u0627\u062e\u062a\u0631 \u0644\u0648\u0646\u0627\u064b",
+          pattern: "\u0646\u0645\u0637",
+          opacity: "\u0627\u0644\u0634\u0641\u0627\u0641\u064a\u0629",
+          roomInfo: "\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u063a\u0631\u0641\u0629",
+          wallArea: "\u0645\u0633\u0627\u062d\u0629 \u0627\u0644\u062c\u062f\u0627\u0631",
+          floorArea: "\u0645\u0633\u0627\u062d\u0629 \u0627\u0644\u0623\u0631\u0636\u064a\u0629",
+          ceilingHeight: "\u0627\u0631\u062a\u0641\u0627\u0639 \u0627\u0644\u0633\u0642\u0641",
+          estimated: "\u062a\u0642\u062f\u064a\u0631\u064a",
+          costEstimate: "\u062a\u0642\u062f\u064a\u0631 \u0627\u0644\u062a\u0643\u0644\u0641\u0629",
+          materialNeeded: "\u0627\u0644\u0645\u0648\u0627\u062f \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629",
+          totalCost: "\u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u062a\u0643\u0644\u0641\u0629",
+          addToStore: "\u0625\u0636\u0627\u0641\u0629 \u0625\u0644\u0649 \u0627\u0644\u0642\u0627\u0626\u0645\u0629",
+          retake: "\u0635\u0648\u0631\u0629 \u062c\u062f\u064a\u062f\u0629",
+          materialDetails: "\u062a\u0641\u0627\u0635\u064a\u0644 \u0627\u0644\u0645\u0627\u062f\u0629",
+          permissionTitle: "\u0627\u0644\u0625\u0630\u0646 \u0645\u0637\u0644\u0648\u0628",
+          permissionBody: "\u064a\u0631\u062c\u0649 \u0627\u0644\u0633\u0645\u0627\u062d \u0628\u0627\u0644\u0648\u0635\u0648\u0644 \u0625\u0644\u0649 \u0627\u0644\u0643\u0627\u0645\u064a\u0631\u0627",
+          surfaceType: "\u0646\u0648\u0639 \u0627\u0644\u0633\u0637\u062d",
+          wall: "\u062c\u062f\u0627\u0631",
+          floor: "\u0623\u0631\u0636\u064a\u0629",
+          ceiling: "\u0633\u0642\u0641",
+          select: "\u0627\u062e\u062a\u0631",
+          close: "\u0625\u063a\u0644\u0627\u0642",
+          tip: "\u0646\u0635\u064a\u062d\u0629: \u0627\u0644\u062a\u0642\u0637 \u0635\u0648\u0631\u0629 \u0644\u0623\u0633\u0637\u062d \u063a\u0631\u0641\u062a\u0643 \u0644\u0644\u062d\u0635\u0648\u0644 \u0639\u0644\u0649 \u0623\u0641\u0636\u0644 \u0645\u0634\u0627\u0647\u062f\u0629",
+        }
+        : lang === "ku"
+        ? {
+          title: "\u0628\u06cc\u0646\u06d5\u0631\u06cc AR",
+          subtitle: "\u0645\u0627\u062f\u06d5\u06a9\u0627\u0646 \u0644\u06d5\u0633\u06d5\u0631 \u0698\u0648\u0648\u0631\u06d5\u06a9\u06d5\u062a \u0628\u0628\u06cc\u0646\u06d5 \u067e\u06ce\u0634 \u06a9\u0695\u06cc\u0646",
+          takePhoto: "\u0648\u06ce\u0646\u06d5 \u0628\u06af\u0631\u06d5",
+          fromGallery: "\u0644\u06d5 \u06af\u0627\u0644\u06ce\u0631\u06cc",
+          camera: "\u06a9\u0627\u0645\u06ce\u0631\u0627",
+          analyzing: "\u0634\u06cc\u06a9\u0631\u062f\u0646\u06d5\u0648\u06d5\u06cc \u0698\u0648\u0648\u0631...",
+          chooseMatLabel: "\u0645\u0627\u062f\u06d5\u06cc\u06d5\u06a9 \u0647\u06d5\u06b5\u0628\u0698\u06ce\u0631\u06d5",
+          chooseColor: "\u0695\u06d5\u0646\u06af \u0647\u06d5\u06b5\u0628\u0698\u06ce\u0631\u06d5",
+          pattern: "\u0634\u06ce\u0648\u0627\u0632",
+          opacity: "\u0634\u06d5\u0641\u0627\u0641\u06cc\u06d5\u062a",
+          roomInfo: "\u0632\u0627\u0646\u06cc\u0627\u0631\u06cc \u0698\u0648\u0648\u0631",
+          wallArea: "\u0695\u0648\u0648\u0628\u06d5\u0631\u06cc \u062f\u06cc\u0648\u0627\u0631",
+          floorArea: "\u0695\u0648\u0648\u0628\u06d5\u0631\u06cc \u0632\u06d5\u0648\u06cc",
+          ceilingHeight: "\u0628\u06d5\u0631\u0632\u0627\u06cc\u06cc \u0628\u06d5\u0631\u0632\u0627\u06cc\u06cc",
+          estimated: "\u062e\u06d5\u0645\u06b5\u0627\u0646\u062f\u0631\u0627\u0648",
+          costEstimate: "\u062e\u06d5\u0645\u06b5\u0627\u0646\u062f\u0646\u06cc \u062a\u06ce\u0686\u0648\u0648",
+          materialNeeded: "\u0645\u0627\u062f\u06d5\u06cc \u067e\u06ce\u0648\u06cc\u0633\u062a",
+          totalCost: "\u06a9\u06c6\u06cc \u062a\u06ce\u0686\u0648\u0648",
+          addToStore: "\u0632\u06cc\u0627\u062f\u06a9\u0631\u062f\u0646 \u0628\u06c6 \u0644\u06cc\u0633\u062a",
+          retake: "\u0648\u06ce\u0646\u06d5\u06cc \u0646\u0648\u06ce",
+          materialDetails: "\u0648\u0631\u062f\u06d5\u06a9\u0627\u0631\u06cc \u0645\u0627\u062f\u06d5",
+          permissionTitle: "\u0695\u06ce\u06af\u06d5\u067e\u06ce\u062f\u0627\u0646 \u067e\u06ce\u0648\u06cc\u0633\u062a\u06d5",
+          permissionBody: "\u062a\u06a9\u0627\u06cc\u06d5 \u0695\u06ce\u06af\u06d5 \u0628\u062f\u06d5 \u0628\u06d5 \u06a9\u0627\u0645\u06ce\u0631\u0627",
+          surfaceType: "\u062c\u06c6\u0631\u06cc \u0695\u0648\u0648",
+          wall: "\u062f\u06cc\u0648\u0627\u0631",
+          floor: "\u0632\u06d5\u0648\u06cc",
+          ceiling: "\u0628\u06d5\u0631\u0632\u0627\u06cc\u06cc",
+          select: "\u0647\u06d5\u06b5\u0628\u0698\u06ce\u0631\u06d5",
+          close: "\u062f\u0627\u062e\u0633\u062a\u0646",
+          tip: "\u0626\u0627\u0645\u06c6\u0698\u06af\u0627\u0631\u06cc: \u0648\u06ce\u0646\u06d5\u06cc \u0695\u0648\u0648\u06d5\u06a9\u0627\u0646\u06cc \u0698\u0648\u0648\u0631\u06d5\u06a9\u06d5\u062a \u0628\u06af\u0631\u06d5 \u0628\u06c6 \u0628\u06cc\u0646\u06d5\u0631\u06ce\u06a9\u06cc \u0628\u0627\u0634\u062a\u0631",
         }
         : {
           title: "AR Visualizer",
@@ -425,13 +458,20 @@ Return ONLY valid JSON:
   "currentFloorType": "tiles",
   "lightingCondition": "well-lit",
   "suggestionsEN": ["Marble flooring would add elegance", "Warm paint tones suit this room's light"],
-  "suggestionsKU": ["کاشی مەڕمەڕ جوانی زیاد دەکات", "بۆیەی گەرم گونجاوە بۆ ڕووناکی ئەم ژوورە"],
+  "suggestionsKU": ["کاشی مە\u0631مە\u0631 جوانی زیاد دەکات", "بۆیەی گەرم گونجاوە بۆ \u0631ووناکی ئەم ژوورە"],
   "surfaceBreakdown": {
     "wallPercentage": 55,
     "floorPercentage": 30,
     "ceilingPercentage": 15
+  },
+  "wallBox": {
+    "top": 0.1,
+    "left": 0.1,
+    "width": 0.8,
+    "height": 0.7
   }
-}`;
+}
+CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WALL in the image, where top, left, width, and height are normalized values between 0.0 and 1.0.`;
 
     let lastError = null;
     for (const model of GEMINI_MODELS) {
@@ -486,6 +526,7 @@ Return ONLY valid JSON:
       suggestionsEN: ["Try different materials to see what suits your space"],
       suggestionsKU: ["مادە جیاوازەکان تاقی بکەرەوە بۆ بینینی گونجاوترین"],
       surfaceBreakdown: { wallPercentage: 55, floorPercentage: 30, ceilingPercentage: 15 },
+      wallBox: { top: 0, left: 0, width: 1, height: 1 }
     });
     setEstimatedArea(30);
     setIsAnalyzing(false);
@@ -557,14 +598,22 @@ Return ONLY valid JSON:
     const pattern = patterns[selectedPattern % patterns.length];
     const id = selectedPalette.id;
 
+    const wBox = roomAnalysis?.wallBox || { top: 0, left: 0, width: 1, height: 1 };
+    
+    // We determine blend mode based on material. Paints look best with "color" or "multiply".
+    const blendMode = id.includes("paint") ? "multiply" : "overlay";
+
     const baseStyle = {
       position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
+      top: `${(wBox.top || 0) * 100}%`,
+      left: `${(wBox.left || 0) * 100}%`,
+      width: `${(wBox.width || 1) * 100}%`,
+      height: `${(wBox.height || 1) * 100}%`,
+      // We rely on the parent blending
       opacity: overlayOpacity,
-      ...(Platform.OS === 'web' && { mixBlendMode: 'multiply' })
+      ...(Platform.OS === 'web' && { mixBlendMode: blendMode }),
+      borderRadius: 8, // Soften edges slightly
+      overflow: "hidden", // ensure contents stay in bounds
     };
 
     // For web: use CSS background patterns for realistic material look
@@ -687,13 +736,19 @@ Return ONLY valid JSON:
         );
       }
 
-      // Default solid paint
-      return <View style={{ ...baseStyle, backgroundColor: color }} />;
+      // Default solid paint - Web (blend mode is handled by baseStyle)
+      return (
+        <View style={baseStyle}>
+          <div style={{ position: 'absolute', inset: 0, backgroundColor: color }} />
+        </View>
+      );
     }
 
-    // For native: simple color overlay (best we can do without canvas)
-    return <View style={{ ...baseStyle, backgroundColor: color }} />;
-  }, [selectedPalette, selectedColorIdx, selectedPattern, overlayOpacity]);
+    // For native: We simulate a soft spotlight/gradient overlay to retain some realism since mixBlendMode is not available
+    return (
+      <View style={[baseStyle, { backgroundColor: color, opacity: overlayOpacity * 0.8, borderCurve: "continuous", borderRadius: 20 }]} />
+    );
+  }, [selectedPalette, selectedColorIdx, selectedPattern, overlayOpacity, roomAnalysis]);
 
   // ═══════════════════════════════════════════════════════════════════
   // RENDER
@@ -1056,21 +1111,13 @@ Return ONLY valid JSON:
                 </View>
               </View>
 
-              <TouchableOpacity
-                style={s.addToStoreBtn}
-                onPress={handleAddToStore}
-                activeOpacity={0.85}
-              >
-                <Text style={s.addToStoreBtnText}>🛒 {copy.addToStore}</Text>
-              </TouchableOpacity>
-
-              {activeProjectId && onAddToProject && (
+              {onAddToProject && (
                 <TouchableOpacity
-                  style={[s.addToStoreBtn, { backgroundColor: colors.primary, marginTop: 8 }]}
+                  style={[s.addToStoreBtn, { backgroundColor: colors.accent, marginTop: 8 }]}
                   onPress={handleAddToProject}
                   activeOpacity={0.85}
                 >
-                  <Text style={s.addToStoreBtnText}>📁 {lang === 'ku' ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+                  <Text style={s.addToStoreBtnText}>📁 {lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
                 </TouchableOpacity>
               )}
             </Animated.View>
@@ -1153,7 +1200,7 @@ Return ONLY valid JSON:
               >
                 <Text style={arS.goToStoreBtnIcon}>🛒</Text>
                 <Text style={[arS.goToStoreBtnText, isRTL && { marginRight: 8, marginLeft: 0 }]}>
-                  {lang === 'ku' ? 'بڕۆ بۆ کۆگا' : 'Go to Store'}
+                  {lang === 'ku' ? 'ب\u0631ۆ بۆ کۆگا' : 'Go to Store'}
                 </Text>
               </TouchableOpacity>
             </Animated.View>

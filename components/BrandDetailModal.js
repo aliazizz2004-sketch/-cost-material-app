@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from "react";
+﻿import React, { useEffect, useRef, useMemo } from "react";
 import {
     View,
     Text,
@@ -232,7 +232,7 @@ export default function BrandDetailModal({ visible, onClose, brandName, brandDat
                                 <Text style={styles.actionBtnIcon}>🌐</Text>
                                 <View style={styles.actionBtnTextWrap}>
                                     <Text style={styles.actionBtnTitle}>
-                                        {lang === "ku" ? "ماڵپەڕی فەرمی" : "Official Website"}
+                                        {lang === "ku" ? "ماڵپە\u0631ی فەرمی" : "Official Website"}
                                     </Text>
                                     <Text style={styles.actionBtnSub} numberOfLines={1}>
                                         {brandData.website.replace(/^https?:\/\//, "")}
@@ -266,7 +266,7 @@ export default function BrandDetailModal({ visible, onClose, brandName, brandDat
                     <View style={styles.footerNote}>
                         <Text style={styles.footerNoteText}>
                             {lang === "ku"
-                                ? "زانیاریەکان لە ماڵپەڕی فەرمی براند وەرگیراون"
+                                ? "زانیاریەکان لە ماڵپە\u0631ی فەرمی براند وەرگیراون"
                                 : "Information sourced from the brand's official website"}
                         </Text>
                     </View>

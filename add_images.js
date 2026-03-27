@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 
 const materialsFilePath = 'c:\\Users\\Lenovo\\Desktop\\cost material\\cost-material-app\\data\\materials.js';
 
@@ -9,7 +9,7 @@ const newMaterial = `
   {
     id: 56,
     nameEN: "Concrete Slab / Surface",
-    nameKU: "ڕووی کۆنکریت / سلاب",
+    nameKU: "\u0631ووی کۆنکریت / سلاب",
     categoryEN: "Masonry",
     categoryKU: "بیناسازی",
     basePrice: 0.0,
@@ -19,7 +19,7 @@ const newMaterial = `
     weight: 2400,
     thermalConductivity: 1.5,
     descEN: "Hardened concrete surface, wall, or floor slab. Recognizable by solid uniform gray color with minor trowel marks or pores.",
-    descKU: "ڕووی کۆنکریتی ڕەقبوو، دیوار یان زەوی. ڕەنگی خۆڵەمێشی یەکدەست.",
+    descKU: "\u0631ووی کۆنکریتی \u0631ەقبوو، دیوار یان زەوی. \u0631ەنگی خۆڵەمێشی یەکدەست.",
     localBrands: ["Various"],
     origin: "local",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Beton_wand.jpg/640px-Beton_wand.jpg"

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+﻿import React, { useMemo } from "react";
 import {
   View,
   Text,
@@ -44,16 +44,30 @@ export default function AddToProjectCard({
 
   const copy = useMemo(
     () =>
-      lang === "ku"
+      lang === "ar"
         ? {
-            title: "زیادکردن بۆ پڕۆژە",
-            subtitle: "بابەتەکانت بپشکنن و زیاد بکە بۆ پڕۆژەی چالاک",
+            title: "إضافة إلى المشروع",
+            subtitle: "مراجعة وإضافة المواد إلى المشروع النشط",
+            itemsLabel: "العناصر",
+            totalCost: "التكلفة الإجمالية",
+            addToProject: "إضافة إلى المشروع",
+            close: "إغلاق",
+            noItems: "لا توجد عناصر للإضافة",
+            qty: "الكمية",
+            source: "المصدر",
+            delivery: "تكلفة التوصيل",
+            estimation: "تقدير",
+          }
+        : lang === "ku"
+        ? {
+            title: "زیادکردن بۆ پ\u0631ۆژە",
+            subtitle: "بابەتەکانت بپشکنن و زیاد بکە بۆ پ\u0631ۆژەی چالاک",
             itemsLabel: "بابەتەکان",
             totalCost: "کۆی تێچوو",
-            addToProject: "زیادکردن بۆ پڕۆژە",
+            addToProject: "زیادکردن بۆ پ\u0631ۆژە",
             close: "داخستن",
             noItems: "هیچ بابەتێک نییە",
-            qty: "بڕ",
+            qty: "ب\u0631",
             source: "سەرچاوە",
             delivery: "تێچووی گەیاندن",
             estimation: "خەمڵاندن",
@@ -156,6 +170,7 @@ export default function AddToProjectCard({
             <>
               {items.map((item, idx) => {
                 const name =
+                  lang === "ar" && item.nameKU ? item.name || item.nameEN || `#${item.id}` :
                   lang === "ku" && item.nameKU ? item.nameKU : item.name || item.nameEN || `Item #${item.id}`;
                 const cost = (item.unitPrice || 0) * (item.qty || 1);
                 const costIQD = rate ? Math.round(cost * rate) : null;
@@ -339,7 +354,7 @@ export function AddToProjectButton({ onPress, count = 0, label }) {
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
 
-  const defaultLabel = lang === "ku" ? "زیادکردن بۆ پڕۆژە" : "Add to Project";
+  const defaultLabel = lang === "ar" ? "إضافة إلى المشروع" : lang === "ku" ? "زیادکردن بۆ پ\u0631ۆژە" : "Add to Project";
 
   return (
     <TouchableOpacity

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+﻿import React, { useMemo } from "react";
 import {
   View,
   Text,
@@ -50,7 +50,7 @@ export default function MaterialResultModal({
             recommended: "پێشنیاری باشتر",
             add: "زیادکردن بۆ لیستی تێچوو",
             noMatchTitle: "نەناسراو",
-            noMatchBody: "AI نەتوانی مادەکە بە دڵنیایی دیاری بکات. تکایە وێنەیەکی ڕوونتر بگرە.",
+            noMatchBody: "AI نەتوانی مادەکە بە دڵنیایی دیاری بکات. تکایە وێنەیەکی \u0631وونتر بگرە.",
             priceIqd: "نرخی سەرچاوە (د.ع)",
             priceUsd: "نرخی سەرچاوە (دۆلار)",
             weight: "کێش",
@@ -58,7 +58,7 @@ export default function MaterialResultModal({
             scanImage: "وێنەی هەڵگیراو",
             reference: "زانیاری سەرچاوە لە کاتەلۆگ",
             availability: "براندە بەردەستەکان و شوێنی فرۆشتن",
-            visitWebsite: "ماڵپەڕ",
+            visitWebsite: "ماڵپە\u0631",
             viewLocation: "نەخشە",
           }
         : {
@@ -149,7 +149,7 @@ export default function MaterialResultModal({
     const inStore = !!foundMaterial;
 
     const actionLabel = lang === "ku"
-      ? (inStore ? "بینینی کارتی مادەکە ←" : "گەڕانی وێب بۆ ئەم مادەیە 🔍")
+      ? (inStore ? "بینینی کارتی مادەکە ←" : "گە\u0631انی وێب بۆ ئەم مادەیە 🔍")
       : (inStore ? "View material card →" : "Search the web for this material 🔍");
 
     const handlePress = () => {

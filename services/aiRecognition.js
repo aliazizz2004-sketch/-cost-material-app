@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+﻿import { Platform } from "react-native";
 import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
@@ -22,7 +22,7 @@ function buildCatalogReference() {
 function getFallbackCopy() {
   return {
     noMatchEN: "The image was not clear enough to identify the material. Try again with a close, well-lit photo.",
-    noMatchKU: "وێنەکە بە ئەندازەی پێویست ڕوون نەبوو بۆ ناسینەوەی مادەکە. تکایە وێنەیەکی نزیکتر و ڕوونتر دووبارە بگرە.",
+    noMatchKU: "وێنەکە بە ئەندازەی پێویست \u0631وون نەبوو بۆ ناسینەوەی مادەکە. تکایە وێنەیەکی نزیکتر و \u0631وونتر دووبارە بگرە.",
     errorEN: "AI recognition is temporarily unavailable. Please check the connection and try again.",
     errorKU: "ناسینەوەی AI کاتێکەوە بەردەست نییە. تکایە پەیوەندییەکەت بپشکنە و دووبارە هەوڵبدەوە.",
   };
@@ -371,9 +371,9 @@ Return EXACTLY this JSON shape:
   "categoryKU": "بەستن",
   "confidence": 0.92,
   "descriptionEN": "Short professional explanation of what this material is and its main use in construction.",
-  "descriptionKU": "ڕوونکردنەوەی پڕۆفیشناڵ بە کوردی دەربارەی مادەکە و بەکارھێنانی سەرەکی.",
+  "descriptionKU": "\u0631وونکردنەوەی پ\u0631ۆفیشناڵ بە کوردی دەربارەی مادەکە و بەکارھێنانی سەرەکی.",
   "useCasesEN": ["foundation concrete", "general masonry work", "mortar mixing"],
-  "useCasesKU": ["کۆنکریتی بنەڕەت", "کاری گشتی دیوارچینی", "تیکەڵكردنی ملاط"],
+  "useCasesKU": ["کۆنکریتی بنە\u0631ەت", "کاری گشتی دیوارچینی", "تیکەڵكردنی ملاط"],
   "keyPropertiesEN": ["gray fine powder", "binding material", "requires water to set", "high compressive strength when cured"],
   "keyPropertiesKU": ["تۆزی ناسکی خۆڵەمێشی", "مادەی بەستەر", "پێویستی بە ئاو هەیە بۆ قایم بوون"],
   "keyVisualIndicatorsEN": ["fine gray or white powder", "paper bag packaging", "wet paste state or dry set"],
@@ -383,7 +383,7 @@ Return EXACTLY this JSON shape:
   "cheaperAlternativeEN": {"name": "Local gypsum plaster", "reason": "Lower cost for non-structural interior finishing", "estimatedSavings": "~25% cheaper per unit"},
   "cheaperAlternativeKU": {"name": "جەبسی خۆماڵی", "reason": "تێچووی کەمتر بۆ کۆتایی ناوەوەی غەیری سازەیی", "estimatedSavings": "نزیکەی ٢٥٪ هەرزانتر"},
   "recommendedOptionEN": {"name": "Sulfate Resistant Cement", "reason": "Recommended for foundations in sulfate-rich soil common in Kurdistan"},
-  "recommendedOptionKU": {"name": "سمێنتی بەرگری لە سڵفات", "reason": "پێشنیار دەکرێت بۆ بنەڕەت لە خاکی سڵفاتداری باو لە کوردستان"},
+  "recommendedOptionKU": {"name": "سمێنتی بەرگری لە سڵفات", "reason": "پێشنیار دەکرێت بۆ بنە\u0631ەت لە خاکی سڵفاتداری باو لە کوردستان"},
   "topMatches": [{"name": "Ordinary Portland Cement (OPC)", "score": 92}],
   "engine": "gemini-3.1-flash-lite-preview"
 }`,

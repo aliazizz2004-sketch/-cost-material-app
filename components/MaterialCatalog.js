@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MaterialCatalog – Full material store view.
  * Shows SearchBar, MaterialCard list, and TotalCostBar.
  */
@@ -25,6 +25,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
   const { rate } = useExchangeRate();
   const tc = isDark ? darkColors : colors;
   const ku = lang === 'ku';
+  const ar = lang === 'ar';
 
   const [search, setSearch] = useState('');
   const quantities = globalQuantities || {};
@@ -67,21 +68,40 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
       'Aggregate': 'چەو و لم',
       'Steel': 'شیش',
       'Wood': 'دار و تەختە',
-      'Plumbing': 'بۆری و ئاوەڕۆ',
+      'Plumbing': 'بۆری و ئاوە\u0631ۆ',
       'Electrical': 'کارەبا',
       'Structural': 'ستراکچەر و بناغە',
       'Finishing': 'پەرداخت و ناوەوە',
       'Roofing': 'سەقف و داپۆشین',
       'Insulation': 'عازل',
     };
+    const cleanArabicNames = {
+      'Concrete': 'خرسانة',
+      'Binding': 'سمنت وجص',
+      'Masonry': 'طابوق وبلوك',
+      'Aggregate': 'حصو ورمل',
+      'Steel': 'حديد التسليح',
+      'Wood': 'خشب',
+      'Plumbing': 'سباكة (بوري)',
+      'Electrical': 'كهرباء',
+      'Structural': 'هيكل وإنشاء',
+      'Finishing': 'تشطيبات',
+      'Roofing': 'تسقيف',
+      'Insulation': 'عوازل',
+    };
     filteredByPurpose.forEach(m => {
         if (m.categoryEN) {
-          catsMap.set(m.categoryEN, cleanKurdishNames[m.categoryEN] || m.categoryEN);
+          catsMap.set(m.categoryEN, { 
+            ku: cleanKurdishNames[m.categoryEN] || m.categoryEN, 
+            ar: cleanArabicNames[m.categoryEN] || m.categoryEN 
+          });
         }
     });
     return [
-      { id: 'All', labelEN: 'All', labelKU: 'هەمووی' },
-      ...Array.from(catsMap.entries()).map(([en, kuL]) => ({ id: en, labelEN: en, labelKU: kuL }))
+      { id: 'All', labelEN: 'All', labelKU: 'هەمووی', labelAR: 'الكل' },
+      ...Array.from(catsMap.entries()).map(([en, labels]) => ({ 
+        id: en, labelEN: en, labelKU: labels.ku, labelAR: labels.ar 
+      }))
     ];
   }, [filteredByPurpose]);
 
@@ -141,7 +161,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
       const lists = existing ? JSON.parse(existing) : [];
       const newList = {
         id: Date.now().toString(),
-        name: ku ? "لیستی کۆگا" : "Store List",
+        name: ar ? "قائمة المخزن" : ku ? "لیستی کۆگا" : "Store List",
         date: new Date().toISOString(),
         items: listData.items.map(i => ({ id: i.id, qty: i.qty, nameEN: i.nameEN, nameKU: i.nameKU, basePrice: i.basePrice })),
         totalCost: listData.totalCost,
@@ -150,7 +170,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
       lists.unshift(newList);
       await AsyncStorage.setItem(SAVED_LISTS_KEY, JSON.stringify(lists));
       
-      Alert.alert(t('success'), ku ? "لیستەکە پاشەکەوت کرا" : "List saved locally");
+      Alert.alert(t('success'), ar ? "تم حفظ القائمة" : ku ? "لیستەکە پاشەکەوت کرا" : "List saved locally");
       setQuantities({});
       await loadSavedLists();
     } catch (e) {
@@ -201,11 +221,11 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
               <Text style={styles.backSymbol}>{isRTL ? '›' : '‹'}</Text>
             </TouchableOpacity>
             <Text style={[styles.headerTitle, isRTL && styles.textRTL]}>
-              {ku ? 'کۆگای مادەکان' : 'Material Store'}
+              {ar ? 'مخزن المواد' : ku ? 'کۆگای مادەکان' : 'Material Store'}
             </Text>
             <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center' }}>
                 <Text style={styles.headerCount}>
-                  {displayedMaterials.length} {ku ? 'مادە' : 'items'}
+                  {displayedMaterials.length} {ar ? 'عنصر' : ku ? 'مادە' : 'items'}
                 </Text>
                 {/* Projects Icon (Folder) */}
                 <TouchableOpacity style={{ marginLeft: isRTL ? 0 : 12, marginRight: isRTL ? 12 : 0, padding: 8, backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 12, borderWidth: 1, borderColor: 'rgba(255,255,255,0.3)' }} onPress={() => { if (onNavigate) { onNavigate('projects'); } }}>
@@ -244,7 +264,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
              <View style={{ width: '90%', maxWidth: 400, backgroundColor: tc.card, borderRadius: 24, padding: 24, paddingBottom: 30, borderWidth: 1, borderColor: tc.cardBorder, maxHeight: '80%' }}>
                  <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                      <Text style={{ fontSize: 18, fontWeight: 'bold', color: tc.charcoal, flex: 1, textAlign: isRTL ? 'right' : 'left' }}>
-                         {ku ? "ڕیزبەندی و جۆر" : "Sort & Filter"}
+                         {ar ? 'فرز وتصفية' : ku ? "\u0631یزبەندی و جۆر" : "Sort & Filter"}
                      </Text>
                      <TouchableOpacity onPress={() => setShowSortModal(false)} style={{ padding: 4 }}>
                          <Text style={{ fontSize: 20, color: tc.mediumGray, fontWeight: 'bold' }}>✕</Text>
@@ -252,7 +272,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
                  </View>
                  
                  <FlatList
-                     data={[ { type: 'header', title: ku ? "ڕیزبەندی" : "Sort By" }, ...sortOptions, { type: 'header', title: ku ? "جۆری مادە" : "Material Type" }, ...activeCategories.map(c => {
+                     data={[ { type: 'header', title: ar ? 'فرز حسب' : ku ? "\u0631یزبەندی" : "Sort By" }, ...sortOptions, { type: 'header', title: ar ? 'نوع المادة' : ku ? "جۆری مادە" : "Material Type" }, ...activeCategories.map(c => {
                        let icon = 'layers';
                        if(c.id === 'Concrete') icon = 'database';
                        else if(c.id === 'Cement & Binding') icon = 'box';
@@ -263,7 +283,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
                        else if(c.id === 'Plumbing') icon = 'droplet';
                        else if(c.id === 'Electrical') icon = 'zap';
                        else if(c.id === 'Structural') icon = 'home';
-                       return { id: c.id, isCategory: true, label: ku ? c.labelKU : c.labelEN, icon };
+                       return { id: c.id, isCategory: true, label: ar ? c.labelAR : ku ? c.labelKU : c.labelEN, icon };
                      }) ]}
                      keyExtractor={(item, idx) => item.id || 'header-'+idx}
                      showsVerticalScrollIndicator={false}
@@ -402,6 +422,8 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
         onSaveList={handleSaveList}
         forceOpenModal={forceOpenModal}
         onClearAll={handleClearAll}
+        activeProjectId={activeProjectId}
+        onAddToProject={onAddToProject}
       />
 
       {/* Add to Project floating button */}
@@ -420,7 +442,7 @@ export default function MaterialCatalog({ filterPurposes = [], onBack, onOpenEst
           activeOpacity={0.85}
         >
           <Text style={{ fontSize: 18 }}>📁</Text>
-          <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{ku ? 'زیادکردن بۆ پڕۆژە' : 'Add to Project'}</Text>
+          <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700' }}>{ku ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
           <View style={{ backgroundColor: 'rgba(255,255,255,0.3)', paddingHorizontal: 8, paddingVertical: 2, borderRadius: 12 }}>
             <Text style={{ color: '#fff', fontSize: 12, fontWeight: '800' }}>{Object.values(quantities).filter(v => v > 0).length}</Text>
           </View>

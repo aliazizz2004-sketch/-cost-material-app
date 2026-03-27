@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 
 let matContent = fs.readFileSync('data/materials.js', 'utf8');
 let match = matContent.match(/const materials = (\[[\s\S]+\]);/);
@@ -54,7 +54,7 @@ brands.forEach((b, index) => {
 
     const commonDescEN = " Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.";
 
-    const commonDescKU = " وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.";
+    const commonDescKU = " وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.";
 
     brandLinks[b] = {
         category: category,
@@ -71,7 +71,7 @@ brands.forEach((b, index) => {
             "Extensively tested in laboratory conditions"
         ],
         keyFactsKU: [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"

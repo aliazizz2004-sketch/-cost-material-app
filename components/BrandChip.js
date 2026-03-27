@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+﻿import React, { useState, useRef } from "react";
 import {
     View,
     Text,
@@ -224,7 +224,7 @@ export default function BrandChip({ brand }) {
                                     >
                                         <Text style={styles.popupActionIcon}>🌐</Text>
                                         <Text style={styles.popupActionLabel}>
-                                            {lang === "ku" ? "ماڵپەڕ" : "Website"}
+                                            {lang === "ku" ? "ماڵپە\u0631" : "Website"}
                                         </Text>
                                     </TouchableOpacity>
                                 )}

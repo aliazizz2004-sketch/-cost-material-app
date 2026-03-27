@@ -1,4 +1,4 @@
-// Script to generate the complete brandLinks.js with ALL brands
+﻿// Script to generate the complete brandLinks.js with ALL brands
 const fs = require('fs');
 const path = require('path');
 
@@ -19,7 +19,7 @@ const BRAND_LINKS = {
         logoEmoji: "🏭", tagline: "Sulfate Resistant — Built for Iraq's Soil",
         founded: "1833", headquarters: "Zug, Switzerland", category: "Cement & Building Materials",
         descEN: "Al-Jisr SRC is a sulfate-resistant Portland cement, essential for foundations in Kurdistan's sulfate-rich soil zones. Produced by Holcim at the Bazian plant, it meets BS 4027 / ASTM C150 Type V standards.",
-        descKU: "الجسر SRC سمێنتی بەرگری لە سڵفاتە، پێویستە بۆ بنەڕەت لە ناوچەی خاکی سڵفاتداری کوردستان.",
+        descKU: "الجسر SRC سمێنتی بەرگری لە سڵفاتە، پێویستە بۆ بنە\u0631ەت لە ناوچەی خاکی سڵفاتداری کوردستان.",
         keyFacts: ["Meets BS 4027 & ASTM C150 Type V","Ideal for underground foundations","Produced locally at Bazian plant","Approved by KRG for infrastructure"],
     },
     "Mass Cement": {
@@ -44,7 +44,7 @@ const BRAND_LINKS = {
         logoEmoji: "🏭", tagline: "Trusted Iraqi Cement",
         founded: "2010s", headquarters: "Kurdistan Region, Iraq", category: "Cement",
         descEN: "Mawlawi Cement is a local Iraqi cement brand producing OPC and SRC grades. Known for competitive pricing and availability across Kurdistan markets. Used widely in residential construction projects.",
-        descKU: "سمێنتی مەولەوی براندێکی خۆماڵی عێراقییە بۆ بەرهەمهێنانی سمێنتی OPC و SRC. نرخی گونجاو و بەردەستە لە بازاڕەکانی کوردستان.",
+        descKU: "سمێنتی مەولەوی براندێکی خۆماڵی عێراقییە بۆ بەرهەمهێنانی سمێنتی OPC و SRC. نرخی گونجاو و بەردەستە لە بازا\u0631ەکانی کوردستان.",
         keyFacts: ["Local Iraqi production","OPC and SRC grades available","Competitive market pricing","Widely available in Kurdistan"],
     },
     "Mawlawi SRC": {
@@ -52,7 +52,7 @@ const BRAND_LINKS = {
         logoEmoji: "🏭", tagline: "Sulfate Protection, Local Quality",
         founded: "2010s", headquarters: "Kurdistan Region, Iraq", category: "Cement",
         descEN: "Mawlawi SRC is the sulfate-resistant cement variant from Mawlawi. Designed for foundations and underground structures in sulfate-rich soil zones common across southern Kurdistan.",
-        descKU: "سمێنتی مەولەوی SRC جۆری بەرگری لە سڵفاتە بۆ بنەڕەت و ئاوەدانی ژێرزەوی.",
+        descKU: "سمێنتی مەولەوی SRC جۆری بەرگری لە سڵفاتە بۆ بنە\u0631ەت و ئاوەدانی ژێرزەوی.",
         keyFacts: ["Sulfate-resistant formula","For underground foundations","Local production advantage","Cost-effective alternative"],
     },
     "Ker Cement": {
@@ -60,7 +60,7 @@ const BRAND_LINKS = {
         logoEmoji: "🏭", tagline: "Quality Cement for Kurdistan",
         founded: "2010s", headquarters: "Kurdistan Region, Iraq", category: "Cement",
         descEN: "Ker Cement is a regional cement producer serving the Kurdistan construction market. Produces standard Portland cement for general construction applications including residential and commercial projects.",
-        descKU: "سمێنتی کەر بەرهەمهێنەرێکی ناوچەیی سمێنتە بۆ بازاڕی بیناسازی کوردستان.",
+        descKU: "سمێنتی کەر بەرهەمهێنەرێکی ناوچەیی سمێنتە بۆ بازا\u0631ی بیناسازی کوردستان.",
         keyFacts: ["Regional cement producer","Standard OPC production","Serves Kurdistan market","Competitive local pricing"],
     },
     "Delta Cement": {
@@ -146,7 +146,7 @@ const BRAND_LINKS = {
         logoEmoji: "🔩", tagline: "Steel Solutions for Kurdistan",
         founded: "2000s", headquarters: "Erbil, Kurdistan Region, Iraq", category: "Steel Products",
         descEN: "Med Steel is a leading steel supplier and manufacturer in Erbil, Kurdistan Region. They supply rebar, angle bars, hollow sections, flat bars, and structural steel products to construction projects across Kurdistan.",
-        descKU: "مێد ستیل دابینکاری پێشەنگی ئاسنە لە ھەولێر. میلە ئاسن و گۆشەدار و پرۆفایل دابین دەکات بۆ پڕۆژەکانی بیناسازی.",
+        descKU: "مێد ستیل دابینکاری پێشەنگی ئاسنە لە ھەولێر. میلە ئاسن و گۆشەدار و پرۆفایل دابین دەکات بۆ پ\u0631ۆژەکانی بیناسازی.",
         keyFacts: ["Leading Erbil steel supplier","Full range of steel products","Rebar, angles, hollow sections","Serves major construction projects"],
     },
     "Darin Steel": {
@@ -154,7 +154,7 @@ const BRAND_LINKS = {
         logoEmoji: "🔩", tagline: "Strength You Can Build On",
         founded: "2000s", headquarters: "Kurdistan Region, Iraq", category: "Steel Production",
         descEN: "Darin Steel is a local Kurdistan steel manufacturer producing deformed rebar for reinforced concrete construction. Their products meet international quality standards for structural applications.",
-        descKU: "دارین ستیل بەرهەمهێنەری خۆماڵی ئاسنی بیناسازییە لە کوردستان. میلە ئاسنی ڕێژەکانی نێودەوڵەتی بەرهەم دەهێنێت.",
+        descKU: "دارین ستیل بەرهەمهێنەری خۆماڵی ئاسنی بیناسازییە لە کوردستان. میلە ئاسنی \u0631ێژەکانی نێودەوڵەتی بەرهەم دەهێنێت.",
         keyFacts: ["Local Kurdistan producer","Deformed rebar production","International quality standards","Structural grade steel"],
     },
     "Alpha Steel": {
@@ -196,7 +196,7 @@ const BRAND_LINKS = {
         logoEmoji: "🌙", tagline: "Quality Blocks & Bricks Since Decades",
         founded: "1990s", headquarters: "Erbil, Kurdistan Region, Iraq", category: "Blocks, Bricks & Masonry",
         descEN: "Hilal Factory in Erbil is a major producer of both concrete blocks and red clay bricks. One of the most established masonry product manufacturers in Kurdistan, supplying residential and commercial projects across the region.",
-        descKU: "کارگەی ھیلال لە ھەولێر بەرهەمهێنەری گەورەی بلۆکی کۆنکریت و خشتی سووری قوڕە.",
+        descKU: "کارگەی ھیلال لە ھەولێر بەرهەمهێنەری گەورەی بلۆکی کۆنکریت و خشتی سووری قو\u0631ە.",
         keyFacts: ["Major Erbil producer","Concrete blocks & clay bricks","Decades of establishment","Wide regional distribution"],
     },
     "Ashur Brick": {
@@ -204,7 +204,7 @@ const BRAND_LINKS = {
         logoEmoji: "🧱", tagline: "Traditional Bricks, Modern Quality",
         founded: "1990s", headquarters: "Chamchamal, Sulaymaniyah, Iraq", category: "Clay Bricks",
         descEN: "Ashur Brick is a brick manufacturer based in Chamchamal, producing high-quality red clay bricks and hollow clay bricks. Their products are heat and cold resistant, made from local clay deposits in the Chamchamal area.",
-        descKU: "ئاشور بریک بەرهەمهێنەری خشتە لە چەمچەماڵ، خشتی سووری قوڕی بەرزکوالیتی بەرهەم دەهێنێت.",
+        descKU: "ئاشور بریک بەرهەمهێنەری خشتە لە چەمچەماڵ، خشتی سووری قو\u0631ی بەرزکوالیتی بەرهەم دەهێنێت.",
         keyFacts: ["Based in Chamchamal","Red clay & hollow bricks","Heat and cold resistant","Local clay deposits"],
     },
 
@@ -214,7 +214,7 @@ const BRAND_LINKS = {
         logoEmoji: "💎", tagline: "Kurdistan's Premium Stone Supplier",
         founded: "2000s", headquarters: "Erbil, Kurdistan Region, Iraq", category: "Marble, Granite & Stone",
         descEN: "Gulabagh is a leading marble and granite supplier in Kurdistan Region. They source, cut, and polish natural stone including local Kurdistan marble, imported granite (Black Galaxy, Absolute Black), and travertine for luxury construction projects.",
-        descKU: "گولاباغ دابینکاری پێشەنگی مەڕمەڕ و گرانیتە لە هەرێمی کوردستان.",
+        descKU: "گولاباغ دابینکاری پێشەنگی مە\u0631مە\u0631 و گرانیتە لە هەرێمی کوردستان.",
         keyFacts: ["Leading stone supplier","Local & imported marble","Granite & travertine range","Serves luxury projects"],
     },
     "Zhoolstone": {
@@ -222,7 +222,7 @@ const BRAND_LINKS = {
         logoEmoji: "💎", tagline: "Natural Stone Excellence",
         founded: "2000s", headquarters: "Kurdistan Region, Iraq", category: "Marble & Natural Stone",
         descEN: "Zhoolstone is a prominent natural stone company in Kurdistan, specializing in marble and granite supply, cutting, and installation. They provide premium stone products for floors, countertops, and building facades.",
-        descKU: "ژوولستۆن کۆمپانیایەکی بەناوبانگی بەردی سروشتییە لە کوردستان، پسپۆڕی مەڕمەڕ و گرانیت.",
+        descKU: "ژوولستۆن کۆمپانیایەکی بەناوبانگی بەردی سروشتییە لە کوردستان، پسپۆ\u0631ی مە\u0631مە\u0631 و گرانیت.",
         keyFacts: ["Prominent stone company","Marble & granite specialist","Cutting & installation","Premium stone products"],
     },
     "Khalat Group": {
@@ -230,7 +230,7 @@ const BRAND_LINKS = {
         logoEmoji: "💎", tagline: "Stone Craftsmanship",
         founded: "2000s", headquarters: "Kurdistan Region, Iraq", category: "Stone & Building Materials",
         descEN: "Khalat Group is a construction materials company in Kurdistan specializing in natural stone products. They supply marble, granite, and custom stone fabrication for residential and commercial construction projects.",
-        descKU: "گروپی خەڵات کۆمپانیایەکی مادەی بیناسازییە لە کوردستان پسپۆڕی بەردی سروشتی.",
+        descKU: "گروپی خەڵات کۆمپانیایەکی مادەی بیناسازییە لە کوردستان پسپۆ\u0631ی بەردی سروشتی.",
         keyFacts: ["Kurdistan stone specialist","Marble & granite supply","Custom stone fabrication","Residential & commercial"],
     },
 
@@ -275,7 +275,7 @@ const BRAND_LINKS = {
         logoEmoji: "🎨", tagline: "The Colour People Trust",
         founded: "1969", headquarters: "Sharjah, UAE", category: "Paints & Coatings",
         descEN: "National Paints is the UAE's largest and oldest paint manufacturer, producing over 5,000 shades across decorative, industrial, and protective coating systems.",
-        descKU: "نیشتمانی پەینتس گەورەترین و کۆنترین بەرهەمهێنەری بۆیەی ئەمارات، ٥٠٠٠+ ڕەنگ.",
+        descKU: "نیشتمانی پەینتس گەورەترین و کۆنترین بەرهەمهێنەری بۆیەی ئەمارات، ٥٠٠٠+ \u0631ەنگ.",
         keyFacts: ["UAE's oldest paint manufacturer","5,000+ color shades available","ISO 9001:2015 certified","Widely available across Middle East"],
     },
 
@@ -355,7 +355,7 @@ const BRAND_LINKS = {
         logoEmoji: "🟢", tagline: "Life Is On",
         founded: "1836", headquarters: "Rueil-Malmaison, France", category: "Electrical Distribution & Automation",
         descEN: "Schneider Electric is a global leader in energy management and automation. Their circuit breakers, distribution boards, switches, and sockets are widely used in Kurdistan's electrical installations. Known for safety and reliability.",
-        descKU: "شنایدەر ئێلێکتریک پێشەنگی جیهانییە لە بەڕێوەبردنی وزە و ئوتۆمەیشن. بریکەر و پانێل و سۆکێت.",
+        descKU: "شنایدەر ئێلێکتریک پێشەنگی جیهانییە لە بە\u0631ێوەبردنی وزە و ئوتۆمەیشن. بریکەر و پانێل و سۆکێت.",
         keyFacts: ["Global energy management leader","190 years of innovation","Present in 100+ countries","Industry-leading safety standards"],
     },
     "ABB": {
@@ -363,7 +363,7 @@ const BRAND_LINKS = {
         logoEmoji: "🔴", tagline: "Let's Write the Future. Together.",
         founded: "1988", headquarters: "Zurich, Switzerland", category: "Electrical & Automation",
         descEN: "ABB is a Swiss-Swedish multinational corporation specializing in electrification, automation, and robotics. Their MCBs, RCCBs, distribution boards, and switchgear are premium choices for Kurdistan commercial and industrial electrical installations.",
-        descKU: "ABB کۆمپانیای سویسری-سویدییە پسپۆڕی کارەبایی و ئوتۆمەیشن. MCB و RCCB و پانێلەکانیان سەرتری پڕۆژەکانی کوردستانن.",
+        descKU: "ABB کۆمپانیای سویسری-سویدییە پسپۆ\u0631ی کارەبایی و ئوتۆمەیشن. MCB و RCCB و پانێلەکانیان سەرتری پ\u0631ۆژەکانی کوردستانن.",
         keyFacts: ["Swiss engineering excellence","Leading MCB & RCCB brand","105,000+ employees globally","Premium industrial electrical"],
     },
     "Philips": {
@@ -371,7 +371,7 @@ const BRAND_LINKS = {
         logoEmoji: "💡", tagline: "Innovation and You",
         founded: "1891", headquarters: "Eindhoven, Netherlands", category: "Lighting & LED",
         descEN: "Philips (now Signify for lighting) is a global leader in LED lighting solutions. Their LED panels, downlights, and bulbs are widely used in Kurdistan's commercial and residential buildings for energy-efficient illumination.",
-        descKU: "فیلیپس (ئێستا سیگنیفای بۆ ڕووناکی) پێشەنگی جیهانییە لە ڕووناکی LED. لە بینای کوردستان بەکاردەهێنرێت.",
+        descKU: "فیلیپس (ئێستا سیگنیفای بۆ \u0631ووناکی) پێشەنگی جیهانییە لە \u0631ووناکی LED. لە بینای کوردستان بەکاردەهێنرێت.",
         keyFacts: ["130+ years of lighting innovation","Global LED market leader","Energy Star certified products","Wide Kurdistan availability"],
     },
     "Osram": {
@@ -379,7 +379,7 @@ const BRAND_LINKS = {
         logoEmoji: "💡", tagline: "Lighting Your World",
         founded: "1919", headquarters: "Munich, Germany", category: "Lighting Solutions",
         descEN: "OSRAM is a German multinational lighting manufacturer with over 100 years of expertise. Known for high-quality LED panels, tubes, and specialty lighting. Used in Kurdistan offices, hospitals, and commercial buildings.",
-        descKU: "ئۆسرام بەرهەمهێنەری ڕووناکی ئەڵمانییە زیاتر لە ١٠٠ ساڵ. LED و ڕووناکی تایبەت.",
+        descKU: "ئۆسرام بەرهەمهێنەری \u0631ووناکی ئەڵمانییە زیاتر لە ١٠٠ ساڵ. LED و \u0631ووناکی تایبەت.",
         keyFacts: ["100+ years German engineering","Premium LED quality","Used in commercial buildings","Energy efficient solutions"],
     },
 
@@ -459,7 +459,7 @@ const BRAND_LINKS = {
         logoEmoji: "🔥", tagline: "Comfort for Everyone",
         founded: "1930", headquarters: "Fabriano, Italy", category: "Water Heaters & Heating",
         descEN: "Ariston is an Italian multinational specializing in water heating and thermal comfort solutions. Their electric storage water heaters are standard in virtually every Kurdistan home and apartment. Known for energy efficiency and long service life.",
-        descKU: "ئاریستۆن کەمپانیای ئیتالییە پسپۆڕی گەرمکردنی ئاو. بۆیلەری ئاریستۆن ئاسایی لە هەر ماڵێکی کوردستان.",
+        descKU: "ئاریستۆن کەمپانیای ئیتالییە پسپۆ\u0631ی گەرمکردنی ئاو. بۆیلەری ئاریستۆن ئاسایی لە هەر ماڵێکی کوردستان.",
         keyFacts: ["90+ years Italian quality","Standard in Kurdistan homes","Energy efficient heaters","Wide service network"],
     },
     "Vaillant": {

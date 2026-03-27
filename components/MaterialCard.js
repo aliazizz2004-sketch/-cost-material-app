@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useRef } from "react";
+﻿import React, { memo, useState, useEffect, useRef } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Modal, ScrollView, Dimensions, SafeAreaView } from "react-native";
 import { colors, darkColors, spacing, radius, typography, shadows } from "../styles/theme";
 import { useTheme } from "../contexts/ThemeContext";
@@ -24,7 +24,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
     useEffect(() => {
         if (autoOpenMaterialId === initialMaterial.id) {
             setIsImageModalVisible(true);
-            // Reset scroll to top when modal auto-opens
             setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), 50);
             if (clearAutoOpen) {
                 clearAutoOpen();
@@ -34,9 +33,9 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
 
     const material = currentMaterial;
 
-    const name = lang === "ku" ? material.nameKU : material.nameEN;
-    const category = lang === "ku" ? material.categoryKU : material.categoryEN;
-    const unitLabel = lang === "ku" ? material.unitKU : material.unitEN;
+    const name = lang === "ar" ? material.nameEN : lang === "ku" ? material.nameKU : material.nameEN;
+    const category = lang === "ar" ? material.categoryEN : lang === "ku" ? material.categoryKU : material.categoryEN;
+    const unitLabel = lang === "ar" ? material.unitEN : lang === "ku" ? material.unitKU : material.unitEN;
     const priceIQD = rate ? Math.round(material.basePrice * rate) : 0;
     const subtotal = priceIQD * (quantity || 0);
 
@@ -44,17 +43,14 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
     const recommendations = allMaterials
         .filter(m => m.id !== material.id && m.categoryEN === material.categoryEN)
         .sort((a, b) => {
-            // Price Comparison (Primary)
             const priceCompare = a.basePrice - b.basePrice;
             if (priceCompare !== 0) return priceCompare;
-
-            // Thermal Efficiency (Secondary - for Insulation/Masonry/Binding)
             if (material.categoryEN === "Insulation" || material.categoryEN === "Masonry") {
                 return a.thermalConductivity - b.thermalConductivity;
             }
             return 0;
         })
-        .slice(0, 3); // Top 3 recommendations
+        .slice(0, 3);
 
     const formatNumber = (num) => {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -68,7 +64,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
     const getEstimationCategory = (mat) => {
         const cat = mat.categoryEN || "";
         const matName = (mat.nameEN || "").toLowerCase();
-        
         if (cat === "Concrete") return "concrete";
         if (cat === "Paint & Coatings") return "paint";
         if (cat === "Steel & Rebar") return "rebar";
@@ -82,7 +77,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
     };
 
     const estCat = getEstimationCategory(material);
-
     const hasQuantity = quantity > 0;
 
     return (
@@ -90,7 +84,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
             style={[styles.card, hasQuantity && styles.cardActive]}
             activeOpacity={0.9}
             onPress={(e) => {
-                // Main card press - open modal and reset scroll to top
                 setIsImageModalVisible(true);
                 setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), 50);
             }}
@@ -101,7 +94,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                 transparent={true}
                 animationType="fade"
                 onShow={() => {
-                    // Force scroll to top AFTER modal animation completes
                     setTimeout(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), 100);
                 }}
                 onRequestClose={() => {
@@ -118,7 +110,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                             setCurrentMaterial(initialMaterial);
                         }}
                     />
-                    {/* Modal card: pixel-based max height, scroll starts at top */}
                     <SafeAreaView style={styles.imageModalContent}>
                         <ScrollView
                             ref={scrollRef}
@@ -126,7 +117,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                             bounces={false}
                             keyboardShouldPersistTaps="handled"
                         >
-                        {/* Close button - left side RTL, right side LTR */}
                         <TouchableOpacity
                             style={[
                                 styles.imageModalCloseButton,
@@ -149,7 +139,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                         )}
 
                             <View style={styles.previewDetailContainer}>
-                                {/* Header row - reversed in RTL */}
                                 <View style={[styles.previewHeader, isRTL && styles.rowRTL]}>
                                     <View style={styles.previewCategoryBadge}>
                                         <Text style={styles.previewCategoryText}>{category}</Text>
@@ -171,7 +160,6 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                 </View>
                             </View>
 
-                            {/* Availability Section */}
                             {material.localBrands && material.localBrands.length > 0 && (
                                 <TouchableOpacity
                                     activeOpacity={1}
@@ -179,7 +167,7 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                     style={styles.previewBrandsBox}
                                 >
                                     <Text style={[styles.previewBrandsTitle, isRTL && styles.textRTL]}>
-                                        {lang === "ku" ? "بەردەستبوون و براندەکان:" : "Availability & Brands:"}
+                                        {lang === "ar" ? "التوفر والعلامات التجارية:" : lang === "ku" ? "بەردەستبوون و براندەکان:" : "Availability & Brands:"}
                                     </Text>
                                     <View style={[styles.previewBrandsWrap, isRTL && styles.rowRTL]}>
                                         {material.localBrands.map((brand, i) => (
@@ -197,7 +185,7 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                     setCurrentMaterial(initialMaterial);
                                 }}
                             >
-                                <Text style={styles.previewAddBtnText}>{lang === "ku" ? "زیادکردن بۆ لیست ✓" : "Add to Cost List ✓"}</Text>
+                                <Text style={styles.previewAddBtnText}>{lang === "ar" ? "إضافة إلى القائمة ✓" : lang === "ku" ? "زیادکردن بۆ لیست ✓" : "Add to Cost List ✓"}</Text>
                             </TouchableOpacity>
 
                             {estCat && onOpenEstimation && (
@@ -210,22 +198,21 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                     }}
                                 >
                                     <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-                                        <Text style={styles.previewEstBtnText}>{lang === "ku" ? "ژمێرەری خەمڵاندن - زەڕعە" : "Open Estimator"}</Text>
+                                        <Text style={styles.previewEstBtnText}>{lang === "ar" ? "حاسبة التقدير" : lang === "ku" ? "ژمێرەری خەمڵاندن - زە\u0631عە" : "Open Estimator"}</Text>
                                         <Text style={[styles.previewEstBtnIcon, isRTL && { marginRight: 8, marginLeft: 0 }]}>📐</Text>
                                     </View>
                                 </TouchableOpacity>
                             )}
 
-                            {/* Recommendations Section */}
                             {recommendations.length > 0 && (
                                 <View style={styles.recSection}>
                                     <View style={styles.recHeaderRow}>
                                         <Text style={[styles.recLabel, isRTL && styles.textRTL]}>
-                                            {lang === "ku" ? "پێشنیارەکان (باشتر یان هەرزانتر)" : "Recommendations (Better or Cheaper)"}
+                                            {lang === "ar" ? "توصيات (أفضل أو أرخص)" : lang === "ku" ? "پێشنیارەکان (باشتر یان هەرزانتر)" : "Recommendations (Better or Cheaper)"}
                                         </Text>
                                     </View>
                                     {recommendations.map((rec) => {
-                                        const recName = lang === "ku" ? rec.nameKU : rec.nameEN;
+                                        const recName = lang === "ar" ? rec.nameEN : lang === "ku" ? rec.nameKU : rec.nameEN;
                                         const recPrice = rate ? Math.round(rec.basePrice * rate) : 0;
                                         const isCheaper = rec.basePrice < material.basePrice;
                                         const isBetterThermal = rec.thermalConductivity < material.thermalConductivity;
@@ -235,11 +222,8 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                                 key={rec.id}
                                                 style={[styles.recItem, isRTL && styles.rowRTL]}
                                                 onPress={() => {
-                                                    // Close the modal
                                                     setIsImageModalVisible(false);
-                                                    // Reset content to original item for next opening
                                                     setCurrentMaterial(initialMaterial);
-                                                    // Notify parent to scroll to the item
                                                     onSelectItem(rec.id);
                                                 }}
                                             >
@@ -248,12 +232,12 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                                                     <View style={[styles.tagRow, isRTL && styles.rowRTL]}>
                                                         {isCheaper && (
                                                             <View style={styles.cheaperTag}>
-                                                                <Text style={styles.tagText}>{lang === "ku" ? "هەرزانتر" : "Cheaper"}</Text>
+                                                                <Text style={styles.tagText}>{lang === "ar" ? "أرخص" : lang === "ku" ? "هەرزانتر" : "Cheaper"}</Text>
                                                             </View>
                                                         )}
                                                         {isBetterThermal && (category === "Insulation" || category === "Masonry") && (
                                                             <View style={styles.betterTag}>
-                                                                <Text style={styles.tagText}>{lang === "ku" ? "کاراتر" : "Better Specs"}</Text>
+                                                                <Text style={styles.tagText}>{lang === "ar" ? "أفضل مواصفات" : lang === "ku" ? "کاراتر" : "Better Specs"}</Text>
                                                             </View>
                                                         )}
                                                     </View>
@@ -269,6 +253,7 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                     </SafeAreaView>
                 </View>
             </Modal>
+
             {/* Header row */}
             <View style={[styles.header, isRTL && styles.headerRTL]}>
                 <View style={[styles.categoryBadge]}>
@@ -324,7 +309,7 @@ function MaterialCard({ material: initialMaterial, quantity, onQuantityChange, a
                     style={styles.brandsSection}
                 >
                     <Text style={styles.brandsLabel}>
-                        {lang === "ku" ? "براند:" : "Brands:"}
+                        {lang === "ar" ? "العلامات:" : lang === "ku" ? "براند:" : "Brands:"}
                     </Text>
                     <View style={styles.brandsWrap}>
                         {material.localBrands.map((brand, i) => (
@@ -581,7 +566,6 @@ const styles = StyleSheet.create({
         color: colors.accent,
         fontWeight: "700",
     },
-    // Image Preview Modal (Mini-Page) Styles
     imageModalOverlay: {
         flex: 1,
         backgroundColor: "rgba(10, 22, 40, 0.7)",
@@ -606,12 +590,6 @@ const styles = StyleSheet.create({
         overflow: "hidden",
         ...shadows.cardLifted,
     },
-    imageModalScrollView: {
-        // ScrollView fills the modal card and enables scrolling
-    },
-    imageModalScrollContent: {
-        // Inner content padding
-    },
     imageModalCloseButton: {
         position: "absolute",
         top: 10,
@@ -622,9 +600,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         zIndex: 10,
-    },
-    imageModalCloseButtonRTL: {
-        // kept for compatibility; positioning now done inline
     },
     imageModalCloseText: {
         fontSize: 16,
@@ -801,9 +776,8 @@ const styles = StyleSheet.create({
     tagText: {
         fontSize: 10,
         fontWeight: "700",
-        color: colors.mediumGray,
+        color: colors.darkGray,
     },
-    rowRTL: {
-        flexDirection: "row-reverse",
-    },
+    rowRTL: { flexDirection: "row-reverse" },
+    recHeaderRow: { marginBottom: spacing.xs },
 });

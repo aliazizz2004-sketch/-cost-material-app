@@ -16,23 +16,37 @@ export function LanguageProvider({ children }) {
     );
 
     const toggleLanguage = useCallback(() => {
-        setLang((prev) => (prev === "en" ? "ku" : "en"));
+        setLang((prev) => {
+            if (prev === "en") return "ku";
+            if (prev === "ku") return "ar";
+            return "en";
+        });
     }, []);
 
-    const isRTL = lang === "ku";
+    const isRTL = lang === "ku" || lang === "ar";
 
     const [fontsLoaded] = useFonts({
       PeshangDes5Bold: require("../assets/kufont/Peshang_Des_5_Bold.ttf"),
+      NotoSansArabic: require("../assets/kufont/NotoSansArabic-Regular.ttf"),
     });
 
-    // Helper: apply Kurdish font only when language is Kurdish
-    const kuFont = (isKu = (lang === "ku")) =>
-      isKu && fontsLoaded ? { fontFamily: "PeshangDes5Bold" } : {};
+    // Helper: apply Kurdish font (PeshangDes5Bold - original, user-preferred)
+    const kuFont = (isKu = (lang === "ku")) => {
+      if (!isKu) return {};
+      return Platform.select({
+        web: {
+          fontFamily: fontsLoaded
+            ? "'PeshangDes5Bold', 'Scheherazade New', 'Arial Unicode MS', system-ui, sans-serif"
+            : "'Scheherazade New', 'Arial Unicode MS', system-ui, sans-serif",
+        },
+        default: fontsLoaded ? { fontFamily: "PeshangDes5Bold" } : {},
+      });
+    };
 
     // Sync document direction and language attribute on web
     useEffect(() => {
         if (Platform.OS === "web" && typeof document !== "undefined") {
-            document.documentElement.lang = lang === "ku" ? "ku" : "en";
+            document.documentElement.lang = lang;
             // We NO LONGER set dir="rtl" on document/body because we handle 
             // layout flips manually via flexDirection row-reverse and textRTL.
             // Setting it here causes "double-flips" and shift issues on many browsers.

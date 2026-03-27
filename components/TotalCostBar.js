@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Platform, Image, ScrollView, Modal, SafeAreaView } from "react-native";
 import { colors, spacing, radius, typography, shadows } from "../styles/theme";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import AppIcon from "./AppIcon";
 
-export default function TotalCostBar({ quantities, materials, onQuantityChange, onSelectItem, onSaveList, forceOpenModal, onClearAll }) {
+export default function TotalCostBar({ quantities, materials, onQuantityChange, onSelectItem, onSaveList, forceOpenModal, onClearAll, activeProjectId, onAddToProject }) {
     const { t, isRTL, lang } = useLanguage();
     const { rate, lastUpdated, loading, error, refresh } = useExchangeRate();
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -119,19 +119,37 @@ export default function TotalCostBar({ quantities, materials, onQuantityChange, 
                                 {t("selectedMaterials")}
                             </Text>
                             <View style={[styles.modalHeaderActions, isRTL && styles.rowRTL]}>
-                                <TouchableOpacity 
-                                    onPress={() => {
-                                        setIsModalVisible(false);
-                                        if (onSaveList) onSaveList({ items: selectedItems, totalCost });
-                                    }} 
-                                    style={[styles.modalSaveBtnProfessional, isRTL && styles.rowRTL]}
-                                    activeOpacity={0.8}
-                                >
-                                    <View style={{ marginRight: isRTL ? 0 : 8, marginLeft: isRTL ? 8 : 0 }}>
-                                        <AppIcon name="bookmark" size={18} color={colors.white} />
-                                    </View>
-                                    <Text style={styles.modalSaveBtnTextProfessional}>{t("save")}</Text>
-                                </TouchableOpacity>
+                                {activeProjectId && onAddToProject ? (
+                                    <TouchableOpacity 
+                                        onPress={() => {
+                                            setIsModalVisible(false);
+                                            const itemsArr = selectedItems.map(item => ({
+                                                id: item.id, name: item.nameEN, nameKU: item.nameKU, qty: item.qty, unitPrice: item.basePrice, unit: item.unit
+                                            }));
+                                            const src = lang === 'ku' ? 'کۆگای مادەکان' : lang === 'ar' ? 'مخزن المواد' : 'Material Store';
+                                            onAddToProject(itemsArr, src);
+                                        }} 
+                                        style={[styles.modalSaveBtnProfessional, { backgroundColor: colors.accent }, isRTL && styles.rowRTL]}
+                                        activeOpacity={0.8}
+                                    >
+                                        <Text style={{ marginRight: isRTL ? 0 : 6, marginLeft: isRTL ? 6 : 0, fontSize: 16 }}>📁</Text>
+                                        <Text style={styles.modalSaveBtnTextProfessional}>{lang === 'ar' ? 'إضافة للمشروع' : lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
+                                    </TouchableOpacity>
+                                ) : (
+                                    <TouchableOpacity 
+                                        onPress={() => {
+                                            setIsModalVisible(false);
+                                            if (onSaveList) onSaveList({ items: selectedItems, totalCost });
+                                        }} 
+                                        style={[styles.modalSaveBtnProfessional, isRTL && styles.rowRTL]}
+                                        activeOpacity={0.8}
+                                    >
+                                        <View style={{ marginRight: isRTL ? 0 : 8, marginLeft: isRTL ? 8 : 0 }}>
+                                            <AppIcon name="bookmark" size={18} color={colors.white} />
+                                        </View>
+                                        <Text style={styles.modalSaveBtnTextProfessional}>{t("save")}</Text>
+                                    </TouchableOpacity>
+                                )}
                                 <TouchableOpacity 
                                     onPress={() => {
                                         if (onClearAll) onClearAll();
@@ -172,7 +190,7 @@ export default function TotalCostBar({ quantities, materials, onQuantityChange, 
                                                     {lang === "ku" ? item.nameKU : item.nameEN} ({lang === "ku" ? item.categoryKU : item.categoryEN})
                                                 </Text>
                                                 <Text style={[styles.modalItemDetail, isRTL && styles.textRTL]}>
-                                                    {lang === "ku" ? "بڕ:" : "Qty:"} {item.qty} {lang === "ku" ? item.unitKU : item.unitEN}
+                                                    {lang === "ku" ? "ب\u0631:" : "Qty:"} {item.qty} {lang === "ku" ? item.unitKU : item.unitEN}
                                                 </Text>
                                                 <Text style={[styles.modalItemPrice, isRTL && styles.textRTL]}>
                                                     {formatNumber(itemSubtotal)} {t("currency")}

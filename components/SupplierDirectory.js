@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+﻿import React, { useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -25,7 +25,7 @@ export default function SupplierDirectory({ onBack }) {
         ? {
             title: "ناونیشانی دابینکاران",
             subtitle: "بەستنەوە بە دابینکارانی خۆماڵی و جیهانی",
-            search: "گەڕان بۆ دابینکار...",
+            search: "گە\u0631ان بۆ دابینکار...",
             all: "هەموو",
             cement: "سمێنت (چیمەنتۆ)",
             steel: "ئاسن",
@@ -37,11 +37,11 @@ export default function SupplierDirectory({ onBack }) {
             glass: "شووشە",
             call: "پەیوەندیکردن",
             whatsapp: "واتسئاپ",
-            website: "ماڵپەڕ",
+            website: "ماڵپە\u0631",
             map: "نەخشە",
             founded: "دامەزراو",
             hq: "بنکە",
-            back: "گەڕانەوە",
+            back: "گە\u0631انەوە",
             noResults: "هیچ دابینکارێک نەدۆزرایەوە",
           }
         : {

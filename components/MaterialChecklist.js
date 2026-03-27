@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+﻿import React, { useMemo } from "react";
 import {
   View,
   Text,
@@ -30,7 +30,7 @@ export default function MaterialChecklist({ quantities, materials, onAddMaterial
             suggestTitle: "📋 مادەی پێشنیارکراو",
             suggestSubtitle: "ئەم مادانە لەگەڵ هەڵبژاردنەکانتدا بەکاردەهێنرێن",
             phaseTitle: "🏗️ قۆناغەکانی بیناسازی",
-            phaseSubtitle: "شوێنپێوات بکە بۆ تەواوبوونی پڕۆژە",
+            phaseSubtitle: "شوێنپێوات بکە بۆ تەواوبوونی پ\u0631ۆژە",
             add: "زیادکردن",
             reason: "بۆچی؟",
             noSuggestions: "هیچ پێشنیارێک نییە — دەستبکە بە هەڵبژاردنی مادە!",

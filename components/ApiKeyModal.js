@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -130,7 +130,7 @@ export default function ApiKeyModal({ visible, onClose, onKeySaved }) {
                         {/* Steps */}
                         <View style={styles.stepsContainer}>
                             <Text style={[styles.stepTitle, isRTL && styles.textRTL]}>
-                                {lang === "ku" ? "چۆن کلیل بەدەست بهێنیت (بەخۆڕایی):" : "How to get a free key:"}
+                                {lang === "ku" ? "چۆن کلیل بەدەست بهێنیت (بەخۆ\u0631ایی):" : "How to get a free key:"}
                             </Text>
 
                             <View style={styles.step}>
@@ -203,7 +203,7 @@ export default function ApiKeyModal({ visible, onClose, onKeySaved }) {
                         {success && (
                             <View style={styles.successBox}>
                                 <Text style={styles.successText}>
-                                    ✅ {lang === "ku" ? "کلیلەکە ڕاستکرایەوە و پاشەکەوت کرا!" : "Key verified & saved!"}
+                                    ✅ {lang === "ku" ? "کلیلەکە \u0631استکرایەوە و پاشەکەوت کرا!" : "Key verified & saved!"}
                                 </Text>
                             </View>
                         )}
@@ -239,7 +239,7 @@ export default function ApiKeyModal({ visible, onClose, onKeySaved }) {
                             {existingKey && (
                                 <TouchableOpacity style={styles.removeBtn} onPress={handleRemove} activeOpacity={0.7}>
                                     <Text style={styles.removeBtnText}>
-                                        {lang === "ku" ? "سڕینەوەی کلیل" : "Remove Key"}
+                                        {lang === "ku" ? "س\u0631ینەوەی کلیل" : "Remove Key"}
                                     </Text>
                                 </TouchableOpacity>
                             )}

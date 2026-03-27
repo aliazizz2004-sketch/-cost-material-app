@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+﻿import React, { useState, useMemo, useRef } from 'react';
 import {
   View,
   Text,
@@ -43,7 +43,7 @@ function SubpageWrapper({ title, onBack, isDark, tc, isRTL, children }) {
 }
 
 export default function UserProfile({ onBack, projects }) {
-  const { lang, isRTL } = useLanguage();
+  const { lang, setLang, isRTL } = useLanguage();
   const { isDark, toggleTheme } = useTheme();
   const tc = isDark ? darkColors : colors;
 
@@ -94,28 +94,30 @@ export default function UserProfile({ onBack, projects }) {
   [projects]);
 
   const ku = lang === 'ku';
+  const ar = lang === 'ar';
 
   const copy = {
-    title: ku ? 'هەژمار و پرۆفایل' : 'Profile & Account',
-    editProfile: ku ? 'دەستکاریکردنی پرۆفایل' : 'Edit Profile',
-    notifications: ku ? 'ئاگادارکردنەوەکان' : 'Notifications',
-    security: ku ? 'پاراستن و نهێنی' : 'Security & Privacy',
-    subscription: ku ? 'بەشداریکردن' : 'Subscription',
-    helpCenter: ku ? 'سەنتەری یارمەتی' : 'Help Center',
-    aboutUs: ku ? 'دەربارەی ئێمە' : 'About Us',
-    logout: ku ? 'چوونە دەرەوە' : 'Log Out',
-    version: ku ? 'وەشانی ئەپ ١.٠.٠' : 'App Version 1.0.0',
-    memberSince: ku ? 'ئەندام لە: ٢٠٢٤' : 'Member since: 2024',
-    projects: ku ? 'پڕۆژەکان' : 'Projects',
-    totalEst: ku ? 'کۆی خەمڵاندن' : 'Total Estimates',
-    preferences: ku ? 'ڕێکخستنەکان' : 'Settings',
-    save: ku ? 'پاشەکەوتکردن' : 'Save Changes',
-    saved: ku ? '✓ پاشەکەوت کرا' : '✓ Saved!',
-    name: ku ? 'ناو' : 'Full Name',
-    role: ku ? 'پیشە' : 'Profession',
-    location: ku ? 'شوێن' : 'Location',
-    phone: ku ? 'ژمارەی تەلەفۆن' : 'Phone Number',
-    back: ku ? 'گەڕانەوە' : 'Back',
+    title: ar ? 'الملف الشخصي والحساب' : ku ? 'هەژمار و پرۆفایل' : 'Profile & Account',
+    editProfile: ar ? 'تعديل الملف الشخصي' : ku ? 'دەستکاریکردنی پرۆفایل' : 'Edit Profile',
+    notifications: ar ? 'الإشعارات' : ku ? 'ئاگادارکردنەوەکان' : 'Notifications',
+    security: ar ? 'الأمان والخصوصية' : ku ? 'پاراستن و نهێنی' : 'Security & Privacy',
+    subscription: ar ? 'الاشتراك' : ku ? 'بەشداریکردن' : 'Subscription',
+    helpCenter: ar ? 'مركز المساعدة' : ku ? 'سەنتەری یارمەتی' : 'Help Center',
+    aboutUs: ar ? 'معلومات عنا' : ku ? 'دەربارەی ئێمە' : 'About Us',
+    language: ar ? 'اللغة' : ku ? 'زمان' : 'Language',
+    logout: ar ? 'تسجيل الخروج' : ku ? 'چوونە دەرەوە' : 'Log Out',
+    version: ar ? 'إصدار التطبيق ١.٠.٠' : ku ? 'وەشانی ئەپ ١.٠.٠' : 'App Version 1.0.0',
+    memberSince: ar ? 'عضو منذ: ٢٠٢٤' : ku ? 'ئەندام لە: ٢٠٢٤' : 'Member since: 2024',
+    projects: ar ? 'المشاريع' : ku ? 'پ\u0631ۆژەکان' : 'Projects',
+    totalEst: ar ? 'إجمالي التقديرات' : ku ? 'کۆی خەمڵاندن' : 'Total Estimates',
+    preferences: ar ? 'الإعدادات' : ku ? '\u0631ێکخستنەکان' : 'Settings',
+    save: ar ? 'حفظ التغييرات' : ku ? 'پاشەکەوتکردن' : 'Save Changes',
+    saved: ar ? '✓ تم الحفظ' : ku ? '✓ پاشەکەوت کرا' : '✓ Saved!',
+    name: ar ? 'الاسم الكامل' : ku ? 'ناو' : 'Full Name',
+    role: ar ? 'المهنة' : ku ? 'پیشە' : 'Profession',
+    location: ar ? 'الموقع' : ku ? 'شوێن' : 'Location',
+    phone: ar ? 'رقم الهاتف' : ku ? 'ژمارەی تەلەفۆن' : 'Phone Number',
+    back: ar ? 'رجوع' : ku ? 'گە\u0631انەوە' : 'Back',
   };
 
   // ─── SUB PAGES ─────────────────────────────────────────────────────────────
@@ -158,10 +160,10 @@ export default function UserProfile({ onBack, projects }) {
 
   if (page === 'notifications') {
     const rows = [
-      { label: ku ? 'ئاگادارکردنەوەی نرخ' : 'Price Alerts', sub: ku ? 'دەقی گۆڕانی نرخی مادەکان' : 'Get notified when material prices change', val: notifPriceAlerts, set: setNotifPriceAlerts, color: '#F59E0B' },
-      { label: ku ? 'نوێکردنەوەی پڕۆژە' : 'Project Updates', sub: ku ? 'ئاگادارکردنەوەی پڕۆژەکانت' : 'Updates about your saved projects', val: notifProjectUpdates, set: setNotifProjectUpdates, color: '#3B82F6' },
-      { label: ku ? 'مادەی نوێ' : 'New Materials', sub: ku ? 'کاتێک مادەی نوێ زیاد دەکرێت' : 'When new materials are added to catalog', val: notifNewMaterials, set: setNotifNewMaterials, color: '#10B981' },
-      { label: ku ? 'کۆمەڵگا' : 'Community', sub: ku ? 'وەڵامی پرسیارەکانت' : 'Replies to your Q&A posts', val: notifCommunity, set: setNotifCommunity, color: '#8B5CF6' },
+      { label: ar ? 'تنبيهات الأسعار' : ku ? 'ئاگادارکردنەوەی نرخ' : 'Price Alerts', sub: ar ? 'إشعار عند تغير أسعار المواد' : ku ? 'دەقی گۆ\u0631انی نرخی مادەکان' : 'Get notified when material prices change', val: notifPriceAlerts, set: setNotifPriceAlerts, color: '#F59E0B' },
+      { label: ar ? 'تحديثات المشاريع' : ku ? 'نوێکردنەوەی پ\u0631ۆژە' : 'Project Updates', sub: ar ? 'تحديثات حول مشاريعك المحفوظة' : ku ? 'ئاگادارکردنەوەی پ\u0631ۆژەکانت' : 'Updates about your saved projects', val: notifProjectUpdates, set: setNotifProjectUpdates, color: '#3B82F6' },
+      { label: ar ? 'مواد جديدة' : ku ? 'مادەی نوێ' : 'New Materials', sub: ar ? 'عند إضافة مواد جديدة للكتالوج' : ku ? 'کاتێک مادەی نوێ زیاد دەکرێت' : 'When new materials are added to catalog', val: notifNewMaterials, set: setNotifNewMaterials, color: '#10B981' },
+      { label: ar ? 'المجتمع' : ku ? 'کۆمەڵگا' : 'Community', sub: ar ? 'الردود على أسئلتك' : ku ? 'وەڵامی پرسیارەکانت' : 'Replies to your Q&A posts', val: notifCommunity, set: setNotifCommunity, color: '#8B5CF6' },
     ];
     return (
       <SubpageWrapper title={copy.notifications} onBack={() => setPage('main')} isDark={isDark} tc={tc} isRTL={isRTL}>
@@ -190,10 +192,10 @@ export default function UserProfile({ onBack, projects }) {
 
   if (page === 'security') {
     const items = [
-      { icon: '🔑', title: ku ? 'گۆڕینی وشەی نهێنی' : 'Change Password', sub: ku ? 'وشەی نهێنی بەهێزت دروست بکە' : 'Create a strong, unique password' },
-      { icon: '📱', title: ku ? 'دوو-جۆر پشتڕاستکردنەوە' : 'Two-Factor Auth', sub: ku ? 'پاراستنی زیاتری هەژمارت' : 'Extra security for your account' },
-      { icon: '🔒', title: ku ? 'داتای ناوە' : 'Data Encryption', sub: ku ? 'هەمووی داتاکانت شیفرەکراوە' : 'All your data is encrypted at rest', active: true },
-      { icon: '🗑️', title: ku ? 'سڕینەوەی هەژمار' : 'Delete Account', sub: ku ? 'هەمووی داتاکانت بسڕەوە' : 'Permanently delete all your data', danger: true },
+      { icon: '🔑', title: ar ? 'تغيير كلمة المرور' : ku ? 'گۆ\u0631ینی وشەی نهێنی' : 'Change Password', sub: ar ? 'أنشئ كلمة مرور قوية' : ku ? 'وشەی نهێنی بەهێزت دروست بکە' : 'Create a strong, unique password' },
+      { icon: '📱', title: ar ? 'المصادقة الثنائية' : ku ? 'دوو-جۆر پشت\u0631استکردنەوە' : 'Two-Factor Auth', sub: ar ? 'أمان إضافي لحسابك' : ku ? 'پاراستنی زیاتری هەژمارت' : 'Extra security for your account' },
+      { icon: '🔒', title: ar ? 'تشفير البيانات' : ku ? 'داتای ناوە' : 'Data Encryption', sub: ar ? 'جميع بياناتك مشفرة' : ku ? 'هەمووی داتاکانت شیفرەکراوە' : 'All your data is encrypted at rest', active: true },
+      { icon: '🗑️', title: ar ? 'حذف الحساب' : ku ? 'س\u0631ینەوەی هەژمار' : 'Delete Account', sub: ar ? 'حذف جميع بياناتك نهائياً' : ku ? 'هەمووی داتاکانت بس\u0631ەوە' : 'Permanently delete all your data', danger: true },
     ];
     return (
       <SubpageWrapper title={copy.security} onBack={() => setPage('main')} isDark={isDark} tc={tc} isRTL={isRTL}>
@@ -227,18 +229,18 @@ export default function UserProfile({ onBack, projects }) {
           {/* Current Plan */}
           <View style={[s.premiumCard]}>
             <Text style={s.premiumIcon}>⭐</Text>
-            <Text style={s.premiumTitle}>{ku ? 'پلانی سەرتر' : 'Premium Plan'}</Text>
-            <Text style={s.premiumSub}>{ku ? 'هەمووی تایبەتمەندییەکان بەردەستن' : 'All features unlocked'}</Text>
-            <View style={s.premiumBadge}><Text style={s.premiumBadgeText}>{ku ? 'چالاک' : 'ACTIVE'}</Text></View>
+            <Text style={s.premiumTitle}>{ar ? 'الخطة المميزة' : ku ? 'پلانی سەرتر' : 'Premium Plan'}</Text>
+            <Text style={s.premiumSub}>{ar ? 'جميع الميزات مفتوحة' : ku ? 'هەمووی تایبەتمەندییەکان بەردەستن' : 'All features unlocked'}</Text>
+            <View style={s.premiumBadge}><Text style={s.premiumBadgeText}>{ar ? 'نشط' : ku ? 'چالاک' : 'ACTIVE'}</Text></View>
           </View>
 
           <View style={[s.card, { backgroundColor: tc.card, borderColor: tc.cardBorder, marginTop: spacing.lg }]}>
             {[
-              { emoji: '🤖', text: ku ? 'AI ئەندازیاری بڕی نامحدود' : 'Unlimited AI Architect usage' },
-              { emoji: '📐', text: ku ? 'هەمووی ژمێرەرەکانی پیشەیی' : 'All professional estimators' },
-              { emoji: '🥽', text: ku ? 'بینەری AR' : 'AR Visualizer' },
-              { emoji: '💬', text: ku ? 'کۆمەڵگای پسپۆڕ' : 'Expert community access' },
-              { emoji: '📁', text: ku ? 'بەڕێوەبردنی پڕۆژەی بێ سنوور' : 'Unlimited project management' },
+              { emoji: '🤖', text: ar ? 'استخدام غير محدود لمهندس الذكاء الاصطناعي' : ku ? 'AI ئەندازیاری ب\u0631ی نامحدود' : 'Unlimited AI Architect usage' },
+              { emoji: '📐', text: ar ? 'جميع حاسبات التقدير المهنية' : ku ? 'هەمووی ژمێرەرەکانی پیشەیی' : 'All professional estimators' },
+              { emoji: '🥽', text: ar ? 'عارض الواقع المعزز' : ku ? 'بینەری AR' : 'AR Visualizer' },
+              { emoji: '💬', text: ar ? 'الوصول لمجتمع الخبراء' : ku ? 'کۆمەڵگای پسپۆ\u0631' : 'Expert community access' },
+              { emoji: '📁', text: ar ? 'إدارة مشاريع غير محدودة' : ku ? 'بە\u0631ێوەبردنی پ\u0631ۆژەی بێ سنوور' : 'Unlimited project management' },
             ].map((f, i) => (
               <View key={i} style={[s.fRow, isRTL && s.rowRTL, i > 0 && { borderTopWidth: 1, borderTopColor: tc.cardBorder }]}>
                 <Text style={s.fEmoji}>{f.emoji}</Text>
@@ -254,10 +256,10 @@ export default function UserProfile({ onBack, projects }) {
 
   if (page === 'help') {
     const faqs = [
-      { q: ku ? 'چۆن مادەیەک زیاد بکم بۆ لیستم؟' : 'How do I add a material to my list?', a: ku ? 'بڕۆ بۆ کاتەلۆگ، کارتی مادەکە بکردەوە، ژمارەی پێویست داخل بکە.' : 'Go to the Material Catalog, open a material card and set the quantity. It will appear in your cost bar at the bottom.' },
-      { q: ku ? 'AI ئەندازیار چۆن کاردەکات؟' : 'How does AI Architect work?', a: ku ? 'پڕۆژەکەت وەسف بکە، AI بەپێی ستانداردی IBC و ACI 318 لیستی مادە دروست دەکات.' : 'Describe your project in text. The AI uses Iraqi Building Code + ACI 318 standards to calculate all material quantities automatically.' },
-      { q: ku ? 'ڕێژەی دراو لە کوێ دێت؟' : 'Where does the exchange rate come from?', a: ku ? 'بە شێوەی خۆکار لە open.er-api.com نوێدەکرێتەوە هەر ١٠ خولەک.' : 'It is fetched automatically from open.er-api.com and refreshed every 10 minutes.' },
-      { q: ku ? 'ئایا داتاکانم پاشەکەوت دەکرێن؟' : 'Is my data saved?', a: ku ? 'بەڵێ، هەمووی لیستەکان و پڕۆژەکان لە ئامێرەکەت پاشەکەوت دەکرێن.' : 'Yes, all your lists and projects are saved locally on your device using secure storage.' },
+      { q: ar ? 'كيف أضيف مادة لجدولي؟' : ku ? 'چۆن مادەیەک زیاد بکم بۆ لیستم؟' : 'How do I add a material to my list?', a: ar ? 'اذهب لكتالوج المواد وأضف المادة المطلوبة.' : ku ? 'ب\u0631ۆ بۆ کاتەلۆگ، کارتی مادەکە بکردەوە، ژمارەی پێویست داخل بکە.' : 'Go to the Material Catalog, open a material card and set the quantity. It will appear in your cost bar at the bottom.' },
+      { q: ar ? 'كيف يعمل مهندس الذكاء الاصطناعي؟' : ku ? 'AI ئەندازیار چۆن کاردەکات؟' : 'How does AI Architect work?', a: ar ? 'صف مشروعك وسيقوم النظام بتطبيق معايير الكود العراقي و ACI 318 لحساب المواد.' : ku ? 'پ\u0631ۆژەکەت وەسف بکە، AI بەپێی ستانداردی IBC و ACI 318 لیستی مادە دروست دەکات.' : 'Describe your project in text. The AI uses Iraqi Building Code + ACI 318 standards to calculate all material quantities automatically.' },
+      { q: ar ? 'من أين يأتي سعر الصرف الحقيقي؟' : ku ? '\u0631ێژەی دراو لە کوێ دێت؟' : 'Where does the exchange rate come from?', a: ar ? 'يتم جلبه تلقائياً من API ويتحدث كل عشر دقائق.' : ku ? 'بە شێوەی خۆکار لە open.er-api.com نوێدەکرێتەوە هەر ١٠ خولەک.' : 'It is fetched automatically from open.er-api.com and refreshed every 10 minutes.' },
+      { q: ar ? 'هل بياناتي محفوظة بشكل آمن؟' : ku ? 'ئایا داتاکانم پاشەکەوت دەکرێن؟' : 'Is my data saved?', a: ar ? 'نعم، يتم تخزين كافة التقديرات على جهازك بشكل مباشر ولن تتأثر بإغلاق التطبيق.' : ku ? 'بەڵێ، هەمووی لیستەکان و پ\u0631ۆژەکان لە ئامێرەکەت پاشەکەوت دەکرێن.' : 'Yes, all your lists and projects are saved locally on your device using secure storage.' },
     ];
 
     return (
@@ -265,8 +267,8 @@ export default function UserProfile({ onBack, projects }) {
         <Animated.View entering={FadeInUp.duration(350).delay(80)}>
           <View style={[s.helpBanner, { backgroundColor: colors.primary }]}>
             <Text style={s.helpBannerIcon}>💬</Text>
-            <Text style={[s.helpBannerTitle, isRTL && s.textRTL]}>{ku ? 'چۆن دەتوانین یارمەتیت بدەین؟' : 'How can we help you?'}</Text>
-            <Text style={[s.helpBannerSub, isRTL && s.textRTL]}>{ku ? 'پرسیارە باوەکان لەخوارەوە ببینە' : 'Browse frequently asked questions below'}</Text>
+            <Text style={[s.helpBannerTitle, isRTL && s.textRTL]}>{ar ? 'كيف يمكننا مساعدتك؟' : ku ? 'چۆن دەتوانین یارمەتیت بدەین؟' : 'How can we help you?'}</Text>
+            <Text style={[s.helpBannerSub, isRTL && s.textRTL]}>{ar ? 'تصفح الأسئلة الشائعة في الأسفل' : ku ? 'پرسیارە باوەکان لەخوارەوە ببینە' : 'Browse frequently asked questions below'}</Text>
           </View>
 
           <View style={[s.card, { backgroundColor: tc.card, borderColor: tc.cardBorder, paddingVertical: 0, marginTop: spacing.lg }]}>
@@ -291,7 +293,7 @@ export default function UserProfile({ onBack, projects }) {
 
           <View style={[s.contactCard, { backgroundColor: tc.card, borderColor: tc.cardBorder, paddingTop: spacing.xl }]}>
             <Text style={[s.contactTitle, isRTL && s.textRTL, { color: tc.charcoal, marginBottom: spacing.sm }]}>
-              {ku ? 'پەیوەندی کردن' : 'Contact Us'}
+              {ar ? 'تواصل معنا' : ku ? 'پەیوەندی کردن' : 'Contact Us'}
             </Text>
             {[
               { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C' },
@@ -320,7 +322,7 @@ export default function UserProfile({ onBack, projects }) {
         <Animated.View entering={FadeInUp.duration(350).delay(80)}>
           <View style={[s.contactCard, { backgroundColor: tc.card, borderColor: tc.cardBorder, paddingTop: spacing.xl }]}>
             <View style={{alignItems: 'center', marginBottom: spacing.md}}>
-               <Text style={[s.contactTitle, { color: tc.charcoal }]}>{ku ? 'خاوەن و دروستکەر' : 'Creator & Developer'}</Text>
+               <Text style={[s.contactTitle, { color: tc.charcoal }]}>{ar ? 'المالك والمطور' : ku ? 'خاوەن و دروستکەر' : 'Creator & Developer'}</Text>
                <Text style={[s.contactSub, { color: tc.mediumGray, marginTop: 4, fontWeight: '600' }]}>Ali Aziz Hamed</Text>
             </View>
             <View style={{width: '100%', height: 1, backgroundColor: tc.cardBorder, marginBottom: spacing.md}} />
@@ -345,12 +347,43 @@ export default function UserProfile({ onBack, projects }) {
     );
   }
 
+  if (page === 'language') {
+    return (
+      <SubpageWrapper title={copy.language} onBack={() => setPage('main')} isDark={isDark} tc={tc} isRTL={isRTL}>
+        <Animated.View entering={FadeInUp.duration(350).delay(80)}>
+          <View style={[s.card, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
+            {[
+              { id: 'en', label: 'English', sub: 'US/UK', icon: '🇺🇸' },
+              { id: 'ku', label: 'کوردی', sub: 'Sorani', icon: '☀️' },
+              { id: 'ar', label: 'عربي', sub: 'Iraqi', icon: '🇮🇶' }
+            ].map((lng, idx) => (
+              <TouchableOpacity
+                key={lng.id}
+                style={[s.optRow, isRTL && s.rowRTL, idx < 2 && { borderBottomWidth: 1, borderBottomColor: tc.cardBorder }, { paddingVertical: spacing.md }]}
+                onPress={() => setLang(lng.id)}
+                activeOpacity={0.7}
+              >
+                <Text style={{ fontSize: 24, marginHorizontal: spacing.sm }}>{lng.icon}</Text>
+                <View style={{ flex: 1, marginHorizontal: spacing.md, alignItems: isRTL ? 'flex-end' : 'flex-start' }}>
+                  <Text style={[{ fontSize: 16, fontWeight: '700', color: tc.charcoal }, isRTL && s.textRTL]}>{lng.label}</Text>
+                  <Text style={[{ fontSize: 13, color: tc.mediumGray }, isRTL && s.textRTL]}>{lng.sub}</Text>
+                </View>
+                {lang === lng.id && <AppIcon name="checklist" size={24} color={colors.accent} />}
+              </TouchableOpacity>
+            ))}
+          </View>
+        </Animated.View>
+      </SubpageWrapper>
+    );
+  }
+
   // ─── MAIN PROFILE PAGE ──────────────────────────────────────────────────────
   const settingsOptions = [
     { id: 'edit',          icon: '👤', label: copy.editProfile,    color: '#3B82F6' },
+    { id: 'language',      icon: '🌐', label: copy.language,       color: '#14B8A6' },
     { id: 'notifications', icon: '🔔', label: copy.notifications,  color: '#F59E0B' },
     { id: 'security',      icon: '🔒', label: copy.security,       color: '#10B981' },
-    { id: 'subscription',  icon: '⭐', label: copy.subscription,   color: '#8B5CF6', badge: ku ? 'سەرتر' : 'Premium' },
+    { id: 'subscription',  icon: '⭐', label: copy.subscription,   color: '#8B5CF6', badge: ar ? 'مميز' : ku ? 'سەرتر' : 'Premium' },
     { id: 'help',          icon: '💬', label: copy.helpCenter,     color: '#6366F1' },
     { id: 'about',         icon: 'ℹ️', label: copy.aboutUs,        color: '#06b6d4' },
   ];

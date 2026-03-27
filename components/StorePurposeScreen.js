@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, StatusBar, Platform } from 'react-native';
 import Animated, { FadeIn, FadeInDown, Layout } from 'react-native-reanimated';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -12,6 +12,7 @@ export default function StorePurposeScreen({ onBack, onNavigate, globalQuantitie
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
   const ku = lang === 'ku';
+  const ar = lang === 'ar';
 
   const [selected, setSelected] = useState([]);
   const [showCatalog, setShowCatalog] = useState(false);
@@ -44,12 +45,12 @@ export default function StorePurposeScreen({ onBack, onNavigate, globalQuantitie
   }
 
   const purposes = [
-    { id: 'Structural', icon: 'layers', title: ku ? 'ستراکچەر و بناغە' : 'Foundation & Structure', desc: ku ? 'شیش، چیمەنتۆ، کۆنکریت' : 'Steel, cement, concrete' },
-    { id: 'Masonry', icon: 'checklist', title: ku ? 'دیوار و بیناسازی' : 'Walls & Masonry', desc: ku ? 'بلۆک، خشت، گەچ' : 'Blocks, bricks, mortar' },
-    { id: 'Roofing', icon: 'home', title: ku ? 'سەقف و داپۆشین' : 'Roofing & Insulation', desc: ku ? 'شینگل، عازل، ئیزۆگام' : 'Shingles, waterproofing, isogam' },
-    { id: 'Plumbing', icon: 'settings', title: ku ? 'بۆری و کارەبا' : 'Plumbing & Electrical', desc: ku ? 'بۆری ئاو، وایەر، کەیبڵ' : 'Pipes, wires, cables' },
-    { id: 'Finishing', icon: 'sparkles', title: ku ? 'پەرداخت و ڕووپۆشکردن' : 'Finishing & Decor', desc: ku ? 'بۆیەی، کاشی، سەقفی مەغریبی' : 'Paint, tiles, gypsum board' },
-    { id: 'All', icon: 'store', title: ku ? 'هەموو مادەکان بەپشکنین' : 'Browse All Materials', desc: ku ? 'بینینی تەواوی کاتەلۆگ' : 'Skip and view catalog', skip: true },
+    { id: 'Structural', icon: 'layers', title: ar ? 'الأساسات والهيكل' : ku ? 'ستراکچەر و بناغە' : 'Foundation & Structure', desc: ar ? 'حديد، إسمنت، خرسانة' : ku ? 'شیش، چیمەنتۆ، کۆنکریت' : 'Steel, cement, concrete' },
+    { id: 'Masonry', icon: 'checklist', title: ar ? 'الجدران والبناء' : ku ? 'دیوار و بیناسازی' : 'Walls & Masonry', desc: ar ? 'طابوق، طوب، مونة' : ku ? 'بلۆک، خشت، گەچ' : 'Blocks, bricks, mortar' },
+    { id: 'Roofing', icon: 'home', title: ar ? 'التسقيف والعزل' : ku ? 'سەقف و داپۆشین' : 'Roofing & Insulation', desc: ar ? 'قرميد، عازل، إيزوكام' : ku ? 'شینگل، عازل، ئیزۆگام' : 'Shingles, waterproofing, isogam' },
+    { id: 'Plumbing', icon: 'settings', title: ar ? 'السباكة والكهرباء' : ku ? 'بۆری و کارەبا' : 'Plumbing & Electrical', desc: ar ? 'أنابيب، أسلاك، كابلات' : ku ? 'بۆری ئاو، وایەر، کەیبڵ' : 'Pipes, wires, cables' },
+    { id: 'Finishing', icon: 'sparkles', title: ar ? 'التشطيب والديكور' : ku ? 'پەرداخت و \u0631ووپۆشکردن' : 'Finishing & Decor', desc: ar ? 'أصباغ، سيراميك، ديكورات' : ku ? 'بۆیەی، کاشی، سەقفی مەغریبی' : 'Paint, tiles, gypsum board' },
+    { id: 'All', icon: 'store', title: ar ? 'تصفح كافة المواد' : ku ? 'هەموو مادەکان بەپشکنین' : 'Browse All Materials', desc: ar ? 'تخطي واعرض الكتالوج' : ku ? 'بینینی تەواوی کاتەلۆگ' : 'Skip and view catalog', skip: true },
   ];
 
   return (
@@ -63,7 +64,7 @@ export default function StorePurposeScreen({ onBack, onNavigate, globalQuantitie
               <Text style={styles.backSymbol}>{isRTL ? '›' : '‹'}</Text>
             </TouchableOpacity>
             <Text style={[styles.headerTitle, isRTL && styles.textRTL]}>
-              {ku ? 'مەبەستی مادەکان' : 'Material Purpose'}
+              {ar ? 'الغرض من المواد' : ku ? 'مەبەستی مادەکان' : 'Material Purpose'}
             </Text>
           </View>
         </SafeAreaView>
@@ -72,10 +73,10 @@ export default function StorePurposeScreen({ onBack, onNavigate, globalQuantitie
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         <Animated.View entering={FadeInDown.duration(400).delay(100)} style={styles.titleSection}>
           <Text style={[styles.mainTitle, isRTL && styles.textRTL, { color: tc.charcoal }]}>
-            {ku ? 'مادەکەت بۆ چ مەبەستێک پێویستە؟' : 'What is the material for?'}
+            {ar ? 'ما هو الغرض الأساسي للمواد؟' : ku ? 'مادەکەت بۆ چ مەبەستێک پێویستە؟' : 'What is the material for?'}
           </Text>
           <Text style={[styles.subtitle, isRTL && styles.textRTL, { color: tc.mediumGray }]}>
-            {ku ? 'دەتوانیت زیاتر لە یەک دانە هەڵبژێریت پاشان بەردەوام بە.' : 'You can select multiple options, then tap continue.'}
+            {ar ? 'يمكنك تحديد خيارات متعددة ثم المتابعة.' : ku ? 'دەتوانیت زیاتر لە یەک دانە هەڵبژێریت پاشان بەردەوام بە.' : 'You can select multiple options, then tap continue.'}
           </Text>
         </Animated.View>
 
@@ -133,7 +134,7 @@ export default function StorePurposeScreen({ onBack, onNavigate, globalQuantitie
             activeOpacity={0.85}
             onPress={() => handleContinue(selected)}
           >
-            <Text style={styles.continueBtnText}>{ku ? 'بەردەوام بە' : 'Continue'} ({selected.length})</Text>
+            <Text style={styles.continueBtnText}>{ar ? 'المتابعة' : ku ? 'بەردەوام بە' : 'Continue'} ({selected.length})</Text>
             <Text style={styles.continueBtnArrow}>{isRTL ? '‹' : '›'}</Text>
           </TouchableOpacity>
         </Animated.View>

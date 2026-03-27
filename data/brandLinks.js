@@ -1,4 +1,4 @@
-export const BRAND_LINKS = {
+﻿export const BRAND_LINKS = {
     "Al-Jisr (Lafarge)": {
         "category": "Cement Production",
         "website": "https://www.google.com/search?q=Al-Jisr%20(Lafarge)%20official%20website",
@@ -6,7 +6,7 @@ export const BRAND_LINKS = {
         "founded": "1833 (Global), 2008 (Iraq)",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Al-Jisr (Lafarge) is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Al-Jisr (Lafarge) دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Al-Jisr (Lafarge) دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -14,7 +14,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -28,7 +28,7 @@ export const BRAND_LINKS = {
         "founded": "2009",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Mass Cement is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Mass Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Mass Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -36,7 +36,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -50,7 +50,7 @@ export const BRAND_LINKS = {
         "founded": "1984",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Tasluja is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Tasluja دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Tasluja دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -58,7 +58,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -72,7 +72,7 @@ export const BRAND_LINKS = {
         "founded": "2013",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Mawlawi is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Mawlawi دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Mawlawi دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -80,7 +80,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -94,7 +94,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Ker Cement is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Ker Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Ker Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -102,7 +102,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -116,7 +116,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Delta Cement is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Delta Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Delta Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -124,7 +124,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -138,7 +138,7 @@ export const BRAND_LINKS = {
         "founded": "1972",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish White Cement is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish White Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish White Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -146,7 +146,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -160,7 +160,7 @@ export const BRAND_LINKS = {
         "founded": "1985",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Iranian White Cement is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian White Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian White Cement دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -168,7 +168,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -182,7 +182,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Al-Jisr SRC (Lafarge) is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Al-Jisr SRC (Lafarge) دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Al-Jisr SRC (Lafarge) دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -190,7 +190,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -204,7 +204,7 @@ export const BRAND_LINKS = {
         "founded": "2013",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Mawlawi SRC is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Mawlawi SRC دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Mawlawi SRC دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -212,7 +212,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -226,7 +226,7 @@ export const BRAND_LINKS = {
         "founded": "2007",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Bazian Gypsum is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Bazian Gypsum دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Bazian Gypsum دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -234,7 +234,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -248,7 +248,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Local Bourk is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local Bourk دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local Bourk دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -256,7 +256,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -270,7 +270,7 @@ export const BRAND_LINKS = {
         "founded": "1905",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Henkel Ceresit is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Henkel Ceresit دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Henkel Ceresit دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -278,7 +278,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -292,7 +292,7 @@ export const BRAND_LINKS = {
         "founded": "1937",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Mapei is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Mapei دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Mapei دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -300,7 +300,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -314,7 +314,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish brands is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -322,7 +322,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -336,7 +336,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Mass Iron & Steel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Mass Iron & Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Mass Iron & Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -344,7 +344,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -358,7 +358,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Med Steel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Med Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Med Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -366,7 +366,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -380,7 +380,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Darin Steel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Darin Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Darin Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -388,7 +388,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -402,7 +402,7 @@ export const BRAND_LINKS = {
         "founded": "2021",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Alpha Steel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Alpha Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Alpha Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -410,7 +410,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -424,7 +424,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Halkawt Steel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Halkawt Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Halkawt Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -432,7 +432,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -446,7 +446,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Alkun Steel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Alkun Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Alkun Steel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -454,7 +454,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -468,7 +468,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Steel Field Company is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Steel Field Company دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Steel Field Company دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -476,7 +476,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -490,7 +490,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Iranian imports is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -498,7 +498,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -512,7 +512,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Republic Blocks is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Republic Blocks دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Republic Blocks دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -520,7 +520,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -534,7 +534,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Beldrose Blocks is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Beldrose Blocks دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Beldrose Blocks دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -542,7 +542,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -556,7 +556,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Hilal Factory is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Hilal Factory دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Hilal Factory دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -564,7 +564,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -578,7 +578,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Local factories is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local factories دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local factories دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -586,7 +586,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -600,7 +600,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Ashur Brick is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Ashur Brick دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Ashur Brick دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -608,7 +608,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -622,7 +622,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Khol Company is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Khol Company دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Khol Company دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -630,7 +630,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -644,7 +644,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Imported is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Imported دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Imported دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -652,7 +652,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -666,7 +666,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Local quarries is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local quarries دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local quarries دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -674,7 +674,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -688,7 +688,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Akre Limestone is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Akre Limestone دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Akre Limestone دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -696,7 +696,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -710,7 +710,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Ytong is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Ytong دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Ytong دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -718,7 +718,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -732,7 +732,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Siporex is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Siporex دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Siporex دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -740,7 +740,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -754,7 +754,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish imports is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -762,7 +762,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -776,7 +776,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iraqi Aggregates is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iraqi Aggregates دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iraqi Aggregates دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -784,7 +784,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -798,7 +798,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Iranian Aggregates is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian Aggregates دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian Aggregates دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -806,7 +806,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -820,7 +820,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Beton KRD is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Beton KRD دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Beton KRD دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -828,7 +828,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -842,7 +842,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Local batching plants is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local batching plants دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local batching plants دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -850,7 +850,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -864,7 +864,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Chinese imports is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Chinese imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Chinese imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -872,7 +872,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -886,7 +886,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Spanish imports is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Spanish imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Spanish imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -894,7 +894,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -908,7 +908,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Italian imports is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Italian imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Italian imports دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -916,7 +916,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -930,7 +930,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Gulabagh is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Gulabagh دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Gulabagh دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -938,7 +938,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -952,7 +952,7 @@ export const BRAND_LINKS = {
         "founded": "1989",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Zhoolstone is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Zhoolstone دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Zhoolstone دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -960,7 +960,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -974,7 +974,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Khalat Group is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Khalat Group دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Khalat Group دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -982,7 +982,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -996,7 +996,7 @@ export const BRAND_LINKS = {
         "founded": "1932",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Knauf is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Knauf دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Knauf دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1004,7 +1004,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1018,7 +1018,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Gyproc is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Gyproc دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Gyproc دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1026,7 +1026,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1040,7 +1040,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Local Bazian is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local Bazian دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local Bazian دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1048,7 +1048,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1062,7 +1062,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Jotun is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Jotun دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Jotun دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1070,7 +1070,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1084,7 +1084,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Caparol is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Caparol دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Caparol دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1092,7 +1092,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1106,7 +1106,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Betek is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Betek دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Betek دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1114,7 +1114,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1128,7 +1128,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "National Paints is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "National Paints دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "National Paints دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1136,7 +1136,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1150,7 +1150,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Local fabricators is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local fabricators دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local fabricators دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1158,7 +1158,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1172,7 +1172,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish profiles is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish profiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish profiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1180,7 +1180,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1194,7 +1194,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish UPVC profiles is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish UPVC profiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish UPVC profiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1202,7 +1202,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1216,7 +1216,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "German profiles is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "German profiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "German profiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1224,7 +1224,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1238,7 +1238,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish glass is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish glass دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish glass دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1246,7 +1246,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1260,7 +1260,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Iranian glass is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian glass دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian glass دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1268,7 +1268,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1282,7 +1282,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Local carpentry is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local carpentry دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local carpentry دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1290,7 +1290,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1304,7 +1304,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish doors is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish doors دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish doors دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1312,7 +1312,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1326,7 +1326,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish steel doors is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish steel doors دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish steel doors دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1334,7 +1334,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1348,7 +1348,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish PVC is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish PVC دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish PVC دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1356,7 +1356,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1370,7 +1370,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iranian PVC is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian PVC دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian PVC دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1378,7 +1378,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1392,7 +1392,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish PPR is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish PPR دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish PPR دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1400,7 +1400,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1414,7 +1414,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Pimtas is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Pimtas دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Pimtas دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1422,7 +1422,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1436,7 +1436,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Vesbo is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Vesbo دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Vesbo دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1444,7 +1444,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1458,7 +1458,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Local manufacturers is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local manufacturers دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local manufacturers دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1466,7 +1466,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1480,7 +1480,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish tanks is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish tanks دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish tanks دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1488,7 +1488,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1502,7 +1502,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish cables is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish cables دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish cables دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1510,7 +1510,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1524,7 +1524,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish Prysmian is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish Prysmian دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish Prysmian دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1532,7 +1532,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1546,7 +1546,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Bitumen rolls is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Bitumen rolls دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Bitumen rolls دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1554,7 +1554,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1568,7 +1568,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish membranes is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish membranes دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish membranes دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1576,7 +1576,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1590,7 +1590,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish EPS is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish EPS دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish EPS دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1598,7 +1598,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1612,7 +1612,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Iranian EPS is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian EPS دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian EPS دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1620,7 +1620,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1634,7 +1634,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish XPS is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish XPS دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish XPS دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1642,7 +1642,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1656,7 +1656,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Rockwool is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Rockwool دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Rockwool دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1664,7 +1664,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1678,7 +1678,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish panels is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish panels دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish panels دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1686,7 +1686,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1700,7 +1700,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Local plants is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local plants دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local plants دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1708,7 +1708,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1722,7 +1722,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish plywood is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish plywood دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish plywood دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1730,7 +1730,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1744,7 +1744,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Chinese plywood is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Chinese plywood دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Chinese plywood دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1752,7 +1752,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1766,7 +1766,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish timber is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish timber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish timber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1774,7 +1774,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1788,7 +1788,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Russian timber is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Russian timber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Russian timber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1796,7 +1796,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1810,7 +1810,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish MDF is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish MDF دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish MDF دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1818,7 +1818,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1832,7 +1832,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iranian MDF is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian MDF دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian MDF دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1840,7 +1840,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1854,7 +1854,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish lumber is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish lumber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish lumber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1862,7 +1862,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1876,7 +1876,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Iranian lumber is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian lumber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian lumber دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1884,7 +1884,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1898,7 +1898,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Russian wood is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Russian wood دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Russian wood دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1906,7 +1906,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1920,7 +1920,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish laminate is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish laminate دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish laminate دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1928,7 +1928,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1942,7 +1942,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Chinese laminate is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Chinese laminate دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Chinese laminate دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1950,7 +1950,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1964,7 +1964,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "AGT is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "AGT دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "AGT دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1972,7 +1972,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -1986,7 +1986,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Kronospan is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Kronospan دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Kronospan دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -1994,7 +1994,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2008,7 +2008,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish chipboard is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish chipboard دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish chipboard دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2016,7 +2016,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2030,7 +2030,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iranian chipboard is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian chipboard دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian chipboard دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2038,7 +2038,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2052,7 +2052,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Imported teak is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Imported teak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Imported teak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2060,7 +2060,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2074,7 +2074,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Myanmar teak is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Myanmar teak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Myanmar teak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2082,7 +2082,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2096,7 +2096,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Indonesian teak is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Indonesian teak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Indonesian teak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2104,7 +2104,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2118,7 +2118,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "European oak is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "European oak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "European oak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2126,7 +2126,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2140,7 +2140,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish oak is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish oak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish oak دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2148,7 +2148,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2162,7 +2162,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Armstrong is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Armstrong دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Armstrong دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2170,7 +2170,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2184,7 +2184,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish systems is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish systems دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish systems دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2192,7 +2192,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2206,7 +2206,7 @@ export const BRAND_LINKS = {
         "founded": "1910",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Sika is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Sika دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Sika دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2214,7 +2214,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2228,7 +2228,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Various is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Various دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Various دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2236,7 +2236,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2250,7 +2250,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Bazian Lime is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Bazian Lime دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Bazian Lime دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2258,7 +2258,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2272,7 +2272,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Local Kilsa is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local Kilsa دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local Kilsa دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2280,7 +2280,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2294,7 +2294,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iranian brands is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2302,7 +2302,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2316,7 +2316,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Local precast factories is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local precast factories دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local precast factories دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2324,7 +2324,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2338,7 +2338,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Erbil Precast is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Erbil Precast دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Erbil Precast دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2346,7 +2346,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2360,7 +2360,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Chamchamal Brick is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Chamchamal Brick دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Chamchamal Brick دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2368,7 +2368,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2382,7 +2382,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Local kilns is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local kilns دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local kilns دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2390,7 +2390,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2404,7 +2404,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Local block factories is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local block factories دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local block factories دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2412,7 +2412,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2426,7 +2426,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Local gypsum workshops is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local gypsum workshops دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local gypsum workshops دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2434,7 +2434,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2448,7 +2448,7 @@ export const BRAND_LINKS = {
         "founded": "1989",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Site mixed is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Site mixed دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Site mixed دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2456,7 +2456,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2470,7 +2470,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Knauf Screed is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Knauf Screed دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Knauf Screed دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2478,7 +2478,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2492,7 +2492,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Henkel is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Henkel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Henkel دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2500,7 +2500,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2514,7 +2514,7 @@ export const BRAND_LINKS = {
         "founded": "1989",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish EIFS systems is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish EIFS systems دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish EIFS systems دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2522,7 +2522,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2536,7 +2536,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish HDPE is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish HDPE دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish HDPE دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2544,7 +2544,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2558,7 +2558,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iranian HDPE is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian HDPE دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian HDPE دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2566,7 +2566,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2580,7 +2580,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish copper pipe is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish copper pipe دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish copper pipe دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2588,7 +2588,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2602,7 +2602,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Imported copper is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Imported copper دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Imported copper دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2610,7 +2610,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2624,7 +2624,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Vitra is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Vitra دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Vitra دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2632,7 +2632,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2646,7 +2646,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Eczacibasi (VitrA) is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Eczacibasi (VitrA) دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Eczacibasi (VitrA) دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2654,7 +2654,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2668,7 +2668,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Ariston is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Ariston دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Ariston دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2676,7 +2676,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2690,7 +2690,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Vaillant is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Vaillant دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Vaillant دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2698,7 +2698,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2712,7 +2712,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish conduit is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish conduit دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish conduit دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2720,7 +2720,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2734,7 +2734,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Iranian conduit is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian conduit دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian conduit دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2742,7 +2742,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2756,7 +2756,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Schneider Electric is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Schneider Electric دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Schneider Electric دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2764,7 +2764,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2778,7 +2778,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "ABB is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "ABB دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "ABB دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2786,7 +2786,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2800,7 +2800,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Philips is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Philips دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Philips دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2808,7 +2808,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2822,7 +2822,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Osram is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Osram دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Osram دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2830,7 +2830,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2844,7 +2844,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish LED brands is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish LED brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish LED brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2852,7 +2852,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2866,7 +2866,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Kingspan is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Kingspan دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Kingspan دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2874,7 +2874,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2888,7 +2888,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish PIR is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish PIR دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish PIR دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2896,7 +2896,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2910,7 +2910,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish acoustic foam is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish acoustic foam دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish acoustic foam دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2918,7 +2918,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2932,7 +2932,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Imported brands is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Imported brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Imported brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2940,7 +2940,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2954,7 +2954,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish bitumen is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish bitumen دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish bitumen دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2962,7 +2962,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2976,7 +2976,7 @@ export const BRAND_LINKS = {
         "founded": "2011",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Iranian bitumen is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian bitumen دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian bitumen دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -2984,7 +2984,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -2998,7 +2998,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Turkish clay tiles is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish clay tiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish clay tiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3006,7 +3006,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3020,7 +3020,7 @@ export const BRAND_LINKS = {
         "founded": "2017",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Iranian clay tiles is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Iranian clay tiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Iranian clay tiles دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3028,7 +3028,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3042,7 +3042,7 @@ export const BRAND_LINKS = {
         "founded": "2008",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish premix is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish premix دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish premix دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3050,7 +3050,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3064,7 +3064,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Perkins is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Perkins دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Perkins دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3072,7 +3072,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3086,7 +3086,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Cummins is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Cummins دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Cummins دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3094,7 +3094,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3108,7 +3108,7 @@ export const BRAND_LINKS = {
         "founded": "2006",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Lister Petter is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Lister Petter دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Lister Petter دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3116,7 +3116,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3130,7 +3130,7 @@ export const BRAND_LINKS = {
         "founded": "1989",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Mitsubishi is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Mitsubishi دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Mitsubishi دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3138,7 +3138,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3152,7 +3152,7 @@ export const BRAND_LINKS = {
         "founded": "2018",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Alucobond is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Alucobond دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Alucobond دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3160,7 +3160,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3174,7 +3174,7 @@ export const BRAND_LINKS = {
         "founded": "1994",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish ACP is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish ACP دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish ACP دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3182,7 +3182,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3196,7 +3196,7 @@ export const BRAND_LINKS = {
         "founded": "2014",
         "headquarters": "Sulaymaniyah, Kurdistan Region, Iraq",
         "descEN": "Local aluminum fabricators is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Local aluminum fabricators دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Local aluminum fabricators دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3204,7 +3204,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3218,7 +3218,7 @@ export const BRAND_LINKS = {
         "founded": "2002",
         "headquarters": "Duhok, Kurdistan Region, Iraq",
         "descEN": "Turkish bitumen brands is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish bitumen brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish bitumen brands دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3226,7 +3226,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"
@@ -3240,7 +3240,7 @@ export const BRAND_LINKS = {
         "founded": "2015",
         "headquarters": "Erbil, Kurdistan Region, Iraq",
         "descEN": "Turkish stainless is a leading supplier in its sector. Recognized as a premier choice for major infrastructure and residential developments, this manufacturer upholds the highest echelons of quality control. Their state-of-the-art facilities ensure that every product batch stringently conforms to both local Iraqi specifications and rigorous international standards (including ISO and ASTM benchmarks). Trusted by master contractors across the Kurdistan Region and beyond, they combine decades of engineering pedigree with cutting-edge production methodologies to deliver unparalleled durability, resilience, and architectural excellence in every project.",
-        "descKU": "Turkish stainless دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پڕۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پڕۆژەیەکدا.",
+        "descKU": "Turkish stainless دابینکارێکی پێشەنگە لە بوارەکەی خۆیدا. وەک یەکێک لە باشترین هەڵبژاردەکان بۆ پ\u0631ۆژە گەورەکانی ژێرخان و نیشتەجێبوون ناسراوە، ئەم بەرهەمهێنەرە پێداگری لەسەر بەرزترین ئاستی کۆنترۆڵی جۆرایەتی دەکات. کارگە پێشکەوتووەکانیان دڵنیایی دەدەن کە هەر بەرهەمێک بە تەواوی لەگەڵ تایبەتمەندییە ناوخۆییەکانی عێراق و ستانداردە نێودەوڵەتییە توندەکان (وەک ISO و ASTM) دەگونجێت. جێگەی متمانەی گەورەترین بەڵێندەرانە لە هەرێمی کوردستان و دەرەوەی، ئەوان ئەزموونی دەیان ساڵەی ئەندازیاری لەگەڵ نوێترین تەکنەلۆجیای بەرهەمهێنان تێکەڵ دەکەن بۆ پێشکەشکردنی بەهێزی، مانەوە و نایابی تەلارسازی لە هەر پ\u0631ۆژەیەکدا.",
         "keyFacts": [
             "ISO 9001 Certified Quality Control",
             "Preferred by Top Regional Contractors",
@@ -3248,7 +3248,7 @@ export const BRAND_LINKS = {
             "Extensively tested in laboratory conditions"
         ],
         "keyFactsKU": [
-            "بڕوانامەی جۆرایەتی ISO 9001",
+            "ب\u0631وانامەی جۆرایەتی ISO 9001",
             "هەڵبژاردەی یەکەمی بەڵێندەرە گەورەکان",
             "ستانداردی بەرهەمهێنانی دۆستی ژینگە",
             "بە وردی لە تاقیگەکاندا پشکنینی بۆ کراوە"

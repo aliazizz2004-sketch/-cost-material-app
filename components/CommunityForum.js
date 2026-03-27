@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+﻿import React, { useState, useMemo, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -64,7 +64,7 @@ const SEED_POSTS = [
       { author: "Builder Karim", text: "Both are good. Mass is slightly more expensive but delivery to Suli is faster since the factory is nearby.", emoji: "🏗️" },
     ],
     answersKU: [
-      { author: "پسپۆڕی ئاسن", text: "ئێستا دەوری ٦٢٠-٦٨٠ دۆلار/تۆن بۆ پلەی B500B. ماس ئایرۆن کۆنترۆڵی کوالیتییەکی یەکگرتووتری هەیە چونکی بڕوانامەی ISO ی هەیە.", emoji: "⚙️" },
+      { author: "پسپۆ\u0631ی ئاسن", text: "ئێستا دەوری ٦٢٠-٦٨٠ دۆلار/تۆن بۆ پلەی B500B. ماس ئایرۆن کۆنترۆڵی کوالیتییەکی یەکگرتووتری هەیە چونکی ب\u0631وانامەی ISO ی هەیە.", emoji: "⚙️" },
       { author: "بیناکەر کەریم", text: "هەردووکیان باشن. ماس کەمێک گرانترە بەڵام گەیاندن بۆ سلێمانی خێراترە چونکی کارگەکە نزیکە.", emoji: "🏗️" },
     ],
     likes: 15,
@@ -104,7 +104,7 @@ export default function CommunityForum({ onBack }) {
             answers: "وەڵام",
             all: "هەموو",
             noResults: "هیچ پرسیارێک نییە لەم بەشەدا",
-            back: "گەڕانەوە",
+            back: "گە\u0631انەوە",
             posted: "پرسیارەکەت ناردرا!",
           }
         : {

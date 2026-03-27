@@ -14,6 +14,10 @@ import {
   Dimensions,
   Image,
 } from "react-native";
+
+// Safe wrapper for React Native Web specific DOM tags
+const WebVideo = Platform.OS === "web" ? "video" : View;
+const WebDiv = Platform.OS === "web" ? "div" : View;
 import Animated, {
   FadeIn,
   FadeInDown,
@@ -597,17 +601,23 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
     try {
       const matName = lang === "ku" ? selectedPalette.nameKU : selectedPalette.nameEN;
       
-      // Convert base64 to Blob for FormData
-      const byteCharacters = atob(capturedImageBase64);
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], { type: 'image/jpeg' });
-
       const formData = new FormData();
-      formData.append("image", blob, "room.jpg");
+      
+      // React Native and Expo Web compatible file upload
+      if (Platform.OS === 'web') {
+        // Find base64 encoding scheme correctly
+        const fetchResponse = await fetch(capturedImage);
+        const blob = await fetchResponse.blob();
+        formData.append("image", blob, "room.jpg");
+      } else {
+        // Native React Native format
+        formData.append("image", {
+          uri: capturedImage,
+          name: "room.jpg",
+          type: "image/jpeg"
+        });
+      }
+
       formData.append("materialName", matName);
 
       const response = await fetch("http://localhost:3001/api/render-wall", {
@@ -672,9 +682,9 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <div style={{
+            <WebDiv style={{
               width: "100%", height: "100%",
-              background: backgroundCSS,
+              backgroundImage: backgroundCSS,
               backgroundSize: `${size}px ${size}px, ${size}px ${size}px, 100% 100%`,
               transform: pattern === "diagonal" ? "rotate(45deg) scale(1.5)" : pattern === "herringbone" ? "skewY(-5deg)" : "none",
             }} />
@@ -698,7 +708,7 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <div style={{ width: "100%", height: "100%", background: backgroundCSS, backgroundSize: "100% 100%" }} />
+            <WebDiv style={{ width: "100%", height: "100%", backgroundImage: backgroundCSS, backgroundSize: "100% 100%" }} />
           </View>
         );
       }
@@ -712,8 +722,8 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <div style={{
-              width: "100%", height: "100%", background: backgroundCSS,
+            <WebDiv style={{
+              width: "100%", height: "100%", backgroundImage: backgroundCSS,
               backgroundSize: "12px 12px, 8px 8px, 20px 20px, 100% 100%",
               backgroundPosition: "0 0, 4px 4px, 6px 6px, 0 0",
             }} />
@@ -732,9 +742,9 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         const offset = pattern === "stack-bond" ? "0px" : `${brickW / 2}px`;
         return (
           <View style={baseStyle}>
-            <div style={{
+            <WebDiv style={{
               width: "100%", height: "100%",
-              background: backgroundCSS,
+              backgroundImage: backgroundCSS,
               backgroundSize: `${brickW}px ${brickH}px, ${brickW}px ${brickH}px, ${brickW}px ${brickH}px`,
             }} />
           </View>
@@ -749,8 +759,8 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <div style={{
-              width: "100%", height: "100%", background: backgroundCSS,
+            <WebDiv style={{
+              width: "100%", height: "100%", backgroundImage: backgroundCSS,
               backgroundSize: "120px 120px, 120px 120px, 100% 100%",
             }} />
           </View>
@@ -772,7 +782,7 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <div style={{ width: "100%", height: "100%", background: backgroundCSS, backgroundSize: "100% 100%" }} />
+            <WebDiv style={{ width: "100%", height: "100%", backgroundImage: backgroundCSS, backgroundSize: "100% 100%" }} />
           </View>
         );
       }
@@ -780,7 +790,7 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
       // Default solid paint - Web (blend mode is handled by baseStyle)
       return (
         <View style={baseStyle}>
-          <div style={{ position: 'absolute', inset: 0, backgroundColor: color }} />
+          <WebDiv style={{ position: 'absolute', inset: 0, backgroundColor: color }} />
         </View>
       );
     }
@@ -909,7 +919,7 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
       <Animated.View style={[s.container, { backgroundColor: "#000" }]} entering={FadeIn.duration(300)}>
         <StatusBar barStyle="light-content" backgroundColor="#000" />
         <View style={s.webCameraContainer}>
-          <video
+          <WebVideo
             ref={webVideoRef}
             autoPlay
             playsInline

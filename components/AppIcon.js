@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, View, Text } from 'react-native';
 
 // ─── Icon path definitions ────────────────────────────────────────────────────
 // Each icon is a function (size, color, sw) → JSX svg content
@@ -453,9 +453,9 @@ export default function AppIcon({ name, size = 24, color = '#1a1a2e', strokeWidt
   };
   return (
     <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
-      <text style={{ fontSize: size * 0.72, color, lineHeight: size }}>
+      <Text style={{ fontSize: size * 0.72, color, lineHeight: size }}>
         {nativeMap[name] || '•'}
-      </text>
+      </Text>
     </View>
   );
 }

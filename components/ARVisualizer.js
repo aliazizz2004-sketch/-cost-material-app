@@ -684,9 +684,11 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
           <View style={baseStyle}>
             <WebDiv style={{
               width: "100%", height: "100%",
-              backgroundImage: backgroundCSS,
-              backgroundSize: `${size}px ${size}px, ${size}px ${size}px, 100% 100%`,
-              transform: pattern === "diagonal" ? "rotate(45deg) scale(1.5)" : pattern === "herringbone" ? "skewY(-5deg)" : "none",
+              ...(Platform.OS === "web" && {
+                backgroundImage: backgroundCSS,
+                backgroundSize: `${size}px ${size}px, ${size}px ${size}px, 100% 100%`,
+                transform: pattern === "diagonal" ? "rotate(45deg) scale(1.5)" : pattern === "herringbone" ? "skewY(-5deg)" : "none",
+              })
             }} />
           </View>
         );
@@ -708,7 +710,10 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <WebDiv style={{ width: "100%", height: "100%", backgroundImage: backgroundCSS, backgroundSize: "100% 100%" }} />
+            <WebDiv style={{ 
+              width: "100%", height: "100%", 
+              ...(Platform.OS === "web" && { backgroundImage: backgroundCSS, backgroundSize: "100% 100%" }) 
+            }} />
           </View>
         );
       }
@@ -723,9 +728,12 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         return (
           <View style={baseStyle}>
             <WebDiv style={{
-              width: "100%", height: "100%", backgroundImage: backgroundCSS,
-              backgroundSize: "12px 12px, 8px 8px, 20px 20px, 100% 100%",
-              backgroundPosition: "0 0, 4px 4px, 6px 6px, 0 0",
+              width: "100%", height: "100%",
+              ...(Platform.OS === "web" && {
+                backgroundImage: backgroundCSS,
+                backgroundSize: "12px 12px, 8px 8px, 20px 20px, 100% 100%",
+                backgroundPosition: "0 0, 4px 4px, 6px 6px, 0 0",
+              })
             }} />
           </View>
         );
@@ -744,8 +752,10 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
           <View style={baseStyle}>
             <WebDiv style={{
               width: "100%", height: "100%",
-              backgroundImage: backgroundCSS,
-              backgroundSize: `${brickW}px ${brickH}px, ${brickW}px ${brickH}px, ${brickW}px ${brickH}px`,
+              ...(Platform.OS === "web" && {
+                backgroundImage: backgroundCSS,
+                backgroundSize: `${brickW}px ${brickH}px, ${brickW}px ${brickH}px, ${brickW}px ${brickH}px`,
+              })
             }} />
           </View>
         );
@@ -760,8 +770,11 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         return (
           <View style={baseStyle}>
             <WebDiv style={{
-              width: "100%", height: "100%", backgroundImage: backgroundCSS,
-              backgroundSize: "120px 120px, 120px 120px, 100% 100%",
+              width: "100%", height: "100%", 
+              ...(Platform.OS === "web" && {
+                backgroundImage: backgroundCSS,
+                backgroundSize: "120px 120px, 120px 120px, 100% 100%",
+              })
             }} />
           </View>
         );
@@ -782,7 +795,10 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         `;
         return (
           <View style={baseStyle}>
-            <WebDiv style={{ width: "100%", height: "100%", backgroundImage: backgroundCSS, backgroundSize: "100% 100%" }} />
+            <WebDiv style={{ 
+              width: "100%", height: "100%", 
+              ...(Platform.OS === "web" && { backgroundImage: backgroundCSS, backgroundSize: "100% 100%" }) 
+            }} />
           </View>
         );
       }
@@ -790,7 +806,11 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
       // Default solid paint - Web (blend mode is handled by baseStyle)
       return (
         <View style={baseStyle}>
-          <WebDiv style={{ position: 'absolute', inset: 0, backgroundColor: color }} />
+          <WebDiv style={{ 
+            ...StyleSheet.absoluteFillObject, 
+            backgroundColor: color,
+            ...(Platform.OS === "web" && { inset: 0 }) 
+          }} />
         </View>
       );
     }

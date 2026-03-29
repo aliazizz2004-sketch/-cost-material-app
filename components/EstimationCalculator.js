@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import Animated, { FadeIn, FadeOut, Layout } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { colors, darkColors, spacing, typography, radius, shadows } from '../styles/theme';
@@ -889,7 +889,7 @@ export default function EstimationCalculator({ onBack, initialCategory = 'menu',
       style={[styles.container, { backgroundColor: tc.offWhite }]}
       entering={FadeIn}
       leaving={FadeOut}
-      layout={Layout.springify()}
+      layout={LinearTransition.springify()}
     >
       <SafeAreaView style={styles.safeArea}>
         <View style={[styles.header, isRTL && styles.rowRTL, { backgroundColor: tc.primary }]}>

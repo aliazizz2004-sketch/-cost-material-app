@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "cost-material-app",
+    "name": "Easy build",
     "slug": "cost-material",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -27,17 +27,16 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "aliaziz02",
     "extra": {
       "eas": {
-        "projectId": "6f091727-29df-497a-b6ae-c12d0ed9baf3"
+        "projectId": "d2e893e4-ca1e-4f0a-bfbf-fdcb2cb932a2"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "updates": {
-      "url": "https://u.expo.dev/6f091727-29df-497a-b6ae-c12d0ed9baf3"
-    },
+    "updates": {},
     "plugins": [
       "expo-font"
     ]

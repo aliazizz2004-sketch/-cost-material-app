@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, StatusBar, Platform } from 'react-native';
-import Animated, { FadeIn, FadeInDown, Layout } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInDown, LinearTransition } from 'react-native-reanimated';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { colors, darkColors, spacing, typography, radius, shadows } from '../styles/theme';
@@ -84,13 +84,14 @@ export default function StorePurposeScreen({ onBack, onNavigate, globalQuantitie
           {purposes.map((item, idx) => {
             const isSelected = selected.includes(item.id);
             return (
-              <Animated.View key={item.id} entering={FadeInDown.duration(400).delay(150 + idx * 50)} layout={Layout.springify()}>
+              <Animated.View key={item.id} entering={FadeInDown.duration(400).delay(150 + idx * 50)} layout={LinearTransition.springify()}>
                 <TouchableOpacity
                   style={[
                     styles.card,
                     isRTL && styles.rowRTL,
                     { 
                       backgroundColor: isSelected ? colors.primary + '11' : tc.card, 
+
                       borderColor: item.skip ? colors.accent : (isSelected ? colors.primary : tc.cardBorder), 
                       borderWidth: isSelected || item.skip ? 1.5 : 1 
                     }

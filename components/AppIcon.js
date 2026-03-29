@@ -1,11 +1,13 @@
 /**
- * AppIcon – Lucide-style SVG icons rendered natively in the browser.
- * All paths are hand-crafted from the Lucide icon set (MIT licence).
+ * AppIcon – Cross-platform icon component.
+ * Web: Custom SVG icons (Lucide-style).
+ * Native (Android/iOS): @expo/vector-icons Feather icons (bundled with Expo).
  * Usage: <AppIcon name="home" size={24} color="#fff" strokeWidth={2} />
  */
 
 import React from 'react';
 import { Platform, View, Text } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 // ─── Icon path definitions ────────────────────────────────────────────────────
 // Each icon is a function (size, color, sw) → JSX svg content
@@ -417,11 +419,75 @@ const ICON_DEFS = {
   ),
 };
 
+// ─── Native icon name mapping (AppIcon name → Feather icon name) ─────────────
+const FEATHER_MAP = {
+  home: 'home',
+  store: 'shopping-bag',
+  ai: 'cpu',
+  projects: 'folder',
+  profile: 'user',
+  sun: 'sun',
+  moon: 'moon',
+  menu: 'menu',
+  search: 'search',
+  camera: 'camera',
+  layers: 'layers',
+  bot: 'cpu',
+  glasses: 'eye',
+  truck: 'truck',
+  book: 'book',
+  chat: 'message-circle',
+  scan: 'maximize',
+  sparkles: 'star',
+  checklist: 'check-square',
+  back: 'arrow-left',
+  settings: 'settings',
+  clipboard: 'clipboard',
+  mail: 'mail',
+  facebook: 'facebook',
+  instagram: 'instagram',
+  telegram: 'send',
+  info: 'info',
+  trash: 'trash-2',
+  'folder-open': 'folder-open',
+  'file-text': 'file-text',
+  'plus-circle': 'plus-circle',
+  building: 'home',
+  box: 'box',
+  database: 'database',
+  grid: 'grid',
+  triangle: 'alert-triangle',
+  link: 'link',
+  'tree-pine': 'git-branch',
+  droplet: 'droplet',
+  zap: 'zap',
+  save: 'save',
+  bookmark: 'bookmark',
+  arrow_down: 'arrow-down',
+  arrow_up: 'arrow-up',
+  sort: 'sliders',
+  external: 'external-link',
+  key: 'key',
+  lock: 'lock',
+  'x-circle': 'x-circle',
+  check: 'check',
+  'check-circle': 'check-circle',
+  star: 'star',
+  'map-pin': 'map-pin',
+  phone: 'phone',
+  globe: 'globe',
+  share: 'share-2',
+  download: 'download',
+  upload: 'upload',
+  refresh: 'refresh-cw',
+  eye: 'eye',
+  'eye-off': 'eye-off',
+};
+
 // ─── Web SVG renderer ─────────────────────────────────────────────────────────
 function WebIcon({ name, size = 24, color = '#1a1a2e', strokeWidth = 1.8 }) {
   const renderFn = ICON_DEFS[name];
   if (!renderFn) {
-    // Unknown icon — render a simple dot fallback
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
         stroke={color} strokeWidth={strokeWidth} strokeLinecap="round">
@@ -442,20 +508,10 @@ export default function AppIcon({ name, size = 24, color = '#1a1a2e', strokeWidt
     );
   }
 
-  // Native fallback (text-based approximation)
-  const nativeMap = {
-    home: '⌂', store: '⊞', ai: '◈', projects: '⊡', profile: '⊙',
-    sun: '○', moon: '☽', menu: '≡', search: '⊕', camera: '◉',
-    bot: '◈', glasses: '⊛', truck: '⊠', book: '≡', chat: '⬚',
-    scan: '⊞', sparkles: '✦', checklist: '☑', back: '←', settings: '⚙',
-    layers: '⊟', clipboard: '📋', mail: '✉', facebook: 'f',
-    instagram: '📷', telegram: '✈', info: 'i'
-  };
+  // Native: use Feather icon from @expo/vector-icons (bundled with Expo, renders perfectly on Android/iOS)
+  const featherName = FEATHER_MAP[name] || 'circle';
   return (
-    <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: size * 0.72, color, lineHeight: size }}>
-        {nativeMap[name] || '•'}
-      </Text>
-    </View>
+    <Feather name={featherName} size={size} color={color} />
   );
 }
+

@@ -35,6 +35,7 @@ export default function ProjectManager({
   setProjects,
   onOpenAiCamera,
   setGlobalQuantities,
+  activeProjectId,
   onNavigate,
   setActiveProjectId,
   pendingProjectName = "",
@@ -204,11 +205,12 @@ export default function ProjectManager({
     const updated = [newProject, ...projects];
     await saveProjects(updated);
     if (setActiveProjectId) setActiveProjectId(newProject.id);
+    if (setGlobalQuantities) setGlobalQuantities({});
     setProjectName("");
     setProjectNote("");
     setShowCreateModal(false);
     Alert.alert("✅", copy.projectCreated);
-  }, [projectName, projectNote, currentQuantities, materials, projects, saveProjects, copy, currentItemCount, setActiveProjectId]);
+  }, [projectName, projectNote, currentQuantities, materials, projects, saveProjects, copy, currentItemCount, setActiveProjectId, setGlobalQuantities]);
 
   // Update existing project with current selections
   const updateProject = useCallback(
@@ -390,8 +392,7 @@ export default function ProjectManager({
           document.body.removeChild(iframe);
         }, 1000);
       } else {
-        const { uri } = await Print.printToFileAsync({ html });
-        await Sharing.shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
+        await Print.printAsync({ html });
       }
     } catch (e) {
       console.warn(e);
@@ -546,6 +547,11 @@ export default function ProjectManager({
                             onPress={(e) => {
                               if (e && e.stopPropagation) e.stopPropagation();
                               if (setActiveProjectId) setActiveProjectId(project.id);
+                              if (setGlobalQuantities) {
+                                const qtys = {};
+                                project.items.forEach(it => qtys[it.id] = it.qty);
+                                setGlobalQuantities(qtys);
+                              }
                               if (onGoToStore) onGoToStore(project.id);
                             }}
                             activeOpacity={0.8}
@@ -560,6 +566,11 @@ export default function ProjectManager({
                             onPress={(e) => {
                               if (e && e.stopPropagation) e.stopPropagation();
                               if (setActiveProjectId) setActiveProjectId(project.id);
+                              if (setGlobalQuantities) {
+                                const qtys = {};
+                                project.items.forEach(it => qtys[it.id] = it.qty);
+                                setGlobalQuantities(qtys);
+                              }
                               if (onGoToDelivery) onGoToDelivery(project.id);
                             }}
                             activeOpacity={0.8}
@@ -574,6 +585,11 @@ export default function ProjectManager({
                             onPress={(e) => {
                               if (e && e.stopPropagation) e.stopPropagation();
                               if (setActiveProjectId) setActiveProjectId(project.id);
+                              if (setGlobalQuantities) {
+                                const qtys = {};
+                                project.items.forEach(it => qtys[it.id] = it.qty);
+                                setGlobalQuantities(qtys);
+                              }
                               if (onGoToEstimation) onGoToEstimation(project.id);
                             }}
                             activeOpacity={0.8}
@@ -593,6 +609,11 @@ export default function ProjectManager({
                           <TouchableOpacity style={s.quickLinkBtn} onPress={(e) => { 
                             if (e && e.stopPropagation) e.stopPropagation();
                             if (setActiveProjectId) setActiveProjectId(project.id);
+                            if (setGlobalQuantities) {
+                                const qtys = {};
+                                project.items.forEach(it => qtys[it.id] = it.qty);
+                                setGlobalQuantities(qtys);
+                            }
                             if (onOpenAiCamera) onOpenAiCamera(); 
                           }} activeOpacity={0.8}>
                             <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(212,168,67,0.15)' }]}>
@@ -603,6 +624,11 @@ export default function ProjectManager({
                           <TouchableOpacity style={s.quickLinkBtn} onPress={(e) => { 
                             if (e && e.stopPropagation) e.stopPropagation();
                             if (setActiveProjectId) setActiveProjectId(project.id);
+                            if (setGlobalQuantities) {
+                                const qtys = {};
+                                project.items.forEach(it => qtys[it.id] = it.qty);
+                                setGlobalQuantities(qtys);
+                            }
                             if(onNavigate) onNavigate("aiArchitect", project.id); 
                           }} activeOpacity={0.8}>
                             <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(220,38,38,0.15)' }]}>
@@ -613,6 +639,11 @@ export default function ProjectManager({
                           <TouchableOpacity style={s.quickLinkBtn} onPress={(e) => { 
                             if (e && e.stopPropagation) e.stopPropagation();
                             if (setActiveProjectId) setActiveProjectId(project.id);
+                            if (setGlobalQuantities) {
+                                const qtys = {};
+                                project.items.forEach(it => qtys[it.id] = it.qty);
+                                setGlobalQuantities(qtys);
+                            }
                             if(onNavigate) onNavigate("arVisualizer", project.id); 
                           }} activeOpacity={0.8}>
                             <View style={[s.quickLinkIcon, { backgroundColor: 'rgba(124,58,237,0.15)' }]}>

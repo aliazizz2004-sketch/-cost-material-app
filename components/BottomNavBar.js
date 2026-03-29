@@ -1,4 +1,4 @@
-﻿/**
+/**
  * BottomNavBar – Professional 5-tab navigation bar.
  * Uses real Lucide SVG icons via AppIcon + small descriptive labels.
  * Active tab gets an accent pill indicator with smooth animations.
@@ -208,7 +208,7 @@ function NavTab({ item, isActive, isDark, lang, kuFont, accentColor, inactiveCol
 const styles = StyleSheet.create({
   wrapper: {
     borderTopWidth: 1,
-    paddingBottom: Platform.OS === 'ios' ? 24 : 6,
+    paddingBottom: Platform.OS === 'ios' ? 26 : Platform.OS === 'android' ? 20 : 6,
     paddingTop: 0,
     // Web shadow
     ...(Platform.OS === 'web' ? {

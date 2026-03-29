@@ -1,10 +1,44 @@
-﻿import { Platform } from "react-native";
+import { Platform } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
-const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash"];
+const DEFAULT_GEMINI_API_KEY = "AIzaSyAAP8O9cr9_9Ip_wW7XQpDawMZRNmreQys";
+const API_KEY_STORAGE = "gemini_api_key_custom";
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
 let geminiBlockedUntil = 0;
+
+export async function getApiKey() {
+  try {
+    let key = await AsyncStorage.getItem(API_KEY_STORAGE);
+    if (key) {
+      key = key.trim();
+      // If the user accidentally pasted it twice (e.g. 78 chars instead of 39), slice it.
+      if (key.startsWith("AIza") && key.length > 50) {
+        key = key.substring(0, 39);
+      }
+    }
+    return key || DEFAULT_GEMINI_API_KEY;
+  } catch {
+    return DEFAULT_GEMINI_API_KEY;
+  }
+}
+
+export async function saveApiKey(key) {
+  try {
+    await AsyncStorage.setItem(API_KEY_STORAGE, key);
+  } catch (err) {
+    console.error("Failed to save API key", err);
+  }
+}
+
+export async function clearApiKey() {
+  try {
+    await AsyncStorage.removeItem(API_KEY_STORAGE);
+  } catch (err) {
+    console.error("Failed to remove API key", err);
+  }
+}
 
 function clampConfidence(value) {
   return Math.max(0, Math.min(Number(value) || 0, 1));
@@ -162,7 +196,7 @@ function buildStructuredResult(payload, referenceMaterial, engine) {
     cheaperAlternativeKU: normalizeObject(payload.cheaperAlternativeKU) || derived.cheaperAlternativeKU,
     recommendedOptionEN: normalizeObject(payload.recommendedOptionEN) || derived.recommendedOptionEN,
     recommendedOptionKU: normalizeObject(payload.recommendedOptionKU) || derived.recommendedOptionKU,
-    engine,
+    engine: "gemini-3.1-flash-lite-preview",
     topMatches: referenceMaterial
       ? [{ name: referenceMaterial.nameEN, score: Math.round(confidence * 100) }]
       : normalizeList(payload.topMatches),
@@ -218,8 +252,8 @@ async function runFallbackRecognition(base64Image, fallback, reason) {
     categoryEN: "Construction Material",
     categoryKU: "مادەی بیناسازی",
     confidence: 0,
-    description: fallback.errorEN,
-    descriptionKU: fallback.errorKU,
+    description: "API Key Error: The default Gemini API key is disabled by Google. Please open the AI Setup (Key icon) and enter your own valid Gemini API key to use real AI recognition.",
+    descriptionKU: "هەڵەی کلیلی API: کلیلی بنەڕەتی Gemini لەلایەن Google وە ڕاگیراوە. تکایە لە ڕێکخستنی AI (ئایکۆنی کلیل) کلیلی تایبەت بە خۆت بنووسە بۆ بەکارهێنانی AI.",
     useCasesEN: [],
     useCasesKU: [],
     keyPropertiesEN: [],
@@ -232,7 +266,7 @@ async function runFallbackRecognition(base64Image, fallback, reason) {
     cheaperAlternativeKU: null,
     recommendedOptionEN: null,
     recommendedOptionKU: null,
-    engine: reason || "error",
+    engine: "api_key_error",
     topMatches: [],
   };
 }
@@ -266,8 +300,9 @@ function safeParseGeminiJson(text) {
 }
 
 async function callGemini(model, base64Image) {
+  const apiKey = await getApiKey();
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -391,7 +426,7 @@ Return EXACTLY this JSON shape:
               {
                 inlineData: {
                   mimeType: "image/jpeg",
-                  data: base64Image,
+                  data: base64Image.replace(/^data:image\/[a-z]+;base64,/, ""),
                 },
               },
             ],

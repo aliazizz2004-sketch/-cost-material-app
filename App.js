@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect, useRef } from "react";
-import { View, Text, StyleSheet, StatusBar, ActivityIndicator, TouchableOpacity, SafeAreaView, ScrollView, Platform, Alert } from "react-native";
+import { View, Text, StyleSheet, StatusBar, ActivityIndicator, TouchableOpacity, SafeAreaView, ScrollView, Platform, Alert, BackHandler } from "react-native";
 import Animated from 'react-native-reanimated';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ExchangeRateProvider, useExchangeRate } from "./contexts/ExchangeRateContext";
@@ -92,16 +92,37 @@ function AppContent() {
     if (projectId) {
       setActiveProjectId(projectId);
     }
-    if (viewId === 'store') {
-      setNavStack(prev => [...prev, 'storePurpose']);
-    } else {
-      setNavStack(prev => [...prev, viewId]);
-    }
+    setNavStack(prev => {
+      let nextView = viewId === 'store' ? 'storePurpose' : viewId;
+      if (nextView === 'home') return ['home'];
+      if (prev[prev.length - 1] === nextView) return prev;
+
+      // Only push for subpages to allow back navigation. For major features, return to a fresh stack.
+      if (['storeAll', 'storeCategory'].includes(nextView)) {
+        return [...prev, nextView];
+      }
+      return ['home', nextView];
+    });
   }, []);
 
   const handleBack = useCallback(() => {
     setNavStack(prev => prev.length > 1 ? prev.slice(0, -1) : ["home"]);
   }, []);
+
+  // Hardware Back Press Listener (Android)
+  useEffect(() => {
+    const onBackPress = () => {
+      // If we are not on the home screen, go back entirely and prevent default
+      if (navStack.length > 1) {
+        handleBack();
+        return true;
+      }
+      // On home screen, let default behavior happen (exit app)
+      return false;
+    };
+    BackHandler.addEventListener("hardwareBackPress", onBackPress);
+    return () => BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+  }, [navStack, handleBack]);
 
   const openAiCamera = async () => {
     try {
@@ -257,15 +278,17 @@ function AppContent() {
     setShowProjectCart(false);
     setProjectCartItems([]);
 
-    // Navigate to projects view automatically
-    handleNavNavigate('projects', activeProjectId);
-
     // Show success
     if (typeof window !== 'undefined' && window.alert) {
       const msg = lang === 'ar' ? '✅ تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? '✅ بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : '✅ Items added to project!';
       window.alert(msg);
+    } else {
+      Alert.alert(
+        "✅",
+        lang === 'ar' ? 'تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? 'بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : 'Items added to project!'
+      );
     }
-  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang, handleNavNavigate]);
+  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang]);
 
   if (rateLoading && !rate) {
     return (

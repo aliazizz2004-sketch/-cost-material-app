@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useRef, useMemo, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -20,9 +20,9 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import { colors, darkColors, spacing, typography, radius, shadows } from "../styles/theme";
 import materialsData from "../data/materials";
+import { getApiKey } from "../services/aiRecognition";
 
-const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -30,6 +30,7 @@ function delay(ms) {
 
 async function callGeminiWithRetry(prompt) {
   let lastError = null;
+  const apiKey = await getApiKey();
 
   for (const model of GEMINI_MODELS) {
     for (let attempt = 0; attempt < 2; attempt++) {
@@ -37,7 +38,7 @@ async function callGeminiWithRetry(prompt) {
         if (attempt > 0) await delay(2500);
 
         const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -87,7 +88,6 @@ async function callGeminiWithRetry(prompt) {
       }
     }
   }
-
   throw lastError || new Error("All AI models failed");
 }
 

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
     View,
     Text,
@@ -59,22 +59,8 @@ export default function ApiKeyModal({ visible, onClose, onKeySaved }) {
 
         // Test the key with a simple request
         try {
-            // Test validity by making a minimal request to the specified 3.1 flash lite preview model
-            const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${trimmed}`;
-            const res = await fetch(testUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: "Say OK" }] }],
-                    generationConfig: { maxOutputTokens: 5 },
-                }),
-            });
-
-            if (!res.ok) {
-                const data = await res.json();
-                throw new Error(data?.error?.message || "Invalid API key");
-            }
-
+            // We bypass the strict fetch test to ensure the user can save their key 
+            // even if the exact "gemini-3.1-flash-lite-preview" model endpoint is unavailable
             await saveApiKey(trimmed);
             setSuccess(true);
             setExistingKey(trimmed);

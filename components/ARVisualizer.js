@@ -34,9 +34,9 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useExchangeRate } from "../contexts/ExchangeRateContext";
 import { colors, darkColors, spacing, typography, radius, shadows } from "../styles/theme";
 import materialsData from "../data/materials";
+import { getApiKey } from "../services/aiRecognition";
 
-const GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
 
 function arDelay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -480,17 +480,18 @@ Return ONLY valid JSON:
 CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WALL in the image, where top, left, width, and height are normalized values between 0.0 and 1.0.`;
 
     let lastError = null;
+    const apiKey = await getApiKey();
     for (const model of GEMINI_MODELS) {
       for (let attempt = 0; attempt < 2; attempt++) {
         try {
           if (attempt > 0) await arDelay(2500);
           const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
             {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                contents: [{ parts: [{ text: promptText }, { inlineData: { mimeType: "image/jpeg", data: base64 } }] }],
+                contents: [{ parts: [{ text: promptText }, { inlineData: { mimeType: "image/jpeg", data: base64.replace(/^data:image\/[a-z]+;base64,/, "") } }] }],
                 generationConfig: { temperature: 0.15, maxOutputTokens: 600, responseMimeType: "application/json" },
               }),
             }
@@ -522,19 +523,19 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
       }
     }
 
-    // Fallback values if all models fail
+    // Fallback values if all models or the key fail
     console.error("Room analysis all models failed:", lastError);
     setRoomAnalysis({
-      roomType: "room", roomTypeKU: "ژوور",
-      estimatedWallAreaM2: 30, estimatedFloorAreaM2: 15, estimatedCeilingHeightM: 2.7,
-      dominantSurface: "wall", currentWallColor: "#E8E0D0", currentFloorType: "unknown",
-      lightingCondition: "normal",
-      suggestionsEN: ["Try different materials to see what suits your space"],
-      suggestionsKU: ["مادە جیاوازەکان تاقی بکەرەوە بۆ بینینی گونجاوترین"],
-      surfaceBreakdown: { wallPercentage: 55, floorPercentage: 30, ceilingPercentage: 15 },
+      roomType: "error", roomTypeKU: "هەڵە",
+      estimatedWallAreaM2: 0, estimatedFloorAreaM2: 0, estimatedCeilingHeightM: 0,
+      dominantSurface: "Unknown", currentWallColor: "Unknown", currentFloorType: "Unknown",
+      lightingCondition: "API Key Required",
+      suggestionsEN: ["Please add a valid Gemini API Key in AI Setup."],
+      suggestionsKU: ["تکایە کلیلی API دروست لە ڕێکخستنی AI زیاد بکە."],
+      surfaceBreakdown: { wallPercentage: 0, floorPercentage: 0, ceilingPercentage: 0 },
       wallBox: { top: 0, left: 0, width: 1, height: 1 }
     });
-    setEstimatedArea(30);
+    setEstimatedArea(0);
     setIsAnalyzing(false);
   }, []);
 
@@ -1198,16 +1199,6 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
                   <Text style={s.addToStoreBtnText}>📁 {lang === 'ku' ? 'زیادکردن بۆ پ\u0631ۆژە' : 'Add to Project'}</Text>
                 </TouchableOpacity>
               )}
-
-              {/* HD Render button */}
-              <TouchableOpacity
-                style={[s.addToStoreBtn, { backgroundColor: "#10B981", marginTop: 8 }]}
-                onPress={handleRenderPhotorealistic}
-                disabled={isRendering}
-                activeOpacity={0.85}
-              >
-                <Text style={s.addToStoreBtnText}>✨ {lang === 'ku' ? 'تەواوکردنی ڕاستەقینە (API)' : 'HD Render (API)'}</Text>
-              </TouchableOpacity>
             </Animated.View>
           )}
 

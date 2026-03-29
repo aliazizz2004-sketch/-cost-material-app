@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AppState } from "react-native";
 
 const ExchangeRateContext = createContext();
 
@@ -142,8 +143,27 @@ export function ExchangeRateProvider({ children }) {
         });
         fetchRate();
         intervalRef.current = setInterval(fetchRate, REFRESH_INTERVAL);
+        
+        // Listen for App coming to foreground to ensure updates aren't frozen by mobile OS
+        const subscription = AppState.addEventListener("change", nextAppState => {
+            if (nextAppState === "active") {
+                AsyncStorage.getItem(CACHE_KEY).then(cached => {
+                    if (cached) {
+                        try {
+                            const { timestamp } = JSON.parse(cached);
+                            // If older than 30 mins, refresh immediately
+                            if (Date.now() - timestamp > REFRESH_INTERVAL) {
+                                fetchRate();
+                            }
+                        } catch(e) {}
+                    }
+                });
+            }
+        });
+
         return () => {
             if (intervalRef.current) clearInterval(intervalRef.current);
+            subscription.remove();
         };
     }, [fetchRate]);
 

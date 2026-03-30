@@ -41,7 +41,7 @@ function AnimatedPage({ children, style }) {
 }
 
 function AppContent() {
-  const { t, lang, isRTL, kuFont } = useLanguage();
+  const { t, lang, isRTL, kuFont, arFont, rtlFont } = useLanguage();
   const { rate, loading: rateLoading, setManualRate } = useExchangeRate();
   const { isDark } = useTheme();
   const tc = isDark ? darkColors : colors;
@@ -409,12 +409,12 @@ function AppContent() {
           <SafeAreaView>
             <View style={styles.headerTop}>
               <View style={styles.headerRow}>
-                <Text style={[styles.heroTitle, kuFont()]} numberOfLines={1} adjustsFontSizeToFit>
+                <Text style={[styles.heroTitle, rtlFont()]} numberOfLines={1} adjustsFontSizeToFit>
                   {ar ? "ذكاء البناء" : ku ? "زانیاری بیناسازی" : "Construction Intelligence"}
                 </Text>
               </View>
               <View style={styles.headerRow}>
-                <Text style={[styles.heroSub, kuFont()]}>
+                <Text style={[styles.heroSub, rtlFont()]}>
                   {ar ? "إدارة مشاريعك بسهولة" : ku ? "بەریوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}
                 </Text>
                 <LanguageToggle />
@@ -427,7 +427,7 @@ function AppContent() {
         <View style={styles.statsWrap}>
           <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
             <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "المواد" : ku ? "مادەکان" : "Materials"}</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, rtlFont()]}>{ar ? "المواد" : ku ? "مادەکان" : "Materials"}</Text>
           </View>
           <TouchableOpacity style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} activeOpacity={0.7} onPress={() => {
             const currentStr = rate ? Math.round(rate * 100).toString() : "152000";
@@ -442,31 +442,31 @@ function AppContent() {
             <Text style={[styles.statV, { color: tc.primary }]}>
               {rate ? Math.round(rate * 100).toLocaleString() : "--"}
             </Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "د.ع / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
+            <Text style={[styles.statL, { color: tc.mediumGray }, rtlFont()]}>{ar ? "د.ع / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.mainGrid}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "الأدوات الرئيسية" : ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }, rtlFont()]}>{ar ? "الأدوات الرئيسية" : ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
           {topActions.map(a => (
             <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
               <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
               <View style={styles.textWrap}>
-                <Text style={[styles.cardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
-                <Text style={[styles.cardDesc, kuFont()]}>{a.desc}</Text>
+                <Text style={[styles.cardTitle, { color: tc.charcoal }, rtlFont()]}>{a.title}</Text>
+                <Text style={[styles.cardDesc, rtlFont()]}>{a.desc}</Text>
               </View>
             </TouchableOpacity>
           ))}
         </View>
 
         <View style={styles.extraGridSection}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "ميزات احترافية" : ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
+          <Text style={[styles.sectionTitle, { color: tc.charcoal }, rtlFont()]}>{ar ? "ميزات احترافية" : ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
           <View style={styles.extraGrid}>
             {extraActions.map(a => (
               <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
                 <View style={[styles.iconWrapSmall, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={20} color={a.color} /></View>
-                <Text style={[styles.extraCardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
-                <Text style={[styles.cardDesc, kuFont()]} numberOfLines={2}>{a.desc}</Text>
+                <Text style={[styles.extraCardTitle, { color: tc.charcoal }, rtlFont()]}>{a.title}</Text>
+                <Text style={[styles.cardDesc, rtlFont()]} numberOfLines={2}>{a.desc}</Text>
               </TouchableOpacity>
             ))}
           </View>

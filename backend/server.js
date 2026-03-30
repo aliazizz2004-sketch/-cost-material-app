@@ -21,79 +21,112 @@ const replicate = new Replicate({
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const geminiModel = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
 
-// ── Hyper-Realistic Architectural Visualization Prompt Builder ──
-// Implements Albedo accuracy, micro-texture mapping, ambient occlusion,
-// and razor-sharp semantic masking for professional-grade AI wall visualization.
+// ── Elite 8K Architectural Visualization Prompt Builder ──
+// ACT AS: An Elite 8K Architectural Visualization Engine and Photogrammetry Specialist.
+// Sections: I. Semantic Segmentation | II. Material Synthesis & Fidelity (PBR)
+//           III. Photometric Integration | IV. Quality Benchmark
 function buildEliteVisualizationPrompt(materialType, color, finish, lightingContext) {
-  // Determine if this is a paint or a textured hard material
+  // Build [TARGET_MATERIAL] as a single combined human-readable string
+  // e.g. "Emerald Green Matte Paint" | "Glossy White Hexagon Tile" | "Industrial Gray HTC Concrete"
+  const targetMaterial = `${color} ${finish} ${materialType}`.trim();
+
+  // Determine category for section II branching
   const isPaint = materialType.toLowerCase().includes("paint");
-  const isHardMaterial = !isPaint; // tiles, stone, marble, brick, etc.
 
-  const materialSpecificInstructions = isPaint
-    ? `PAINT APPLICATION RULES:
-- Apply a deep-pigmented, high-fidelity paint coating in the exact color: ${color}.
-- Use ALBEDO COLOR ACCURACY: render the true, physically-based color of ${color} independent of shadow regions. In lit areas the color should be vivid and clear. In shadowed areas the same hue must darken naturally without washing out or becoming gray.
-- The paint must look like 1-2 coats of premium interior paint — smooth, uniform, with micro-texture from the underlying wall plaster still subtly visible.
-- The color ${color} must NOT look faded, desaturated, washed-out, or chalky. It must appear as the true pigment color.
-- Finish type: ${finish}. If matte — zero specular reflection, soft diffuse sheen. If satin — gentle, wide specular highlight from primary light sources. If gloss — sharp, narrow specular highlights mirroring window/lamp shapes.`
-    : `HARD MATERIAL / TILE / STONE APPLICATION RULES:
-- Render the ${materialType} in ${color} with FULL 8K MICRO-TEXTURE DETAIL.
-- Each individual tile, stone slab, or brick unit must have:
-  a) Realistic surface micro-texture: scratches, grain, crystalline structure, or kiln marks visible at close range.
-  b) Accurate grout lines (for tiles/brick): 2-4mm wide, slightly recessed, with subtle color variation.
-  c) 3D DEPTH MAPPING: the surface must have realistic bump/displacement — tiles sit slightly proud of grout, stone has natural relief.
-- Apply correct perspective foreshortening: tile/pattern scale must reduce as the wall recedes into the distance (vanishing point correction).
-- The material must NOT look like a flat sticker or 2D image overlay. It must appear physically embedded in the wall.`;
+  const sectionII_Material = isPaint
+    ? `FOR PAINT — Albedo & Surface Physics:
+- Apply a uniform, deep-pigment Albedo layer for "${targetMaterial}".
+- Eliminate all graininess, noise, or texture artifacts on the paint surface.
+- Color Vibrancy: The color must be vivid and "clean," NOT washed-out, chalky, desaturated, or gray. Use Albedo accuracy: render the true pigment color independently from shadow darkening.
+- The color must react naturally to the room's ambient light — brighter in lit zones, darker in shadow zones, but always maintaining the same hue identity.
+- PBR Surface Physics:
+  • Matte finish → High roughness (0.95+), zero specular, soft omnidirectional light absorption, subtle plaster micro-texture still visible beneath paint.
+  • Satin finish → Medium roughness (0.5–0.7), gentle wide-angle Fresnel specular highlights from primary light sources.
+  • Gloss finish → Low roughness (0.1–0.2), sharp narrow Fresnel reflections mirroring windows and lamp shapes on the wall surface.`
+    : `FOR TILES / HTC / STONE / BRICK — Micro-Texture & Displacement:
+- Render "${targetMaterial}" with FULL 8K high-frequency surface detail. No flat, blurry, or sticker-like appearance.
+- Each individual unit (tile, slab, brick) must have:
+  a) Surface micro-texture: grain, crystalline structure, scratches, kiln marks, or natural veining visible at close range.
+  b) Grout lines (tiles/brick): 2–4mm wide, slightly recessed, subtle color variation, realistic depth shadow inside grout channel.
+  c) Displacement Mapping: realistic 3D relief — tiles sit slightly proud of grout; stone slabs have natural surface undulation.
+- Procedural Texture Variety: Apply subtle randomized variation per tile/slab to prevent an artificial repeating-tile-pattern look.
+- Perspective Foreshortening: tile/pattern scale and grout lines must decrease accurately as the wall recedes toward vanishing points.
+- PBR Surface Physics:
+  • Matte stone/concrete → High roughness, diffuse scattering, no specular.
+  • Polished/Glossy tile → Low roughness, sharp Fresnel reflections of room light sources.
+  • Satin/Honed → Medium roughness, soft broad highlight.`;
 
-  return `ROLE: Act as a hyper-realistic architectural visualization AI with expert-level semantic segmentation and photorealistic texture mapping.
+  return `ACT AS: An Elite 8K Architectural Visualization Engine and Photogrammetry Specialist.
 
-PRIMARY DIRECTIVE: Analyze the uploaded photograph of this interior space. Identify ONLY the vertical structural wall surfaces. Apply the following material exclusively to those surfaces.
+MISSION: Perform a hyper-realistic, non-destructive surface replacement of all vertical wall planes within the provided image.
+Target Material: [${targetMaterial}]
+Lighting Context: ${lightingContext}
 
-TARGET MATERIAL: ${color} ${materialType} | Finish: ${finish}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+I. SEMANTIC SEGMENTATION & OCCLUSION — THE "NO-BLEED" RULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pixel-Perfect Masking: Identify all vertical wall plane boundaries with sub-pixel precision.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STEP 1 — SEMANTIC MASKING (CRITICAL — RAZOR-SHARP PRECISION)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Identify and isolate ONLY the exposed vertical wall surfaces.
-- EXCLUDE with absolute precision:
-  • Floor (all materials: tile, carpet, wood, concrete)
-  • Ceiling (flat or vaulted)
-  • Baseboards, skirting boards, crown molding, cornices
-  • Window frames, door frames, window sills
-  • All furniture (sofas, tables, chairs, beds, shelves)
-  • All plants, decorative objects, artwork, mirrors, TVs
-  • All light fixtures (pendant lights, wall sconces, lamps)
-  • All electrical outlets, switches, vents
-- MASKING EDGE QUALITY: Use razor-sharp pixel-level edge detection. There must be ZERO color bleeding, ZERO halo effect, and ZERO soft fringe around ANY foreground object.
+DO NOT MODIFY (absolutely preserve):
+  • Ceiling (flat, vaulted, or coffered)
+  • Flooring (all types: tile, wood, carpet, concrete, marble)
+  • Baseboards and skirting boards
+  • Crown molding and cornices
+  • All window frames, door frames, and window sills
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STEP 2 — MATERIAL APPLICATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${materialSpecificInstructions}
+Foreground Preservation — Occluding Objects (100% untouched):
+  • All furniture: sofas, chairs, tables, beds, shelves, cabinets
+  • All plants and organic decor
+  • Wall-mounted TVs, art frames, mirrors, clocks
+  • All light fixtures: pendants, wall sconces, floor lamps, ceiling fixtures
+  • All electrical outlets, switch plates, vents, radiators
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STEP 3 — LIGHTING, SHADOWS & AMBIENT OCCLUSION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- PRESERVE ALL ORIGINAL CAST SHADOWS: Every shadow cast by furniture or objects onto the wall must remain perfectly overlaid on the new material surface. The new material sits BEHIND the shadows.
-- AMBIENT OCCLUSION: Maintain all original ambient occlusion — the soft, natural darkening that occurs in room corners, behind furniture edges, and under ceiling lines. This is critical for realism.
-- ORIGINAL LIGHTING TEMPERATURE: Do not change the color temperature of the room lighting. A warm room must stay warm. A cool daylight room must stay cool.
-- Lighting context analysis: ${lightingContext}
+Edge Quality — THE NO-BLEED RULE:
+  The new material must appear to exist physically BEHIND all occluding objects.
+  ZERO edge-blurring. ZERO color-halos. ZERO soft fringe. ZERO color spill onto objects.
+  Use razor-sharp sub-pixel masking at every boundary.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STEP 4 — ABSOLUTE NEGATIVE CONSTRAINTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- DO NOT alter, move, add, or remove any furniture, decor, or architectural elements.
-- DO NOT change the floor material, ceiling, or room layout.
-- DO NOT apply a "painterly", watercolor, impressionist, or artistic style. Output must be a photographic image.
-- DO NOT blur the material texture. Every surface must be in sharp, crisp focus.
-- DO NOT wash out the color. The material color must be rich, accurate, and physically-based.
-- DO NOT create glowing halos around objects or at the ceiling line.
-- DO NOT change the time of day or ambient light level.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+II. MATERIAL SYNTHESIS & FIDELITY — THE "CLEAR" RULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${sectionII_Material}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-OUTPUT SPECIFICATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Output: A hyper-realistic 8K architectural photograph. The image must be indistinguishable from a real photo of the room with the new material installed. Photorealistic, hyperdetailed, sharp focus, accurate albedo, preserved ambient occlusion, seamless material integration.`;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+III. PHOTOMETRIC INTEGRATION — THE "REALISM" RULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Shadow Persistence (CRITICAL):
+  Detect and preserve 100% of all original shadows cast onto the wall surfaces.
+  The [${targetMaterial}] must sit UNDERNEATH these shadows — shadows are overlaid on top of the new material surface, not removed or relocated.
+
+Ambient Occlusion — Corner Depth:
+  Maintain the natural subtle darkening in room corners, where walls meet the ceiling, and behind furniture edges. This AO gradient is essential for preserving the 3D spatial depth of the room.
+
+Global Illumination — Bounce Light:
+  The new wall color [${targetMaterial}] must subtly influence nearby surfaces as it would in a real-world renovation:
+  • A warm-colored wall will cast a faint warm bounce onto the adjacent ceiling and floor near the base.
+  • A cool-toned wall will contribute cool-tinted ambient fill to nearby objects.
+  • Keep bounce light subtle and physically plausible — not exaggerated.
+
+Original Lighting Temperature:
+  Do not alter the room's existing color temperature or luminance levels. Preserve all original light source intensities.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IV. QUALITY BENCHMARK & ABSOLUTE CONSTRAINTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Output Standard: The result must be indistinguishable from a professional architectural photograph shot in a real renovated space.
+
+ZERO TOLERANCE VIOLATIONS — DO NOT:
+  ✗ Hallucinate any new objects, furniture, decor, or architectural features
+  ✗ Alter or move any existing object in the scene
+  ✗ Change the floor, ceiling, or room layout in any way
+  ✗ Apply any painterly, watercolor, sketch, or artistic-filter effects
+  ✗ Blur or soften the material texture — every surface must be in sharp crisp focus
+  ✗ Wash out, desaturate, or gray-shift the material color
+  ✗ Introduce new light sources or change the time of day
+  ✗ Create compositing seams, visible mask edges, or transition artifacts
+  ✗ Produce repetitive, tiled, or stamped pattern artifacts
+
+Final Output: Hyper-realistic 8K architectural photograph. Photorealistic. Hyperdetailed. Sharp focus. Accurate albedo. Preserved shadows and ambient occlusion. Seamless integration. Professional grade.`;
 }
 
 /**
@@ -193,30 +226,35 @@ Return ONLY valid JSON, no markdown.`;
  * - Mask Blur: 4 (sharp edges, no halo effect around foreground objects)
  */
 async function renderNewMaterial(imageBuffer, mimetype, maskUrl, materialType, color, finish, lightingContext) {
-  console.log(`--> Step 3: Elite rendering — ${color} ${materialType} [${finish} finish]...`);
+  const targetMaterial = `${color} ${finish} ${materialType}`.trim();
+  console.log(`--> Step 3: Elite 8K rendering — [${targetMaterial}]...`);
   const originalImageUri = bufferToDataURI(imageBuffer, mimetype);
   
-  // Build the elite architectural visualization prompt
+  // Build the 8K Elite Architectural Visualization prompt (PBR + GI + AO + No-Bleed)
   const elitePrompt = buildEliteVisualizationPrompt(materialType, color, finish, lightingContext);
   
   const negativePrompt = [
-    // Layout changes
-    "altered room layout", "moved furniture", "new furniture", "hallucinated decor",
-    // Masking failures
+    // Hallucinations & layout changes
+    "hallucinated objects", "new furniture", "added decor", "altered room layout",
+    "moved furniture", "changed architecture", "new windows", "new doors",
+    // Masking / bleed failures (The NO-BLEED Rule)
     "color bleeding onto furniture", "color bleeding onto floor", "color bleeding onto ceiling",
-    "color bleeding onto baseboard", "color bleeding onto door frame", "color bleeding onto window frame",
-    "halo around objects", "glow around furniture edges", "soft fringe", "color spill",
-    // Lighting changes
+    "color bleeding onto baseboard", "color bleeding onto trim", "color bleeding onto door frame",
+    "color bleeding onto window frame", "halo effect", "glow around edges",
+    "soft fringe", "color spill", "compositing seam", "visible mask edge", "hard compositing line",
+    // Lighting & photometry failures
     "changed lighting temperature", "new light sources", "different time of day",
-    "overexposed", "underexposed", "blown highlights",
-    // Material quality issues
-    "flat texture", "blurry texture", "blurry material", "low resolution texture", "pixelated",
-    "washed out color", "desaturated", "faded paint", "chalky", "gray wash",
-    "painterly", "watercolor", "impressionist", "artistic filter", "sketch",
-    "cartoon", "CGI look", "plastic surface", "fake material",
-    // General quality
-    "artifacts", "distorted", "noisy", "low quality", "jpeg artifacts",
-    "unrealistic rendering", "compositing seam", "visible mask edge"
+    "overexposed", "underexposed", "blown highlights", "crushed blacks",
+    "missing shadows", "removed ambient occlusion", "flat corners",
+    // Material quality failures (The CLEAR Rule)
+    "flat texture", "blurry texture", "blurry material", "low resolution texture", "pixelated texture",
+    "washed out color", "desaturated", "faded", "chalky", "gray wash", "muted color",
+    "painterly effect", "watercolor", "impressionist", "oil painting", "sketch", "artistic filter",
+    "cartoon", "CGI look", "plastic surface", "fake material", "tiled repetition", "pattern stamping",
+    "low detail", "blurry grout", "missing grout lines",
+    // General render quality
+    "artifacts", "noise", "grain", "distortion", "jpeg artifacts",
+    "unrealistic", "low quality", "8-bit look"
   ].join(", ");
 
   // Elite inpainting with ControlNet Segmentation pipeline on Replicate.

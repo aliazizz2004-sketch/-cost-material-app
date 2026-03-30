@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect, useRef } from "react";
-import { View, Text, StyleSheet, StatusBar, ActivityIndicator, TouchableOpacity, SafeAreaView, ScrollView, Platform, Alert, BackHandler } from "react-native";
+import { View, Text, StyleSheet, StatusBar, ActivityIndicator, TouchableOpacity, SafeAreaView, ScrollView, Platform, Alert, BackHandler, Modal, TextInput } from "react-native";
 import Animated from 'react-native-reanimated';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ExchangeRateProvider, useExchangeRate } from "./contexts/ExchangeRateContext";
@@ -72,6 +72,10 @@ function AppContent() {
   const [aiResult, setAiResult] = useState(null);
   const [capturedImageUri, setCapturedImageUri] = useState(null);
   const [globalQuantities, setGlobalQuantitiesState] = useState({});
+
+  // Rate Edit Modal (cross-platform replacement for Alert.prompt)
+  const [rateModalVisible, setRateModalVisible] = useState(false);
+  const [rateInputValue, setRateInputValue] = useState("");
 
   const setGlobalQuantities = useCallback((value) => {
     setGlobalQuantitiesState(prev => {
@@ -431,16 +435,8 @@ function AppContent() {
               const val = window.prompt(ar ? "سعر الصرف بالدينار لـ 100$:" : ku ? "نرخی گۆ\u0631ینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
               if (val && !isNaN(Number(val))) setManualRate(Number(val) / 100);
             } else {
-              Alert.prompt(
-                ar ? "تغيير سعر الصرف" : ku ? "گۆ\u0631ینی نرخی دۆلار" : "Change Exchange Rate",
-                ar ? "أدخل قيمة 100$ بالدينار" : ku ? "نرخی 100$ بە دینار بنووسە" : "Enter IQD value for 100$",
-                [
-                  { text: "Cancel", style: "cancel" },
-                  { text: ku ? "باشە" : "OK", onPress: (val) => { if(val && !isNaN(Number(val))) setManualRate(Number(val) / 100) }}
-                ],
-                "plain-text",
-                currentStr
-              );
+              setRateInputValue(currentStr);
+              setRateModalVisible(true);
             }
           }}>
             <Text style={[styles.statV, { color: tc.primary }]}>
@@ -488,6 +484,43 @@ function AppContent() {
         setAiModalVisible(false);
       }} />
       <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
+
+      {/* Cross-platform Exchange Rate Edit Modal */}
+      <Modal visible={rateModalVisible} transparent animationType="fade" onRequestClose={() => setRateModalVisible(false)}>
+        <View style={styles.rateModalOverlay}>
+          <View style={[styles.rateModalBox, { backgroundColor: tc.card }]}>
+            <Text style={[styles.rateModalTitle, { color: tc.charcoal }]}>
+              {ar ? "تغيير سعر الصرف" : ku ? "گۆ\u0631ینی نرخی دۆلار" : "Change Exchange Rate"}
+            </Text>
+            <Text style={[styles.rateModalSubtitle, { color: tc.mediumGray }]}>
+              {ar ? "أدخل قيمة 100$ بالدينار العراقي" : ku ? "نرخی 100$ بە دینارێکی عێراقی بنووسە" : "Enter IQD value for 100 USD"}
+            </Text>
+            <TextInput
+              style={[styles.rateModalInput, { color: tc.charcoal, borderColor: tc.cardBorder, backgroundColor: tc.offWhite }]}
+              value={rateInputValue}
+              onChangeText={setRateInputValue}
+              keyboardType="numeric"
+              placeholder="152000"
+              placeholderTextColor={tc.mediumGray}
+              autoFocus
+            />
+            <View style={styles.rateModalBtns}>
+              <TouchableOpacity style={[styles.rateModalBtn, styles.rateModalBtnCancel, { borderColor: tc.cardBorder }]} onPress={() => setRateModalVisible(false)} activeOpacity={0.8}>
+                <Text style={[styles.rateModalBtnText, { color: tc.mediumGray }]}>{ku ? "پاشگەزبوونەوە" : ar ? "إلغاء" : "Cancel"}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.rateModalBtn, styles.rateModalBtnOk, { backgroundColor: tc.primary }]} onPress={() => {
+                const val = rateInputValue.trim();
+                if (val && !isNaN(Number(val)) && Number(val) > 0) {
+                  setManualRate(Number(val) / 100);
+                }
+                setRateModalVisible(false);
+              }} activeOpacity={0.85}>
+                <Text style={[styles.rateModalBtnText, { color: '#FFF' }]}>{ku ? "باشە" : ar ? "موافق" : "OK"}</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       {renderBottomNav()}
     </View>
@@ -537,4 +570,15 @@ const styles = StyleSheet.create({
   extraCard: { width: '48%', padding: 16, borderRadius: 16, borderWidth: 1, ...shadows.card },
   iconWrapSmall: { width: 40, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
   extraCardTitle: { fontSize: 14, fontWeight: '700', marginBottom: 4 },
+  // Rate Modal
+  rateModalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.55)', justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 },
+  rateModalBox: { width: '100%', borderRadius: 20, padding: 24, ...shadows.card },
+  rateModalTitle: { fontSize: 18, fontWeight: '700', marginBottom: 6, textAlign: 'center' },
+  rateModalSubtitle: { fontSize: 13, textAlign: 'center', marginBottom: 16 },
+  rateModalInput: { borderWidth: 1.5, borderRadius: 12, paddingVertical: 12, paddingHorizontal: 16, fontSize: 22, fontWeight: '700', textAlign: 'center', marginBottom: 20 },
+  rateModalBtns: { flexDirection: 'row', gap: 12 },
+  rateModalBtn: { flex: 1, paddingVertical: 13, borderRadius: 12, alignItems: 'center' },
+  rateModalBtnCancel: { borderWidth: 1.5 },
+  rateModalBtnOk: {},
+  rateModalBtnText: { fontSize: 15, fontWeight: '700' },
 });

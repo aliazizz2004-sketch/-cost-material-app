@@ -13,7 +13,7 @@ import {
   Modal,
   Dimensions,
 } from "react-native";
-import Animated, { FadeIn, FadeInDown, FadeInUp, SlideInRight, Layout } from "react-native-reanimated";
+import Animated, { FadeIn, FadeInDown, FadeInUp, SlideInRight, LinearTransition } from "react-native-reanimated";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useTheme } from "../contexts/ThemeContext";

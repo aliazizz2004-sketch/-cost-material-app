@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
-const DEFAULT_GEMINI_API_KEY = "AIzaSyAAP8O9cr9_9Ip_wW7XQpDawMZRNmreQys";
+const DEFAULT_GEMINI_API_KEY = "AIzaSyBp4scDjnWr8dLPMHnY0PBxMEU-D2n8qsY";
 const API_KEY_STORAGE = "gemini_api_key_custom";
 const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
 let geminiBlockedUntil = 0;

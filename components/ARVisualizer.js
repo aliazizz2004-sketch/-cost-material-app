@@ -25,7 +25,7 @@ import Animated, {
   FadeOut,
   SlideInRight,
   SlideInLeft,
-  Layout,
+  LinearTransition,
 } from "react-native-reanimated";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -44,6 +44,10 @@ function arDelay(ms) {
 
 // ═══════════════════════════════════════════════════════════════════
 // Material palette for AR visualization
+// Each palette now includes elite prompt variables:
+//   materialType → [MATERIAL_TYPE] in the elite prompt
+//   colorNames   → human-readable color names mapped to previewColors
+//   finishType   → [FINISH] in the elite prompt
 // ═══════════════════════════════════════════════════════════════════
 const MATERIAL_PALETTES = [
   {
@@ -55,7 +59,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Floor",
     categoryKU: "زەوی",
     previewColors: ["#E8D5B7", "#C4A882", "#F5F0E8", "#8B7355"],
+    colorNames: ["warm beige", "sandy tan", "ivory cream", "earthy brown"],
     patterns: ["grid", "herringbone", "diagonal"],
+    // Elite prompt variables
+    materialType: "ceramic tiles",
+    finishType: "matte",
   },
   {
     id: "tiles_porcelain",
@@ -66,18 +74,26 @@ const MATERIAL_PALETTES = [
     categoryEN: "Floor",
     categoryKU: "زەوی",
     previewColors: ["#F0EDE8", "#D4CBC0", "#FFFFFF", "#B8AFA6"],
+    colorNames: ["pearl white", "warm gray", "pure white", "silver taupe"],
     patterns: ["grid", "large-format"],
+    // Elite prompt variables
+    materialType: "porcelain tiles",
+    finishType: "polished",
   },
   {
     id: "marble",
     materialIds: [21],
     icon: "💎",
     nameEN: "Marble",
-    nameKU: "مە\u0631مە\u0631",
+    nameKU: "مەرمەر",
     categoryEN: "Floor / Wall",
     categoryKU: "زەوی / دیوار",
     previewColors: ["#F5F2EE", "#E8E0D4", "#DDD8D0", "#C8BFB4"],
+    colorNames: ["Carrara white", "champagne beige", "light gray", "warm taupe"],
     patterns: ["veined", "polished"],
+    // Elite prompt variables
+    materialType: "natural marble stone",
+    finishType: "polished",
   },
   {
     id: "granite",
@@ -88,7 +104,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Counter / Floor",
     categoryKU: "ئمەیدە / زەوی",
     previewColors: ["#2C2C2C", "#444444", "#1A1A1A", "#555555"],
+    colorNames: ["charcoal black", "dark slate", "midnight black", "graphite"],
     patterns: ["speckled", "polished"],
+    // Elite prompt variables
+    materialType: "granite stone",
+    finishType: "polished",
   },
   {
     id: "travertine",
@@ -99,7 +119,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Wall / Floor",
     categoryKU: "دیوار / زەوی",
     previewColors: ["#E8DCC8", "#D4C8B0", "#F0E8D8", "#C4B898"],
+    colorNames: ["warm ivory", "classic beige", "light sand", "golden wheat"],
     patterns: ["natural", "filled"],
+    // Elite prompt variables
+    materialType: "travertine stone",
+    finishType: "honed",
   },
   {
     id: "paint_warm",
@@ -110,7 +134,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Wall",
     categoryKU: "دیوار",
     previewColors: ["#FFF8DC", "#F5E6C8", "#FAEBD7", "#FFE4B5"],
+    colorNames: ["warm cream", "golden honey", "antique linen", "soft amber"],
     patterns: ["solid", "textured"],
+    // Elite prompt variables
+    materialType: "interior wall paint",
+    finishType: "satin",
   },
   {
     id: "paint_cool",
@@ -121,7 +149,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Wall",
     categoryKU: "دیوار",
     previewColors: ["#E8F4FD", "#D0E8F8", "#B8D4F0", "#A0C8E8"],
+    colorNames: ["sky blue", "powder blue", "cool azure", "soft cerulean"],
     patterns: ["solid", "textured"],
+    // Elite prompt variables
+    materialType: "interior wall paint",
+    finishType: "matte",
   },
   {
     id: "paint_neutral",
@@ -132,7 +164,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Wall",
     categoryKU: "دیوار",
     previewColors: ["#F5F5F0", "#E8E4DC", "#DDD8CE", "#C8C0B4"],
+    colorNames: ["off-white", "warm greige", "light stone", "soft linen gray"],
     patterns: ["solid", "textured"],
+    // Elite prompt variables
+    materialType: "interior wall paint",
+    finishType: "eggshell",
   },
   {
     id: "gypsum_board",
@@ -143,7 +179,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Ceiling",
     categoryKU: "بەرزایی",
     previewColors: ["#FAFAFA", "#F0F0F0", "#FFFFFF", "#E8E8E8"],
+    colorNames: ["bright white", "soft white", "pure white", "cool white"],
     patterns: ["flat", "coffered"],
+    // Elite prompt variables
+    materialType: "gypsum board cladding",
+    finishType: "matte",
   },
   {
     id: "red_brick",
@@ -154,7 +194,11 @@ const MATERIAL_PALETTES = [
     categoryEN: "Wall",
     categoryKU: "دیوار",
     previewColors: ["#B5462A", "#C25634", "#9E3B22", "#D46840"],
+    colorNames: ["classic red", "terracotta", "dark clay", "burnt sienna"],
     patterns: ["running-bond", "stack-bond"],
+    // Elite prompt variables
+    materialType: "exposed brick wall",
+    finishType: "natural",
   },
 ];
 
@@ -600,18 +644,28 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
     if (!capturedImageBase64 || !selectedPalette) return;
     setIsRendering(true);
     try {
-      const matName = lang === "ku" ? selectedPalette.nameKU : selectedPalette.nameEN;
-      
+      // ─── Elite Prompt Variables ───────────────────────────────────
+      // Derive [MATERIAL_TYPE], [COLOR], and [FINISH] from user selections
+      const materialType = selectedPalette.materialType || selectedPalette.nameEN;
+      const color = selectedPalette.colorNames?.[selectedColorIdx] 
+        || selectedPalette.previewColors[selectedColorIdx] 
+        || selectedPalette.previewColors[0];
+      // Determine finish: if textured pattern, use matte; if polished pattern, use glossy
+      let finish = selectedPalette.finishType || "matte";
+      const pattern = (selectedPalette.patterns || [])[selectedPattern % (selectedPalette.patterns?.length || 1)];
+      if (pattern === "polished" || pattern === "large-format") finish = "polished";
+      if (pattern === "textured") finish = "satin";
+      if (pattern === "flat" || pattern === "solid") finish = "matte";
+      // ──────────────────────────────────────────────────────────────
+
       const formData = new FormData();
       
       // React Native and Expo Web compatible file upload
       if (Platform.OS === 'web') {
-        // Find base64 encoding scheme correctly
         const fetchResponse = await fetch(capturedImage);
         const blob = await fetchResponse.blob();
         formData.append("image", blob, "room.jpg");
       } else {
-        // Native React Native format
         formData.append("image", {
           uri: capturedImage,
           name: "room.jpg",
@@ -619,7 +673,11 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
         });
       }
 
-      formData.append("materialName", matName);
+      // Pass the three elite prompt variables to the backend
+      formData.append("materialName", materialType);  // Backwards compat
+      formData.append("materialType", materialType);
+      formData.append("color", color);
+      formData.append("finish", finish);
 
       const response = await fetch("http://localhost:3001/api/render-wall", {
         method: "POST",
@@ -638,7 +696,7 @@ CRITICAL: The "wallBox" must contain the approximate bounding box of the MAIN WA
     } finally {
       setIsRendering(false);
     }
-  }, [capturedImageBase64, selectedPalette, lang]);
+  }, [capturedImageBase64, capturedImage, selectedPalette, selectedColorIdx, selectedPattern, lang]);
 
   // ─── Pattern Renderer (CSS-based overlay with real patterns) ───
   const renderOverlay = useMemo(() => {

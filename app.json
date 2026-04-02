@@ -2,22 +2,21 @@
   "expo": {
     "name": "Easy build",
     "slug": "cost-material",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0A1628"
+      "backgroundColor": "#ffffff"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "package": "com.costmaterialapp",
-      "versionCode": 2,
-      "allowBackup": false,
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -28,19 +27,18 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "owner": "aliaziz02",
+    "extra": {
+      "eas": {
+        "projectId": "d2e893e4-ca1e-4f0a-bfbf-fdcb2cb932a2"
+      }
+    },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {},
-    "plugins": [],
-    "assetBundlePatterns": [
-      "assets/**",
-      "assets/kufont/**"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "84321ac4-2c93-41b6-833c-2f31e8d15692"
-      }
-    }
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

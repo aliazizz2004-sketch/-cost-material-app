@@ -1,4 +1,4 @@
-﻿export const BRAND_LINKS = {
+export const BRAND_LINKS = {
     "Al-Jisr (Lafarge)": {
         "category": "Cement Production",
         "website": "https://www.google.com/search?q=Al-Jisr%20(Lafarge)%20official%20website",
@@ -1933,3 +1933,14 @@
         "logoEmoji": "🏭"
     }
 };
+
+/**
+ * getBrandLinks(brandName)
+ * Returns the brand data object for the given brand name, or null if not found.
+ * Used by BrandChip and MaterialResultModal components.
+ */
+export function getBrandLinks(brandName) {
+    if (!brandName) return null;
+    return BRAND_LINKS[brandName] || null;
+}
+

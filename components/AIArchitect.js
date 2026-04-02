@@ -22,7 +22,9 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "../sty
 import materialsData from "../data/materials";
 import { getApiKey } from "../services/aiRecognition";
 
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
+// gemini-3.1-flash-lite-preview is the user's preferred model; we also try
+// gemini-2.0-flash-lite (the actual released lite model) and gemini-2.0-flash as fallbacks
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash-lite", "gemini-2.0-flash", "gemini-1.5-flash"];
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -31,63 +33,87 @@ function delay(ms) {
 async function callGeminiWithRetry(prompt) {
   let lastError = null;
   const apiKey = await getApiKey();
+  // Secondary fallback key in case primary has auth issues
+  const fallbackKey = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
+
+  const tryFetch = async (model, key) => {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.2,
+            maxOutputTokens: 4096,
+            responseMimeType: "application/json",
+          },
+        }),
+      }
+    );
+
+    if (response.status === 429) {
+      throw new Error(`RATE_LIMITED`);
+    }
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+    if (!text) throw new Error("Empty response from AI");
+
+    const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
+    let parsed;
+    try {
+      parsed = JSON.parse(cleaned);
+    } catch {
+      const objectMatch = cleaned.match(/\{[\s\S]*\}/);
+      if (objectMatch) {
+        parsed = JSON.parse(objectMatch[0]);
+      } else {
+        throw new Error("Could not parse response");
+      }
+    }
+    return parsed;
+  };
 
   for (const model of GEMINI_MODELS) {
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         if (attempt > 0) await delay(2500);
-
-        const response = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
-              generationConfig: {
-                temperature: 0.2,
-                maxOutputTokens: 4096,
-                responseMimeType: "application/json",
-              },
-            }),
-          }
-        );
-
-        if (response.status === 429) {
-          console.warn(`[AIArchitect] ${model} returned 429, retrying...`);
-          lastError = new Error(`Rate limited (${model})`);
-          await delay(3000);
-          continue;
-        }
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status} from ${model}`);
-        }
-
-        const data = await response.json();
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-        if (!text) throw new Error("Empty response from AI");
-
-        const cleaned = text.replace(/```json/gi, "").replace(/```/g, "").trim();
-        let parsed;
         try {
-          parsed = JSON.parse(cleaned);
-        } catch {
-          const objectMatch = cleaned.match(/\{[\s\S]*\}/);
-          if (objectMatch) {
-            parsed = JSON.parse(objectMatch[0]);
-          } else {
-            throw new Error("Could not parse response");
+          return await tryFetch(model, apiKey);
+        } catch (authErr) {
+          const authMsg = String(authErr.message || "");
+          // 404 = model doesn't exist yet, skip to next model immediately
+          if (authMsg.includes("HTTP 404")) {
+            console.warn(`[AIArchitect] ${model} not found (404), trying next...`);
+            break; // break inner attempt loop, continue to next model
           }
+          // Auth error: try fallback key
+          if (authMsg.includes("HTTP 401") || authMsg.includes("HTTP 403")) {
+            console.warn(`[AIArchitect] Key auth failed for ${model}, trying fallback key...`);
+            return await tryFetch(model, fallbackKey);
+          }
+          // Rate limited: wait and retry
+          if (authMsg === "RATE_LIMITED") {
+            console.warn(`[AIArchitect] ${model} returned 429, retrying...`);
+            lastError = new Error(`Rate limited (${model})`);
+            await delay(3000);
+            continue;
+          }
+          throw authErr;
         }
-
-        return parsed;
       } catch (err) {
         console.warn(`[AIArchitect] ${model} attempt ${attempt + 1} failed:`, err.message);
         lastError = err;
       }
     }
   }
+
   throw lastError || new Error("All AI models failed");
 }
 

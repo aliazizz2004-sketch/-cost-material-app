@@ -101,11 +101,8 @@ function AppContent() {
       if (nextView === 'home') return ['home'];
       if (prev[prev.length - 1] === nextView) return prev;
 
-      // Only push for subpages to allow back navigation. For major features, return to a fresh stack.
-      if (['storeAll', 'storeCategory'].includes(nextView)) {
-        return [...prev, nextView];
-      }
-      return ['home', nextView];
+      // Make all subpages push sequentially for step-by-step back feature
+      return [...prev, nextView];
     });
   }, []);
 
@@ -218,25 +215,36 @@ function AppContent() {
   const handleConfirmAddToProject = useCallback((items) => {
     if (!activeProjectId) {
       // No active project — create one or show alert
-      const msg = lang === 'ar' ? 'الرجاء إنشاء أو فتح مشروع أولاً.' : lang === 'ku' ? 'تکایە سەرەتا پ\u0631ۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
+      const msg = lang === 'ar' ? 'الرجاء إنشاء أو فتح مشروع أولاً.' : lang === 'ku' ? 'تکایە سەرەتا پڕۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
       Alert.alert('⚠️', msg);
       setShowProjectCart(false);
       return;
     }
 
+    // Capture source from state at call time to avoid stale closure bug
+    const currentSource = projectCartSource;
+    const isStoreSource = currentSource === 'Material Store' || currentSource === 'کۆگای مادەکان' || currentSource === 'مخزن المواد';
+
     const updated = projects.map(p => {
       if (p.id !== activeProjectId) return p;
 
       // Merge new material items into existing project items
-      const existingItems = [...(p.items || [])];
-      (items || []).forEach(newItem => {
-        const idx = existingItems.findIndex(e => e.id === newItem.id);
-        if (idx >= 0) {
-          existingItems[idx] = { ...existingItems[idx], qty: existingItems[idx].qty + (newItem.qty || 1) };
-        } else {
-          existingItems.push({ id: newItem.id, qty: newItem.qty || 1 });
-        }
-      });
+      let existingItems = [...(p.items || [])];
+      
+      if (isStoreSource) {
+        // Material Store passes the absolute total quantities for the project
+        existingItems = items.map(i => ({ id: i.id, qty: i.qty }));
+      } else {
+        // Other tools (like AI, Estimation, Delivery) pass deltas to add to existing totals
+        (items || []).forEach(newItem => {
+          const idx = existingItems.findIndex(e => e.id === newItem.id);
+          if (idx >= 0) {
+            existingItems[idx] = { ...existingItems[idx], qty: existingItems[idx].qty + (newItem.qty || 1) };
+          } else {
+            existingItems.push({ id: newItem.id, qty: newItem.qty || 1 });
+          }
+        });
+      }
 
       // Recalculate total cost from items
       let totalCost = 0;
@@ -283,9 +291,9 @@ function AppContent() {
     // Show success
     Alert.alert(
       "✅",
-      lang === 'ar' ? 'تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? 'بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : 'Items added to project!'
+      lang === 'ar' ? 'تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? 'بابەتەکان زیادکران بۆ پڕۆژە!' : 'Items added to project!'
     );
-  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang]);
+  }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang, projectCartSource]);
 
   if (rateLoading && !rate) {
     return (
@@ -300,174 +308,167 @@ function AppContent() {
     <BottomNavBar currentView={currentView} onNavigate={handleNavNavigate} />
   );
 
-  if (currentView === "storePurpose") {
-    return (
-      <AnimatedPage>
-        <StorePurposeScreen onSelect={(purposes) => {
-        }} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} />
-        {renderBottomNav()}
-      </AnimatedPage>
-    );
-  }
-
-  if (currentView === "storeAll") {
-    return (
-      <AnimatedPage>
-        <MaterialCatalog
-          filterPurposes={[]}
-          onBack={handleBack}
-          onNavigate={handleNavNavigate}
-          globalQuantities={globalQuantities}
-          setGlobalQuantities={setGlobalQuantities}
-          onAddToProject={handleShowProjectCart}
-          activeProjectId={activeProjectId}
-          materials={materialsData}
-        />
-        <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
-        {renderBottomNav()}
-      </AnimatedPage>
-    );
-  }
-
-
-  if (currentView === "estimation") return <AnimatedPage><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
-  if (currentView === "delivery") return <AnimatedPage><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({ ...acc, [it.id]: it.qty }), {})} storeMaterials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
-  if (currentView === "suppliers") return <AnimatedPage><SupplierDirectory onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "projects") return <AnimatedPage><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} activeProjectId={activeProjectId} setActiveProjectId={setActiveProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storeAll", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storeAll"); })} onOpenAiCamera={openAiCamera} pendingProjectName={pendingProjectName} setPendingProjectName={setPendingProjectName} pendingProjectNote={pendingProjectNote} setPendingProjectNote={setPendingProjectNote} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "community") return <AnimatedPage><CommunityForum onBack={handleBack} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "aiArchitect") return <AnimatedPage><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storeAll")} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
-  if (currentView === "arVisualizer") return <AnimatedPage><ARVisualizer onBack={handleBack} onAddToStore={(qtys) => { setGlobalQuantities(prev => ({ ...prev, ...qtys })); handleNavNavigate("storeAll"); }} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} />{renderBottomNav()}<AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} /></AnimatedPage>;
-  if (currentView === "profile") return <AnimatedPage><UserProfile onBack={handleBack} projects={projects} />{renderBottomNav()}</AnimatedPage>;
-  if (currentView === "aiHub") {
-    // AI Hub — show AI tools
-    return (
-      <View style={[styles.container, { backgroundColor: tc.offWhite }]}>
-        <StatusBar barStyle="light-content" backgroundColor={tc.primary} />
-        <View style={[styles.hero, { backgroundColor: tc.primary, paddingBottom: 30 }]}>
-          <SafeAreaView>
-            <View style={styles.headerTop}>
-              <View style={styles.headerRow}>
-                <Text style={[styles.heroTitle]}>
-                  {ar ? "أدوات AI" : ku ? "ئامرازەکانی AI" : "AI Tools"}
-                </Text>
+  // Determine active view content
+  let pageContent = null;
+  switch(currentView) {
+    case "storePurpose":
+      pageContent = <AnimatedPage key="sp"><StorePurposeScreen onSelect={() => {}} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} /></AnimatedPage>;
+      break;
+    case "storeAll":
+      pageContent = <AnimatedPage key="sa"><MaterialCatalog filterPurposes={[]} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} materials={materialsData} /></AnimatedPage>;
+      break;
+    case "estimation":
+      pageContent = <AnimatedPage key="est"><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} /></AnimatedPage>;
+      break;
+    case "delivery":
+      pageContent = <AnimatedPage key="del"><DeliveryCostEstimator onBack={handleBack} activeProjectName={activeProject?.name} onAutoSave={handleSaveDeliveryToProject} storeQuantities={activeProject?.items?.reduce((acc, it) => ({ ...acc, [it.id]: it.qty }), {})} storeMaterials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} /></AnimatedPage>;
+      break;
+    case "suppliers":
+      pageContent = <AnimatedPage key="sup"><SupplierDirectory onBack={handleBack} /></AnimatedPage>;
+      break;
+    case "projects":
+      pageContent = <AnimatedPage key="proj"><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} activeProjectId={activeProjectId} setActiveProjectId={setActiveProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storeAll", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storeAll"); })} onOpenAiCamera={openAiCamera} pendingProjectName={pendingProjectName} setPendingProjectName={setPendingProjectName} pendingProjectNote={pendingProjectNote} setPendingProjectNote={setPendingProjectNote} /></AnimatedPage>;
+      break;
+    case "community":
+      pageContent = <AnimatedPage key="com"><CommunityForum onBack={handleBack} /></AnimatedPage>;
+      break;
+    case "aiArchitect":
+      pageContent = <AnimatedPage key="aia"><AIArchitect onBack={handleBack} onViewStore={() => handleNavNavigate("storeAll")} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} /></AnimatedPage>;
+      break;
+    case "arVisualizer":
+      pageContent = <AnimatedPage key="arv"><ARVisualizer onBack={handleBack} onAddToStore={(qtys) => { setGlobalQuantities(prev => ({ ...prev, ...qtys })); handleNavNavigate("storeAll"); }} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} /></AnimatedPage>;
+      break;
+    case "profile":
+      pageContent = <AnimatedPage key="prof"><UserProfile onBack={handleBack} projects={projects} /></AnimatedPage>;
+      break;
+    case "aiHub":
+      pageContent = (
+        <View style={[{ flex: 1, backgroundColor: tc.offWhite }]}>
+          <StatusBar barStyle="light-content" backgroundColor={tc.primary} />
+          <View style={[styles.hero, { backgroundColor: tc.primary, paddingBottom: 30 }]}>
+            <SafeAreaView>
+              <View style={styles.headerTop}>
+                <View style={styles.headerRow}>
+                  <Text style={[styles.heroTitle]}>
+                    {ar ? "أدوات AI" : ku ? "ئامرازەکانی AI" : "AI Tools"}
+                  </Text>
+                </View>
+                <View style={styles.headerRow}>
+                  <Text style={styles.heroSub}>
+                    {ar ? "أدوات بناء ذكية" : ku ? "ئامرازە زیرەکەکان بۆ بیناسازی" : "Smart construction tools"}
+                  </Text>
+                  <LanguageToggle />
+                </View>
               </View>
-              <View style={styles.headerRow}>
-                <Text style={styles.heroSub}>
-                  {ar ? "أدوات بناء ذكية" : ku ? "ئامرازە زیرەکەکان بۆ بیناسازی" : "Smart construction tools"}
+            </SafeAreaView>
+          </View>
+          <ScrollView contentContainerStyle={[styles.scrollContent, { paddingTop: 20 }]} showsVerticalScrollIndicator={false}>
+            <View style={styles.mainGrid}>
+              {[
+                { id: "ai", icon: "scan", title: ar ? "تعرف AI" : ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ar ? "مسح المواد" : ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
+                { id: "aiArch", icon: "bot", title: ar ? "معمار AI" : ku ? "ئەندازیاری AI" : "AI Architect", desc: ar ? "إنشاء قائمة مواد كاملة" : ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
+                { id: "arViz", icon: "glasses", title: ar ? "مشاهد AR" : ku ? "بینەری AR" : "AR Visualizer", desc: ar ? "معاينة المواد قبل الشراء" : ku ? "پێشبینیی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
+              ].map(a => (
+                <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
+                  <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
+                  <View style={styles.textWrap}>
+                    <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
+                    <Text style={styles.cardDesc}>{a.desc}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <View style={{ height: 100 }} />
+          </ScrollView>
+        </View>
+      );
+      break;
+    default:
+      // home
+      pageContent = (
+        <View style={[{ flex: 1, backgroundColor: tc.offWhite }]}>
+          <StatusBar barStyle="light-content" backgroundColor={tc.primary} />
+          <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+            {/* Hero Header */}
+            <View style={[styles.hero, { backgroundColor: tc.primary }]}>
+              <SafeAreaView>
+                <View style={styles.headerTop}>
+                  <View style={styles.headerRow}>
+                    <Text style={[styles.heroTitle, kuFont()]} numberOfLines={1} adjustsFontSizeToFit>
+                      {ar ? "ذكاء البناء" : ku ? "زانیاری بیناسازی" : "Construction Intelligence"}
+                    </Text>
+                  </View>
+                  <View style={styles.headerRow}>
+                    <Text style={[styles.heroSub, kuFont()]}>
+                      {ar ? "إدارة مشاريعك بسهولة" : ku ? "بەریوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}
+                    </Text>
+                    <LanguageToggle />
+                  </View>
+                </View>
+              </SafeAreaView>
+            </View>
+
+            {/* Stats Row */}
+            <View style={styles.statsWrap}>
+              <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
+                <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
+                <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "المواد" : ku ? "مادەکان" : "Materials"}</Text>
+              </View>
+              <TouchableOpacity style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} activeOpacity={0.7} onPress={() => {
+                const currentStr = rate ? Math.round(rate * 100).toString() : "152000";
+                if (Platform.OS === 'web') {
+                  const val = window.prompt(ar ? "سعر الصرف بالدينار لـ 100$:" : ku ? "نرخی گۆ\u0631ینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
+                  if (val && !isNaN(Number(val))) setManualRate(Number(val) / 100);
+                } else {
+                  setRateInputValue(currentStr);
+                  setRateModalVisible(true);
+                }
+              }}>
+                <Text style={[styles.statV, { color: tc.primary }]}>
+                  {rate ? Math.round(rate * 100).toLocaleString() : "--"}
                 </Text>
-                <LanguageToggle />
+                <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "د.ع / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.mainGrid}>
+              <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "الأدوات الرئيسية" : ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
+              {topActions.map(a => (
+                <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
+                  <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
+                  <View style={styles.textWrap}>
+                    <Text style={[styles.cardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
+                    <Text style={[styles.cardDesc, kuFont()]}>{a.desc}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <View style={styles.extraGridSection}>
+              <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "ميزات احترافية" : ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
+              <View style={styles.extraGrid}>
+                {extraActions.map(a => (
+                  <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
+                    <View style={[styles.iconWrapSmall, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={20} color={a.color} /></View>
+                    <Text style={[styles.extraCardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
+                    <Text style={[styles.cardDesc, kuFont()]} numberOfLines={2}>{a.desc}</Text>
+                  </TouchableOpacity>
+                ))}
               </View>
             </View>
-          </SafeAreaView>
+            <View style={{ height: 100 }} />
+          </ScrollView>
         </View>
-        <ScrollView contentContainerStyle={[styles.scrollContent, { paddingTop: 20 }]} showsVerticalScrollIndicator={false}>
-          <View style={styles.mainGrid}>
-            {[
-              { id: "ai", icon: "scan", title: ar ? "تعرف AI" : ku ? "ناسینەوەی AI" : "AI Recognizer", desc: ar ? "مسح المواد" : ku ? "سکان بکە بۆ ناسینەوەی مادە" : "Scan materials to identify", color: tc.accent, bg: "rgba(212,168,67,0.15)", onPress: openAiCamera },
-              { id: "aiArch", icon: "bot", title: ar ? "معمار AI" : ku ? "ئەندازیاری AI" : "AI Architect", desc: ar ? "إنشاء قائمة مواد كاملة" : ku ? "لیستی تەواوی مادەکان دروست بکە" : "Generate full BOQ list", color: "#DC2626", bg: "rgba(220,38,38,0.15)", onPress: () => handleNavNavigate("aiArchitect") },
-              { id: "arViz", icon: "glasses", title: ar ? "مشاهد AR" : ku ? "بینەری AR" : "AR Visualizer", desc: ar ? "معاينة المواد قبل الشراء" : ku ? "پێشبینیی ئامرازەکان لە بۆشاییدا" : "Preview tools in space", color: "#7C3AED", bg: "rgba(124,58,237,0.15)", onPress: () => handleNavNavigate("arVisualizer") },
-            ].map(a => (
-              <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
-                <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
-                <View style={styles.textWrap}>
-                  <Text style={[styles.cardTitle, { color: tc.charcoal }]}>{a.title}</Text>
-                  <Text style={styles.cardDesc}>{a.desc}</Text>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
-          <View style={{ height: 100 }} />
-        </ScrollView>
-        <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => {
-          const mat = materialsData.find(m => m.id === matId);
-          if (mat && activeProjectId) {
-            handleShowProjectCart([{ id: mat.id, name: mat.nameEN, nameKU: mat.nameKU, qty: 1, unitPrice: mat.basePrice, unit: mat.unit }], lang === 'ar' ? 'تعرف AI' : lang === 'ku' ? 'ناسینەوەی AI' : 'AI Recognizer');
-          }
-          setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 }));
-          setAiModalVisible(false);
-        }} />
-        <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
-        {renderBottomNav()}
-      </View>
-    );
+      );
+      break;
   }
 
-  // Home Screen
   return (
     <View style={[styles.container, { backgroundColor: tc.offWhite }]}>
-      <StatusBar barStyle="light-content" backgroundColor={tc.primary} />
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        {/* Hero Header */}
-        <View style={[styles.hero, { backgroundColor: tc.primary }]}>
-          <SafeAreaView>
-            <View style={styles.headerTop}>
-              <View style={styles.headerRow}>
-                <Text style={[styles.heroTitle, kuFont()]} numberOfLines={1} adjustsFontSizeToFit>
-                  {ar ? "ذكاء البناء" : ku ? "زانیاری بیناسازی" : "Construction Intelligence"}
-                </Text>
-              </View>
-              <View style={styles.headerRow}>
-                <Text style={[styles.heroSub, kuFont()]}>
-                  {ar ? "إدارة مشاريعك بسهولة" : ku ? "بەریوەبردنی تێچووەکانت" : "Manage your projects seamlessly"}
-                </Text>
-                <LanguageToggle />
-              </View>
-            </View>
-          </SafeAreaView>
-        </View>
+      {/* 1. Main Content */}
+      {pageContent}
 
-        {/* Stats Row */}
-        <View style={styles.statsWrap}>
-          <View style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]}>
-            <Text style={[styles.statV, { color: tc.primary }]}>{materialsData.length}</Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "المواد" : ku ? "مادەکان" : "Materials"}</Text>
-          </View>
-          <TouchableOpacity style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} activeOpacity={0.7} onPress={() => {
-            const currentStr = rate ? Math.round(rate * 100).toString() : "152000";
-            if (Platform.OS === 'web') {
-              const val = window.prompt(ar ? "سعر الصرف بالدينار لـ 100$:" : ku ? "نرخی گۆ\u0631ینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
-              if (val && !isNaN(Number(val))) setManualRate(Number(val) / 100);
-            } else {
-              setRateInputValue(currentStr);
-              setRateModalVisible(true);
-            }
-          }}>
-            <Text style={[styles.statV, { color: tc.primary }]}>
-              {rate ? Math.round(rate * 100).toLocaleString() : "--"}
-            </Text>
-            <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "د.ع / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.mainGrid}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "الأدوات الرئيسية" : ku ? "ئامرازە سەرەکییەکان" : "Core Tools"}</Text>
-          {topActions.map(a => (
-            <TouchableOpacity key={a.id} style={[styles.mainCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
-              <View style={[styles.iconWrap, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={24} color={a.color} /></View>
-              <View style={styles.textWrap}>
-                <Text style={[styles.cardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
-                <Text style={[styles.cardDesc, kuFont()]}>{a.desc}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-
-        <View style={styles.extraGridSection}>
-          <Text style={[styles.sectionTitle, { color: tc.charcoal }, kuFont()]}>{ar ? "ميزات احترافية" : ku ? "تایبەتمەندییە پیشەیییەکان" : "Pro Features"}</Text>
-          <View style={styles.extraGrid}>
-            {extraActions.map(a => (
-              <TouchableOpacity key={a.id} style={[styles.extraCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} onPress={a.onPress} activeOpacity={0.8}>
-                <View style={[styles.iconWrapSmall, { backgroundColor: a.bg }]}><AppIcon name={a.icon} size={20} color={a.color} /></View>
-                <Text style={[styles.extraCardTitle, { color: tc.charcoal }, kuFont()]}>{a.title}</Text>
-                <Text style={[styles.cardDesc, kuFont()]} numberOfLines={2}>{a.desc}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-        <View style={{ height: 100 }} />
-      </ScrollView>
-
-      {/* AI Result Modal */}
+      {/* 2. Global AI Result Modal (available everywhere) */}
       <MaterialResultModal visible={aiModalVisible} onClose={() => setAiModalVisible(false)} result={aiResult} loading={aiLoading} imageUri={capturedImageUri} onAddToList={(matId) => {
         const mat = materialsData.find(m => m.id === matId);
         if (mat && activeProjectId) {
@@ -476,9 +477,11 @@ function AppContent() {
         setGlobalQuantities(prev => ({ ...prev, [matId]: (prev[matId] || 0) + 1 }));
         setAiModalVisible(false);
       }} />
+
+      {/* 3. Global Add to Project Cart (available everywhere) */}
       <AddToProjectCard visible={showProjectCart} onClose={() => setShowProjectCart(false)} items={projectCartItems} onConfirm={handleConfirmAddToProject} source={projectCartSource} deliveryCost={projectCartDelivery} estimationText={projectCartEstimation} />
 
-      {/* Cross-platform Exchange Rate Edit Modal */}
+      {/* 4. Global Cross-platform Exchange Rate Edit Modal */}
       <Modal visible={rateModalVisible} transparent animationType="fade" onRequestClose={() => setRateModalVisible(false)}>
         <View style={styles.rateModalOverlay}>
           <View style={[styles.rateModalBox, { backgroundColor: tc.card }]}>
@@ -515,6 +518,7 @@ function AppContent() {
         </View>
       </Modal>
 
+      {/* 5. Bottom Nav */}
       {renderBottomNav()}
     </View>
   );

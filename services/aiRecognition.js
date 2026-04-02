@@ -4,24 +4,23 @@ import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
 const DEFAULT_GEMINI_API_KEY = "AIzaSyBp4scDjnWr8dLPMHnY0PBxMEU-D2n8qsY";
+const FALLBACK_GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
 const API_KEY_STORAGE = "gemini_api_key_custom";
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
+// gemini-3.1-flash-lite-preview is the user's preferred model; we also try
+// gemini-2.0-flash-lite (the actual released lite model) and gemini-2.0-flash as fallbacks
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash-lite", "gemini-2.0-flash", "gemini-1.5-flash"];
 let geminiBlockedUntil = 0;
 
 export async function getApiKey() {
   try {
-    let key = await AsyncStorage.getItem(API_KEY_STORAGE);
-    if (key) {
-      key = key.trim();
-      // If the user accidentally pasted it twice (e.g. 78 chars instead of 39), slice it.
-      if (key.startsWith("AIza") && key.length > 50) {
-        key = key.substring(0, 39);
-      }
-    }
-    return key || DEFAULT_GEMINI_API_KEY;
-  } catch {
-    return DEFAULT_GEMINI_API_KEY;
-  }
+    const stored = await AsyncStorage.getItem(API_KEY_STORAGE);
+    if (stored && stored.trim().length > 10) return stored.trim();
+  } catch (_) {}
+  return DEFAULT_GEMINI_API_KEY;
+}
+
+export function getFallbackApiKey() {
+  return FALLBACK_GEMINI_API_KEY;
 }
 
 export async function saveApiKey(key) {
@@ -196,7 +195,7 @@ function buildStructuredResult(payload, referenceMaterial, engine) {
     cheaperAlternativeKU: normalizeObject(payload.cheaperAlternativeKU) || derived.cheaperAlternativeKU,
     recommendedOptionEN: normalizeObject(payload.recommendedOptionEN) || derived.recommendedOptionEN,
     recommendedOptionKU: normalizeObject(payload.recommendedOptionKU) || derived.recommendedOptionKU,
-    engine: "gemini-3.1-flash-lite-preview",
+    engine: engine || "gemini-3.1-flash-lite-preview",
     topMatches: referenceMaterial
       ? [{ name: referenceMaterial.nameEN, score: Math.round(confidence * 100) }]
       : normalizeList(payload.topMatches),
@@ -271,47 +270,9 @@ async function runFallbackRecognition(base64Image, fallback, reason) {
   };
 }
 
-function safeParseGeminiJson(text) {
-  const cleaned = String(text || "")
-    .replace(/```json/gi, "")
-    .replace(/```/g, "")
-    .trim();
+function buildRecognitionPrompt() {
 
-  const candidates = [cleaned];
-  const objectMatch = cleaned.match(/\{[\s\S]*\}/);
-  if (objectMatch) {
-    candidates.push(objectMatch[0]);
-    candidates.push(
-      objectMatch[0]
-        .replace(/,\s*([}\]])/g, "$1")
-        .replace(/([{,]\s*)([A-Za-z_][A-Za-z0-9_]*)(\s*:)/g, '$1"$2"$3')
-        .replace(/:\s*'([^']*)'/g, ': "$1"')
-    );
-  }
-
-  for (const candidate of candidates) {
-    try {
-      return JSON.parse(candidate);
-    } catch {
-    }
-  }
-
-  throw new Error("Could not parse Gemini JSON response");
-}
-
-async function callGemini(model, base64Image) {
-  const apiKey = await getApiKey();
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: `You are an EXPERT construction materials specialist and visual recognition AI with deep knowledge of Middle Eastern (especially Kurdistan/Iraq) construction practices.
+  return `You are an EXPERT construction materials specialist and visual recognition AI with deep knowledge of Middle Eastern (especially Kurdistan/Iraq) construction practices.
 
 Your task: Analyze the image and identify the construction material or building component with maximum accuracy.
 
@@ -406,9 +367,9 @@ Return EXACTLY this JSON shape:
   "categoryKU": "بەستن",
   "confidence": 0.92,
   "descriptionEN": "Short professional explanation of what this material is and its main use in construction.",
-  "descriptionKU": "\u0631وونکردنەوەی پ\u0631ۆفیشناڵ بە کوردی دەربارەی مادەکە و بەکارھێنانی سەرەکی.",
+  "descriptionKU": "روونکردنەوەی پڕۆفیشناڵ بە کوردی دەربارەی مادەکە و بەکارھێنانی سەرەکی.",
   "useCasesEN": ["foundation concrete", "general masonry work", "mortar mixing"],
-  "useCasesKU": ["کۆنکریتی بنە\u0631ەت", "کاری گشتی دیوارچینی", "تیکەڵكردنی ملاط"],
+  "useCasesKU": ["کۆنکریتی بنەڕەت", "کاری گشتی دیوارچینی", "تیکەڵكردنی ملاط"],
   "keyPropertiesEN": ["gray fine powder", "binding material", "requires water to set", "high compressive strength when cured"],
   "keyPropertiesKU": ["تۆزی ناسکی خۆڵەمێشی", "مادەی بەستەر", "پێویستی بە ئاو هەیە بۆ قایم بوون"],
   "keyVisualIndicatorsEN": ["fine gray or white powder", "paper bag packaging", "wet paste state or dry set"],
@@ -418,10 +379,52 @@ Return EXACTLY this JSON shape:
   "cheaperAlternativeEN": {"name": "Local gypsum plaster", "reason": "Lower cost for non-structural interior finishing", "estimatedSavings": "~25% cheaper per unit"},
   "cheaperAlternativeKU": {"name": "جەبسی خۆماڵی", "reason": "تێچووی کەمتر بۆ کۆتایی ناوەوەی غەیری سازەیی", "estimatedSavings": "نزیکەی ٢٥٪ هەرزانتر"},
   "recommendedOptionEN": {"name": "Sulfate Resistant Cement", "reason": "Recommended for foundations in sulfate-rich soil common in Kurdistan"},
-  "recommendedOptionKU": {"name": "سمێنتی بەرگری لە سڵفات", "reason": "پێشنیار دەکرێت بۆ بنە\u0631ەت لە خاکی سڵفاتداری باو لە کوردستان"},
+  "recommendedOptionKU": {"name": "سمێنتی بەرگری لە سڵفات", "reason": "پێشنیار دەکرێت بۆ بنەڕەت لە خاکی سڵفاتداری باو لە کوردستان"},
   "topMatches": [{"name": "Ordinary Portland Cement (OPC)", "score": 92}],
   "engine": "gemini-3.1-flash-lite-preview"
-}`,
+}`;
+}
+
+function safeParseGeminiJson(text) {
+  const cleaned = String(text || "")
+    .replace(/```json/gi, "")
+    .replace(/```/g, "")
+    .trim();
+
+  const candidates = [cleaned];
+  const objectMatch = cleaned.match(/\{[\s\S]*\}/);
+  if (objectMatch) {
+    candidates.push(objectMatch[0]);
+    candidates.push(
+      objectMatch[0]
+        .replace(/,\s*([}\]])/g, "$1")
+        .replace(/([{,]\s*)([A-Za-z_][A-Za-z0-9_]*)(\s*:)/g, '$1"$2"$3')
+        .replace(/:\s*'([^']*)'/g, ': "$1"')
+    );
+  }
+
+  for (const candidate of candidates) {
+    try {
+      return JSON.parse(candidate);
+    } catch {
+    }
+  }
+
+  throw new Error("Could not parse Gemini JSON response");
+}
+
+async function callGeminiWithKey(model, base64Image, apiKey) {
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              {
+                text: buildRecognitionPrompt(),
               },
               {
                 inlineData: {
@@ -455,6 +458,22 @@ Return EXACTLY this JSON shape:
   return safeParseGeminiJson(text);
 }
 
+
+async function callGemini(model, base64Image) {
+  const primaryKey = await getApiKey();
+  try {
+    return await callGeminiWithKey(model, base64Image, primaryKey);
+  } catch (err) {
+    const msg = String(err.message || "");
+    // If auth error, try the fallback key before giving up
+    if (msg.includes("HTTP 401") || msg.includes("HTTP 403") || msg.includes("API_KEY_INVALID")) {
+      console.warn("[AI] Primary key auth failed, trying fallback key...");
+      return await callGeminiWithKey(model, base64Image, FALLBACK_GEMINI_API_KEY);
+    }
+    throw err;
+  }
+}
+
 export async function recognizeMaterial(base64Image) {
   const fallback = getFallbackCopy();
 
@@ -473,9 +492,16 @@ export async function recognizeMaterial(base64Image) {
         geminiBlockedUntil = Date.now() + 60000;
         return runFallbackRecognition(base64Image, fallback, "quota-fallback");
       }
+      // 404 = model not found (e.g. gemini-3.1-flash-lite-preview doesn't exist yet)
+      // Just skip to next model silently
+      if (message.includes("HTTP 404")) {
+        console.warn(`[AI] ${model} not found (404), trying next model...`);
+        continue;
+      }
       console.warn(`[AI] ${model} failed:`, message);
     }
   }
+
 
   return runFallbackRecognition(base64Image, fallback, "network-fallback");
 }

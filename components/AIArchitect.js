@@ -24,7 +24,7 @@ import { getApiKey } from "../services/aiRecognition";
 
 // gemini-3.1-flash-lite-preview is the user's preferred model; we also try
 // gemini-2.0-flash-lite (the actual released lite model) and gemini-2.0-flash as fallbacks
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash-lite", "gemini-2.0-flash", "gemini-1.5-flash"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,7 +34,7 @@ async function callGeminiWithRetry(prompt) {
   let lastError = null;
   const apiKey = await getApiKey();
   // Secondary fallback key in case primary has auth issues
-  const fallbackKey = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
+  const fallbackKey = "AIzaSyBpd2h9aZAcC7yKm7nngNEvkftcJ3BlTUQ";
 
   const tryFetch = async (model, key) => {
     const response = await fetch(

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -56,6 +56,13 @@ export default function ProjectManager({
   const [expandedId, setExpandedId] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [viewProject, setViewProject] = useState(null); // for the open/detail modal
+
+  // Auto-expand the active project so they instantly see which one it is
+  useEffect(() => {
+    if (activeProjectId && !expandedId) {
+      setExpandedId(activeProjectId);
+    }
+  }, [activeProjectId]);
 
   const copy = useMemo(
     () =>
@@ -475,6 +482,7 @@ export default function ProjectManager({
         ) : (
           projects.map((project, idx) => {
             const isExpanded = expandedId === project.id;
+            const isActive = activeProjectId === project.id;
             const dateStr = new Date(project.date).toLocaleDateString(
               lang === "ku" ? "en-GB" : undefined
             );
@@ -489,7 +497,7 @@ export default function ProjectManager({
                 entering={FadeIn.delay(idx * 60).duration(300)}
               >
                 <TouchableOpacity
-                  style={[s.projectCard, { backgroundColor: tc.card, borderColor: tc.cardBorder }, isExpanded && s.projectCardExpanded]}
+                  style={[s.projectCard, { backgroundColor: tc.card, borderColor: isActive ? tc.primary : tc.cardBorder }, isActive && { borderWidth: 2 }, isExpanded && s.projectCardExpanded]}
                   onPress={() =>
                     setExpandedId(isExpanded ? null : project.id)
                   }
@@ -505,12 +513,19 @@ export default function ProjectManager({
                         isRTL && { alignItems: "flex-end" },
                       ]}
                     >
-                      <Text
-                        style={[s.projectName, isRTL && s.textRTL]}
-                        numberOfLines={1}
-                      >
-                        {project.name}
-                      </Text>
+                      <View style={{ flexDirection: isRTL ? 'row-reverse' : 'row', alignItems: 'center', gap: 6 }}>
+                        <Text
+                          style={[s.projectName, isRTL && s.textRTL, { flexShrink: 1 }]}
+                          numberOfLines={1}
+                        >
+                          {project.name}
+                        </Text>
+                        {isActive && (
+                          <View style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 6, borderWidth: 1, borderColor: 'rgba(34, 197, 94, 0.4)' }}>
+                            <Text style={{ color: tc.success, fontSize: 10, fontWeight: '700' }}>{lang === 'ku' ? 'چالاک' : lang === 'ar' ? 'نشط' : 'Active'}</Text>
+                          </View>
+                        )}
+                      </View>
                       <Text style={[s.projectMeta, isRTL && s.textRTL]}>
                         {dateStr} • {itemCount} {copy.items}
                       </Text>

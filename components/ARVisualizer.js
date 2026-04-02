@@ -36,7 +36,7 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "../sty
 import materialsData from "../data/materials";
 import { getApiKey } from "../services/aiRecognition";
 
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-1.5-flash"];
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
 
 function arDelay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));

@@ -83,19 +83,19 @@ export function ExchangeRateProvider({ children }) {
     }, [applyRate]);
 
     const fetchRate = useCallback(async () => {
-        // If there's a manual override, don't auto-update
         const cached = await AsyncStorage.getItem(CACHE_KEY);
         if (cached) {
             try {
                 const { rate: cachedRate, isManual: cachedManual } = JSON.parse(cached);
-                if (cachedManual && cachedRate) {
+                if (cachedRate) {
+                    // Start with cached value immediately for fast UI response
                     setRate(cachedRate);
-                    setIsManual(true);
-                    setLoading(false);
-                    return;
+                    setIsManual(cachedManual);
                 }
             } catch (e) {}
         }
+        
+        // Always try to fetch live rate to keep it updated from trusted websites every day
 
         setLoading(true);
         setError(null);

@@ -90,9 +90,14 @@ function AppContent() {
       }
     });
   }, []);
-
   // Central navigation handler used by BottomNavBar AND sub-screens
   const handleNavNavigate = useCallback((viewId, projectId = null) => {
+    // If explicitly clicked the "Store" main tab or home screen buttons, clear project context so the main store is fresh and independent
+    if ((viewId === 'store' || viewId === 'storePurpose' || viewId === 'storeAll') && !projectId) {
+      setActiveProjectId(null);
+      setGlobalQuantitiesState({});
+    }
+
     if (projectId) {
       setActiveProjectId(projectId);
     }
@@ -100,6 +105,12 @@ function AppContent() {
       let nextView = viewId === 'store' ? 'storePurpose' : viewId;
       if (nextView === 'home') return ['home'];
       if (prev[prev.length - 1] === nextView) return prev;
+
+      // If view is already in stack, jump back to it to clear intermediate history steps
+      const existingIdx = prev.indexOf(nextView);
+      if (existingIdx !== -1) {
+        return prev.slice(0, existingIdx + 1);
+      }
 
       // Make all subpages push sequentially for step-by-step back feature
       return [...prev, nextView];
@@ -288,11 +299,14 @@ function AppContent() {
     setShowProjectCart(false);
     setProjectCartItems([]);
 
-    // Show success
-    Alert.alert(
-      "✅",
-      lang === 'ar' ? 'تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? 'بابەتەکان زیادکران بۆ پڕۆژە!' : 'Items added to project!'
-    );
+    // Navigate to projects page automatically and completely clear intermediate history pages
+    setNavStack(prev => {
+      const pIdx = prev.indexOf('projects');
+      if (pIdx !== -1) {
+        return prev.slice(0, pIdx + 1);
+      }
+      return ['home', 'projects'];
+    });
   }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang, projectCartSource]);
 
   if (rateLoading && !rate) {

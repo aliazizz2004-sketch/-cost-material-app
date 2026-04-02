@@ -177,9 +177,22 @@ export async function recognizeMaterial(base64Image) {
     const second = scores[1] || { score: 0 };
     const gap = best.score - second.score;
 
-    const confidence = Math.min(0.92,
+    // Require a minimum score to avoid false positives (e.g. always returning "Natural Stone")
+    const MIN_SCORE = 10;
+    if (best.score < MIN_SCORE) {
+      return {
+        matched: false,
+        material: null,
+        confidence: 0,
+        description: "Could not confidently identify the material from image colors alone. Try the AI scanner with a clearer photo.",
+        engine: "local-rn",
+        topMatches: scores.slice(0, 3).map((s) => ({ name: s.name, score: Math.round(s.score) })),
+      };
+    }
+
+    const confidence = Math.min(0.82,
       Math.max(0.25,
-        (best.score / 55) * 0.5 + Math.min(gap / 20, 0.3) + 0.05
+        (best.score / 55) * 0.45 + Math.min(gap / 25, 0.25) + 0.05
       )
     );
 

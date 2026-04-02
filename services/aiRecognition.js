@@ -3,19 +3,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
-const DEFAULT_GEMINI_API_KEY = "AIzaSyBp4scDjnWr8dLPMHnY0PBxMEU-D2n8qsY";
-const FALLBACK_GEMINI_API_KEY = "AIzaSyBgyFGItAFQga77pHUgfmsB843IkL8lnDc";
+const DEFAULT_GEMINI_API_KEY = "AIzaSyBpd2h9aZAcC7yKm7nngNEvkftcJ3BlTUQ";
+const FALLBACK_GEMINI_API_KEY = "AIzaSyBpd2h9aZAcC7yKm7nngNEvkftcJ3BlTUQ"; // User supplied key for both
 const API_KEY_STORAGE = "gemini_api_key_custom";
-// gemini-3.1-flash-lite-preview is the user's preferred model; we also try
-// gemini-2.0-flash-lite (the actual released lite model) and gemini-2.0-flash as fallbacks
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash-lite", "gemini-2.0-flash", "gemini-1.5-flash"];
+// Using the user's requested model first
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
 let geminiBlockedUntil = 0;
 
 export async function getApiKey() {
-  try {
-    const stored = await AsyncStorage.getItem(API_KEY_STORAGE);
-    if (stored && stored.trim().length > 10) return stored.trim();
-  } catch (_) {}
+  // Forced to use user's explicit correct key
   return DEFAULT_GEMINI_API_KEY;
 }
 

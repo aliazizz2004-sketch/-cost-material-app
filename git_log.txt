@@ -1,0 +1,20 @@
+﻿f3b96bb54f75d9ca507e054996e789b975d3e86e|||Upgrade react-native-reanimated to v4.3.0 to fix CMake Hermes linking errors on RN 0.83+
+2d94e1fdb984ae1be0cefb7a4ac4d58e04bd7184|||Fix EAS Gradle build crash by removing expo-font plugin. Android aapt2 rejects uppercase letters in .ttf files.
+cfa8b4368ce19a3cdd0588b5c3b126a40c1f9c94|||Fix Arabic/Kurdish font on Android: add arFont/rtlFont helpers, block render until fonts loaded, bundle font assets in EAS build
+2cad65f3c5d017da8eaf656b9cda779a8a627d89|||Upgrade AI Visualizer to Elite 8K PBR prompt with GI bounce, Fresnel reflections, and TARGET_MATERIAL format
+b2888b0fc3f3d4ef195d9ffe35d29c10c4f93a00|||Enhance AI Visualizer prompt for hyper-realism and update API key
+8dc5fb2cfa957d76b30abce62f15edba36fd08b2|||Add AppState listener for perfect exchange rate updates
+fb9a8ca98a8b938f2c19500c7d03b85d559c8ee9|||Fix Animation layout crashes and bottom nav safe area on Android
+a81840e325b8df4ed1bc620377fa4a332541d557|||Fix AppIcon.js native crash: Capitalize Text component
+5a33a67d5a4ce6184a5aa812f8547cf44f8d0882|||Fix: Android Red Screen View Config invalid properties (backgroundImage)
+8bdb557e8b24f364bb652d3bd66d0f89bd46003e|||Fix: remove invalid DOM elements and atob logic for Native Expo Go compatibility
+866ea68ae349161c1524401d892cc29197b311d2|||Create Advanced AR Pipeline (Node Backend + React Native integration)
+10b426d1cc2418c41be743cedb526cc75251a98a|||Redesign AR Visualizer: Smart AI wall detection mask for realistic painting
+c1a1801464b54f267441cf5a65b20d7b0cfb2935|||fix: modal fullscreen, pdf export sharing, auto-navigation to project
+5b45376c1f2b4053ceef1d14962e4f062914bb58|||feat: implement unified Add to Project system across all 6 tools
+5070ebdd7eefee3b545cc4b1e43a88f329946966|||Update: latest changes to app components and features
+27b7b4dd6f2c1f2baf67c6254c2653db13694695|||fix: restore wikimedia direct urls, make AI Architect 3.1 snap-fast, adapt AR paint clarity, intelligently route AI recognizer AddToList to Project Manager
+a4e0dd57b229788a2f6b1040ed0749ff7ae1320d|||fix: restore direct wikimedia image URLs instead of proxy and generic images
+015a2ce1a4ab0c1a80ffa36e754daf292930df02|||fix exchange rate to 100 dollars, update gemini model check and make AR filter realistic multiply blending
+52e3c355987c5f4b63f0f3ca301e78279a117e00|||fix missing category images and categories
+85c1d4aac2f8450fb1031b4f3799fad65cbbdec3|||feat: Peshang Kurdish font, navbar animations, material tab navbar fix, open project detail modal

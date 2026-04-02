@@ -218,10 +218,8 @@ function AppContent() {
   const handleConfirmAddToProject = useCallback((items) => {
     if (!activeProjectId) {
       // No active project — create one or show alert
-      if (typeof window !== 'undefined' && window.alert) {
-        const msg = lang === 'ar' ? 'الرجاء إنشاء أو فتح مشروع أولاً.' : lang === 'ku' ? 'تکایە سەرەتا پ\u0631ۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
-        window.alert(msg);
-      }
+      const msg = lang === 'ar' ? 'الرجاء إنشاء أو فتح مشروع أولاً.' : lang === 'ku' ? 'تکایە سەرەتا پ\u0631ۆژەیەک دروست بکە یان کردنەوە بکە.' : 'Please create or open a project first.';
+      Alert.alert('⚠️', msg);
       setShowProjectCart(false);
       return;
     }
@@ -283,15 +281,10 @@ function AppContent() {
     setProjectCartItems([]);
 
     // Show success
-    if (typeof window !== 'undefined' && window.alert) {
-      const msg = lang === 'ar' ? '✅ تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? '✅ بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : '✅ Items added to project!';
-      window.alert(msg);
-    } else {
-      Alert.alert(
-        "✅",
-        lang === 'ar' ? 'تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? 'بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : 'Items added to project!'
-      );
-    }
+    Alert.alert(
+      "✅",
+      lang === 'ar' ? 'تمت إضافة العناصر إلى المشروع!' : lang === 'ku' ? 'بابەتەکان زیادکران بۆ پ\u0631ۆژە!' : 'Items added to project!'
+    );
   }, [activeProjectId, projects, projectCartDelivery, projectCartEstimation, lang]);
 
   if (rateLoading && !rate) {

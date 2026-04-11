@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 export const colors = {
     // Primary palette — deep navy & gold
     primary: "#0A1628",
@@ -139,25 +141,34 @@ export const typography = {
 };
 
 export const shadows = {
-    card: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.08,
-        shadowRadius: 12,
-        elevation: 4,
-    },
-    cardLifted: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 6 },
-        shadowOpacity: 0.12,
-        shadowRadius: 20,
-        elevation: 8,
-    },
-    bottomBar: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: -4 },
-        shadowOpacity: 0.15,
-        shadowRadius: 16,
-        elevation: 12,
-    },
+    card: Platform.select({
+        web: { boxShadow: "0px 2px 12px rgba(0,0,0,0.08)" },
+        default: {
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.08,
+            shadowRadius: 12,
+            elevation: 4,
+        }
+    }),
+    cardLifted: Platform.select({
+        web: { boxShadow: "0px 6px 20px rgba(0,0,0,0.12)" },
+        default: {
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 6 },
+            shadowOpacity: 0.12,
+            shadowRadius: 20,
+            elevation: 8,
+        }
+    }),
+    bottomBar: Platform.select({
+        web: { boxShadow: "0px -4px 16px rgba(0,0,0,0.15)" },
+        default: {
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: -4 },
+            shadowOpacity: 0.15,
+            shadowRadius: 16,
+            elevation: 12,
+        }
+    }),
 };

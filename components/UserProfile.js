@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import {
   View,
   Text,
@@ -296,19 +296,19 @@ export default function UserProfile({ onBack, projects }) {
               {ar ? 'تواصل معنا' : ku ? 'پەیوەندی کردن' : 'Contact Us'}
             </Text>
             {[
-              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C' },
-              { label: 'Telegram', value: '@Ali010101010109', icon: 'telegram', color: '#0088cc' },
-              { label: 'Facebook', value: 'Ali Aziz', icon: 'facebook', color: '#1877F2' },
-              { label: 'Email', value: 'ali.aziz.hamed2005@gmail.com', icon: 'mail', color: '#EA4335' },
+              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C', url: 'https://instagram.com/archi_4li' },
+              { label: 'Telegram', value: '@Ali010101010109', icon: 'telegram', color: '#0088cc', url: 'https://t.me/Ali010101010109' },
+              { label: 'Facebook', value: 'Ali Aziz', icon: 'facebook', color: '#1877F2', url: 'https://www.facebook.com/ali.aziz.hamed' },
+              { label: 'Email', value: 'ali.aziz.hamed2005@gmail.com', icon: 'mail', color: '#EA4335', url: 'mailto:ali.aziz.hamed2005@gmail.com' },
             ].map(link => (
-              <View key={link.label} style={[s.socialLink, isRTL && s.rowRTL]}>
+              <TouchableOpacity key={link.label} style={[s.socialLink, isRTL && s.rowRTL]} onPress={() => import('react-native').then(m => m.Linking.openURL(link.url))}>
                 <View style={[s.socialIconBg, { backgroundColor: link.color + '18' }]}>
                   <AppIcon name={link.icon} size={20} color={link.color} />
                 </View>
                 <Text style={[s.socialLinkLabel, isRTL && s.textRTL, { color: tc.charcoal, flex: 1 }]} selectable={true}>
                   {link.value}
                 </Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         </Animated.View>
@@ -327,19 +327,19 @@ export default function UserProfile({ onBack, projects }) {
             </View>
             <View style={{width: '100%', height: 1, backgroundColor: tc.cardBorder, marginBottom: spacing.md}} />
             {[
-              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C' },
-              { label: 'Telegram', value: '@Ali010101010109', icon: 'telegram', color: '#0088cc' },
-              { label: 'Facebook', value: 'Ali Aziz', icon: 'facebook', color: '#1877F2' },
-              { label: 'Email', value: 'ali.aziz.hamed2005@gmail.com', icon: 'mail', color: '#EA4335' },
+              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C', url: 'https://instagram.com/archi_4li' },
+              { label: 'Telegram', value: '@Ali010101010109', icon: 'telegram', color: '#0088cc', url: 'https://t.me/Ali010101010109' },
+              { label: 'Facebook', value: 'Ali Aziz', icon: 'facebook', color: '#1877F2', url: 'https://www.facebook.com/ali.aziz.hamed' },
+              { label: 'Email', value: 'ali.aziz.hamed2005@gmail.com', icon: 'mail', color: '#EA4335', url: 'mailto:ali.aziz.hamed2005@gmail.com' },
             ].map(link => (
-              <View key={link.label} style={[s.socialLink, isRTL && s.rowRTL]}>
+              <TouchableOpacity key={link.label} style={[s.socialLink, isRTL && s.rowRTL]} onPress={() => import('react-native').then(m => m.Linking.openURL(link.url))}>
                 <View style={[s.socialIconBg, { backgroundColor: link.color + '18' }]}>
                   <AppIcon name={link.icon} size={20} color={link.color} />
                 </View>
                 <Text style={[s.socialLinkLabel, isRTL && s.textRTL, { color: tc.charcoal, flex: 1 }]} selectable={true}>
                   {link.value}
                 </Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         </Animated.View>

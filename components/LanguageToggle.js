@@ -73,9 +73,5 @@ const styles = StyleSheet.create({
     rtlText: {
         // Force correct rendering for Arabic/Kurdish glyphs on all platforms
         writingDirection: "rtl",
-        ...Platform.select({
-            web: { direction: "rtl", unicodeBidi: "embed" },
-            default: {},
-        }),
     },
 });

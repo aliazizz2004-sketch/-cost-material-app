@@ -26,18 +26,18 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "owner": "aliaziz02",
-    "extra": {
-      "eas": {
-        "projectId": "d2e893e4-ca1e-4f0a-bfbf-fdcb2cb932a2"
-      }
-    },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {},
     "plugins": [
-      "expo-font"
-    ]
+      "expo-font",
+      "expo-sharing"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "84321ac4-2c93-41b6-833c-2f31e8d15692"
+      }
+    }
   }
 }

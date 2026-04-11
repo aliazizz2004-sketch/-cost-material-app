@@ -132,8 +132,8 @@ function AppContent() {
       // On home screen, let default behavior happen (exit app)
       return false;
     };
-    BackHandler.addEventListener("hardwareBackPress", onBackPress);
-    return () => BackHandler.removeEventListener("hardwareBackPress", onBackPress);
+    const backHandlerObj = BackHandler.addEventListener("hardwareBackPress", onBackPress);
+    return () => backHandlerObj.remove();
   }, [navStack, handleBack]);
 
   const openAiCamera = async () => {

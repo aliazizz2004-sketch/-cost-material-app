@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyAAP8O9cr9_9Ip_wW7XQpDawMZRNmreQys";
+const API_KEY = "AIzaSyAbeAy4dLPVWN5DSUMxduDawo4jB7qiXyQ";
 async function test() {
   const model = "gemini-3.1-flash-lite-preview";
   const response = await fetch(

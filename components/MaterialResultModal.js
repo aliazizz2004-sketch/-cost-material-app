@@ -1,4 +1,4 @@
-﻿import React, { useMemo } from "react";
+import React, { useMemo } from "react";
 import {
   View,
   Text,
@@ -349,11 +349,6 @@ export default function MaterialResultModal({
                         <Text style={styles.statLabelAccent}>{copy.priceIqd}</Text>
                         <Text style={styles.statValueAccent}>{formatNumber(priceIQD)}</Text>
                         <Text style={styles.statUnitAccent}>{lang === "ku" ? material.unitKU : material.unitEN}</Text>
-                      </View>
-                      <View style={styles.statCard}>
-                        <Text style={styles.statLabel}>{copy.priceUsd}</Text>
-                        <Text style={styles.statValue}>${material.basePrice}</Text>
-                        <Text style={styles.statUnit}>{lang === "ku" ? material.unitKU : material.unitEN}</Text>
                       </View>
                       <View style={styles.statCard}>
                         <Text style={styles.statLabel}>{copy.thermal}</Text>

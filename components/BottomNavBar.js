@@ -147,8 +147,8 @@ function NavTab({ item, isActive, isDark, lang, kuFont, accentColor, inactiveCol
 
   const handlePress = () => {
     Animated.sequence([
-      Animated.timing(scaleAnim, { toValue: 0.85, duration: 80, useNativeDriver: true }),
-      Animated.spring(scaleAnim, { toValue: 1, tension: 200, friction: 10, useNativeDriver: true }),
+      Animated.timing(scaleAnim, { toValue: 0.85, duration: 80, useNativeDriver: Platform.OS !== 'web' }),
+      Animated.spring(scaleAnim, { toValue: 1, tension: 200, friction: 10, useNativeDriver: Platform.OS !== 'web' }),
     ]).start();
     onPress();
   };

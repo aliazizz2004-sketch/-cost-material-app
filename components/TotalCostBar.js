@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Platform, Image, ScrollView, Modal, SafeAreaView } from "react-native";
 import { colors, spacing, radius, typography, shadows } from "../styles/theme";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -40,56 +40,16 @@ export default function TotalCostBar({ quantities, materials, onQuantityChange, 
 
     return (
         <View style={styles.container}>
-            {/* Rate info row */}
-            <View style={[styles.rateRow, isRTL && styles.rowRTL]}>
-                <View style={[styles.rateInfo, isRTL && styles.rowRTL]}>
-                    <View style={[
-                        styles.rateDot,
-                        error ? styles.rateDotError : styles.rateDotOk,
-                        isRTL ? styles.rateDotRTL : styles.rateDotLTR
-                    ]} />
-                    <Text style={[styles.rateText, isRTL ? styles.rateTextRTL : styles.rateTextLTR, isRTL && styles.textRTL]}>
-                        {t("usdToIqd")}: {rate ? formatNumber(Math.round(rate)) : "..."}{" "}
-                    </Text>
-                    <Text style={[styles.timeText, isRTL && styles.textRTL]}>
-                        {t("lastUpdated")}: {timeStr}
-                    </Text>
-                </View>
-                <TouchableOpacity onPress={refresh} style={styles.refreshBtn} activeOpacity={0.7}>
-                    <Text style={styles.refreshText}>↻</Text>
-                </TouchableOpacity>
-            </View>
 
-            {/* Selected Items */}
-            {selectedItems.length > 0 && (
-                <View style={styles.selectedItemsWrapper}>
-                    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.selectedItemsScroll}>
-                        {selectedItems.map((item) => (
-                            <TouchableOpacity key={item.id} style={[styles.selectedItemChip, isRTL && styles.rowRTL]} onPress={() => {
-                                setIsModalVisible(true);
-                            }} activeOpacity={0.8}>
-                                {item.image && (
-                                    <Image
-                                        source={typeof item.image === 'string' ? { uri: item.image } : item.image}
-                                        style={[styles.selectedItemImage, isRTL ? { marginLeft: spacing.sm, marginRight: 0 } : { marginRight: spacing.sm, marginLeft: 0 }]}
-                                    />
-                                )}
-                                <View style={styles.selectedItemInfo}>
-                                    <Text style={[styles.selectedItemName, isRTL && styles.textRTL]} numberOfLines={1}>
-                                        {lang === "ku" ? item.nameKU : item.nameEN}
-                                    </Text>
-                                    <Text style={[styles.selectedItemDetail, isRTL && styles.textRTL]}>
-                                        {item.qty} × {lang === "ku" ? item.unitKU : item.unitEN}
-                                    </Text>
-                                </View>
-                            </TouchableOpacity>
-                        ))}
-                    </ScrollView>
-                </View>
-            )}
+
+            {/* Selected Items preview removed based on user request to make it smaller */}
 
             {/* Total row */}
-            <View style={[styles.totalRow, isRTL && styles.rowRTL]}>
+            <TouchableOpacity 
+                style={[styles.totalRow, isRTL && styles.rowRTL]}
+                onPress={() => setIsModalVisible(true)}
+                activeOpacity={0.8}
+            >
                 <View>
                     <Text style={[styles.totalLabel, isRTL && styles.textRTL]}>{t("totalCost")}</Text>
                     <Text style={[styles.itemCount, isRTL && styles.textRTL]}>
@@ -99,7 +59,7 @@ export default function TotalCostBar({ quantities, materials, onQuantityChange, 
                 <Text style={styles.totalValue}>
                     {formatNumber(totalCost)} {t("currency")}
                 </Text>
-            </View>
+            </TouchableOpacity>
 
             {/* Safe Area Spacer for Bottom Mobile Navigation */}
             {Platform.OS !== "web" && <View style={styles.safeSpacer} />}

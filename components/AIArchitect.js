@@ -34,7 +34,7 @@ async function callGeminiWithRetry(prompt) {
   let lastError = null;
   const apiKey = await getApiKey();
   // Secondary fallback key in case primary has auth issues
-  const fallbackKey = "AIzaSyBpd2h9aZAcC7yKm7nngNEvkftcJ3BlTUQ";
+  const fallbackKey = "AIzaSyAbeAy4dLPVWN5DSUMxduDawo4jB7qiXyQ";
 
   const tryFetch = async (model, key) => {
     const response = await fetch(

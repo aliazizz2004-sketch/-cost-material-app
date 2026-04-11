@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import {
   View,
   Text,
@@ -560,7 +560,7 @@ export default function DeliveryCostEstimator({ onBack, activeProjectName, onAut
             </View>
 
             {/* Route visualization */}
-            <View style={[s.routeVisual, isRTL && s.rowRTL]}>
+            <View style={s.routeVisual}>
               <View style={s.routeCity}>
                 <View style={s.routeDot} />
                 <Text style={[s.routeCityText, isRTL && s.textRTL]} numberOfLines={1}>

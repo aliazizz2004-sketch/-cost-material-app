@@ -22,9 +22,8 @@ import { colors, darkColors, spacing, typography, radius, shadows } from "../sty
 import materialsData from "../data/materials";
 import { getApiKey } from "../services/aiRecognition";
 
-// gemini-3.1-flash-lite-preview is the user's preferred model; we also try
-// gemini-2.0-flash-lite (the actual released lite model) and gemini-2.0-flash as fallbacks
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
+// gemini-3.1-flash-lite-preview released March 3, 2026 — confirmed available
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.5-flash-preview-04-17", "gemini-2.0-flash", "gemini-1.5-flash"];
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,7 +33,7 @@ async function callGeminiWithRetry(prompt) {
   let lastError = null;
   const apiKey = await getApiKey();
   // Secondary fallback key in case primary has auth issues
-  const fallbackKey = "AIzaSyAbeAy4dLPVWN5DSUMxduDawo4jB7qiXyQ";
+  const fallbackKey = "AIzaSyCLSz1QuzAvjnrZ7ve_VIhziMZT1Ec4N2A";
 
   const tryFetch = async (model, key) => {
     const response = await fetch(

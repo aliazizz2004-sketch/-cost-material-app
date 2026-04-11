@@ -3,11 +3,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import materials from "../data/materials";
 import { recognizeMaterial as recognizeMaterialLocally } from "./localRecognition";
 
-const DEFAULT_GEMINI_API_KEY = "AIzaSyAbeAy4dLPVWN5DSUMxduDawo4jB7qiXyQ";
-const FALLBACK_GEMINI_API_KEY = "AIzaSyAbeAy4dLPVWN5DSUMxduDawo4jB7qiXyQ"; // User supplied key for both
+const DEFAULT_GEMINI_API_KEY = "AIzaSyCLSz1QuzAvjnrZ7ve_VIhziMZT1Ec4N2A";
+const FALLBACK_GEMINI_API_KEY = "AIzaSyCLSz1QuzAvjnrZ7ve_VIhziMZT1Ec4N2A"; // User supplied key
 const API_KEY_STORAGE = "gemini_api_key_custom";
-// Using the user's requested model first
-const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
+// gemini-3.1-flash-lite-preview released March 3, 2026 — confirmed available
+const GEMINI_MODELS = ["gemini-3.1-flash-lite-preview", "gemini-2.5-flash-preview-04-17", "gemini-2.0-flash", "gemini-1.5-flash"];
 let geminiBlockedUntil = 0;
 
 export async function getApiKey() {

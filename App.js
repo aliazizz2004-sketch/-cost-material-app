@@ -73,12 +73,21 @@ function AppContent() {
   const [capturedImageUri, setCapturedImageUri] = useState(null);
   const [globalQuantities, setGlobalQuantitiesState] = useState({});
 
+  // *** SEPARATE project-store quantities — NEVER shared with the main store ***
+  const [projectStoreQuantities, setProjectStoreQuantitiesState] = useState({});
+
   // Rate Edit Modal (cross-platform replacement for Alert.prompt)
   const [rateModalVisible, setRateModalVisible] = useState(false);
   const [rateInputValue, setRateInputValue] = useState("");
 
   const setGlobalQuantities = useCallback((value) => {
     setGlobalQuantitiesState(prev => {
+      return typeof value === 'function' ? value(prev) : value;
+    });
+  }, []);
+
+  const setProjectStoreQuantities = useCallback((value) => {
+    setProjectStoreQuantitiesState(prev => {
       return typeof value === 'function' ? value(prev) : value;
     });
   }, []);
@@ -92,10 +101,12 @@ function AppContent() {
   }, []);
   // Central navigation handler used by BottomNavBar AND sub-screens
   const handleNavNavigate = useCallback((viewId, projectId = null) => {
-    // If explicitly clicked the "Store" main tab or home screen buttons, clear project context so the main store is fresh and independent
+    // When going to main store (no project context), always clear MAIN store quantities
+    // but never touch project store quantities
     if ((viewId === 'store' || viewId === 'storePurpose' || viewId === 'storeAll') && !projectId) {
       setActiveProjectId(null);
-      setGlobalQuantitiesState({});
+      setGlobalQuantitiesState({});  // clear main store
+      // Do NOT clear projectStoreQuantities
     }
 
     if (projectId) {
@@ -288,12 +299,12 @@ function AppContent() {
     setProjects(updated);
     AsyncStorage.setItem("costMaterialProjects", JSON.stringify(updated)).catch(() => {});
 
-    // Also update globalQuantities
+    // Update project-store quantities (NOT main store globalQuantities)
     const proj = updated.find(p => p.id === activeProjectId);
     if (proj) {
       const qtys = {};
       proj.items.forEach(it => { qtys[it.id] = it.qty; });
-      setGlobalQuantitiesState(qtys);
+      setProjectStoreQuantitiesState(qtys);  // project store only
     }
 
     setShowProjectCart(false);
@@ -329,7 +340,7 @@ function AppContent() {
       pageContent = <AnimatedPage key="sp"><StorePurposeScreen onSelect={() => {}} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} /></AnimatedPage>;
       break;
     case "storeAll":
-      pageContent = <AnimatedPage key="sa"><MaterialCatalog filterPurposes={[]} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} materials={materialsData} /></AnimatedPage>;
+      pageContent = <AnimatedPage key="sa"><MaterialCatalog filterPurposes={[]} onBack={handleBack} onNavigate={handleNavNavigate} globalQuantities={activeProjectId ? projectStoreQuantities : globalQuantities} setGlobalQuantities={activeProjectId ? setProjectStoreQuantities : setGlobalQuantities} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} materials={materialsData} /></AnimatedPage>;
       break;
     case "estimation":
       pageContent = <AnimatedPage key="est"><EstimationCalculator onBack={handleBack} activeProject={activeProject} onAutoSave={handleSaveEstimationToProject} materials={materialsData} onAddToProject={handleShowProjectCart} activeProjectId={activeProjectId} /></AnimatedPage>;
@@ -341,7 +352,39 @@ function AppContent() {
       pageContent = <AnimatedPage key="sup"><SupplierDirectory onBack={handleBack} /></AnimatedPage>;
       break;
     case "projects":
-      pageContent = <AnimatedPage key="proj"><ProjectManager projects={projects} setProjects={setProjects} materials={materialsData} currentQuantities={globalQuantities} setGlobalQuantities={setGlobalQuantities} activeProjectId={activeProjectId} setActiveProjectId={setActiveProjectId} onNavigate={handleNavNavigate} onGoToStore={(pid) => handleNavNavigate("storeAll", pid)} onGoToDelivery={(pid) => handleNavNavigate("delivery", pid)} onGoToEstimation={(pid) => handleNavNavigate("estimation", pid)} onBack={handleBack} onLoadProject={(qtys => { setGlobalQuantities(qtys); handleNavNavigate("storeAll"); })} onOpenAiCamera={openAiCamera} pendingProjectName={pendingProjectName} setPendingProjectName={setPendingProjectName} pendingProjectNote={pendingProjectNote} setPendingProjectNote={setPendingProjectNote} /></AnimatedPage>;
+      pageContent = <AnimatedPage key="proj"><ProjectManager
+        projects={projects}
+        setProjects={setProjects}
+        materials={materialsData}
+        currentQuantities={{}}
+        setGlobalQuantities={() => {}}
+        activeProjectId={activeProjectId}
+        setActiveProjectId={setActiveProjectId}
+        onNavigate={handleNavNavigate}
+        onGoToStore={(pid) => {
+          // Load project's saved items into the project store (isolated from main store)
+          const proj = projects.find(p => p.id === pid);
+          const qtys = {};
+          if (proj && proj.items) {
+            proj.items.forEach(it => { qtys[it.id] = it.qty; });
+          }
+          setProjectStoreQuantitiesState(qtys);
+          handleNavNavigate('storeAll', pid);
+        }}
+        onGoToDelivery={(pid) => handleNavNavigate('delivery', pid)}
+        onGoToEstimation={(pid) => handleNavNavigate('estimation', pid)}
+        onBack={handleBack}
+        onLoadProject={(qtys) => {
+          // onLoadProject is for project store, load into projectStoreQuantities only
+          setProjectStoreQuantitiesState(qtys);
+          handleNavNavigate('storeAll');
+        }}
+        onOpenAiCamera={openAiCamera}
+        pendingProjectName={pendingProjectName}
+        setPendingProjectName={setPendingProjectName}
+        pendingProjectNote={pendingProjectNote}
+        setPendingProjectNote={setPendingProjectNote}
+      /></AnimatedPage>;
       break;
     case "community":
       pageContent = <AnimatedPage key="com"><CommunityForum onBack={handleBack} /></AnimatedPage>;
@@ -429,19 +472,25 @@ function AppContent() {
                 <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "المواد" : ku ? "مادەکان" : "Materials"}</Text>
               </View>
               <TouchableOpacity style={[styles.statBox, { backgroundColor: tc.card, borderColor: tc.cardBorder }]} activeOpacity={0.7} onPress={() => {
-                const currentStr = rate ? Math.round(rate * 100).toString() : "152000";
+                const currentStr = rate ? Math.round(rate * 100).toString() : "155000";
                 if (Platform.OS === 'web') {
-                  const val = window.prompt(ar ? "سعر الصرف بالدينار لـ 100$:" : ku ? "نرخی گۆ\u0631ینەوە بە دینار بۆ 100$:" : "Exchange rate in IQD for 100 USD:", currentStr);
-                  if (val && !isNaN(Number(val))) setManualRate(Number(val) / 100);
+                  const val = window.prompt(ar ? "سعر الصرف دينار لـ 100$:" : ku ? "نرخی 100$ بە دینار:" : "IQD for $100:", currentStr);
+                  if (val && !isNaN(Number(val)) && Number(val) > 0) setManualRate(Number(val) / 100);
                 } else {
                   setRateInputValue(currentStr);
                   setRateModalVisible(true);
                 }
               }}>
-                <Text style={[styles.statV, { color: tc.primary }]}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginBottom: 1 }}>
+                  <View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: rate ? '#22c55e' : '#f97316' }} />
+                  <Text style={{ fontSize: 9, color: rate ? '#22c55e' : '#f97316', fontWeight: '800', letterSpacing: 0.5 }}>
+                    {rate ? (ar ? 'مباشر' : ku ? 'ڕاستەوخۆ' : 'LIVE') : (ar ? 'غير متصل' : ku ? 'ئۆفلاین' : 'OFFLINE')}
+                  </Text>
+                </View>
+                <Text style={[styles.statV, { color: tc.primary, fontSize: 20 }]}>
                   {rate ? Math.round(rate * 100).toLocaleString() : "--"}
                 </Text>
-                <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "د.ع / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
+                <Text style={[styles.statL, { color: tc.mediumGray }, kuFont()]}>{ar ? "دينار / 100$" : ku ? "دینار / 100$" : "IQD / $100"}</Text>
               </TouchableOpacity>
             </View>
 
@@ -503,14 +552,14 @@ function AppContent() {
               {ar ? "تغيير سعر الصرف" : ku ? "گۆ\u0631ینی نرخی دۆلار" : "Change Exchange Rate"}
             </Text>
             <Text style={[styles.rateModalSubtitle, { color: tc.mediumGray }]}>
-              {ar ? "أدخل قيمة 100$ بالدينار العراقي" : ku ? "نرخی 100$ بە دینارێکی عێراقی بنووسە" : "Enter IQD value for 100 USD"}
+              {ar ? 'أدخل قيمة 100$ بالدينار العراقي' : ku ? 'نرخی 100$ بە دینارێکی عێراقی بنووسە' : 'Enter IQD value for $100'}
             </Text>
             <TextInput
               style={[styles.rateModalInput, { color: tc.charcoal, borderColor: tc.cardBorder, backgroundColor: tc.offWhite }]}
               value={rateInputValue}
               onChangeText={setRateInputValue}
               keyboardType="numeric"
-              placeholder="152000"
+              placeholder="155000"
               placeholderTextColor={tc.mediumGray}
               autoFocus
             />
@@ -521,7 +570,7 @@ function AppContent() {
               <TouchableOpacity style={[styles.rateModalBtn, styles.rateModalBtnOk, { backgroundColor: tc.primary }]} onPress={() => {
                 const val = rateInputValue.trim();
                 if (val && !isNaN(Number(val)) && Number(val) > 0) {
-                  setManualRate(Number(val) / 100);
+                  setManualRate(Number(val) / 100); // IQD per $100 → rate per $1
                 }
                 setRateModalVisible(false);
               }} activeOpacity={0.85}>

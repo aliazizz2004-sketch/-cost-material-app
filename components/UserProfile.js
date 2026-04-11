@@ -10,6 +10,7 @@ import {
   TextInput,
   Switch,
   Platform,
+  Linking,
 } from 'react-native';
 import Animated, { FadeInDown, FadeInUp, FadeIn } from 'react-native-reanimated';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -296,12 +297,12 @@ export default function UserProfile({ onBack, projects }) {
               {ar ? 'تواصل معنا' : ku ? 'پەیوەندی کردن' : 'Contact Us'}
             </Text>
             {[
-              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C', url: 'https://instagram.com/archi_4li' },
+              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C', url: 'https://www.instagram.com/archi_4li' },
               { label: 'Telegram', value: '@Ali010101010109', icon: 'telegram', color: '#0088cc', url: 'https://t.me/Ali010101010109' },
               { label: 'Facebook', value: 'Ali Aziz', icon: 'facebook', color: '#1877F2', url: 'https://www.facebook.com/ali.aziz.hamed' },
               { label: 'Email', value: 'ali.aziz.hamed2005@gmail.com', icon: 'mail', color: '#EA4335', url: 'mailto:ali.aziz.hamed2005@gmail.com' },
             ].map(link => (
-              <TouchableOpacity key={link.label} style={[s.socialLink, isRTL && s.rowRTL]} onPress={() => import('react-native').then(m => m.Linking.openURL(link.url))}>
+              <TouchableOpacity key={link.label} style={[s.socialLink, isRTL && s.rowRTL]} onPress={() => Linking.openURL(link.url).catch(err => console.warn('Cannot open URL:', err))}>
                 <View style={[s.socialIconBg, { backgroundColor: link.color + '18' }]}>
                   <AppIcon name={link.icon} size={20} color={link.color} />
                 </View>
@@ -327,12 +328,12 @@ export default function UserProfile({ onBack, projects }) {
             </View>
             <View style={{width: '100%', height: 1, backgroundColor: tc.cardBorder, marginBottom: spacing.md}} />
             {[
-              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C', url: 'https://instagram.com/archi_4li' },
+              { label: 'Instagram', value: 'archi_4li', icon: 'instagram', color: '#E1306C', url: 'https://www.instagram.com/archi_4li' },
               { label: 'Telegram', value: '@Ali010101010109', icon: 'telegram', color: '#0088cc', url: 'https://t.me/Ali010101010109' },
               { label: 'Facebook', value: 'Ali Aziz', icon: 'facebook', color: '#1877F2', url: 'https://www.facebook.com/ali.aziz.hamed' },
               { label: 'Email', value: 'ali.aziz.hamed2005@gmail.com', icon: 'mail', color: '#EA4335', url: 'mailto:ali.aziz.hamed2005@gmail.com' },
             ].map(link => (
-              <TouchableOpacity key={link.label} style={[s.socialLink, isRTL && s.rowRTL]} onPress={() => import('react-native').then(m => m.Linking.openURL(link.url))}>
+              <TouchableOpacity key={link.label} style={[s.socialLink, isRTL && s.rowRTL]} onPress={() => Linking.openURL(link.url).catch(err => console.warn('Cannot open URL:', err))}>
                 <View style={[s.socialIconBg, { backgroundColor: link.color + '18' }]}>
                   <AppIcon name={link.icon} size={20} color={link.color} />
                 </View>
